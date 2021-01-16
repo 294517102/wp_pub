@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>就医服务-门诊排班</title>
+	<link rel="stylesheet" href="res/default/css/style.css">
+	<link rel="stylesheet" href="res/default/css/reset.css">
+	<style>
+		.dq_active1{
+			display: inline-block;
+			height: 55px;
+			width: 56px;
+			color: #46c3f2;
+			font-size: 14px;
+			border-bottom: 2px solid #46c3f2;
+		}
+		#h4{
+			color: #46c3f2;
+			border-bottom: 2px solid #46c3f2;
+		}
+		#text{
+			position: absolute;
+			top:0;
+			left: 50px;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<div class="headerConent">
+			<div class="logo">
+						<img src="res/default/images/logo.png" alt="金牛医院logo">
+						<h4 class="jinniutitle" style="font-family: 'KaiTi'">四川省人民医院金牛医院</h4>
+						<span class="jinniuEnglish">Sichaun province people's hospital of hospital Taurus</span>
+					</div>
+					<div class="seach">
+						<div class="seach_left">
+							<form action="" id="form">
+								<input type="text" id="text" placeholder="请输入关键字">
+								<a href="#" id="btn1"></a>
+								<input type="button" value="搜索" id="btn2">
+							</form>
+						</div>
+						<div class="seach_right" >
+							<img src="res/default/images/hushi1.png" alt="人物图标">
+							<img src="res/default/images/急症电话.png" alt="电话" id="phone_head">
+							<img src="res/default/images/028.png" alt="电话号码">
+						</div>					
+					</div>
+			</div>
+
+		</div>
+		<div class="nav">
+			<ul class="nav_head">
+				<li><a href="#">网站首页</a></li>
+				<li><a href="#">医院介绍</a>
+					<ul class="yiyan">	
+					<li><a href="#">医院简介</a></li>
+					<li><a href="#">医院文化</a></li>
+					<li><a href="#">医院荣誉</a></li>
+					<li><a href="#">历届领导</a></li>
+					<li><a href="#">领导团队</a></li>
+					<li><a href="#">医院掠影</a></li>
+					</ul>
+				</li>
+
+				<li><a href="#">新闻中心</a>
+					<ul class="xinwen">	
+						<li><a href="#">医院新闻</a></li>
+						<li><a href="#">招标公告</a></li>
+						<li><a href="#">媒体聚焦</a></li>
+						<li><a href="#">院务公开</a></li>
+						<li><a href="#">人才招聘</a></li>
+						<li><a href="#">视频新闻</a></li>
+						<li><a href="#">学术动态</a></li>
+					</ul>
+				</li>
+				<li><a href="#">党群工作</a>
+				<ul class="dangqun">	
+						<li><a href="#">党群资讯</a></li>
+						<li><a href="#">基层党建</a></li>
+						<li><a href="#">团委工作</a></li>
+						<li><a href="#">党风廉政</a></li>
+						<li><a href="#">支部动态</a></li>
+						<li><a href="#">学习资料</a></li>
+						<li><a href="#">专题报道</a></li>
+					</ul>
+				</li>
+				<li><a href="#">科室导航</a>
+				</li>
+				<li><a href="#">专家介绍</a></li>
+				<li><a href="#">就医服务</a>
+				<ul class="jiuyi">	
+						<li><a href="#">就医须知</a></li>
+						<li><a href="#">门诊排班</a></li>
+						<li><a href="#">住院指南</a></li>
+						<li><a href="#">医疗保险</a></li>
+						<li><a href="#">预约挂号</a></li>
+						<li><a href="#">报告查询</a></li>
+						<li><a href="#">健康体检</a></li>
+						<li><a href="#">交通指南</a></li>
+						<li><a href="#">特色医疗</a></li>
+					</ul></li>
+				<li><a href="#">护理园地</a>
+					<ul class="huli">	
+						<li><a href="#">护理概况</a></li>
+						<li><a href="#">护理资讯</a></li>
+						<li><a href="#">护理风采</a></li>
+					</ul>
+				</li>
+				<li><a href="#">教学科研</a>
+				<ul class="jiaoxue">	
+						<li><a href="#">工作动态</a></li>
+						<li><a href="#">招标公告</a></li>
+						<li><a href="#">远程医学</a></li>
+						<li><a href="#">资料下载</a></li>	
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</header>
+	<div class="dangquangongzuo">
+		<div class="dqgz_content_nav">
+			<ul class="dangqun_li">	
+						<li><a href="#" class="dq_active1">就医须知</a></li>
+						<li><a href="#">门诊排班</a></li>
+						<li><a href="#">住院指南</a></li>
+						<li><a href="#">医疗保险</a></li>
+						<li><a href="#">预约挂号</a></li>
+						<li><a href="#">报告查询</a></li>
+						<li><a href="#">健康体检</a></li>
+						<li><a href="#">交通指南</a></li>
+						<li><a href="#">特色医疗</a></li>
+					</ul>
+		</div>
+		<div class="df_lb">
+			<div class="df_lb_title">
+				<h4 style="height: 64px" id="h4">门诊排班</h4>
+			</div>
+			<div class="mzpb">
+				<div class="mzpb_lib">
+					<h6>门诊科室:</h6>
+					<ul>
+						<li><a href="">picc门诊</a></li>
+						<li><a href="">中医治未病科(中医养生保健科)</a></li>
+						<li><a href="">picc门诊</a></li>
+						<li><a href="">中医治未病科(中医养生保健科)</a></li>
+						<li><a href="">picc门诊</a></li>
+						<li><a href="">中医治未病科(中医养生保健科)</a></li>
+						<li><a href="">picc门诊</a></li>
+						<li><a href="">中医治未病科(中医养生保健科)</a></li>
+						<li><a href="">picc门诊</a></li>
+						<li><a href="">中医治未病科(中医养生保健科)</a></li>
+						<li><a href="">picc门诊</a></li>
+						<li><a href="">中医治未病科(中医养生保健科)</a></li>
+						<li><a href="">picc门诊</a></li>
+						<li><a href="">中医治未病科(中医养生保健科)</a></li>
+						<li><a href="">picc门诊</a></li>
+						<li><a href="">中医治未病科(中医养生保健科)</a></li>
+						<li><a href="">picc门诊</a></li>
+						<li><a href="">中医治未病科(中医养生保健科)</a></li>
+						<li><a href="">picc门诊</a></li>
+						<li><a href="">中医治未病科(中医养生保健科)</a></li>
+						<li><a href="">picc门诊</a></li>
+						<li><a href="">中医治未病科(中医养生保健科)</a></li>
+						<li><a href="">picc门诊</a></li>
+						<li><a href="">中医治未病科(中医养生保健科)</a></li>
+					</ul>
+				</div>
+				<div class="mzpb_lib">
+					<h6>坐诊星期:</h6>
+					<ul class="week">
+						<li><a href="">星期一</a></li>
+						<li><a href="">星期二</a></li>
+						<li><a href="">星期三</a></li>
+						<li><a href="">星期四</a></li>
+						<li><a href="">星期五</a></li>
+						<li><a href="">星期六</a></li>
+						<li><a href="">星期日</a></li>
+					</ul>
+				</div>
+
+				<div class="mzpb_lib">
+					<h6>坐诊时间:</h6>
+					<ul class="week">
+						<li><a href="">上午</a></li>
+						<li><a href="">中午</a></li>
+						<li><a href="">下午</a></li>
+					</ul>
+				</div>
+
+				<div class="mzpb_lib">
+					<h6>职&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称:</h6>
+					<ul class="week">
+						<li><a href="">主任</a></li>
+						<li><a href="">医师副主任</a></li>
+						<li><a href="">医师主治</a></li>
+						<li><a href="">主任医师</a></li>
+						<li><a href="">主任护师</a></li>
+						<li><a href="">副主任护师</a></li>
+					</ul>
+				</div>
+
+				<div class="mzpb_lib">
+					<h6>专家级别:</h6>
+					<ul class="week">
+						<li><a href="">一级专家</a></li>
+						<li><a href="">二级专家</a></li>
+						<li><a href="">三家专家</a></li>
+						<li><a href="">四级专家</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="df_lb_title" style="position: relative;">
+				<h4 style="height: 64px" id="h4">坐诊医生</h4>
+				<div class="seach_left" style="float: right;">
+							<form action="" id="form">
+								<input type="text" id="text" placeholder="请输入关键字">
+								<a href="#" id="btn1"></a>
+								<input type="button" value="搜索" id="btn2">
+							</form>
+				</div>
+			</div>
+			<ul class="zuozhen">
+				<li>专家门诊</li>
+				<li>特需门诊</li>
+				<li>普通门诊</li>
+				<li>停诊</li>
+			</ul>
+			<div class="zuozhen_jieshao">
+				<div class="zuozhen_jieshao_lf">
+					<dl>
+						<dt><img src="res/default/images/yishen.png" alt=""></dt>
+						<dd>
+						
+							<div class="xingming">
+								<h5>雍刚</h5>
+								<span>主任医师</span>
+							</div>
+							<div class="keshi">科室：检验科</div>
+							<div class="jibie">级别</div>
+							<div class="shanchang">擅长:主要从事性病、艾滋病、麻风病及皮肤病实验室...</div>
+						</dd>
+					</dl>
+				</div>
+				<div class="zuozhen_jieshao_rg">
+					<ul class="bgcolor">
+						<li></li>
+						<li>一</li>
+						<li>二</li>
+						<li>三</li>
+						<li>四</li>
+						<li>五</li>
+						<li>六</li>
+						<li>天</li>
+					</ul>
+					<ul>
+						<li>上午工作日</li>
+						<li><img src="res/default/images/yuan.png" alt=""></li>
+						<li><img src="res/default/images/yuan.png" alt=""></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+					<ul>
+						<li>下午工作日</li>
+						<li><img src="res/default/images/yuan.png" alt=""></li>
+						<li><img src="res/default/images/yuan.png" alt=""></li>
+						<li><img src="res/default/images/yuan.png" alt=""></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+				</div>
+			</div>
+			<div class="zuozhen_jieshao">
+				<div class="zuozhen_jieshao_lf">
+					<dl>
+						<dt><img src="res/default/images/yishen.png" alt=""></dt>
+						<dd>
+						
+							<div class="xingming">
+								<h5>雍刚</h5>
+								<span>主任医师</span>
+							</div>
+							<div class="keshi">科室：检验科</div>
+							<div class="jibie">级别</div>
+							<div class="shanchang">擅长:主要从事性病、艾滋病、麻风病及皮肤病实验室...</div>
+						</dd>
+					</dl>
+				</div>
+				<div class="zuozhen_jieshao_rg">
+					<ul class="bgcolor">
+						<li></li>
+						<li>一</li>
+						<li>二</li>
+						<li>三</li>
+						<li>四</li>
+						<li>五</li>
+						<li>六</li>
+						<li>天</li>
+					</ul>
+					<ul>
+						<li>上午工作日</li>
+						<li><img src="res/default/images/yuan.png" alt=""></li>
+						<li><img src="res/default/images/yuan.png" alt=""></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+					<ul>
+						<li>下午工作日</li>
+						<li><img src="res/default/images/yuan.png" alt=""></li>
+						<li><img src="res/default/images/yuan.png" alt=""></li>
+						<li><img src="res/default/images/yuan.png" alt=""></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+				</div>
+			</div>
+			<div class="zuozhen_jieshao">
+				<div class="zuozhen_jieshao_lf">
+					<dl>
+						<dt><img src="res/default/images/yishen.png" alt=""></dt>
+						<dd>
+						
+							<div class="xingming">
+								<h5>雍刚</h5>
+								<span>主任医师</span>
+							</div>
+							<div class="keshi">科室：检验科</div>
+							<div class="jibie">级别</div>
+							<div class="shanchang">擅长:主要从事性病、艾滋病、麻风病及皮肤病实验室...</div>
+						</dd>
+					</dl>
+				</div>
+				<div class="zuozhen_jieshao_rg">
+					<ul class="bgcolor">
+						<li></li>
+						<li>一</li>
+						<li>二</li>
+						<li>三</li>
+						<li>四</li>
+						<li>五</li>
+						<li>六</li>
+						<li>天</li>
+					</ul>
+					<ul>
+						<li>上午工作日</li>
+						<li><img src="res/default/images/yuan.png" alt=""></li>
+						<li><img src="res/default/images/yuan.png" alt=""></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+					<ul>
+						<li>下午工作日</li>
+						<li><img src="res/default/images/yuan.png" alt=""></li>
+						<li><img src="res/default/images/yuan.png" alt=""></li>
+						<li><img src="res/default/images/yuan.png" alt=""></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<div class="footer_con">
+			<div class="footer_con_top">
+				<div class="footer_con_top_left">
+					<div class="footer_logo">
+						<img src="res/default/images/logo.png" alt="金牛医院logo">
+						<h4 class="footer_jinniutitle" style="font-family: 'KaiTi'">四川省人民医院金牛医院</h4>
+						<span class="footer_jinniuEnglish">Sichaun province people's hospital of hospital Taurus</span>
+				</div>
+				<h3>地址：四川省 成都市 金牛区 金府路300号</h3>
+				<h3>电话：028-8752 8250</h3>
+				<h3>邮政编码：610007</h3>
+				</div>
+				<div class="footer_con_top_cen">
+					<h2>友情链接</h2>
+					<ul>
+						<li><a href="">国家卫计委</a></li>
+						<li><a href="">华西医院</a></li>
+						<li><a href="">成都中医药大学附属医院</a></li>
+						<li><a href="">成都军区总医院</a></li>
+					</ul>
+				</div>
+				<div class="footer_con_top_right">
+					<h2>站内链接</h2>
+					<ul>
+						<li><a href="">新闻公告</a></li>
+						<li><a href="">招标信息</a></li>
+						<li><a href="">预约挂诊</a></li>
+						<li><a href="">党建文化</a></li>
+					</ul>
+				</div>
+				<img src="res/default/images/danwei.png" alt="图片无法加载" class="shiye">
+				<img src="res/default/images/erweima.png" alt="图片无法加载" class="erweima">
+			</div>
+			<div class="footer_con_bottom">版权所有&copy;2014s四川省人民医院金牛医院（金牛区人民医院）蜀CP备12028976号-1 &nbsp;&nbsp;&nbsp;技术支持：天健世纪</div>
+		</div>
+	</footer>
+</body>
+</html>

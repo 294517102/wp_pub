@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   <base href="${domainBase}"/>
+    <#include "${includePath}/data.html" >
+		<#include "${includePath}/searchKeyword.html" >
+    <title>${webSet.title!}-${jzxz.title!}</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <link rel="stylesheet" href="res/default/css/resets.css">
+    <link rel="stylesheet" href="res/default/css/style.css">
+    <link rel="stylesheet" href="res/js/ydui.flexible.js">
+</head>
+<body>
+<ul class="register">
+<#list guide.children?sort_by("id") as d>
+            <#if d_index=1>
+            <#if d.articles?? && (d.articles?size gt 0 )>
+            <#list d.articles! as da>
+    <li class="register_list">
+    <a href="${base}/singleSearch_${da.id?c!}.htm?url=xuzhi_detail&ctype=article&column_id=${d.id?c!}">
+        <span class="register_list_right"></span>
+        <div class="register_list_del">${da.title!}</div>
+</a>
+    </li>
+</#list>
+<#else>
+暂无数据。。
+</#if>
+</#if>
+</#list>    
+</ul>
+
+
+<script src="res/js/jquery.min.js"></script>
+<script src="res/js/style.js"></script>
+</body>
+</html>

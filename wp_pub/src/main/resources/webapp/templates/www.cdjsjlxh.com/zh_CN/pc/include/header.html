@@ -1,0 +1,78 @@
+<header>
+    <div class="header">
+        <div class="header_row1">
+            <div class="header_top width1200">
+                <div class="ht_l fl">欢迎光临成都建设监理协会官方网站</div>
+                <div class="ht_r fr"><iframe name="weather_inc" style="margin-top: 4px" src="http://i.tianqi.com/index.php?c=code&id=5" width="200" height="30" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" ></iframe></div>
+            </div>
+        </div>
+        <div class="header_row2">
+            <div class="header_center width1200">
+                <a href="/index.html" class="hr_l fl"><img src="../res/default/images/logo.png" alt=""></a>
+                <div class="hr_c fl">
+                    <input type="text">
+                    <span class="hrc_ss" onclick="searchmess(this)">搜索</span>
+                </div>
+                <div class="hr_r fr">
+                    <div class="hrr_l fl"><img src="../res/default/images/indh.png" alt=""></div>
+                    <div class="hrr_c fl"></div>
+                    <div class="hrr_r fl">
+                        <#assign sclist=sc.bks("dian_hua")>
+                        <#list sclist as a>
+                        <div>${a.desc!}</div>
+                        </#list>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="header_row3 width1200">
+            <#assign sCol = cl.bk(k)>
+            <ul class="hrader_ul">
+                <#assign top=cl.top()>
+                <#if top?? && top?size gt 0>
+                <#list top as a>
+                <li class="header_li">
+                    <a href="<#if a.children??&& a.children?size gt 0&& a.keyword!='shou_ye'> ${a.children[0].url!} <#else>  ${a.url!}  </#if>" class="header_a">${a.title!} <#if k==a.keyword><span class="nav_h"></span></#if> <#if sCol.parent?? && sCol.parent.keyword==a.keyword><span class="nav_h"></span></#if> <span class="nav_h1"></span></a>
+                    <div class="sub_nav">
+                        <#if a.children??&& a.children?size gt 0>
+                        <#list a.children as b>
+                        <#if b.keyword!="tu_pian_xin_wen" && b.keyword!="zhong_yao_tong_zhi">
+                        <a href="${b.url!}">${b.title!}</a>
+                        </#if>
+                        </#list>
+                        </#if>
+                    </div>
+                    </li>
+                </#list>
+                </#if>
+            </ul>
+        </div>
+        <div class="ny_banner">
+            <#if sCol.parent??>
+            <img src="${sCol.parent.thumbnail.ourl!'../res/default/images/gyxh_banner.png'}" alt="">
+            <#else>
+            <img src="${sCol.thumbnail.ourl!'../res/default/images/gyxh_banner.png'}" alt="">
+            </#if>
+        </div>
+    </div>
+</header>
+<#if sCol.parent??>
+    <#assign pCol=sCol.parent>
+<#else>
+    <#list sCol.children?sort_by("sequence") as aa>
+        <#if aa_index==0>
+        <#assign pCol=sCol>
+        <#assign sCol=aa>    
+        </#if>
+    </#list>
+</#if>
+<script type="text/javascript" charset="utf-8">
+      function searchmess(ele){
+             if(jQuery(ele).prev().val().replace(/(^\s*)|(\s*$)/g, '')==""){
+               alert('请输入你想搜索的关键字');
+               return ;
+             }
+                window.location.href="/go.htm?url=search&key="+jQuery(ele).prev().val().replace(/(^\s*)|(\s*$)/g, '');;
+         }
+</script>

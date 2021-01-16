@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>服务列表</title>
+
+<#include "/include/bg/in_head_res.html">
+
+</head>
+<body class="inner-body clear">
+	<div class="layui-container  bc_color" style="width:100%">		 
+		<div class="content_main">
+		  <div class="layui-row">
+				<button class="layui-btn  service-edit-add fl ">
+					<i class="layui-icon">&#xe61f;</i> 新增
+				</button>
+				<button class="layui-btn layui-btn-danger deleteAll fl ">
+					<i class="layui-icon">&#xe640;</i> 删除
+				</button>
+			</div>
+			<div class="layui-form">
+				<table class="layui-table" lay-even >
+					<thead>
+						<tr>
+							<th><input type="checkbox" name="" lay-skin="primary"
+								lay-filter="allChoose"></th>
+							<th >序号</th>
+							<th >IP</th>
+							<th >拦截类型</th>
+							<th >添加时间</th>
+							<th >操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<#if !(resultList_requestIntercept??) || resultList_requestIntercept?size <=0 >
+						<tr>
+							<td colspan="8">无记录</td>
+						</tr>
+						<#else> <#list resultList_requestIntercept as r>
+						<tr>
+							<td><input type="checkbox" lay-skin="primary" id="${r.id}"></td>
+							<td>${r.id!}</td>
+							<td>${r.url!}</td>
+							<td><#if r.type == 1>
+									黑名单
+								<#elseif r.type==2>
+									白名单
+								</#if>
+							</td>
+							<td>${r.insertTime}</td>
+							<td>
+							<input type="checkbox" id="${r.id}" lay-skin="switch" lay-filter="state" lay-text="ON|OFF" <#if r.state==1 > ${'checked'} </#if> >
+							<button class="layui-btn layui-btn-danger layui-btn-small delete"  id="${r.id}">
+									<i class="layui-icon">&#xe640;</i> 删除
+								</button></td>
+						</tr>
+						</#list> </#if>
+					</tbody>
+				</table>
+				<div class="pageBotton">${pageHtml}</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+<#include "/include/bg/in_bottom_res.html">
+<script type="text/javascript">
+    //注意进度条依赖 element 模块，否则无法进行正常渲染和功能性操作
+
+    $(".refresh").click(function(){
+    	window.location.reload();
+    });
+         var form = layui.form;
+
+        //全选
+        form.on('checkbox(allChoose)', function(data){
+            var child = $(data.elem).parents('table').find('tbody input[type="checkbox"]');
+            child.each(function(index, item){
+                item.checked = data.elem.checked;
+            });
+             form.render('checkbox');
+        }); 
+    
+        form.on("switch(state)",function(data){
+        	var state = 1;
+        	var obj = data.elem;
+        	if(data.elem.checked){
+        		state = 1;
+        	}else{
+        		state = 9;
+        	}
+        	var id = $(obj).attr("id");
+        	if(id<=0){
+        		return;
+        	}
+        	
+        	$.postJSON("${base}/general_service_XkdSxOJJLI0lwRjYs67$ajax.htm?_sign=${MD5.md5(user.username+user.id)}",{"id":id,"state":state},function(data){              
+   			 layer.msg(data.msg,{time:500},null);		            	 
+           }); 
+        });
+        
+        $(function(){
+            $(".service-edit-add").click(function () {
+                layer.open({
+                    type: 2,
+                    title: '新增IP',
+                  //  btn: ['确定', '取消'],
+                    shadeClose: true,
+                    shade: 0.8,
+                    area: ['40%','300px'],
+                    content:'${base}/admin/to_target.htm?url=system_setting/security/system_danger_ip_add' //iframe的url
+                });
+            });     
+        })
+        
+        /*删除*/
+        $(".delete").click(function(){
+    	var id = $(this).attr("id");
+    	if(id<=0){
+    		return;
+    	}
+    	layer.confirm("确认删除？",{btn: ['确认','取消'],icon:3 },function(){
+    		 $.postJSON("${base}/general_service_XkdSxOJJLI0lwRjYs67$ajax.htm?_sign=${MD5.md5(user.username+user.id)}",{"id":id,"isDelete":1},function(data){              
+    			 layer.msg(data.msg,{time:500},function(){
+ 					if(data.result){
+ 						location.reload();
+ 					}
+ 				});		            	 
+            }); 
+    	});
+    });
+        
+        /*多选删除*/
+        $(".deleteAll").click(function(){
+        	if($("input:checked").length<=0){
+        		layer.msg("请选择待删除条目",{icon:2});
+        		return;
+        	}
+        	layer.confirm("确认删除？",{btn: ['确认','取消'],icon:3 },function(){
+        		$("input:checked").each(function(){
+            		var id = $(this).attr("id");   
+            		if(id<=0){
+            			return ture;
+            		}
+            		 $.postJSON("${base}/general_service_XkdSxOJJLI0lwRjYs67$ajax.htm?_sign=${MD5.md5(user.username+user.id)}",{"id":id,"isDelete":1},function(data){              
+                 	     if(!data.result){
+                 	     	layer.msg("删除失败-"+id,{icon:2});
+                 	     }
+           			       	            	 
+                   }); 
+            	});
+        		layer.msg("操作完毕",{time:500},function(){
+               		window.location.reload();
+               	});
+        	});
+
+        });
+</script>
+</html>

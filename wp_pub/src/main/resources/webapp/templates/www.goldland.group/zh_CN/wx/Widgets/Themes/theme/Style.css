@@ -1,0 +1,27 @@
+/*************************************************************
+ * name:theme
+ * img:/widgets/Themes/theme/face.jpg
+ * label:风格样式三
+*************************************************************/
+*{ margin:0; padding:0;}
+body { color:#333; font-size:12px;font-family:"微软雅黑";}
+a { color: #000; text-decoration:none; cursor: pointer;}/***全局文字链接颜色***/
+a:hover { color: #06b206; text-decoration:none;}
+ul, li { list-style-type:none;}
+img { border:none;}
+input, textarea, select { vertical-align:middle;}
+input,select{ vertical-align:middle; height:30px; line-height:30px;} 
+/************网站顶部定义**************/
+.headerV27 { background: url("images/top.gif") repeat-x scroll left -29px transparent;}
+.wrapper { }
+.mtop10 { margin-top:10px;}
+.Tag_list { background: url("images/back.gif") no-repeat scroll left -736px transparent; height: 32px; line-height: 32px; margin-bottom: 8px; position: relative;}
+/************自定义 wonders**************/
+.layout { width:1100px; margin:0 auto; }
+.layout_sidebar{ background:url("_skins/images/sidebar_bg.png") no-repeat top right; min-height:520px;}
+.layout_content { width:1060px; margin:20px auto; background:#fff; padding:20px 20px; box-shadow:0 2px 6px rgba(100, 100, 100, 0.3);}
+.layout_line {width:60px; background:url("_skins/images/bg_line.jpg") repeat-y;}
+
+.home_bg01 { width:768px; background:url("_skins/SchoolB/images/header_tit05.png") no-repeat top left; border:1px solid #cde8f9;padding:50px 5px 5px 5px; border-radius: 8px;}
+
+.topbg { background:url("_skins/temp02/images/listbg.png") repeat-x;}

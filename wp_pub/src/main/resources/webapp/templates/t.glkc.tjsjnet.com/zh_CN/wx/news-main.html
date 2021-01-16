@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <#include "/${rp}/metalink.html">
+</head>
+<body>
+<div class="page">
+    <#assign news=cl.bk(c)>
+    <header class="bar bar-nav">
+        <a class="icon icon-left pull-left back"></a>
+        <a href="${cm.cp}" class="icon icon-home pull-right" external></a>
+        <h1 class="title">${news.title}</h1>
+    </header>
+    <div class="content">
+        <div class="innerbanner">
+            <img src="${sc.bk('shou_ji_xin_wen_ye_banner').acc.url}" alt="${news.title}">
+        </div>
+        <div class="inner_navbox">
+            <ul class="inner_nav">
+                <#list news.children as nc>
+                <#if nc.keyword != "mei_ti_ju_jiao">
+                <li>
+                    <#if nc_index !=7>
+                    <a href="${cm.cp}${nc.url}" external>
+                        <img src="res/default/image/news_nav${nc_index+1}.png" alt="">
+                        <p>${nc.title}</p>
+                    </a>
+                    </#if>
+                </li>
+                </#if>
+                </#list>
+            </ul>
+        </div>
+
+        <div class="inner_box1">
+            <#assign yyxw=cl.bk('yi_yuan_xin_wen')>
+            <p class="dangqu_title">${yyxw.title}</p>
+            <a href="${cm.cp}${yyxw.url}" external>more +</a>
+            <hr>
+            <ul class="tuwenlist">
+                <#list at.bc(yyxw) as a>
+                <#if a_index lt 2>
+                <li class='wow fadeInUp'>
+                    <a href="${cm.cp}go.htm?url=news_detail&id=${a.id}" external>
+                        <div class="tuwenlistpic">
+                            <img src="<#if a.th.url??>${a.th.url}<#else>res/default/image/default_pic.png</#if>" alt="">
+                        </div>
+                        <div class="tuwenlistinfo">
+                            <p class="list_title">${a.title}</p>
+                            <div class="tuwenlist_desc">
+                                ${a.desc}
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                </#if>
+                </#list>
+            </ul>
+            <ul class="wenlist">
+                <#list at.bc(yyxw) as a>
+                <#if a_index lt 6>
+                <#if a_index gte 2>
+                <li class='wow fadeInUp'>
+                    <a href="${cm.cp}go.htm?url=news_detail&id=${a.id}" external>
+                        <p class="wenlist_title">${a.title}</p>
+                        <span class="wenlist_span">${a.issueTime?string('MM-dd')}</span>
+                    </a>
+                </li>
+                </#if>
+                </#if>
+                </#list>
+            </ul>
+        </div>
+
+        <div class="inner_box1">
+            <#assign yygg=cl.bk('yi_yuan_gong_gao')>
+            <p class="dangqu_title">${yygg.title}</p>
+            <a href="${cm.cp}${yygg.url}" external>more +</a>
+            <hr>
+            <ul class="wenlist">
+                <#list at.bc(yygg) as a>
+                <#if a_index lt 5>
+                <li class='wow fadeInUp'>
+                    <a href="${cm.cp}go.htm?url=news_detail&id=${a.id}" external>
+                        <p class="wenlist_title">${a.title}</p>
+                        <span class="wenlist_span">${a.issueTime?string('MM-dd')}</span>
+                    </a>
+                </li>
+                </#if>
+                </#list>
+            </ul>
+        </div>
+        <div class="inner_box1">
+            <#assign rczp=cl.bk('ren_cai_zhao_pin')>
+            <p class="dangqu_title">${rczp.title}</p>
+            <a href="${cm.cp}${rczp.url}" external>more +</a>
+            <hr>
+            <ul class="wenlist">
+                <#if at.bc(rczp)?size gt 0>
+                <#list at.bc(rczp) as a>
+                <#if a_index lt 5>
+                <li class='wow fadeInUp'>
+                    <a href="${cm.cp}go.htm?url=news_detail&id=${a.id}" external>
+                        <p class="wenlist_title">${a.title}</p>
+                        <span class="wenlist_span">${a.issueTime?string('MM-dd')}</span>
+                    </a>
+                </li>
+                </#if>
+                </#list>
+                <#else>
+                    <div class='nodata'>
+                        <img src="res/default/image/nodata.png" alt="" />
+                        <p>暂无数据</p>
+                    </div>
+                </#if>
+            </ul>
+        </div>
+        <div class="inner_box1">
+            <#assign zbgg=cl.bk('zhao_biao_gong_gao')>
+            <p class="dangqu_title">${zbgg.title}</p>
+            <a href="${cm.cp}${zbgg.url}" external>more +</a>
+            <hr>
+            <ul class="wenlist">
+                <#if at.bc(zbgg)?size gt 0>
+                <#list at.bc(zbgg) as a>
+                <#if a_index lt 5>
+                <li class='wow fadeInUp'>
+                    <a href="${cm.cp}go.htm?url=news_detail&id=${a.id}" external>
+                        <p class="wenlist_title">${a.title}</p>
+                        <span class="wenlist_span">${a.issueTime?string('MM-dd')}</span>
+                    </a>
+                </li>
+                </#if>
+                </#list>
+                <#else>
+                    <div class='nodata'>
+                        <img src="res/default/image/nodata.png" alt="" />
+                        <p>暂无数据</p>
+                    </div>
+                </#if>
+            </ul>
+        </div>
+        <div class="inner_box1">
+            <#assign xsdt=cl.bk('xue_shu_dong_tai')>
+            <p class="dangqu_title">${xsdt.title}</p>
+            <a href="${cm.cp}${xsdt.url}" external>more +</a>
+            <hr>
+            <ul class="wenlist">
+                <#if at.bc(xsdt)?size gt 0>
+                <#list at.bc(xsdt) as a>
+                <#if a_index lt 5>
+                <li class='wow fadeInUp'>
+                    <a href="${cm.cp}go.htm?url=news_detail&id=${a.id}" external>
+                        <p class="wenlist_title">${a.title}</p>
+                        <span class="wenlist_span">${a.issueTime?string('MM-dd')}</span>
+                    </a>
+                </li>
+                </#if>
+                </#list>
+                <#else>
+                    <div class='nodata'>
+                        <img src="res/default/image/nodata.png" alt="" />
+                        <p>暂无数据</p>
+                    </div>
+                </#if>
+            </ul>
+        </div>
+        <div class="inner_box1 margin50px">
+            <#assign mtjj=cl.bk('mei_ti_ju_jiao')>
+            <p class="dangqu_title">${mtjj.title}</p>
+            <a href="${cm.cp}${mtjj.url}" external>more +</a>
+            <hr>
+            <ul class="wenlist">
+                <#if at.bc(mtjj)?size gt 0>
+                <#list at.bc(mtjj) as a>
+                <#if a_index lt 5>
+                <li class='wow fadeInUp'>
+                    <a href="${cm.cp}go.htm?url=news_detail&id=${a.id}" external>
+                        <p class="wenlist_title">${a.title}</p>
+                        <span class="wenlist_span">${a.issueTime?string('MM-dd')}</span>
+                    </a>
+                </li>
+                </#if>
+                </#list>
+                <#else>
+                    <div class='nodata'>
+                        <img src="res/default/image/nodata.png" alt="" />
+                        <p>暂无数据</p>
+                    </div>
+                </#if>
+            </ul>
+        </div>
+        <#include "/${rp}/footer.html">
+    </div>
+</div>
+<#include "/${rp}/jslink.html">
+<script>
+    $(".tuwenlist_desc").xdlines({
+        max:2
+    })
+</script>
+</body>
+</html>

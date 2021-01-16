@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <#include "/${rp}/metalink.html">
+</head>
+<body>
+<div class="page">
+    <#assign ck=cl.bk(c)>
+    <header class="bar bar-nav">
+        <a class="icon icon-left pull-left back"></a>
+        <a href="${cm.cp}" class="icon icon-home pull-right" external></a>
+        <h1 class="title">${ck.title}</h1>
+    </header>
+    <div class="content">
+        <ul class="tijian_box">
+            <#list ck.children as ckc>
+            <li>
+                <a href="${cm.cp}${ckc.url}">${ckc.title}</a>
+            </li>
+            </#list>
+        </ul>
+        <div class="innerfooter">
+            <img src="res/default/image/footerinner_logo.png" class="footlogo" alt="">
+            <a href="#" class="gopc">返回PC版</a>
+        </div>
+        <div class="copyright">
+            <p>版权所有 © 2014 四川省人民医院金牛医院（金牛区人民医院）  蜀ICP备14028976号-1 </p>
+        </div>
+        <a href="#" class="gotop">
+            <img src="res/default/image/gotop.png" alt="">
+        </a>
+    </div>
+</div>
+
+<script src="res/js/jquery.min.js"></script>
+<script src="res/js/light7.min.js"></script>
+<script src="res/js/swiper.min.js"></script>
+<script src="res/js/commen.js"></script>
+<script>
+    $(".tuwenlist_desc").xdlines({
+        max:2
+    })
+</script>
+</body>
+</html>

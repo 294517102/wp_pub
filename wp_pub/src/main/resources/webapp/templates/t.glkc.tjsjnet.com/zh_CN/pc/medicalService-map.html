@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<#include "/${rp}/metalink.html">
+	<title>${webSet.title}</title>
+	<style>
+		.dq_active1{
+			display: inline-block;
+			height: 55px;
+			width: 56px;
+			color: #46c3f2;
+			font-size: 14px;
+			border-bottom: 2px solid #46c3f2;
+		}
+		#h4{
+			color: #46c3f2;
+			border-bottom: 2px solid #46c3f2;
+		}
+
+	</style>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=wDxBEId6c3iWc0BMTCNxnP7jwyfYS6l6"></script>
+
+</head>
+
+<body>
+	<header>
+		<#include "/${rp}/header.html">	
+	</header>
+	<div class="dangquangongzuo">
+		<div class="dqgz_content_nav">
+			<ul class="dangqun_li">
+			    <#assign ck=cl.bk(c)>
+			    <#list ck.parent.children as cc>
+			     <#if cc.keyword != "zhu_yuan_zhi_nan">
+				<li><a href="${cm.cp}${cc.url}" <#if cc.id==ck.id>class="dq_active"</#if>>${cc.title}</a></li>
+				</#if>
+				</#list>
+			</ul>
+		</div>
+		<div class="df_lb">
+			<div class="df_lb_title">
+				<h4 style="height: 64px" id="h4">${ck.title}</h4>
+			</div>
+			<div class="jtzn">
+				<div><div id="allmap" style="height: 300px"></div>
+</div>
+<#assign jt = cl.bk(c)>
+<#assign jts = at.bc(jt)>
+<div class="lixuw_div">
+    ${jts[0].ext.content}
+</div>
+				
+			</div>
+		</div>
+	</div>
+	<footer>
+		<#include "/${rp}/footer.html">
+	</footer>
+</body>
+<script>
+	var map = new BMap.Map("allmap");
+    var point = new BMap.Point(104.0353948911,30.7136320383);
+    var marker = new BMap.Marker(point, {
+//        icon: new BMap.Icon("res/default/image/mappng.png", new BMap.Size(30, 30))
+    })
+    map.addOverlay(marker);              // 将标注添加到地图中
+    marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+    map.centerAndZoom(point, 15);
+    map.disableScrollWheelZoom();
+
+    var mapStyle = {
+        features: ["road", "building", "water", "land"],//隐藏地图上的poi
+        style: "light"  //设置地图风格为高端黑
+    }
+    map.setMapStyle(mapStyle);
+
+    var opts = {
+        width: 200,     // 信息窗口宽度
+        height: 100,     // 信息窗口高度
+        title: "<p><b style='color:red;'>${webSet.title}</b></p>", // 信息窗口标题
+        enableMessage: true
+    }
+    var infoWindow = new BMap.InfoWindow("地址：${webSet.comAddress}", opts);  // 创建信息窗口对象
+    marker.addEventListener("click", function () {
+        map.openInfoWindow(infoWindow, point);
+    });
+    map.enableScrollWheelZoom(true);
+</script>
+</html>

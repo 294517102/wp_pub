@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>服务列表</title>
+
+<#include "/include/bg/in_head_res.html">
+
+</head>
+<body class="inner-body clear">
+	<div class="layui-container bg-color" style="width:100%">
+		<form class="layui-form layui-form-pane" id="form_1" action="${base}/admin/obtain_pi_interface.htm">	
+		<div class="layui-form-item layui-col-space10"  style="background-color: white;padding:15px 10px;">		
+			<div class="layui-col-md3">
+				<label class="layui-form-label">接口名称</label>
+				<div class="layui-input-block">
+					<input type="text" name="name"
+						autocomplete="off"  value="${RequestParameters.name!!}"  placeholder="请输入标题" class="layui-input">
+				</div>
+			</div>
+			 <div class="layui-col-md3">
+		        <label class="layui-form-label">识别码：</label>
+		        <div class="layui-input-block">
+		            <input type="text" name="iid" lay-verify="title"    value="${RequestParameters.iid!!}"  autocomplete="off" placeholder="请输入识别码" class="layui-input">
+		        </div>
+		    </div>
+			<div class="layui-col-md2">
+				<label class="layui-form-label">状态：</label>
+				<div class="layui-input-block">
+					<select name="status" lay-filter="aihao" initValue="${RequestParameters.status!!}">
+						<option value="0">请选择</option>
+						<option value="1">在用</option>
+						<option value="9">停用</option>
+					</select>
+				</div>
+			</div>
+			<div class="fl" style="margin-left:50px">
+				<button class="layui-btn fl search" lay-submit > <i class="layui-icon">&#xe615;</i> 搜索</button>
+				<button class="layui-btn layui-btn-warm  fl refresh" type="reset"><i class="layui-icon">&#x1002;</i> 刷新</button>
+			</div>
+		</div>
+		</form>
+		<div class="content_main">
+			<div class="layui-row">
+				<button class="layui-btn  service-edit-add fl ">
+					<i class="layui-icon">&#xe61f;</i> 新增
+				</button>
+				<button class="layui-btn layui-btn-danger deleteAll fl ">
+					<i class="layui-icon">&#xe640;</i> 删除
+				</button>
+			</div>
+			<div class="layui-row layui-form">
+				<table class="layui-table">
+					<thead>
+						<tr>
+							<th><input type="checkbox" name="" lay-skin="primary"
+								lay-filter="allChoose"></th>
+							<th >序号</th>
+							<th >名称</th>
+							<th >识别码</th>
+							<th>状态</th>
+							<th>站点</th>
+							<th>创建人</th>
+							<th>创建时间</th>
+							<th width="20%">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<#if resultList?size <=0 >
+						<tr>
+							<td colspan="9">无数据</td>
+						</tr>
+						<#else> <#list resultList as r>
+						<tr>
+							<td><input type="checkbox" name="check" lay-skin="primary" id="${r.id}"></td>
+							<td>${r.id}</td>
+							<td>${r.name}</td>							
+							<td>${r.iid}</td>
+							<td class="status"><#if r.status == 1> ${'在用'}   <#else>  ${'停用'} </#if></td>
+							<td>${(r.webset.domain)!"公共"}</td>
+							<td>${(r.user.username)!"未知"}</td>
+							<td>${r.insertTime}</td>
+							<td>
+							<button class="layui-btn layui-btn-small detail" id="${r.id}"><i class="layui-icon">&#xe63c;</i>编辑</button>
+							 <input type="checkbox" id="${r.id}" lay-skin="switch" lay-filter="status" lay-text="ON|OFF" <#if r.status==1 > ${'checked'} </#if> >							
+							<button class="layui-btn layui-btn-danger layui-btn-small delete"  id="${r.id}">
+									<i class="layui-icon">&#xe640;</i> 删除
+								</button></td>
+						</tr>
+						</#list> 
+						</#if>
+					</tbody>
+				</table>
+				<div class="pageBotton">${pageHtml}</div>
+			</div>			
+		</div>
+	</div>
+	
+<#include "/include/bg/in_bottom_res.html">	
+	<script type="text/javascript">
+    //注意进度条依赖 element 模块，否则无法进行正常渲染和功能性操作
+    $(".detail").click(function(){
+    	layer.open({
+            type: 2,
+            title: '服务编辑',
+          //  btn: ['确定', '取消'],
+            shadeClose: true,
+            shade: 0.8,
+            area: ['65%', '600px'],
+            content:'${base}/admin/obtain_pi_interface.htm?url=tools/interface/interface_edit&id='+$(this).attr("id") //iframe的url
+        });
+    });
+
+    $(".delete").click(function(){
+    	var id = $(this).attr("id");
+    	layer.confirm("确认删除？",{btn: ['确认','取消'],icon:3 },function(){
+    		 $.postJSON("${base}/admin/save_pi_interface.htm",{"id":id,"isDelete":1},function(data){              
+          	     if(data.result){
+          	    	layer.msg("删除成功");     
+          	    	window.location.reload();
+          	     }
+    			       	            	 
+            }); 
+    	});
+    });
+    
+    $(".refresh").click(function(){
+    	window.location.reload();
+    });
+    
+    $(".deleteAll").click(function(){
+    	if($("input:checked").length<=0){
+    		layer.msg("请选择待删除条目",{icon:2});
+    		return;
+    	}
+    	layer.confirm("确认删除？",{btn: ['确认','取消'],icon:3 },function(){
+    		$("input:checked").each(function(){
+        		var id = $(this).attr("id");        
+            	$.postJSON("${base}/admin/save_pi_interface.htm",{"id":id,"isDelete":1},function(data){              
+             	     if(!data.result){
+             	     	layer.msg("删除失败-"+id,{icon:2});
+             	     }      			       	            	 
+               }); 
+        	});
+    		layer.msg("操作完毕",function(){
+           		window.location.reload();
+           	});
+    	});
+
+    });
+    
+        var form = layui.form;
+
+
+        form.on("switch(status)",function(data){
+        	var status = 0;
+        	var obj = data.elem;
+        	if(data.elem.checked){
+        		status = 1;
+        	}else{
+        		status = 9;
+        	}
+        	$.postJSON("${base}/admin/save_pi_interface.htm",{"id":$(obj).attr("id"),"status":status},function(data){              
+        	     if(data.result){
+        	    	 if(status == 1){
+        	    		 $(obj).closest("tr").find(".status").text("在用");
+        	    	 }else{
+        	    		 $(obj).closest("tr").find(".status").text("停用");
+        	    	 }
+        	     }      			       	            	 
+          }); 
+        });
+        
+        //全选
+        form.on('checkbox(allChoose)', function(data){
+            var child = $(data.elem).parents('table').find('tbody input[name="check"]');
+            child.each(function(index, item){
+                item.checked = data.elem.checked;
+            });
+             form.render('checkbox');
+        });
+
+    $(function(){
+        $(".service-edit-add").click(function () {
+            layer.open({
+                type: 2,
+                title: '接口编辑',
+              //  btn: ['确定', '取消'],
+                closeBtn: 1,
+                shadeClose: true,
+                shade: 0.8,
+                area: ['65%','580px'],
+                content:'${base}/admin/to_target.htm?url=tools/interface/interface_edit' //iframe的url
+            });
+        });    
+        
+        initValue();
+        form.render();
+    })
+</script>
+
+</body>
+</html>

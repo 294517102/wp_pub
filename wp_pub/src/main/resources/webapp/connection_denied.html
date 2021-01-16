@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<base href="${base}/">
+<head>
+    <meta charset="UTF-8">
+    <title>访问被拒绝</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .login{
+            width: 100%;
+            background: url("res/default/bg/image/22.jpg") 0 0 no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .center_box{
+            position: absolute;
+            top:0;
+            left: 50%;
+            margin-left: -260px;
+            width: 520px;
+
+        }
+        .center_box img{
+            display: block;
+            margin: 20% auto 0;
+        }
+        .inf_show{
+            text-align: center;
+            font-size: 30px;
+            color:#fb5835;
+            font-weight: 600;
+            margin-top: 30px;
+        }
+        .ip_box{
+            color:#676767;
+            font-size: 16px;
+            text-align: center;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login">
+        <div class="center_box">
+            <img src="res/default/bg/image/pic_center.png" alt="">
+            <div class="inf_show">访问已被拦截</div>
+            <div class="ip_box">您的IP： ${ip} </script> </div>
+            <div class="ip_box">可能在访问过程中，有违规操作记录，详情信息请联系管理员.</div>
+        </div>
+
+    </div>
+
+
+<script src="res/js/jquery.min.js"></script>
+<script src="res/js/html5shiv.js"></script>
+<script>
+    $(window).resize(function() {
+        kd();
+    });
+    function kd(){
+        $(".login").height($(window).height());
+    }
+    kd();
+   
+</script>
+</body>
+
+
+
+</html>

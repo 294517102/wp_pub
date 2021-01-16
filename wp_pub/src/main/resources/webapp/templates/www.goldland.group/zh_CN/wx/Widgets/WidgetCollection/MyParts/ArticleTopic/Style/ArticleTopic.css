@@ -1,0 +1,74 @@
+﻿/*************************************************************
+ * Command:Start
+ * Control:ArticleTopic
+ * Style:ArticleTopic
+ * Desc::ArticleList.Default部件的样式
+ * Quot:
+*************************************************************/
+.ArticleTopic { width:100%; min-height:80px; border-bottom:1px dashed #ddd;  overflow:hidden;}
+.ArticleTopic h3 { height:40px; background:url("/_skins/images/line.png") repeat-x bottom;}
+.ArticleTopic h3 em {float:left; font:normal 18px/40px "microsoft yahei"; color:#06b206; width:100px;text-align:center; display:block;}
+.ArticleTopic h3 i { float:left; font:normal 16px/35px "宋体"; color:#999; padding-top:5px; font-style:italic; margin-left:10px;}
+.ArticleTopic h3 span { float:right; text-align:right; font:normal 10px/35px Tahoma, Geneva, sans-serif; padding-right:10px;}
+.ArticleTopic h3 span a { color:#333;}
+.ArticleTopic h3 span a:hover { color:#999; text-decoration: underline;}
+
+.ArticleTopic h4 { height:20px; color:#000; font:normal 16px/20px "microsoft yahei"; margin-bottom:10px; margin-top:15px; text-align: center;}
+.ArticleTopic h4 a { }
+.ArticleTopic h4 a:hover { }
+.ArticleTopic p { background:url("images/icon_jy.png") no-repeat left 3px; line-height:22px; color:#666; text-indent:3em; padding-bottom:10px; /*height:30px;*/ font-size:12px; overflow:hidden;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:ArticleTopic
+ * Style:ArticleTopic
+ * Desc::ArticleList.Default部件的样式
+ * Quot:
+*************************************************************/
+
+
+
+
+/*************************************************************
+ * Command:Start
+ * Control:ArticleTopic
+ * Style:ArticleTopicNoheader
+ * Desc:目前没有
+ * Quot:SchoolB
+*************************************************************/
+.ArticleTopicNoheader { width:100%; min-height:80px; margin-top:13px; overflow:hidden;}
+.ArticleTopicNoheader h3 { display: none;  }
+.ArticleTopicNoheader h3 em { display: none; }
+.ArticleTopicNoheader h3 i { display: none; }
+.ArticleTopicNoheader h3 span { float:right; text-align:right; font:normal 10px/35px Tahoma, Geneva, sans-serif; padding-right:10px;}
+.ArticleTopicNoheader h3 span a { color:#333;}
+.ArticleTopicNoheader h3 span a:hover { color:#999; text-decoration: underline;}
+
+.ArticleTopicNoheader h4 { height:20px; color:#000; font:normal 16px/20px "microsoft yahei"; margin:10px auto; text-align: center;}
+.ArticleTopicNoheader h4 a { }
+.ArticleTopicNoheader h4 a:hover { }
+.ArticleTopicNoheader p { background:url("images/icon_jy.png") no-repeat left 3px; line-height:22px; color:#666; text-indent:3em; padding-bottom:18px; height:30px; overflow:hidden; border-bottom:1px dashed #ddd;  }
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:ArticleTopic
+ * Style:ArticleTopicNoheader
+ * Desc:目前没有
+ * Quot:SchoolB
+*************************************************************/

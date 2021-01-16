@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="wp_1703">
+		<class>com.tjsj.wp.orm.entity.IfPiServiceTbl</class>
+		<class>com.tjsj.wp.orm.entity.IfPiInterfaceTbl</class>
+		<class>com.tjsj.wp.orm.entity.CmMailTbl</class>
+		<class>com.tjsj.wp.orm.entity.CmMailConfigTbl</class>
+		<class>com.tjsj.wp.orm.entity.SmRequestInterceptTbl</class>
+		<class>com.tjsj.wp.orm.entity.CmSmallContentTbl</class>
+		<class>com.tjsj.wp.orm.entity.BnAliPayConfigTbl</class>
+		<class>com.tjsj.wp.orm.entity.BnOrderTbl</class>
+		<class>com.tjsj.wp.orm.entity.BnWechatConfigTbl</class>
+		<class>com.tjsj.wp.orm.entity.CmArticleExtTbl</class>
+		<class>com.tjsj.wp.orm.entity.CmArticleTbl</class>
+		<class>com.tjsj.wp.orm.entity.CmArticleTemplateTbl</class>
+		<class>com.tjsj.wp.orm.entity.CmCodeTbl</class>
+		<class>com.tjsj.wp.orm.entity.CmColumnTbl</class>
+		<class>com.tjsj.wp.orm.entity.CmCommentTbl</class>
+		<class>com.tjsj.wp.orm.entity.CmCustomerServiceTbl</class>
+		<class>com.tjsj.wp.orm.entity.CmFriendlyLinkTbl</class>
+		<class>com.tjsj.wp.orm.entity.CmHomeSlideTbl</class>
+		<class>com.tjsj.wp.orm.entity.CmRecruitmentTbl</class>
+		<class>com.tjsj.wp.orm.entity.CmSmsConfigTbl</class>
+		<class>com.tjsj.wp.orm.entity.CmSysLogTbl</class>
+		<class>com.tjsj.wp.orm.entity.IfWechatTbl</class>
+		<class>com.tjsj.wp.orm.entity.IfWechatUserTbl</class>
+		<class>com.tjsj.wp.orm.entity.SmAccessoryTbl</class>
+		<class>com.tjsj.wp.orm.entity.SmIconTbl</class>
+		<class>com.tjsj.wp.orm.entity.SmListenerBrowseExtTbl</class>
+		<class>com.tjsj.wp.orm.entity.SmListenerBrowseTbl</class>
+		<class>com.tjsj.wp.orm.entity.SmModelTbl</class>
+		<class>com.tjsj.wp.orm.entity.SmResTbl</class>
+		<class>com.tjsj.wp.orm.entity.SmRoleTbl</class>
+		<class>com.tjsj.wp.orm.entity.SmSiteSkimTbl</class>
+		<class>com.tjsj.wp.orm.entity.SmTemplateTbl</class>
+		<class>com.tjsj.wp.orm.entity.SmUserTbl</class>
+		<class>com.tjsj.wp.orm.entity.SmVersionTbl</class>
+		<class>com.tjsj.wp.orm.entity.SmWebSetTbl</class>
+		<class>com.tjsj.wp.orm.entity.CmSurveyAnswerTbl</class>
+		<class>com.tjsj.wp.orm.entity.CmSurveyInfoTbl</class>
+		<class>com.tjsj.wp.orm.entity.CmSurveyOptionsTbl</class>
+		<class>com.tjsj.wp.orm.entity.CmSurveyQuestionTbl</class>
+		<class>com.tjsj.wp.orm.entity.CmCommentExtTbl</class>
+	</persistence-unit>
+</persistence>

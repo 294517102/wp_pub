@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>详情查看</title>
+    <#include "/include/bg/in_head_res.html">
+
+</head>
+<body class="body clear">
+<div class="layui-container" style="width:100%">
+    <form action="" class="layui-form layui-form-pane" onsubmit="return false;">
+        <div class="layui-form-item two-colum-left">
+            <label class="layui-form-label">证书编号</label>
+            <div class="layui-input-block">
+            <input type="hidden" name="isDelete" value="9">
+                <input type="text" name="number" lay-verify="required" value="${data.number}"  class="layui-input">
+            </div>
+        </div>  
+           <div class="layui-form-item two-colum-right">
+             <label class="layui-form-label">姓名</label>
+            <div class="layui-input-block">
+                <input type="text" name="name" lay-verify="required" value="${data.name}"   class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item two-colum-left" >
+            <label class="layui-form-label">身份证号</label>
+            <div class="layui-input-block">
+                <input type="text" name="idCard" lay-verify="required" value="${data.idCard}"   class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item two-colum-right">
+            <label class="layui-form-label">性别</label>
+            <div class="layui-input-block ">
+             	<input type="radio" name="sex" value="1" title="男" checked>
+      			<input type="radio" name="sex" value="2" title="女" >
+            </div>
+        </div>
+
+        <div class="layui-form-item two-colum-left" >
+            <label class="layui-form-label">学历</label>
+           <div class="layui-input-block ">
+                <input type="text" name="record"  value="${data.record}"   class="layui-input">
+            </div>
+
+        </div>
+        
+        <div class="layui-form-item two-colum-right" >
+            <label class="layui-form-label">专业</label>
+           <div class="layui-input-block ">
+                <input type="text" name="major"  value="${data.major}"  class="layui-input">
+            </div>
+        </div>      
+		<div class="layui-form-item two-colum-left" >
+            <label class="layui-form-label">培训时间</label>
+           <div class="layui-input-block ">
+                <input type="text" name="train_time"  value="${data.trainTime}"   class="layui-input date-btn">
+            </div>
+        </div>
+       
+            <div class="layui-form-item two-colum-right" >
+            <label class="layui-form-label">有效期至</label>
+           <div class="layui-input-block ">
+                <input type="text" name="ent_time"  value="${data.entTime}"  class="layui-input date-btn">
+            </div>
+        </div>      
+        <div class="layui-form-item two-colum-left" >
+            <label class="layui-form-label">原就职单位</label>
+           <div class="layui-input-block ">
+                <input type="text" name="formerUnit"  value="${data.formerUnit}"  class="layui-input">
+            </div>
+        </div>
+		<div class="layui-form-item two-colum-right" >
+            <label class="layui-form-label">现就职单位</label>
+           <div class="layui-input-block ">
+                <input type="text" name="currentJob"  value="${data.currentJob}" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item two-colum-left" >
+            <label class="layui-form-label">变更时间</label>
+           <div class="layui-input-block ">
+                <input type="text" name="update_time"  value="${data.updateTime}"  class="layui-input date-btn">
+            </div>
+        </div>      
+		
+        
+           <div class="layui-form-item center">
+ 			<button class="layui-btn" lay-submit lay-filter="form_column">保存</button>
+            <button type="reset" class="layui-btn layui-btn-danger cancel">取消</button>
+        </div>
+    </form>
+</div>
+<#include "/include/bg/in_bottom_res.html">
+<script type="text/javascript">
+$(function(){
+	var form = layui.form,laydate = layui.laydate;
+	  //同时绑定多个
+	  lay('.date-btn').each(function(){
+	    laydate.render({
+	      elem: this
+	      ,trigger: 'click'
+	    });
+	  });
+	  
+	form.on('submit(form_column)', function(data){
+		console.log("--"+JSON.stringify(data.field));
+		$.postJSON("/admin/jlinfo$ajax.htm",data.field,function(data){
+        	layer.msg(data.msg,{time:1000},function(){
+        		if(data.result){
+        			parent.location.reload();
+            		closeWindow();
+            	}
+        	});							
+		});
+	});
+})
+ $(".cancel").click(function(){
+ 	closeWindow();
+ });
+</script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>模板列表</title>
+   <#include "/include/bg/in_head_res.html">
+</head>
+<body class="inner-body clear">
+	<div class="layui-container bc-color" style="width:100%">
+		<form class="layui-form layui-form-pane" id="form_1" method="post" action="${base}/to_article_template_list.htm">	
+		<div class="layui-form-item"  style="background-color: white;padding:15px 10px;">		
+			<div class="layui-inline" style="float: left;">
+				<label class="layui-form-label">模板名称</label>
+				<div class="layui-input-inline">
+					<input type="text" name="name" autocomplete="off"  value="${RequestParameters.name!!}"  placeholder="请输入模板名称" class="layui-input">
+				</div>
+			</div>
+			<div class="fl" style="margin-left:50px" style="float: left;">
+				<button class="layui-btn fl search" lay-submit > <i class="layui-icon">&#xe615;</i> 搜索</button>
+				<button class="layui-btn layui-btn-warm  fl " onclick="location.href=location.href"  type="reset"><i class="layui-icon">&#x1002;</i> 刷新</button>
+			</div>
+		</div>
+		</form>
+		<div class="content_main">
+			 <div class="layui-row">
+				<button class="layui-btn  temp-edit-add fl ">
+					<i class="layui-icon">&#xe61f;</i> 新增
+				</button>
+				 <button class="layui-btn layui-btn-danger deleteAll fl ">
+					<i class="layui-icon">&#xe640;</i> 删除
+				</button> 
+			</div> 
+			<div class="layui-row layui-form">
+				<table class="layui-table">
+					<thead>
+						<tr>
+							<th><input type="checkbox" name="" lay-skin="primary"
+								lay-filter="allChoose"></th>
+							<th>序号</th>
+							<th>模板名称</th>
+							<th>状态</th>
+							<th>站点</th>
+							<th>创建人</th>
+							<th>创建时间</th>
+							<th>预览</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<#if resultList?size <=0 >
+						<tr>
+							<td colspan="9">无数据</td>
+						</tr>
+						<#else> <#list resultList as r>
+						<tr>
+							<td><input type="checkbox" name="check" lay-skin="primary" id="${r.id}"></td>
+							<td>${r.id}</td>
+							<td>${r.name}</td>							
+							<td class="status"><#if r.state == 1> ${'在用'}   <#else>  ${'停用'} </#if></td>
+							<td>${(r.webSet.domain)!"公共"}</td>
+							<td>${(r.user.username)!"未知"}</td>
+							<td>${(r.insertTime?string('yyyy-MM-dd'))!}</td>
+							<td><#if r.url??><a class="layui-btn layui-btn-radius layui-btn-normal" target="_blank" href="${r.url!}">模板预览</a><#else> <button class="layui-btn layui-btn-radius layui-btn-normal layui-btn-disabled">暂不支持预览</button></#if> </td>
+							<td>
+<!-- 							 <input type="checkbox" name="zzz" lay-skin="switch" lay-filter="state" lay-text="开启|关闭" <#if r.state==1 > checked </#if> >	 -->
+<!-- 							<button class="layui-btn layui-btn-small detail" id="${r.id}"><i class="layui-icon">&#xe63c;</i>编辑</button> -->
+							<button class="layui-btn layui-btn-danger layui-btn-small delete"  id="${r.id}">
+									<i class="layui-icon">&#xe640;</i> 删除
+								</button></td>
+						</tr>
+						</#list> </#if>
+					</tbody>
+				</table>
+				<div class="pageBotton">${pageHtml}</div>
+			</div>			
+		</div>		
+		
+		</div>
+		<#include "/include/bg/in_bottom_res.html">	
+		<script type="text/javascript">
+var form = layui.form;
+// 模板编辑
+$(".detail").click(function(){
+	layer.open({
+        type: 2,
+        title: '模板编辑',
+      //  btn: ['确定', '取消'],
+        shadeClose: true,
+        shade: 0.8,
+        area: ['55%', '450px'],
+        content:'${base}/to_target.htm?url=content_manager/template/temp_add&_ttype=2&id='+$(this).attr("id") //iframe的url
+    });
+});
+$(".temp-edit-add").click(function(){
+	layer.open({
+        type: 2,
+        title: '新增模板',
+        shadeClose: true,
+        shade: 0.8,
+        area: ['750px', '500px'],
+        content:'${base}/admin/to_target.htm?url=content_manager/template/temp_add' //iframe的url
+    });
+});
+// 模板删除
+$(".delete").click(function(){
+	var id = $(this).attr("id");
+	layer.confirm("确认删除？",{btn: ['确认','取消'],icon:3 },function(){
+		 $.postJSON("${base}/general_service_254ZBjy3oPWqMasnsV0$ajax.htm",{"id":id,"isDelete":1},function(data){              
+      	     
+         	layer.msg(data.msg,{time:1000},function(){
+        		if(data.result){
+        			window.location.reload();
+            	}
+        	});
+			       	            	 
+        }); 
+	});
+});
+
+</script>
+		</body>
+</html>

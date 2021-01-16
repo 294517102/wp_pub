@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 2.6//EN"
+        "http://tuckey.org/res/dtds/urlrewrite2.6.dtd">
+<urlrewrite>
+
+	<rule>
+		<note>页面跳转-高优先级</note>
+		<from>/go_([\w]+).htm$</from>
+		<to type="forward">/go.htm?k=$1</to>
+	</rule>
+	
+	<rule>
+		<note>公共接口服务-高优先级</note>
+		<from>/general_service_([\w]+).htm$</from>
+		<to type="forward">/general_service.htm?_id=$1</to>
+	</rule>
+	<rule>
+		<note>公共接口服务，多终端-高优先级</note>
+		<from>/general_service_([\w]+)@([a-z]+).htm$</from>
+		<to type="forward">/general_service.htm?_id=$1&amp;terminal=$2</to>
+	</rule>
+	<rule>
+		<note>公共接口服务，ajax-高优先级</note>
+		<from>/general_service_([\w]+)\$([a-z]+).htm$</from>
+		<to type="forward">/general_service.htm?_id=$1&amp;mode=$2</to>
+	</rule>
+
+	<rule>
+		<note>多级通用命名规范,截取后面的数字作为id参数</note>
+		<from>^/([\w|/]+)_([0-9]+).htm$</from>
+		<to type="forward">/$1.htm?id=$2&amp;type=$2</to>
+	</rule>
+	
+	<rule>
+		<note>对外提供ajax服务</note>
+		<from>^/([\w|/]+)_([0-9]+)\$([a-z]+).htm$</from>
+		<to type="forward">/$1.htm?id=$2&amp;type=$2&amp;mode=$3</to>
+	</rule>
+	<rule>
+		<note>对外提供ajax服务</note>
+		<from>^/([\w|/]+)\$([a-z]+).htm$</from>
+		<to type="forward">/$1.htm?mode=$2</to>
+	</rule> 
+	
+	<rule>
+		<note>多级通用命名规范,截取后面的数字作为id参数,支持@</note>
+		<from>^/([\w|/]+)_([0-9]+)@([a-z]+).htm$</from>
+		<to type="forward">/$1.htm?id=$2&amp;type=$2&amp;terminal=$3</to>
+	</rule>
+
+	<rule>
+		<note>终端访问</note>
+		<from>^/([\w|/]+)@([a-z]+).htm$</from>
+		<to type="forward">/$1.htm?terminal=$2</to>
+	</rule> 
+
+</urlrewrite>
+

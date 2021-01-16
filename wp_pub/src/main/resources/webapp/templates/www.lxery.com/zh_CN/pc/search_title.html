@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <base href="${domainBase}"/>
+    <#include "${includePath}/data.html" >
+		<#include "${includePath}/searchKeyword.html" >
+    <title>${webSet.title!}-${work.title!}</title>
+    <link rel="stylesheet" href="res/default/css/reset.css">
+    <link rel="stylesheet" href="res/default/css/video-js.css">
+
+    <link rel="stylesheet" href="res/default/css/style.css">
+    <link rel="icon" href="res/default/image/ico.png">
+    <script src="res/js/videojs-ie8.min.js"></script>
+</head>
+<body>
+<div class="tips clearfix">
+    <#include "${includePath}/top.html" >
+</div>
+<div class="nav">
+    <#include "${includePath}/nav.html" >
+    
+</div>
+<div class="work_main" style="margin-top:0">
+    <div class="work_main_box">
+        <div class="nursing_content">
+            <ul class="nursing_box clearfix">
+            <#if resultList?? && (resultList?size gt 0 )>
+                <#list resultList! as r>
+                <li class="nursing_list clearfix">
+                <a href="${base}/singleSearch_${r.id?c!}.htm?url=search_detail&ctype=article&column_id=${r.column.id}">
+                    <div class="nursing_left">
+                        <img src="${(r.thumbnail.url!)}" alt="">
+                    </div>
+                    <div class="nursing_right">
+                        <div class="nursing_right_title">${r.title!}</div>
+                        <div class="nursing_right_dis">${r.describes!} </div>
+                    </div>
+                    </a>
+                </li>
+              </#list>
+               <div class="page center" >
+				${pageHtml}
+				</div>
+              <#else>
+             		 暂无查询数据。。。
+              </#if>  
+            </ul>
+           
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
+<div class="main_fifth">
+    <div class="main_fifth_box">
+        <div class="main_fifth_title">友情链接</div>
+        <#include "${includePath}/link.html" >
+    </div>
+
+</div>
+<div class="footer">
+    <#include "${includePath}/foot.html" >
+</div>
+<script src="res/js/jquery.min.js"></script>
+<script src="res/js/html5shiv.js"></script>
+<script src="res/js/jquery.SuperSlide.2.1.1.js"></script>
+<script src="res/js/video.min.js"></script>
+
+<script>
+
+    lastNoMargin($('.main_fifth_content_list'),5);
+    $(".nav_title_list").click(function(){
+        $(this).addClass("active").siblings().removeClass("active");
+    })
+    $(".nav_list").click(function(){
+        $(this).addClass("active").siblings().removeClass("active");
+    })
+
+
+</script>
+</body>
+</html>

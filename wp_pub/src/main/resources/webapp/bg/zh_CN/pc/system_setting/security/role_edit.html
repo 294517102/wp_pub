@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	 <title>角色权限</title>
+   	 <#include "/include/bg/in_head_res.html">
+	 <link rel="stylesheet" href="res/js/plugins/zTree/4.0/zTreeStyle.css">
+</head>
+<body class="inner-body clear">
+
+<div class="layui-container bg_white" style="width: 100%;padding:10px">
+    <section>    
+      <form class="layui-form layui-form-pane" id="form_1" action="" onsubmit="return false;">
+        	<div class="layui-form-item">
+        		<label class="layui-form-label"><span style="color:red">* </span>角色名称</label>
+        		<div class="layui-input-block">
+					<input type="text" name="name" value="${role.name}" lay-verify="required" class="layui-input" placeholder="请输入角色名称">
+				</div>
+        	</div>
+        	<input type="hidden" name="id" value="${role.id}">
+        	<div class="layui-form-item">
+        		<label class="layui-form-label"><span style="color:red">* </span>描述</label>
+        		<div class="layui-input-block">
+					<input type="text" name="keyword" value="${role.keyword}" lay-verify="required" class="layui-input" placeholder="请输入角色名称">
+				</div>
+        	</div>
+        	<div class="layui-form-item">
+        		<label class="layui-form-label"><span style="color:red">* </span>状态</label>
+        		<div class="layui-input-block">
+				    <input type="radio" name="state" value="1" title="启用" <#if role.state == 1>  ${'checked'} </#if> >
+                    <input type="radio" name="state" value="9" title="禁用" <#if role.state == 9>  ${'checked'} </#if> >
+				</div>
+        	</div>
+        	<div class="layui-form-item">
+	         	<label class="layui-form-label" style="height:100px;line-height: 87px"><span style="color:red">* </span>菜单：</label>
+	            <div class="layui-input-block">
+	                  <div class="zTreeDemoBackground" style="margin-left:20px">
+	                      <ul id="tree_role" class="ztree"  style="float:left;"></ul>
+	                      <ul id="tree_role_column" class="ztree" style="float:left;margin-left:100px" ></ul>
+	                  </div>
+	                </div>
+         	</div>  
+         <div class="layui-form-item center">
+                  <button  lay-submit  class="layui-btn " lay-filter="form_1">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-danger" onclick="closeWindow();">取消</button>
+        </div>
+      </form>
+    </section>
+     
+</div>
+<#include "/include/bg/in_bottom_res.html">
+
+<script src="res/js/plugins/zTree/4.0/jquery.ztree.core.js"></script>
+<script src="res/js/plugins/zTree/4.0/jquery.ztree.excheck.js"></script>
+<script>
+	var zTree_c;
+	var zn_c = '${column_zTreeNodes}';
+	var zTreeNodes_c = eval(zn_c);
+	var zTree;
+	var zn = '${zTreeNodes}';
+	var zTreeNodes = eval(zn);
+	var code, log, className = "dark";
+	var setting = {
+			view: {
+				selectedMulti: false
+			},
+			check: {
+				enable: true,
+			},
+			data: {
+				simpleData: {
+					enable: true
+				}
+			},
+			callback: {
+				beforeCheck: beforeCheck,
+				onCheck: onCheck
+			}
+		};
+	function onCheck(e, treeId, treeNode) {
+		console.log("[  onCheck ]&nbsp;&nbsp;&nbsp;&nbsp;" + treeNode.id );
+	}
+	function beforeCheck(treeId, treeNode) {
+		className = (className === "dark" ? "":"dark");
+		console.log("[  beforeCheck ]&nbsp;&nbsp;&nbsp;&nbsp;" + treeNode.id );
+		return (treeNode.doCheck !== false);
+	}
+	
+	$(document).ready(function(){
+		zTree = $.fn.zTree.init($("#tree_role"), setting, zTreeNodes);
+		zTree_c = $.fn.zTree.init($("#tree_role_column"), setting, zTreeNodes_c);
+	});
+	
+	var form = layui.form;
+	var lock = false;
+	
+	form.on("submit(form_1)",function(data){
+		var zTree = $.fn.zTree.getZTreeObj("tree_role");
+		var zTree_c = $.fn.zTree.getZTreeObj("tree_role_column");
+		var nodes = zTree.getCheckedNodes();
+		var nodes_column = zTree_c.getCheckedNodes();
+		
+		var tmpNode;
+		var ids = "";
+		var column_ids = "";
+		for(var i=0; i<nodes.length; i++){
+			tmpNode = nodes[i];
+			if(tmpNode.children){
+				continue;
+			}
+			if(i!=nodes.length-1){
+				ids += tmpNode.id+",";
+			}else{
+				ids += tmpNode.id;
+			}
+		}
+		for(var i=0; i<nodes_column.length; i++){
+			tmpNode = nodes_column[i];
+			if(tmpNode.children){
+				continue;
+			}
+			if(i!=nodes_column.length-1){
+				column_ids += tmpNode.id+",";
+			}else{
+				column_ids += tmpNode.id;
+			}
+		}
+		if(ids.length<=0){
+			layer.msg("请选择菜单");
+			return false;
+		}
+		var pm = data.field;
+			pm["modelIds"] = ids;
+			pm["columnIds"] = column_ids;
+		
+		$(data.elem).text("提交中");
+
+		if(lock){return false;}
+		lock = true;
+		 $.postJSON("${basePath}/admin/role/save_role$ajax.htm",pm,function(data){
+             $(data.elem).text("保存");
+         	   lock = false;
+      	   layer.msg(data.msg,{icon:data.iCode,time:2000},function(){
+	      		   if(data.result){
+	      			   parent.location.reload();
+	          		   closeWindow();
+	          	   }
+      	   });           	   
+         }); 
+		return false;
+	});
+	
+	
+</script>
+</body>
+</html>

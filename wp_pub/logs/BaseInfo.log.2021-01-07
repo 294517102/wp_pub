@@ -1,0 +1,162 @@
+
+2021-01-06 23:14:14.601 [restartedMain] INFO  com.tjsj.wp.main.Application:48 - Starting Application on andrew_silence with PID 15536 (D:\eclipse_ide\eclipse-workspace\wp_1703\target\classes started by andrew-silence in D:\eclipse_ide\eclipse-workspace\wp_1703)
+
+2021-01-06 23:14:14.601 [restartedMain] INFO  com.tjsj.wp.main.Application:637 - No active profile set, falling back to default profiles: default
+
+2021-01-06 23:14:37.239 [restartedMain] INFO  com.tjsj.wp.main.Application:48 - Starting Application on andrew_silence with PID 5152 (D:\eclipse_ide\eclipse-workspace\wp_1703\target\classes started by andrew-silence in D:\eclipse_ide\eclipse-workspace\wp_1703)
+
+2021-01-06 23:14:37.240 [restartedMain] INFO  com.tjsj.wp.main.Application:637 - No active profile set, falling back to default profiles: default
+
+2021-01-06 23:14:41.470 [localhost-startStop-1] INFO  com.tjsj.wp.orm.config.DruidDBConfig:113 - init Druid Servlet Configuration 
+
+2021-01-06 23:14:41.901 [localhost-startStop-1] INFO  com.tjsj.fwk.mvc.listener.StartUpListener:39 - StartUpListener init ... 
+
+2021-01-06 23:16:25.077 [restartedMain] INFO  com.tjsj.wp.main.Application:48 - Starting Application on andrew_silence with PID 13648 (D:\eclipse_ide\eclipse-workspace\wp_1703\target\classes started by andrew-silence in D:\eclipse_ide\eclipse-workspace\wp_1703)
+
+2021-01-06 23:16:25.078 [restartedMain] INFO  com.tjsj.wp.main.Application:637 - No active profile set, falling back to default profiles: default
+
+2021-01-06 23:16:30.881 [restartedMain] INFO  com.tjsj.wp.main.Application:48 - Starting Application on andrew_silence with PID 14824 (D:\eclipse_ide\eclipse-workspace\wp_1703\target\classes started by andrew-silence in D:\eclipse_ide\eclipse-workspace\wp_1703)
+
+2021-01-06 23:16:30.881 [restartedMain] INFO  com.tjsj.wp.main.Application:637 - No active profile set, falling back to default profiles: default
+
+2021-01-06 23:16:35.348 [localhost-startStop-1] INFO  com.tjsj.wp.orm.config.DruidDBConfig:113 - init Druid Servlet Configuration 
+
+2021-01-06 23:16:35.783 [localhost-startStop-1] INFO  com.tjsj.fwk.mvc.listener.StartUpListener:39 - StartUpListener init ... 
+
+2021-01-06 23:18:29.684 [restartedMain] INFO  com.tjsj.wp.main.Application:48 - Starting Application on andrew_silence with PID 15432 (D:\eclipse_ide\eclipse-workspace\wp_1703\target\classes started by andrew-silence in D:\eclipse_ide\eclipse-workspace\wp_1703)
+
+2021-01-06 23:18:29.684 [restartedMain] INFO  com.tjsj.wp.main.Application:637 - No active profile set, falling back to default profiles: default
+
+2021-01-06 23:18:33.979 [localhost-startStop-1] INFO  com.tjsj.wp.orm.config.DruidDBConfig:113 - init Druid Servlet Configuration 
+
+2021-01-06 23:18:34.919 [localhost-startStop-1] INFO  com.tjsj.fwk.mvc.listener.StartUpListener:39 - StartUpListener init ... 
+
+2021-01-06 23:18:40.605 [restartedMain] INFO  com.tjsj.wp.main.Application:57 - Started Application in 11.331 seconds (JVM running for 12.093)
+
+2021-01-06 23:18:40.606 [restartedMain] INFO  com.tjsj.wp.tools.DataLoadService:30 - load CmCodeTbl data from db.
+
+2021-01-06 23:18:40.704 [restartedMain] INFO  com.tjsj.wp.tools.DataLoadService:33 - 28 CmCodeTbl records has loaded.
+
+2021-01-06 23:18:40.704 [restartedMain] INFO  com.tjsj.wp.tools.DataLoadService:38 - load SmRequestInterceptTbl data from db.
+
+2021-01-06 23:18:40.751 [restartedMain] INFO  com.tjsj.wp.tools.DataLoadService:63 - 0 SmRequestInterceptTbl records has loaded.
+
+2021-01-06 23:18:52.756 [http-nio-127.0.0.1-80-exec-1] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : test.gajtd.tjsjnet.com
+
+2021-01-06 23:18:52.872 [http-nio-127.0.0.1-80-exec-1] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : test.gajtd.tjsjnet.com
+
+2021-01-06 23:18:53.550 [http-nio-127.0.0.1-80-exec-1] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1609946333236,"status":404,"error":"Not Found","message":"No message available","path":"/Widgets/Scripts/jquery.peex.js"}
+
+2021-01-06 23:18:53.550 [http-nio-127.0.0.1-80-exec-3] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1609946333543,"status":404,"error":"Not Found","message":"No message available","path":"/Widgets/Scripts/Plugins/Common.js"}
+
+2021-01-06 23:18:53.550 [http-nio-127.0.0.1-80-exec-8] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1609946333174,"status":404,"error":"Not Found","message":"No message available","path":"/Widgets/Themes/theme/Style.css"}
+
+2021-01-06 23:18:53.550 [http-nio-127.0.0.1-80-exec-10] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1609946333226,"status":404,"error":"Not Found","message":"No message available","path":"/Widgets/Scripts/jquery.pack.js"}
+
+2021-01-06 23:18:53.602 [http-nio-127.0.0.1-80-exec-5] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1609946333601,"status":404,"error":"Not Found","message":"No message available","path":"/Widgets/Scripts/Plugins/Common.js"}
+
+2021-01-06 23:18:53.750 [http-nio-127.0.0.1-80-exec-7] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1609946333750,"status":404,"error":"Not Found","message":"No message available","path":"/templates/test.gajtd.tjsjnet.com/zh_CN/wx/_skins/mobile/Style/Widgets/WidgetCollection/Mobile/SliderBanner/Images/banner_zhezhao.png"}
+
+2021-01-06 23:18:53.751 [http-nio-127.0.0.1-80-exec-6] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1609946333751,"status":404,"error":"Not Found","message":"No message available","path":"/_data/uploads/banner01.jpg"}
+
+2021-01-06 23:18:53.761 [http-nio-127.0.0.1-80-exec-10] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1609946333760,"status":404,"error":"Not Found","message":"No message available","path":"/_data/uploads/WapBanner02.jpg"}
+
+2021-01-06 23:18:57.593 [http-nio-127.0.0.1-80-exec-1] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : test.gajtd.tjsjnet.com
+
+2021-01-06 23:18:57.611 [http-nio-127.0.0.1-80-exec-1] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : test.gajtd.tjsjnet.com
+
+2021-01-06 23:19:00.784 [http-nio-127.0.0.1-80-exec-4] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : test.gajtd.tjsjnet.com
+
+2021-01-06 23:19:02.967 [http-nio-127.0.0.1-80-exec-1] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : test.gajtd.tjsjnet.com
+
+2021-01-06 23:19:14.817 [http-nio-127.0.0.1-80-exec-5] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : test.gajtd.tjsjnet.com
+
+2021-01-06 23:19:38.365 [http-nio-127.0.0.1-80-exec-6] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : test.gajtd.tjsjnet.com
+
+2021-01-06 23:21:01.776 [restartedMain] INFO  com.tjsj.wp.main.Application:48 - Starting Application on andrew_silence with PID 15432 (D:\eclipse_ide\eclipse-workspace\wp_1703\target\classes started by andrew-silence in D:\eclipse_ide\eclipse-workspace\wp_1703)
+
+2021-01-06 23:21:01.776 [restartedMain] INFO  com.tjsj.wp.main.Application:637 - No active profile set, falling back to default profiles: default
+
+2021-01-06 23:21:03.316 [localhost-startStop-1] INFO  com.tjsj.wp.orm.config.DruidDBConfig:113 - init Druid Servlet Configuration 
+
+2021-01-06 23:21:03.528 [localhost-startStop-1] INFO  com.tjsj.fwk.mvc.listener.StartUpListener:39 - StartUpListener init ... 
+
+2021-01-06 23:21:06.793 [restartedMain] INFO  com.tjsj.wp.main.Application:57 - Started Application in 5.127 seconds (JVM running for 158.291)
+
+2021-01-06 23:21:06.793 [restartedMain] INFO  com.tjsj.wp.tools.DataLoadService:30 - load CmCodeTbl data from db.
+
+2021-01-06 23:21:06.839 [restartedMain] INFO  com.tjsj.wp.tools.DataLoadService:33 - 28 CmCodeTbl records has loaded.
+
+2021-01-06 23:21:06.839 [restartedMain] INFO  com.tjsj.wp.tools.DataLoadService:38 - load SmRequestInterceptTbl data from db.
+
+2021-01-06 23:21:06.871 [restartedMain] INFO  com.tjsj.wp.tools.DataLoadService:63 - 0 SmRequestInterceptTbl records has loaded.
+
+2021-01-06 23:28:36.315 [restartedMain] INFO  com.tjsj.wp.main.Application:48 - Starting Application on andrew_silence with PID 15432 (D:\eclipse_ide\eclipse-workspace\wp_1703\target\classes started by andrew-silence in D:\eclipse_ide\eclipse-workspace\wp_1703)
+
+2021-01-06 23:28:36.315 [restartedMain] INFO  com.tjsj.wp.main.Application:637 - No active profile set, falling back to default profiles: default
+
+2021-01-06 23:28:38.622 [localhost-startStop-1] INFO  com.tjsj.wp.orm.config.DruidDBConfig:113 - init Druid Servlet Configuration 
+
+2021-01-06 23:28:38.878 [localhost-startStop-1] INFO  com.tjsj.fwk.mvc.listener.StartUpListener:39 - StartUpListener init ... 
+
+2021-01-06 23:28:42.262 [restartedMain] INFO  com.tjsj.wp.main.Application:57 - Started Application in 6.055 seconds (JVM running for 613.75)
+
+2021-01-06 23:28:42.263 [restartedMain] INFO  com.tjsj.wp.tools.DataLoadService:30 - load CmCodeTbl data from db.
+
+2021-01-06 23:28:42.295 [restartedMain] INFO  com.tjsj.wp.tools.DataLoadService:33 - 28 CmCodeTbl records has loaded.
+
+2021-01-06 23:28:42.296 [restartedMain] INFO  com.tjsj.wp.tools.DataLoadService:38 - load SmRequestInterceptTbl data from db.
+
+2021-01-06 23:28:42.325 [restartedMain] INFO  com.tjsj.wp.tools.DataLoadService:63 - 0 SmRequestInterceptTbl records has loaded.
+
+2021-01-07 14:00:34.855 [restartedMain] INFO  com.tjsj.wp.main.Application:48 - Starting Application on andrew_silence with PID 18444 (D:\eclipse_ide\eclipse-workspace\wp_1703\target\classes started by andrew-silence in D:\eclipse_ide\eclipse-workspace\wp_1703)
+
+2021-01-07 14:00:34.857 [restartedMain] INFO  com.tjsj.wp.main.Application:637 - No active profile set, falling back to default profiles: default
+
+2021-01-07 14:00:40.128 [localhost-startStop-1] INFO  com.tjsj.wp.orm.config.DruidDBConfig:113 - init Druid Servlet Configuration 
+
+2021-01-07 14:00:40.666 [localhost-startStop-1] INFO  com.tjsj.fwk.mvc.listener.StartUpListener:39 - StartUpListener init ... 
+
+2021-01-07 14:00:46.244 [restartedMain] INFO  com.tjsj.wp.main.Application:57 - Started Application in 11.773 seconds (JVM running for 12.419)
+
+2021-01-07 14:00:46.245 [restartedMain] INFO  com.tjsj.wp.tools.DataLoadService:30 - load CmCodeTbl data from db.
+
+2021-01-07 14:00:46.383 [restartedMain] INFO  com.tjsj.wp.tools.DataLoadService:33 - 28 CmCodeTbl records has loaded.
+
+2021-01-07 14:00:46.383 [restartedMain] INFO  com.tjsj.wp.tools.DataLoadService:38 - load SmRequestInterceptTbl data from db.
+
+2021-01-07 14:00:46.452 [restartedMain] INFO  com.tjsj.wp.tools.DataLoadService:63 - 0 SmRequestInterceptTbl records has loaded.
+
+2021-01-07 14:00:57.020 [http-nio-127.0.0.1-80-exec-2] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : test.gajtd.tjsjnet.com
+
+2021-01-07 14:00:57.271 [http-nio-127.0.0.1-80-exec-3] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : test.gajtd.tjsjnet.com
+
+2021-01-07 14:00:57.515 [http-nio-127.0.0.1-80-exec-4] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : test.gajtd.tjsjnet.com
+
+2021-01-07 14:01:04.307 [http-nio-127.0.0.1-80-exec-6] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : test.gajtd.tjsjnet.com
+
+2021-01-07 14:01:04.310 [http-nio-127.0.0.1-80-exec-6] INFO  com.tjsj.wp.mvc.controller.portal.LoginMaintenanceController:355 - login: username-39a52d07570df744bb37d1e0e18f4fafd74578960f4665792ef01879cd717fa161dd191ce61255a930cc1d3eefeb7f9710c01080ce3684b17bc9c31679b4841ae1ea4e5f7ef55f96107db54789277349f7ac8e7c0c3685c6446cb83f6f439d261af14fbbecdef98cd4ba4d0f01c3dad4ec22ed93d5e4f8977690a43474145e79,verifyCode-rq65
+
+2021-01-07 14:01:05.776 [http-nio-127.0.0.1-80-exec-7] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : test.gajtd.tjsjnet.com
+
+2021-01-07 14:01:05.816 [http-nio-127.0.0.1-80-exec-8] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : test.gajtd.tjsjnet.com
+
+2021-01-07 14:01:08.142 [http-nio-127.0.0.1-80-exec-9] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : test.gajtd.tjsjnet.com
+
+2021-01-07 14:01:11.692 [http-nio-127.0.0.1-80-exec-10] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : test.gajtd.tjsjnet.com
+
+2021-01-07 14:01:12.669 [http-nio-127.0.0.1-80-exec-1] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : test.gajtd.tjsjnet.com
+
+2021-01-07 14:01:14.691 [http-nio-127.0.0.1-80-exec-2] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : test.gajtd.tjsjnet.com
+
+2021-01-07 14:01:15.325 [http-nio-127.0.0.1-80-exec-5] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : test.gajtd.tjsjnet.com
+
+2021-01-07 14:01:16.326 [http-nio-127.0.0.1-80-exec-3] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : test.gajtd.tjsjnet.com
+
+2021-01-07 14:01:21.008 [http-nio-127.0.0.1-80-exec-4] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : test.gajtd.tjsjnet.com
+
+2021-01-07 14:01:21.377 [http-nio-127.0.0.1-80-exec-6] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : test.gajtd.tjsjnet.com
+
+2021-01-07 14:01:23.192 [http-nio-127.0.0.1-80-exec-7] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : test.gajtd.tjsjnet.com
+
+2021-01-07 14:01:23.559 [http-nio-127.0.0.1-80-exec-8] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : test.gajtd.tjsjnet.com

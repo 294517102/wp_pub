@@ -1,0 +1,38 @@
+﻿/*************************************************************
+ * Command:Start
+ * Control:ArticleList.Scroll
+ * Style:huadong
+ * Desc:目前没有
+ * Quot:temp02
+*************************************************************/
+
+.huadong { width: 700px; height:40px; }
+.huadong h3 { float:left; font:normal 14px/40px "微软雅黑"; background: url("/_data/images/icon_notice.png") no-repeat left center; padding-left:30px; }
+
+.huadong .notice_active { float: left; width: 530px; height: 40px; margin-left:15px; overflow: hidden;}
+.huadong .notice_active li { float: left; width:520px; color:#656972;font-size:12px; display: block; list-style-type:none; line-height: 40px; overflow: hidden;}
+.huadong .notice_active li span { float:right; text-align:right; color:#888;font-size:12px;}
+.huadong .notice_active li a { color:#333; background:url("../images/icon02a.gif") no-repeat left center;  padding-left:10px;}
+.huadong .notice_active li a:hover { color:#00be06; background:url("../images/icon02b.gif") no-repeat left center;}
+
+.huadong .gg_more { float: right; line-height: 40px;}
+.huadong .gg_more a { font-size: 12px; text-decoration:none; border-radius: 20px; border:1px solid #ddd; padding:3px 10px; color:#333;}
+.huadong .gg_more a:hover { color:#fff; background: #00be06; border:1px solid #00be06; }
+
+.huadong ul li.hotnews a { color:#000; display:block; background:url("../images/icon02a.gif") no-repeat left center; padding-left:10px; }
+.huadong li.hotnews a:hover { color:#c00;}
+
+
+
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:ArticleList.Scroll
+ * Style:huadong
+ * Desc:目前没有
+ * Quot:temp02
+*************************************************************/

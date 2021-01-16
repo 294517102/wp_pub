@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>微信设置列表</title>
+
+<#include "/include/bg/in_head_res.html">
+
+</head>
+<body class="inner-body clear">
+	<div class="layui-container  bc_color" style="width:100%">
+		<form class="layui-form " id="form_1"  action="${base}/admin/obtain_wechat_config.htm">
+		 <div class="layui-form-item" style="background-color: white;padding:15px 10px;">
+			<div style="width: auto;" class="layui-col-md2">
+				<label class="layui-form-label">站点名称</label>
+				<div class="layui-input-block">
+					<input type="text" name="web" style="width: 170px;" autocomplete="off" placeholder="站点名称" class="layui-input">
+				</div>
+			</div>
+			<div class="fl" style="margin-left:50px">
+				<button class="layui-btn fl search" lay-submit > <i class="layui-icon">&#xe615;</i> 搜索</button>
+				<button class="layui-btn layui-btn-warm  fl refresh" type="reset"><i class="layui-icon">&#x1002;</i> 刷新</button>
+			</div>
+		</div>
+		</form>
+		<div class="content_main">
+			<div class="layui-row">
+				<button class="layui-btn  service-edit-add fl ">
+					<i class="layui-icon">&#xe61f;</i> 新增
+				</button>
+			<!-- 	<button class="layui-btn layui-btn-danger deleteAll fl ">
+					<i class="layui-icon">&#xe640;</i> 删除
+				</button> -->
+			</div>
+			<div class="layui-row layui-form">
+				<table class="layui-table" >
+					<thead>
+						<tr>
+							<th><input type="checkbox"  lay-filter="allChoose" lay-skin="primary"></th>
+							<th >序号</th>
+							<th >站点名称</th>
+							<th >appid</th>
+							<th >商户号</th>
+							<th >key</th>
+							<th >是否有效</th>
+							<th >回调api</th>
+							<th >预付单api</th>
+							<th >失效时间</th>
+							<th >操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<#if resultList?size <=0 >
+						<tr>
+							<td colspan="8">无记录</td>
+						</tr>
+						<#else> <#list resultList as r>
+						<tr>
+							<td><input type="checkbox" lay-skin="primary" id="${r.id}"></td>
+							<td>${r.id}</td>
+							<td><#if r.webSet??>${r.webSet.comName!}<#else>暂无</#if></td>							
+							<td>${r.appid!}</td>
+							<td>${r.mchId!}</td>
+							<td>${(r.keyStr)!"未知"}</td>
+							<td>
+								<#if r.isValid == 1>
+									有效
+								<#else>
+									无效
+								</#if>
+							</td>
+							<td>
+								<#if r.refundUrl?length gt 12>
+									${r.refundUrl?substring(0,12)}...
+								<#else>
+									${r.refundUrl!}
+								</#if>
+							</td>
+							<td>
+								<#if r.orderRequestUrl?length gt 12>
+									${r.orderRequestUrl?substring(0,12)}...
+									<#else>
+									${r.orderRequestUrl!}
+								</#if>
+							</td>
+							<td>${r.deadTime?string("yyyy-MM-dd HH:mm:ss")}</td>
+							<td>
+							<button style="margin-right: 10px;" class="layui-btn layui-btn-small detail" id="${r.id}"><i class="layui-icon">&#xe63c;</i> 编辑</button>
+									 	<!-- <span class="layui-input-block"> -->
+									
+									 	<#if r.isValid==1>
+									 		<input class="ids" type="checkbox" id="${r.id}" lay-skin="switch" lay-text="开启|关闭" checked>
+									 		<#else>
+									 		<input class="ids" type="checkbox" id="${r.id}" lay-skin="switch" lay-text="开启|关闭">
+									 	</#if>
+									 	 
+										<!-- </span> -->
+							</td>
+						</tr>
+						</#list> </#if>
+					</tbody>
+				</table>
+				<div class="pageBotton">${pageHtml}</div>
+			</div>
+			<div class="service-edit-layer" style="display: none">
+				<div class="clear" style="padding-top: 20px;">
+					<div class="service-edit-layer-list clear">
+						<span class="fl search-way-name">创建人：</span>
+						<div class="layui-input-block search-way-input noLeftMargin fr">
+							<input type="text" name="title" lay-verify="title"
+								autocomplete="off" placeholder="请输入标题" class="layui-input">
+						</div>
+					</div>
+					<div class="service-edit-layer-list clear">
+						<span class="fl search-way-name">时间：</span>
+						<div class="layui-input-block search-way-input noLeftMargin fr">
+							<input type="text" name="title" lay-verify="title"
+								autocomplete="off" placeholder="请输入标题" class="layui-input">
+						</div>
+					</div>
+				</div>
+
+				<div class="layui-form-item layui-form-text">
+					<label class="layui-form-label">脚本</label>
+					<div class="layui-input-block">
+						<textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+					</div>
+				</div>
+				<div class="layui-form-item layui-form-text">
+					<label class="layui-form-label">参数</label>
+					<div class="layui-input-block">
+						<textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+<#include "/include/bg/in_bottom_res.html">
+<script type="text/javascript">
+    //注意进度条依赖 element 模块，否则无法进行正常渲染和功能性操作
+  
+    $(".detail").click(function(){
+    	var id = $(this).attr("id");
+    	layer.open({
+            type: 2,
+            title: '修改微信配置',
+          //  btn: ['确定', '取消'],
+            shadeClose: true,
+            shade: 0.8,
+            area: ['55%', '400px'],
+            content:'${base}/admin/to_weixin_pay_set.htm?id='+id
+        });
+    });
+
+    
+    $(".refresh").click(function(){
+    	window.location.href="${base}/admin/obtain_wechat_config.htm";
+    });
+    
+         var form = layui.form;
+
+        //监听提交
+        form.on('submit(form_1)', function(data){
+            layer.alert(JSON.stringify(data.field), {
+                title: '最终的提交信息'
+            })
+            layer.load(1,{shade:true});
+            return false;
+        });
+
+        //全选
+        form.on('checkbox(allChoose)', function(data){
+            var child = $(data.elem).parents('table').find('tbody input[type="checkbox"]');
+            child.each(function(index, item){
+                item.checked = data.elem.checked;
+            });
+             form.render('checkbox');
+        }); 
+
+    $(function(){
+        $(".service-edit-add").click(function () {
+            layer.open({
+                type: 2,
+                title: '新增微信配置',
+              //  btn: ['确定', '取消'],
+                shadeClose: true,
+                shade: 0.8,
+                area: ['55%','400px'],
+                content:'${base}/admin/toAddWx.htm' //iframe的url
+            });
+        }); 
+    })
+    
+    $(function(){
+    	$(".layui-unselect").click(function(){
+    		var id=$(this).prev(".ids").attr("id");
+    		if(id){
+    		  	$.postJSON("${base}/admin/setIsValid$ajax.htm",{"weixinSetId":id},function(data){              
+    		  		if (data.result == true) {
+    					layer.msg(data.msg,{icon:1},function(){
+    						location.reload(true);
+    					});
+    				} else if (data.result == false) {
+    					layer.msg(data.msg,{icon:1},function(){
+    						location.reload(true);
+    					});
+    				}
+              }); 
+    		}
+    	})
+    })
+   
+</script>
+</html>

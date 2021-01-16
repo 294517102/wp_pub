@@ -1,0 +1,47 @@
+﻿/*************************************************************
+ * Command:Start
+ * Control:Footer.Default
+ * Style:Footer_Default
+ * Desc::
+ * Quot:
+*************************************************************/
+/*******网站底部定义开始*******/
+.Footer_Default  { width:100%; background:url("../images/footerbg.png") repeat-x center top #fff ; font:12px/22px "微软雅黑","arial"; min-height:168px; overflow:hidden;  }
+    .Footer_Default a { color:#c4ad47;}
+    .Footer_Default a:hover { color:#adadad;}
+
+.footer_copyright { width:1100px; margin:0 auto; padding:25px 0 0px 0; overflow: hidden; }
+
+    .footer_logo { float:left; background:url("../images/logo.png") no-repeat left center; width:64px; height:102px; margin-right:36px; }
+
+    .footer_txt { float:left; width:730px; color:#999; }
+        .footer_txt p { line-height:27px; }
+        .footer_txt span { font-family:"宋体"; margin:0 5px;}
+        .footer_txt em { font-style:italic; }
+
+    .footer_jubao { float:left; width:150px; text-align:right; padding-top:80px; overflow:hidden;}
+    .footer_jubao img { border-radius: 5px;}
+
+
+    .footer_eweima { float:right; width:110px; text-align:right; background:url("../images/eweima.png") no-repeat right 22px; height:120px; overflow:hidden; color: #c4ad47; }
+        .footer_eweima p { display: block; }
+
+.footer_bottom { width:1100px; margin:0 auto; height: 37px; line-height: 37px; display: block; overflow: hidden; color:#666; padding-left:100px;}
+
+
+
+
+
+
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:Footer.Default
+ * Style:Footer_Default
+ * Desc::
+ * Quot:
+*************************************************************/

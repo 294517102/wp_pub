@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>新增职称</title> 
+<#include "/include/bg/in_head_res.html">
+     <style type="text/css">
+ 	.uploadeyu{
+ 		display:inline-block;
+ 		width:90px;
+ 		height:90px;
+ 		overflow:hidden;
+ 		background-color:#eee;
+ 		text-align:center;
+ 		cursor: pointer;
+ 	}
+ 	.uploadeyu>p:nth-of-type(1){
+ 		line-height:90px;
+ 		font-size:40px
+ 	}
+ 	.uploadeyu>img{
+ 		min-width:100%;
+ 		height:100%;
+ 	}
+ 	.img-lable{
+ 		height:100px !important;
+ 		line-height:85px !important;
+ 	}
+ 	.img-hint{
+ 		font-size:12px;
+ 		color: red
+ 	}
+ 	.layui-form-item{
+ 		margin-bottom:8px;		
+ 	}
+ 
+ 	.layui-upload-list img{
+ 	vertical-align: initial!important;
+ 	}
+/*  	预览图片的box */
+ 	.pic_box{
+ 		float:left;
+ 		position:relative;
+ 		max-width:100px;
+ 		max-height:100px;
+ 		margin-right: 12px;
+ 		overflow: hidden;
+ 	}
+ 	.pic_box img{
+ 	display:block;
+ 	width:100%;
+ 	}
+/*  	图片删除的小图标 */
+ 	.del_pic{
+ 	    position: absolute;
+	    top: 0px;
+	    right: 0px;
+	    width: 20px;
+	    height: 20px;
+	    z-index: 999;
+   		cursor: pointer;
+    }
+ </style>
+</head>
+<body class="inner-body clear">
+	<div class="layui-container bg_white" style="width: 100%;padding:10px">
+	<form class="layui-form layui-form-pane " action="" id="column_form"
+		onsubmit="return false">
+		<input type="hidden" value="${position.id}" name="id"> 
+			 <div class="layui-form-item ">
+				<label class="layui-form-label"><span style="color: red">*</span>名称</label>
+				<div class="layui-input-block">
+					<input type="text" name="name" lay-verify="required"
+						placeholder="请输入医生职称名称" value="${position.name}" autocomplete="off" class="layui-input" >
+				</div>
+			</div>
+
+		<div style="text-align: center; vertical-align: bottom;margin-top: 20px;">
+			<button class="layui-btn" lay-submit lay-filter="form_column">保存</button>
+			<button class="layui-btn layui-btn-danger cancel">取消</button>
+		</div>
+	</form>
+	</div>
+	<#include "/include/bg/in_bottom_res.html">
+	<script type="text/javascript">
+
+$(function(){
+    //注意进度条依赖 element 模块，否则无法进行正常渲染和功能性操作
+    var form = layui.form,laydate = layui.laydate;
+  
+    //监听提交
+    form.on('submit(form_column)', function(data){
+    	var params = $("#column_form").serializeObject();
+    	console.log(JSON.stringify(params));
+    	$.postJSON("general_service_XX4lRGGKctEwQJCEps4$ajax.htm?_sign=${MD5.md5(user.username+user.id)}&_sObject=WEB_SET&_sKey=webSet",params,function(data){
+    			layer.msg(data.msg);
+    		if(data.result==true){
+    			parent.location.reload();
+    			closeWindow();
+    		}
+    	}); 
+    	
+        return false;
+    });
+})
+ $(".cancel").click(function(){
+ 	closeWindow();
+ });
+</script>
+
+
+</body>
+</html>

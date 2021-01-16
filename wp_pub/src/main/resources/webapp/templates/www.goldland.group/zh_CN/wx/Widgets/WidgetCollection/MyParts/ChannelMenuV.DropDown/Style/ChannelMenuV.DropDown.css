@@ -1,0 +1,38 @@
+﻿/*************************************************************
+ * Command:Start
+ * Control:ChannelMenuV.DropDown
+ * Style:ChannelMenuV_DropDown
+ * Desc::
+ * Quot:
+*************************************************************/
+.ChannelMenuV_DropDown { width:100%; height:58px;  background: url("../images/menu_bg.png")repeat-x center; }
+
+.ChannelMenuV_DropDown #dropdown_nav { position:relative; width:1096px; margin:0 auto; list-style:none; z-index:10000;  }
+.ChannelMenuV_DropDown ul { position:absolute; z-index:9999; }
+    .ChannelMenuV_DropDown ul li { float:left; width:137px; text-align:center; font-weight:normal; font:normal 16px/58px "Microsoft YaHei"; background:url("../images/menu_line.png") no-repeat left center;}
+    .ChannelMenuV_DropDown ul li a { color:#fff; /* background:url("../images/menu_up.png") no-repeat left center; */ display:inherit; }
+    .ChannelMenuV_DropDown ul li a:hover{ color:#f5f2d9; background:url("../images/menu_over2.png") repeat-x center center;  }
+
+.ChannelMenuV_DropDown .dropon { background:url("../images/menu_over2.png") repeat-x center center;  }
+    .ChannelMenuV_DropDown .dropon a { color:#f5f2d9; clear: both; }
+    .ChannelMenuV_DropDown li ul { list-style-type:none; width:137px; position:absolute; top:58px; clear:both; z-index:9990;}
+    .ChannelMenuV_DropDown li ul li { width:137px; height:35px; margin-top: 0px; font:normal 13px/35px "Microsoft YaHei"; border-bottom: 1px solid #ddd;}
+    .ChannelMenuV_DropDown li ul li a { display:block; background:#00be05; height:35px; /* border-radius: 5px;filter:alpha(opacity=80); -moz-opacity:0.8; -khtml-opacity:0.8; opacity:0.8;*/ }
+    .ChannelMenuV_DropDown li ul li a:hover { text-decoration:none; background:#ebd454; color: #fff; /*filter:alpha(opacity=80); -moz-opacity:0.8; -khtml-opacity:0.8; opacity:0.8;*/}
+    .ChannelMenuV_DropDown li ul.lastul { right:0px; background:#ebd454;}
+
+.ChannelMenuV_DropDown li.sfhover ul{ left:auto;}
+.ChannelMenuV_DropDown:after {content: ".";display: block;clear: both;visibility: hidden;line-height: 0;height: 0;}
+
+.ChannelMenuV_DropDown ul li.first { background:none; }
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:ChannelMenuV.DropDown
+ * Style:ChannelMenuV_DropDown
+ * Desc::
+ * Quot:
+*************************************************************/

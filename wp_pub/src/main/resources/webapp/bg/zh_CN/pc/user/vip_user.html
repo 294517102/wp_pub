@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>服务列表</title>
+
+<#include "/include/bg/in_head_res.html">
+
+</head>
+<body class="inner-body clear">
+	<div class="layui-container bc_color" style="width:100%">
+		<form class="layui-form " id="form_1"  action="${base}/admin/to_vip_list.htm">
+		 <div class="layui-form-item" style="background-color: white;padding:15px 10px;">
+			<div class="layui-col-md2" style="width: auto;">
+				<label class="layui-form-label">用户名称</label>
+				<div class="layui-input-block">
+					<input type="text" name="name" style="width:120px;"
+						autocomplete="off" placeholder="请输入用户名称" class="layui-input">
+				</div>
+			</div>
+			<div class="fl" style="margin-left:50px">
+				<button class="layui-btn fl search" lay-submit > <i class="layui-icon">&#xe615;</i> 搜索</button>
+				<button class="layui-btn layui-btn-warm  fl refresh" type="reset"><i class="layui-icon">&#x1002;</i> 刷新</button>
+			</div>
+		</div>
+		</form>
+		<div class="content_main">
+			<div class="layui-row layui-form">
+				<table class="layui-table" >
+					<thead>
+						<tr>
+							<th><input type="checkbox"  lay-filter="allChoose" lay-skin="primary"></th>
+							<th>用户名</th>
+							<th>企业名称</th>
+							<th>地址</th>
+							<th>联系电话</th>
+							<th>经营品种</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<#if resultList?size <=0 >
+						<tr>
+							<td colspan="8">无记录</td>
+						</tr>
+						<#else> <#list resultList as r>
+						<tr>
+							<td><input type="checkbox" lay-skin="primary" id="${r.id}"></td>
+							<td>${r.realName!}</td>
+							<td>${r.companyName}</td>
+							<td>${r.address}</td>
+							<td>${r.phone}</td>
+							<td>${r.operateVariety!}</td>
+							<td>
+							<!-- <button class="layui-btn layui-btn-small detail" name="${r.nickname!}" id="${r.id}"><i class="layui-icon">&#xe60a;</i> 编辑</button> -->
+							<button class="layui-btn layui-btn-danger layui-btn-small delete" isLocked="${r.isLocked!}"  id="${r.id}">
+							<i class="layui-icon">&#x1006;</i> <#if r.isLocked==-1>审核<#else>反审核</#if>
+								</button></td>
+						</tr>
+						</#list> </#if>
+					</tbody>
+				</table>
+				<div class="pageBotton">${pageHtml}</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+<#include "/include/bg/in_bottom_res.html">
+<script type="text/javascript">
+	$(function(){
+		$(".delete").click(function(){
+			var id = $(this).attr("id");
+    		var isLocked =$(this).attr("isLocked");
+		   	layer.confirm("确认审核该会员？",{btn: ['确认','取消'],icon:3 },function(){
+            	$.postJSON("${base}/admin/updateVipUserisLocked$ajax.htm",{"id":id,"isLocked":isLocked,webset:${webSet.id?c}},
+            			function(data){
+            		if(data.result){
+	             	    layer.confirm(data.msg,{btn: ['确认'],icon:1 },function(){
+	             	    	window.location.reload();
+	             	    },function(){});
+            		}else{
+            			layer.confirm(data.msg,{btn: ['确认'],icon:2 },function(){
+            				window.location.reload();
+	             	    },function(){});
+            		}
+               }); 
+	    	});
+		})
+	})
+</script>
+</html>

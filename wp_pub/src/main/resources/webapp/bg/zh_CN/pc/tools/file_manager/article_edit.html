@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<base href="${base}/" />
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>文本编辑</title>
+     <link rel="stylesheet" href="res/default/bg/js/frame/layui/css/layui.css">
+    <link rel="stylesheet" href="res/default/bg/css/style.css">
+    <link rel="icon" href="res/default/bg/image/code.png">
+    <link rel="stylesheet" href="res/default/bg/css/index.css">
+    <link rel="stylesheet" href="res/default/bg/css/main.css">
+    <link rel="stylesheet" href="res/default/bg/css/text.css">
+    <link rel="stylesheet" href="res/default/bg/css/style_01.css">
+    <style>
+        .layui-upload-button{
+            background: #34a8ff;
+            color: #fff;
+            cursor: pointer!important;  
+        }
+        .layui-upload-button:hover .layui-upload-icon{
+            color: #eee;
+        }
+        .layui-upload-icon .layui-icon{
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="body clear">
+
+<div class="mac">
+    <section>
+        <div class="panel-heading">文章编辑</div>
+        <div class="panel-table">
+            <form class="layui-form layui-form-pane" action='' id="userForm">
+            <input type="hidden" name="id" id="id" value="${article.id}"/>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">文章标题</label>
+                    <div class="layui-input-block">
+                        <input type="text" value="${article.title!}" name="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">文章栏目</label>
+                    <div class="layui-input-block">
+                        <select name="column_id" id="column_id">
+                        	<#list column_list as c>
+                        		<#if article.getColumn().getId() == c.id >
+                        		<option value="${c.id?c!}" selected="selected" >${c.title!}</option>
+                        		<#else>
+                        		<option value="${c.id?c!}"  >${c.title!}</option>
+                        		</#if>
+                        	</#list>
+                        </select>
+                    </div>
+                </div>
+               <div class="layui-form-item">
+                    <label class="layui-form-label">作者</label>
+                    <div class="layui-input-block">
+                        <input type="text" value="${article.author!}" name="author" autocomplete="off" placeholder="请输入者姓名" class="layui-input">
+                    </div>
+                </div>
+<!--                 <div class="layui-form-item"> -->
+<!--                     <label class="layui-form-label">关键字</label> -->
+<!--                     <div class="layui-input-block"> -->
+<!--                         <input type="text" value="${article.keyword!}" name="keyword" autocomplete="off" placeholder="请输入标题" class="layui-input"> -->
+<!--                     </div> -->
+<!--                 </div> -->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">文章描述</label>
+                    <div class="layui-input-block">
+                        <input type="text" value="${article.describes!}" name="describes" autocomplete="off" placeholder="请输入文章描述" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="up_pic active clear">
+                   <span class="up_dic up_noborder">上传图片</span>
+                   <ul class="posted-pic-box">
+                    <#if article.pic?size gt 0>
+                                <#list article.pic as ap>
+		                <li class="posted-pic-list">
+		                	
+                                <img class="box_img" src="${ap.url!}" alt="">
+                                <input type="hidden" class="oldPic" value="${ap.id?c!}" /> 
+				                <div class="handel_post_pic clear">
+					                <span class="fl run_left"></span>
+					                <span class="fl run_right"></span>
+					                <span class="fl del_posted_pic"></span>
+				                </div>
+                               
+			               
+			        	</li>
+			        	 </#list>
+                                </#if>
+			        </ul>
+			        <div class="post_pic_handel fr">
+			        <label class="layui-btn layui-btn-primary" for="add_pic_again">继续添加</label>
+			                        '<input style="display: none;" id="add_pic_again" type="file">
+			        <a class="layui-btn layui-btn-normal" onclick="upload()" id="upload_pic" >开始上传</a>
+		        </div>
+                </div>
+
+                <div class="layui-form-item layui-form-text">
+                    <div class="layui-input-block">
+                         <script id="container" name="content" type="text/plain" style="width:100%;float:left;">${articleExt.content!}</script>
+                    </div>
+                </div>
+            </form>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn " lay-submit="" lay-filter="demo1" onclick="save()">保存</button>
+                    <button type="reset" class="layui-btn layui-btn-primary" onclick="to_back()">取消</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<script src="res/default/bg/js/jquery.min.js"></script>
+<script type="text/javascript" src="res/default/bg/js/frame/layui/layui.js"></script>
+<script src="res/js/myUtils.js"></script>
+<script src="res/js/plugins/ueditor/ueditor.all.js"></script>
+<script src="res/js/AjaxUploadFile/js/AjaxUploadFile.js"></script>
+<script type="text/javascript" src="res/js/utf8-jsp/ueditor.config.js"></script>
+<script type="text/javascript" src="res/js/utf8-jsp/ueditor.all.js"></script>
+<script type="text/javascript">
+	var ue = UE.getEditor('container');
+	
+
+
+    layui.use(['form', 'layedit', 'laydate','upload'], function(){
+        var form = layui.form()
+                ,layer = layui.layer
+                ,layedit = layui.layedit
+                ,laydate = layui.laydate;
+
+        //创建一个编辑器
+        var editIndex = layedit.build('LAY_demo_editor');
+
+        //自定义验证规则
+        form.verify({
+            title: function(value){
+                if(value.length < 5){
+                    return '标题至少得5个字符啊';
+                }
+            }
+            ,content: function(value){
+                layedit.sync(editIndex);
+            }
+        });
+    });
+   
+   
+    //添加图片,准备数组保存每一张图片的object,一次性上传
+   
+    function postpic(ele){
+    	
+        $(".up_inf").remove();
+        var str = '<ul class="posted-pic-box">'+
+                '<li class="posted-pic-list">'+
+                '<img class="box_img" src="'+$(ele).val()+'" alt="">'+
+                '<div class="handel_post_pic clear">'+
+                '<span class="fl run_left"></span>'+
+                '<span class="fl run_right"></span>'+
+                '<span class="fl del_posted_pic"></span>'+
+                '</div> '+
+        '</li>'+
+        ' </ul>'+
+        '<div class="post_pic_handel fr">'+
+        ' <label class="layui-btn layui-btn-primary" for="add_pic_again">继续添加</label>'+
+                        '<input style="display: none;" id="add_pic_again" type="file">'+
+        ' <a class="layui-btn layui-btn-normal" onclick="upload()">开始上传</a>'+
+        '</div> ';
+        $(".up_pic").append(str);
+        console.log($(".file_list").val());
+        $(".run_left").each(function(){
+            $(this)[0].current = 0;
+        })
+        $("#add_pic_again").change(function () {
+        	f[i]=$(ele)[0].files[0];i++;
+            var str =  '<li class="posted-pic-list">'+
+                    '<img class="box_img" src="'+$(ele).val()+'" alt="">'+
+                    '<input type="hidden" class="newPid" value="' +n+ '"/>'+
+                    '<div class="handel_post_pic clear">'+
+                    '<span class="fl run_left"></span>'+
+                    '<span class="fl run_right"></span>'+
+                    '<span class="fl del_posted_pic"></span>'+
+                    '</div> '+
+                    '</li>';
+            $(".posted-pic-box").append(str);
+            $(".run_left").each(function(){
+                $(this)[0].current = 0;
+            })
+        });
+        $(document).on("click",".del_posted_pic",function () {
+            $(this).parents("li").remove();
+        });
+
+        $(document).on("click",".run_left",function () {
+            $(this)[0].current = ($(this)[0].current-90)%360;
+            $(this).parent().siblings(".box_img").css('transform', 'rotate('+$(this)[0].current+'deg)');
+        });
+        $(document).on("click",".run_right",function () {
+            $(this).siblings(".run_left")[0].current = ( $(this).siblings(".run_left")[0].current+90)%360;
+            $(this).parent().siblings(".box_img").css('transform', 'rotate('+ $(this).siblings(".run_left")[0].current+'deg)');
+        });
+       
+    }
+    //
+    var f = new Array() 
+    var n=0;
+    $("#add_pic_again").change(function () {
+    	f[n]=$(this)[0].files[0];n++;
+        var str =  '<li class="posted-pic-list">'+
+                '<img id=newpic"'+n+'" class="box_img" src="'+window.URL.createObjectURL(f[n-1])+'" alt="">'+
+                '<input type="hidden" class="newPid" value="' +n+ '"/>'+
+                '<div class="handel_post_pic clear">'+
+                '<span class="fl run_left"></span>'+
+                '<span class="fl run_right"></span>'+
+                '<span class="fl del_posted_pic"></span>'+
+                '</div> '+
+                '</li>';
+        $(".posted-pic-box").append(str);
+        $(".run_left").each(function(){
+            $(this)[0].current = 0;
+        })
+        
+    });
+    $(document).on("click",".del_posted_pic",function () {
+        $(this).parents("li").remove();
+    });
+
+    $(document).on("click",".run_left",function () {
+        $(this)[0].current = ($(this)[0].current-90)%360;
+        $(this).parent().siblings(".box_img").css('transform', 'rotate('+$(this)[0].current+'deg)');
+    });
+    $(document).on("click",".run_right",function () {
+        $(this).siblings(".run_left")[0].current = ( $(this).siblings(".run_left")[0].current+90)%360;
+        $(this).parent().siblings(".box_img").css('transform', 'rotate('+ $(this).siblings(".run_left")[0].current+'deg)');
+    });
+    var picIds="";
+    var start=0;
+    function upload(){
+    	var addids= new Array();
+    	//获取最终剩余图片的id
+    	 $(".newPid").each(function(i){
+			   addids[i] = $(this).val()-1;
+			   console.log(addids[i]);
+	    	   });
+		for(var j=0;j<f.length;j++){
+		   console.log($.inArray(j,addids));
+		   if(j>=start){
+		   if($.inArray(j,addids)!=-1){
+    	/* $(".file_list").each(function(i){
+			console.log($(this)[0].files[0]+"---"); */
+			ajaxUploadFile('${base}/upload/uploadImgByAccessory.htm?type=client',
+					{"file":{"object":f[j]}},
+					function(data){
+						var response = eval("("+data+")");  
+						if(response.result==true){
+			    		    var files = eval("("+response.resultData+")");
+			    		    for(var i=0;i<files.length;i++){
+			    		    	var name = files[i].name;
+			    		    	var mydate = new Date();
+			    		    	var date = mydate.toLocaleDateString();
+			    		    	var url = files[i].url;
+			    		    	var id = files[i].acyId;
+			    		    	console.log(id+","+url)
+			    		    	picIds = picIds+id+",";
+			    		    	$('#newpic'+j).attr({"src": url});
+			    		    	/* $(this).parents(".infor-list").find("#accessory").val(id); */
+			    		    	break;
+			    		    }
+			    		    $('#upload_pic').text("上传成功!");
+			    		 }else{
+			    			 /* alert(response.resultMsg);  */
+			    		 }
+					});
+    	}
+		}
+		}
+		start=n;
+		console.log(picIds);
+		
+	}
+    function save(){   		
+		var params = $("#userForm").serializeObject();
+		$(".oldPic").each(function(i){
+			if(i==0){
+				picIds = picIds+$(this).val();
+			}else
+				picIds = picIds+","+$(this).val();
+    		});
+		params.picIds=picIds;
+		console.log(picIds);
+		console.log(params); 
+	
+		var column_id = $('#column_id').val();
+		$.postJSON("admin/article/update_article$ajax.htm",params,function(data){
+			if(data.result==true){
+				layer.msg(data.msg,{icon:1},function(){
+					location.href="admin/article/obtain_column_article_edit.htm?id="+column_id;
+				});
+			}else if(data.result==false){
+				layer.msg(data.msg,{icon:1});
+			}
+		});
+	}
+    function to_back(){
+    	var column_id = $('#column_id').val();
+    	location.href="admin/article/obtain_column_article_edit.htm?id="+column_id;
+    }
+</script>
+</body>
+</html>

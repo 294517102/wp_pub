@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>服务列表</title>
+
+<#include "/include/bg/in_head_res.html">
+
+</head>
+<body class="body clear">
+	<div  style="width: 95%;margin: 0 auto">
+		 <form  class="layui-form layui-form-pane" onsubmit="return false;">
+		 	<div class="layui-form-item">
+		 		<label class="layui-form-label"><span class="red">*</span>链接名称</label>
+	            <div class="layui-input-block">
+	                <input type="text" name="name" lay-verify="required" value="${friendlyLink.name}" autocomplete="off" placeholder="请输入名称" class="layui-input">
+	            </div>
+		 	</div>
+		 	<div class="layui-form-item">
+		 		<label class="layui-form-label"><span class="red">*</span>所属分类</label>
+	            <div class="layui-input-block">
+	             <select id="fenlei_select" name="parent.id" initValue="${friendlyLink.parent.id!}">
+				<option value="">请选择</option> 
+				</select>
+	            </div>
+		 	</div>
+		 	<div class="layui-form-item">
+		 		<label class="layui-form-label"><span class="red">*</span>链接地址</label>
+	            <div class="layui-input-block">
+	                <input type="text" name="url" value="${friendlyLink.url}" lay-verify="required" autocomplete="off" placeholder="请输入域名" class="layui-input">
+	            </div>
+		 	</div>
+		 	<div class="layui-form-item">
+		 		<label class="layui-form-label"><span class="red">*</span>序号</label>
+	            <div class="layui-input-block">
+	                <input type="text" name="sequence" value="${friendlyLink.sequence!'1'}" lay-verify="required" autocomplete="off" placeholder="请输入数字，越小显示越靠前" class="layui-input">
+	            </div>
+		 	</div>
+		 	<div class="layui-form-item">
+				<label class="layui-form-label"><span class="red">*</span>图片上传</label>
+				<div class="layui-upload">
+					<input type="hidden" name="logo.id" id="pic_id" >
+					<button  type="button" class="layui-btn layui-bg-blue"  id="test1" style="margin-left: 10px;">上传图片</button>
+					<div class="layui-upload-list" >
+						<img class="layui-upload-img" <#if friendlyLink.logo??> src="${friendlyLink.logo.url!}" style="width: 100px;height: 100px;"</#if> id="demo1">
+						<p id="demoText"></p>
+					</div>
+				</div>
+	 		</div>
+		 	<input type="hidden" name="id" value="${friendlyLink.id!}">
+		 	<button class="layui-btn layui-btn-big" lay-submit lay-filter="form_1">保存</button>
+		 </form>
+	</div>
+
+<#include "/include/bg/in_bottom_res.html">
+<script type="text/javascript">
+$(function(){
+	var form = layui.form,laydate = layui.laydate;
+	form.on('submit(form_1)', function(data){
+		
+		$.postJSON("${basePath}/general_service_OoqzTPAMAzeMwFECm4I$ajax.htm?_sign=${MD5.md5(user.username+user.id)}&_sObject=WEB_SET&_sKey=webSet",
+					data.field,
+					function(data){
+						layer.msg(data.msg,function(){
+							if(data.result){
+								parent.location.reload();
+								closeWindow();
+							}
+						});						
+					});
+	});
+	
+	layui.use('upload', function(){
+		  var $ = layui.jquery
+		  ,upload = layui.upload;
+		  
+		  //普通图片上传
+		  var uploadInst = upload.render({
+		    elem: '#test1'
+		    ,url: '${base}/upload/uploadImgByAccessory.htm?type=client'
+		    ,before: function(obj){
+		      //预读本地文件示例，不支持ie8
+		      obj.preview(function(index, file, result){
+		        $('#demo1').attr('src', result); //图片链接（base64）
+		        $('#demo1').attr('width','100px');
+		        $('#demo1').attr('height','100px');
+		      });
+		    }
+		    ,done: function(res){
+		    	if(res.result){
+				    var files = res.data;
+				    for(var i=0;i<files.length;i++){
+				    	var name = files[i].name;
+				    	var url = files[i].url;
+				    	var id = files[i].acyId;
+				    	$("#pic_id").val(id);
+				    	$("#url").val(url);
+				    }
+		    		
+		        return layer.msg(res.resultMsg);
+		    	}else{
+		        return layer.msg('上传失败');
+		    	}
+		      //如果上传失败
+		      if(res.code > 0){
+		        return layer.msg('上传失败');
+		      }
+		    }
+		    ,error: function(){
+		      //演示失败状态，并实现重传
+		      var demoText = $('#demoText');
+		      demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
+		      demoText.find('.demo-reload').on('click', function(){
+		        uploadInst.upload();
+		      });
+		    }
+		  });
+		  
+		});
+	
+// 	分类注入
+		$.postJSON("${base}/general_service_fD2pi5C3EbLr9FCNJuJ$ajax.htm?_sObject=WEB_SET&_sKey=webSet",{"isDelete":-1,"_size":100},function(res){
+	       	if(res.result){
+	       	var rlist=res.resultList_friendlyLink 
+	 	    for(var i=0;i<rlist.length;i++){
+	 	    	$("#fenlei_select").append("<option value='"+rlist[i].id+"'>"+rlist[i].name+"</option>")
+	 	 	} 
+	 	 initValue();
+	 	   form.render();
+	   	   }else{
+	   		layer.msg(res.msg,{icon:2})
+	   	   }
+  		});    
+	
+});
+/* $(function(){
+    //注意进度条依赖 element 模块，否则无法进行正常渲染和功能性操作
+    var form = layui.form,laydate = layui.laydate;
+
+    //监听提交
+     form.on('submit(form_1)', function(data){
+        return false;
+    }); 
+}) */
+</script>
+</body>
+</html>
+

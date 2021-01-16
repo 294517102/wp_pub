@@ -1,0 +1,62 @@
+﻿/*************************************************************
+ * Command:Start
+ * Control:PagedArticleList.FrameLoop
+ * Style:PagedArticleList_FrameLoop
+ * Desc::
+ * Quot:
+*************************************************************/
+.PagedArticleList_FrameLoop { min-height:500px; padding-left:20px; overflow:hidden; }
+
+/* 标题 */
+.PagedArticleList_FrameLoop h3 { height:40px; line-height:40px; /* border-bottom:1px solid #bababa; border-right:1px solid #e7e7e7;*/ }
+.PagedArticleList_FrameLoop h3 em { font:normal 16px/40px "microsoft yahei"; color:#fff; padding-left:40px;}
+
+.PagedArticleList_FrameLoop .Description { display: none; }
+
+/* 列表 */
+.PagedArticleList_FrameLoop .article_list {  }
+.PagedArticleList_FrameLoop .article_list ul { padding:10px 0px 10px 0px; overflow: hidden;}
+.PagedArticleList_FrameLoop .article_list ul li { float: left; width:350px; margin:15px 12px; min-height: 170px; }
+.PagedArticleList_FrameLoop .article_list ul li h4 { font:normal 14px/35px "microsoft yahei"; color:#333; background:#f9f9f9; border-radius: 5px 5px 0px 0px; border-top:3px solid #999;  }
+.PagedArticleList_FrameLoop .article_list ul li i { font:normal 12px/35px "arial"; color:#666; font-style:italic;}
+.PagedArticleList_FrameLoop .article_list ul li h4 a { color: #000; padding-left:10px; }
+.PagedArticleList_FrameLoop .article_list ul li h4 a:hover { color: #333; text-decoration: underline;}
+.PagedArticleList_FrameLoop .article_list ul li span { float:right; padding-right:10px; font:10px/35px "arial"; }
+.PagedArticleList_FrameLoop .article_list ul li span a { color:#666;}
+.PagedArticleList_FrameLoop .article_list ul li span a:hover { color:#c30;  }
+
+.PagedArticleList_FrameLoop .article_list ul li p { font:normal 12px/23px "microsoft yahei"; color: #666; padding:5px 10px; border:1px solid #e7e7e7; border-top:none; border-radius: 0px 0px 5px 5px; border-bottom:3px solid #999;  }
+
+.PagedArticleList_FrameLoop .article_list ul li em { color:#f00; margin:0 5px;} /*搜索关键词*/
+
+/* 翻页 */
+.PagedArticleList_FrameLoop .clear{ clear: both;}
+.PagedArticleList_FrameLoop .clear:after{ content: "."; display: block; height:0; clear:both; visibility: hidden;}
+.PagedArticleList_FrameLoop .page_css, .class_page { text-align:center; padding:10px 0;}
+.PagedArticleList_FrameLoop .page_css a, .class_page a { display: inline-block; border:1px solid #999999; padding:8px 10px; color:#666666; line-height:100%;}
+.PagedArticleList_FrameLoop .page_css a:hover, .class_page a:hover{ color: #fff; border: 1px solid #666; background: #666;}
+.PagedArticleList_FrameLoop .page_css b a, .class_page b a { color: #fff; border:1px solid #666; background: #666;}
+.PagedArticleList_FrameLoop .page_line { }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:PagedArticleList.FrameLoop
+ * Style:PagedArticleList_FrameLoop
+ * Desc::
+ * Quot:
+*************************************************************/

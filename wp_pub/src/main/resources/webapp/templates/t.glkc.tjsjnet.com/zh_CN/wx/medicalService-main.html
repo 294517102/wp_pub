@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <#include "/${rp}/metalink.html">
+</head>
+<body>
+<div class="page">
+    <#assign ck=cl.bk(c)>
+    <header class="bar bar-nav">
+        <a class="icon icon-left pull-left back"></a>
+        <a href="${cm.cp}" class="icon icon-home pull-right" external></a>
+        <h1 class="title">${ck.title}</h1>
+    </header>
+    <div class="content">
+        <div class="innerbanner">
+            <img src="res/default/image/yiliao_banner.jpg" alt="">
+        </div>
+        <div class="inner_navbox">
+            <ul class="inner_nav">
+                <li>
+                    <#assign jktj = cl.bk('jian_kang_ti_jian')>
+                    <a href="${cm.cp}${jktj.url}" external>
+                        <img src="res/default/image/yulao_nav1.png" alt="">
+                        <p>${jktj.title}</p>
+                    </a>
+                </li>
+                <li>
+                    <#assign mzpb = cl.bk('men_zhen_pai_ban')>
+                    <a href="${cm.cp}${mzpb.url}" external>
+                        <img src="res/default/image/yulao_nav2.png" alt="">
+                        <p>${mzpb.title}</p>
+                    </a>
+                </li>
+                <li>
+                    <#assign yygh = cl.bk('yu_yue_gua_hao')>
+                    <a href="${cm.cp}${yygh.url}" external>
+                        <img src="res/default/image/yulao_nav3.png" alt="">
+                        <p>${yygh.title}</p>
+                    </a>
+                </li>
+                <li>
+                    <#assign jtzn = cl.bk('jiao_tong_zhi_nan')>
+                    <a href="${cm.cp}${jtzn.url}" external>
+                        <img src="res/default/image/yulao_nav4.png" alt="">
+                        <p>${jtzn.title}</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="inner_box1">
+            <#assign jyxz = cl.bk('jiu_yi_xu_zhi')>
+            <p class="dangqu_title">${jyxz.title}</p>
+            <a href="${cm.cp}${jyxz.url}" external>more +</a>
+            <hr>
+            <ul class="wenlist">
+                <#if at.bc(jyxz)?size gt 0>
+                <#list at.bc(jyxz) as a>
+                <#if a_index lt 5>
+                <li class='wow fadeInUp'>
+                    <a href="${cm.cp}go.htm?url=medicalService-detail&id=${a.id}" external>
+                        <p class="wenlist_title">${a.title}</p>
+                        <span class="wenlist_span">${a.issueTime?string('MM-dd')}</span>
+                    </a>
+                </li>
+                </#if>
+                </#list>
+                <#else>
+                    <div class='nodata'>
+                        <img src="res/default/image/nodata.png" alt="" />
+                        <p>暂无数据</p>
+                    </div>
+                </#if>
+            </ul>
+        </div>
+
+        <div class="inner_box1">
+            <ul class="tuwennav_listbox">
+                <!--<#assign bgcx = cl.bk('bao_gao_cha_xun')>-->
+                <!--<li class="tuwennav_listitem">-->
+                <!--    <a href="${cm.cp}${bgcx.url}" external>-->
+                <!--        <div class="tuwennav_listitem_pic">-->
+                <!--            <img src="res/default/image/yiliao_1.png" alt="">-->
+                <!--        </div>-->
+                <!--        <div class="tuwennav_listitem_info">-->
+                <!--            <p>${bgcx.title}</p>-->
+                <!--            <p>医学报告查询流程</p>-->
+                <!--        </div>-->
+                <!--    </a>-->
+                <!--</li>-->
+                <#assign zyzn = cl.bk('zhu_yuan_zhi_nan')>
+                <#if !zyzn??>
+                <li class="tuwennav_listitem">
+                    <a href="${cm.cp}${zyzn.url}" external>
+                        <div class="tuwennav_listitem_pic">
+                            <img src="res/default/image/yiliao_2.png" alt="">
+                        </div>
+                        <div class="tuwennav_listitem_info">
+                            <p>${zyzn.title}</p>
+                            <p>恢复以及术后住院指南</p>
+                        </div>
+                    </a>
+                </li>
+                </#if>
+                <#assign ylbx = cl.bk('yi_liao_bao_xian')>
+                <li class="tuwennav_listitem">
+                    <a href="${cm.cp}${ylbx.url}" external>
+                        <div class="tuwennav_listitem_pic">
+                            <img src="res/default/image/yiliao_3.png" alt="">
+                        </div>
+                        <div class="tuwennav_listitem_info">
+                            <p>${ylbx.title}</p>
+                            <p>医疗保险介绍以及使用指南</p>
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+        <div class="inner_box1 margin50px">
+            <#assign tsyl = cl.bk('te_se_yi_liao')>
+            <p class="dangqu_title">${tsyl.title}</p>
+            <a href="${cm.cp}${tsyl.url}" external>more +</a>
+            <hr>
+            <ul class="tuwenlist">
+                <#if at.bc(tsyl)?size gt 0>
+                <#list at.bc(tsyl) as a>
+                <#if a_index lt 5>
+                <li>
+                    <a href="${cm.cp}go.htm?url=medicalService-detail&id=${a.id}" external>
+                        <div class="tuwenlistpic">
+                            <img src="<#if a.th.url>${a.th.url}<#else>res/default/image/default_pic.png</#if>" alt="">
+                        </div>
+                        <div class="tuwenlistinfo">
+                            <p class="list_title">${a.title}</p>
+                            <div class="tuwenlist_desc">
+                                ${a.desc}
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                </#if>
+                </#list>
+                <#else>
+                    <div class='nodata'>
+                        <img src="res/default/image/nodata.png" alt="" />
+                        <p>暂无数据</p>
+                    </div>
+                </#if>
+            </ul>
+        </div>
+
+        <#include "/${rp}/footer.html">
+    </div>
+</div>
+
+<#include "/${rp}/jslink.html">
+<script>
+    $(".tuwenlist_desc").xdlines({
+        max:2
+    })
+</script>
+</body>
+</html>

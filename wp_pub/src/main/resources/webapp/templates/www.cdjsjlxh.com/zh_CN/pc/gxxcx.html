@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <#include "/${rp}/include/link.html">
+    <script type="text/javascript" src="res/js/ScrollHolder.js"></script>
+    <style>
+    .zyjs_active {
+    background: #1f98e2;
+    color: white;
+}
+.result_ul li {
+    height: 52px;
+    border: 1px solid #eeeeee;
+    line-height: 52px;
+    text-align: center;
+    float: left;
+    overflow: hidden;
+}
+.seach_div{
+    width: 1200px;
+    margin: 0 auto;
+    height: 80px;
+    line-height: 80px;
+    }
+    .seach_btn{
+    margin-left: 10px;
+    display: inline-block;
+    padding: 0px 15px;
+    background: #1f98e2;
+    line-height: 40px;
+    border-radius: 4px;
+    color: white;
+        cursor: pointer;
+    }
+    input{
+    text-indent:10px;
+/*    	padding-left: 10px; */
+   	font-size:16px;
+    }
+    
+    .company_div_page a,.idcard_div_page a{
+    display: inline-block;
+    font-size: 16px;
+    color: #333;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    margin: 20px 6px;
+    }
+    .company_div_page .curr ,.idcard_div_page .curr,.company_div_page .this,.idcard_div_page .this {
+	border: 1px solid #29A7E8!important;
+    color: #29A7E8!important;
+    }
+    </style>
+</head>
+<body>
+<#include "/${rp}/include/header.html">
+<content>
+    <div class="ny">
+        <div class="ny_local bb">
+            <div class="width1200 ny_locala">
+                <a href="/index.html"><img class="home" src="../res/default/images/home.png" alt=""></a>
+                <img class="dbx" src="../res/default/images/dbx.png" alt="">
+                <a href="${pCol.children[0].url!}">${pCol.title!}</a>
+                <img class="dbx" src="../res/default/images/dbx.png" alt="">
+                <a >${sCol.title!}</a>
+            </div>
+        </div>
+        <div class="ny_con width1200">
+            <div class="ny_left fl">
+                <#include "/${rp}/include/ny_left.html">
+            </div>
+            <div class="ny_right fr" style="width: 82%">
+                <div class="rhxz" style="background: url('${sCol.thumbnail.url!}') no-repeat center center" >
+                    <div class="rhxz_t">
+                        <div class="rhxz_tz"> ${sCol.title!}</div>
+                        <div class="rhxz_te">${sCol.describes!}</div>
+                    </div>
+                </div>
+
+				<div class="dq_top">
+					<div class="seach_div">
+					<input type="radio" name="type" value="1" checked="checked">身份证查询
+					<input type="radio" name="type" value="2" >公司名称查询
+					<input type="text" name="idCard" id="seach_input" value="" placeholder="请输入身份证号码" style="width: 320px;  margin-top: 10px; height: 40px;">
+					<input type="text" name="currentJob"   value="" placeholder="请输入公司名称" style="width: 320px;display:none;  margin-top: 10px; height: 40px;">
+					<span class="submit seach_btn" id="search_recruit" >查询</span>
+					</div>
+				</div>
+				        <div class="dq_box idCard_div" style="height: auto">
+				        <ul class="result_ul" style="overflow:hidden;list-style: none;">
+						<li class="zyjs_active" style=" width: 100px;display:none;">证书编号</li>
+						<li class="zyjs_active" style=" width: 60px;">姓名</li>
+						<li class="zyjs_active" style=" width: 50px;">性别</li>
+						<li class="zyjs_active" style=" width: 100px;">身份证号</li>
+<!-- 						<li class="zyjs_active" style=" width: 60px;">学历 </li> -->
+						<li class="zyjs_active" style=" width: 80px;">专业</li>
+						<li class="zyjs_active hide_li" style=" width: 100px;">培训时间</li>
+						<li class="zyjs_active" style=" width: 100px;">有效期至</li>
+						<li class="zyjs_active" style=" width: 100px;">现就职单位</li>
+						<li class="zyjs_active hide_li" style=" width: 100px;">原就职单位</li>
+						<li class="zyjs_active hide_li" style=" width: 100px;">变更时间</li>
+						</ul>
+						<div id="idcard_result_div" style="text-align: center;">
+				         <!-- <ul class="result_ul" style="overflow:hidden；list-style: none;">
+						<li style=" width: 100px;">2020016766373305</li>
+						<li style=" width: 60px;">邹雨霏</li>
+						<li style=" width: 25px;">女</li>
+						<li style=" width: 100px;">510682199207050718</li>
+						<li style=" width: 60px;" title="四川省中冶建设工程监理有限责任公司">大专</li>
+						<li style=" width: 116px;">房屋建筑工程</li>
+						<li  style=" width: 100px;">2020年8月22日</li>
+						<li  style=" width: 100px;">2020年8月22日</li>
+						<li  style=" width: 100px;">四川省中冶建设工程监理有限责任公司</li>
+						<li  style=" width: 100px;">四川省中冶建设工程监理有限责任公司</li>
+						<li  style=" width: 100px;">2020年8月22日</li>
+						</ul>  -->
+				        </div>
+				       <div class="idcard_div_page"></div>
+        				</div>
+      
+				        <div class="dq_box company_div" style="height: auto;display: none;">
+				        <ul class="result_ul" style="overflow:hidden;list-style: none;">
+						<li class="zyjs_active" style=" width: 130px;display:none;">证书编号</li>
+						<li class="zyjs_active" style=" width: 100px;">姓名</li>
+						<li class="zyjs_active" style=" width: 80px;">性别</li>
+						<li class="zyjs_active" style=" width: 130px;">身份证号</li>
+<!-- 						<li class="zyjs_active" style=" width: 60px;">学历 </li> -->
+						<li class="zyjs_active" style=" width: 130px;">专业</li>
+						<li class="zyjs_active" style=" width: 120px;">有效期至</li>
+						<li class="zyjs_active" style=" width: 180px;">现就职单位</li>
+						</ul>
+						<div id="company_result_div" style="text-align: center;">
+				         <!-- <ul class="result_ul" style="overflow:hidden；list-style: none;">
+						<li style=" width: 100px;">2020016766373305</li>
+						<li style=" width: 60px;">邹雨霏</li>
+						<li style=" width: 25px;">女</li>
+						<li style=" width: 100px;">510682199207050718</li>
+						<li style=" width: 60px;" title="四川省中冶建设工程监理有限责任公司">大专</li>
+						<li style=" width: 116px;">房屋建筑工程</li>
+						<li  style=" width: 100px;">2020年8月22日</li>
+						<li  style=" width: 100px;">2020年8月22日</li>
+						<li  style=" width: 100px;">四川省中冶建设工程监理有限责任公司</li>
+						<li  style=" width: 100px;">四川省中冶建设工程监理有限责任公司</li>
+						<li  style=" width: 100px;">2020年8月22日</li>
+						</ul>  -->
+				        </div>
+				       <div class="company_div_page"></div>
+        				</div>
+               
+            </div>
+            <div style="clear: both"></div>
+        </div>
+    </div>
+</content>
+<#include "/${rp}/include/footer.html">
+<#include "/${rp}/include/script.html">
+		<script src="${basePath}/res/js/layer-v3.1.0/layer.js" type="text/javascript" ></script>
+	<script type="text/javascript">
+	$("input[name='type']").click(function(){
+		$("#idcard_result_div").empty();
+		$("#company_result_div").empty();
+		$(".idcard_div_page").empty();
+		$(".company_div_page").empty();
+		
+		if($(this).val()==1){
+		$("input[name='idCard']").show();	
+		$("input[name='currentJob']").hide();
+		$(".company_div").hide();
+		$(".idCard_div").show();
+		}
+		if($(this).val()==2){
+		$("input[name='idCard']").hide();	
+		$("input[name='currentJob']").show();
+		$(".company_div").show();
+		$(".idCard_div").hide();
+		}
+	})
+	
+	$("#seach_input").keydown(function(e){
+	    console.log(e.keyCode)
+	    if(e.keyCode==13){
+	    	search();
+	    }
+	 })			
+	$("#search_recruit").click(function(){
+		search();
+	}) 	
+	function search(){
+				var card_number=$("#seach_input").val();
+ 				var currentJob=$("input[name='currentJob']").val();
+ 				var checkbox="";
+ 				$('input[name="type"]:checked').each(function(){ 
+ 					checkbox=$(this).val(); 
+ 			    }); 
+ 				if(checkbox==1){
+ 					currentJob="";
+				if(!card_number){
+					layer.msg("请输入身份证号码查询");
+					return ;
+				}
+ 				}
+ 				if(checkbox==2){
+ 					card_number="";
+				if(!currentJob){
+					layer.msg("请输入公司名称查询");
+					return ;
+				}
+ 				}
+ 				console.log(card_number+"==="+currentJob);
+						$.ajax({
+							'url':"${base}/info/query_info$ajax.htm",
+							'type':"post",
+							'data':{'idCard':card_number,"currentJob":currentJob},
+						success:function(data){
+							console.log(data)
+							  var data = eval('(' + data + ')');
+								console.log(data.result)
+							if(data.result){
+								makeHtml(data,checkbox);
+							}else{ 
+								layer.msg(data.msg,{time:600});  
+							}
+						  }
+						}) 	
+			}
+	function ajaxPage(url,pageIndex,obj){
+		var card_number=$("#seach_input").val();
+			var currentJob=$("input[name='currentJob']").val();
+			var checkbox="";
+			$('input[name="type"]:checked').each(function(){ 
+				checkbox=$(this).val(); 
+		    }); 
+			if(checkbox==1){
+				currentJob="";
+		if(!card_number){
+			layer.msg("请输入身份证号码查询");
+			return ;
+		}
+			}
+			if(checkbox==2){
+				card_number="";
+		if(!currentJob){
+			layer.msg("请输入公司名称查询");
+			return ;
+		}
+			}
+		$.ajax({
+			'url':"${base}/info/query_info$ajax.htm",
+			'type':"post",
+			'data':{'idCard':card_number,"currentJob":currentJob,"pageIndex":pageIndex},
+		success:function(data){
+			console.log(data)
+			  var data = eval('(' + data + ')');
+				console.log(data.result)
+			if(data.result){
+				makeHtml(data,checkbox);
+			}else{ 
+				layer.msg(data.msg,{time:600});  
+			}
+		  }
+		}) 		
+	}
+	function makeHtml(data,checkbox){
+		console.log(data.resultList)
+		var re = "/([0-9]+/.[0-9]{2})[0-9]*/";
+		var reg = new RegExp("(\\d{4})(\\d{6})(\\d{4})");
+//			var sfzreg = new RegExp("(\\d{4})(\\d{10})(\\d{4})");
+		var sfzreg = new RegExp("(\\d{4})\\d*([0-9a-zA-Z]{4})");
+		if(data.resultList.length>0){
+			$("#idcard_result_div").empty();
+			$("#company_result_div").empty();
+			$(".idcard_div_page").empty();
+			$(".company_div_page").empty();
+
+			for (i = 0; i < data.resultList.length; i++) { 
+				var sex=data.resultList[i].strSex;
+				
+				var currentJob="";
+				var formerUnit="";
+				var xl="";
+				if(data.resultList[i].record){
+					xl=data.resultList[i].record;
+				}
+				if(data.resultList[i].currentJob){
+					currentJob=data.resultList[i].currentJob;
+				}
+				if(data.resultList[i].formerUnit){
+					formerUnit=data.resultList[i].formerUnit;
+				}
+				var updateTime="";
+				if(data.resultList[i].updateTime){
+					updateTime=data.resultList[i].updateTime;
+				}
+				
+				var html="<ul class='result_ul' style='overflow:hidden;list-style: none;'>"+
+				"<li style='width: 100px;display:none;' title='"+data.resultList[i].number+"'>"+data.resultList[i].number+"</li>"+
+				"<li style='width: 60px;' title='"+data.resultList[i].name+"'>"+data.resultList[i].name+"</li>"+
+				"<li style='width: 50px;' title='"+sex+"'>"+sex+"</li>"+
+				"<li  style='width: 100px;' title='"+data.resultList[i].idCard.replace(sfzreg, "$1****$2")+"'>"+data.resultList[i].idCard.replace(sfzreg, "$1****$2")+"</li>"+
+//					"<li style='width: 60px;' title='"+xl+"'>"+xl+"</li>"+
+				"<li style='width: 80px;' title='"+data.resultList[i].major+"'>"+data.resultList[i].major+"</li>"+
+				"<li class='hide_li' style='width: 100px;' title='"+data.resultList[i].trainTime+"'>"+data.resultList[i].trainTime+"</li>"+
+				"<li  style='width: 100px;' title='"+data.resultList[i].entTime+"'>"+data.resultList[i].entTime+"</li>"+
+				"<li  style='width: 100px;' title='"+currentJob+"'>"+currentJob+"</li>"+
+				"<li class='hide_li' style='width: 100px;' title='"+formerUnit+"'>"+formerUnit+"</li>"+
+				"<li class='hide_li' style='width: 100px;' title='"+updateTime+"'>"+updateTime+"</li>"+
+				"</ul>";
+				var chtml="<ul class='result_ul' style='overflow:hidden;list-style: none;'>"+
+				"<li style='width: 130px;display:none;' title='"+data.resultList[i].number+"'>"+data.resultList[i].number+"</li>"+
+				"<li style='width: 100px;' title='"+data.resultList[i].name+"'>"+data.resultList[i].name+"</li>"+
+				"<li style='width: 80px;' title='"+sex+"'>"+sex+"</li>"+
+				"<li  style='width: 130px;' title='"+data.resultList[i].idCard.replace(sfzreg, "$1****$2")+"'>"+data.resultList[i].idCard.replace(sfzreg, "$1****$2")+"</li>"+
+//					"<li style='width: 60px;' title='"+xl+"'>"+xl+"</li>"+
+				"<li style='width: 130px;' title='"+data.resultList[i].major+"'>"+data.resultList[i].major+"</li>"+
+				"<li  style='width: 120px;' title='"+data.resultList[i].entTime+"'>"+data.resultList[i].entTime+"</li>"+
+				"<li  style='width: 180px;' title='"+currentJob+"'>"+currentJob+"</li>"+
+				"</ul>";
+				
+			if(checkbox==1){
+				$("#idcard_result_div").append(html);
+ 			}
+				if(checkbox==2){
+				$("#company_result_div").append(chtml);
+				}
+				
+			 }
+			
+			$(".idcard_div_page").append(data.pageHtml);
+			$(".company_div_page").append(data.pageHtml);
+		}else{
+		layer.msg("没有查询到相关信息",{time:600},function(){
+			$("#idcard_result_div").html("<img src='../res/default/images/nodate.png' alt='' />");
+			$("#company_result_div").html("<img src='../res/default/images/nodate.png' alt='' />");
+		})
+			}		
+	}
+	</script>
+</body>
+</html>

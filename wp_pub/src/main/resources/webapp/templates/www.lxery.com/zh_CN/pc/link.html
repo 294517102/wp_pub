@@ -1,0 +1,11 @@
+<ul class="main_fifth_content clearfix">
+
+<#list Home.children! as h>
+<#if h_index==0>
+<#list h.articles! as ha>
+            <li class="main_fifth_content_list">${ha_index}<a href="${ha.url!}" target="_blank">${ha.title!}</a> </li>
+           </#list>
+           </#if>
+           </#list>
+
+        </ul>

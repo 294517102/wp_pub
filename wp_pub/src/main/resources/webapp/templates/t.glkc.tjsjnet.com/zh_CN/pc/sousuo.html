@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <#include "/${rp}/metalink.html">
+	<title>${webSet.title}</title>
+</head>
+	<header>
+		<#include "/${rp}/header.html">
+	</header>
+		<div class="suosou">
+			<div class="suosou_title">
+				<h2>搜索结果</h2>
+				<a class="goback">返回上一级</a>
+			</div>
+			<div class="suosou_sea">
+				<div class="seach_left">
+					<form action="" id="form">
+						<input type="text" id="text" class="cdtext" placeholder="请输入关键字" value="${k}">
+						<a id="btn1"></a>
+						<input type="button" value="搜索" id="btn2" class="cd">
+					</form>
+				</div>
+				<div class="suosou_text">
+					以下是关于<span>“${k}”</span>的搜索结果
+				</div>
+			</div>
+			<#if !pageIndex?? >  <#assign  pageIndex="1" > </#if>
+            <#assign pageList1 =  at.sr(k,pageIndex,999999)> 
+            <#assign pageList =  at.sr(k,pageIndex,8)> 
+            <#if pageList.list?size gt 0>
+            <#list pageList.list as r>
+			<div class="ss_lib">
+			    <#if r.column.keyword=='yi_yuan_gong_gao'||r.column.keyword=='yi_yuan_xin_wen'||r.column.keyword=='yuan_wu_gong_kai'||r.column.keyword=='ren_cai_zhao_pin'||r.column.keyword=='zhao_biao_gong_gao'||r.column.keyword=='xue_shu_dong_tai'||r.column.keyword=='mei_ti_ju_jiao'>
+				<a href="${cm.cp}go.htm?url=news_detail&id=${r.id}">
+			    <#elseif r.column.keyword='shi_pin_xin_wen'>
+			    <a href="${cm.cp}go.htm?url=news-videonewsDetail&id=${r.id}">
+			    <#elseif r.column.keyword='dang_qun_zi_xun'|| r.column.keyword='dang_feng_lian_zheng'|| r.column.keyword='ji_ceng_dang_jian'|| r.column.keyword='tuan_wei_gong_zuo'|| r.column.keyword='xue_xi_zi_liao'|| r.column.keyword='zhi_bu_dong_tai'>
+			    <a href="${cm.cp}go.htm?url=party-detail&id=${r.id}">
+			    <#elseif r.column.keyword='gong_zuo_dong_tai'||r.column.keyword='yuan_cheng_yi_xue'||r.column.keyword='zi_liao_xia_zai'>
+			    <a href="${cm.cp}go.htm?url=telfResearch-detail&id=${r.id}">
+			    <#elseif r.column.keyword='te_se_yi_liao'||r.column.keyword='jiu_yi_xu_zhi'||r.column.keyword='yi_liao_bao_xian'>
+			    <a href="${cm.cp}go.htm?url=medicalService-detail&id=${r.id}">
+			    <#elseif r.column.keyword='hu_li_zi_xun'>
+			    <a href="${cm.cp}go.htm?url=nursingScope-detail&id=${r.id}">
+			    <#elseif r.column.keyword='xun_yi_wen_zhen'||r.column.keyword='zhuan_jia_da_yi'>
+			    <a href="${cm.cp}go.htm?url=all_detail&id=${r.id}">
+				<#else>
+				<a>
+			    </#if>
+					<div class="ss_img">
+						<img src="<#if r.th.url??>${r.th.url}<#else>res/default/images/default_pic.png</#if>" alt="">
+					</div>
+					<div class="ss_sm">
+						<h2>${r.title}</h2>
+						<div class="time">
+						来源：${r.source} &emsp;发布时间：${r.issueTime?string('YYYY-MM-dd  HH:mm:ss')}
+						</div>
+						<div class="ss_text">
+						${r.desc}
+						</div>
+					</div>
+				</a >
+			</div>
+			</#list>
+            <div class="fenpage"> 
+                <div>${cm.page(req,pageIndex,pageList)}</div>
+            </div>
+            <#else>
+            <div class="tips">抱歉，暂无相关搜索内容</div>
+            </#if>
+		</div>
+
+	<footer>
+		<#include "/${rp}/footer.html">
+	</footer>
+</body>
+<script src="res/js/jquery-1.12.3.js"></script>
+<script src="res/js/xdlines.jquery.js"></script>
+<script>
+	$('.ss_text').xdlines({
+		max:2
+	});
+	$('.cd').on('click',function(){
+        var text=$('.cdtext').val().trim();
+        console.log(text)
+        if(text.length<1){
+            alert('请输入检索信息')
+        }else{
+            
+             window.open('${cm.cp}go.htm?url=sousuo&k='+text)
+        }
+    })
+    var key = ['RegExp','${k}','lastIndex'];
+    $('.ss_sm').each(function(){
+        $(this).find("h2").html( $(this).find("h2").html().replace(eval('/'+key.join("|")+'/g'),'<span style="color:#3eade8;">$&</span>'))
+        $(this).find(".ss_text").html( $(this).find(".ss_text").html().replace(eval('/'+key.join("|")+'/g'),'<span style="color:#3eade8;">$&</span>'))
+    })
+    	$('.goback').on('click',function(){
+		    window.history.go(-1)
+		})
+</script>
+</script>
+</html>

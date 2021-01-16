@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<#include "/${rp}/metalink.html">
+	<title>${webSet.title}</title>
+	<style>
+		.dq_active1{
+			display: inline-block;
+			height: 55px;
+			width: 56px;
+			color: #46c3f2;
+			font-size: 14px;
+			border-bottom: 2px solid #46c3f2;
+		}
+		#h4{
+			color: #46c3f2;
+			border-bottom: 2px solid #46c3f2;
+		}
+		.lc_nav li{
+		    cursor: pointer;
+		}
+		.lc_item{
+		    display: none;
+		}
+	    .lc_item:nth-of-type(1){
+	        display: block;
+	    }
+	</style>
+</head>
+<body>
+	<header>
+		<#include "/${rp}/header.html">
+	</header>
+	<div class="dangquangongzuo">
+        <#assign ck = cl.bk('lou_ceng_fen_bu')>
+		<div class="df_lb">
+			<div class="lc_weizhi">
+				当前位置：<a href="${cm.cp}">首页</a>><a>楼层导航</a>
+			</div>
+			<div class="df_lb_title">
+				<h4 style="height: 64px" id="h4">${ck.title}</h4>
+			</div>
+			<ul class="lc_nav">
+			    <#list ck.children as cc>
+				<li <#if cc_index==0>class="lc_active"</#if>><a>${cc.title}</a></li>
+				</#list>
+			</ul>
+			<div class="lc_tab">
+			    <#list ck.children as cd>
+				<div class="lc_item">
+					<div class="lc_text">
+						<div class="lc_mc" style="color:#3259f0;font-size:18px;font-weight:600;">${cd.title}</div>
+						<#list cd.children as ccd>
+						<div class="lc_con">
+						    <#if cd_index==1>
+						    <div style="color:#3259f0;font-size:16px;">${ccd_index+6}F</div>
+						    <#else>
+							<div style="color:#3259f0;font-size:16px;">${ccd_index+1}F</div>
+							</#if>
+							<div class="lc_sm">
+							 <#list at.bc(ccd) as a><span>${a.title}、&emsp;</span></#list>
+							
+						    </div>
+						</div>
+						</#list>
+					</div>
+				</div>
+				</#list>
+			</div>
+		</div>
+				
+
+				
+	<footer>
+		<#include "/${rp}/footer.html">
+	</footer>
+</body>
+<script src="res/js/jquery-1.12.3.js"></script>
+<script src="res/js/xdlines.jquery.js"></script>
+<script>
+		$('.ks_sm').xdlines({
+			max:4
+		});
+        $('.lc_nav').on('click','li',function(){
+            var _this=this;
+            $(_this).addClass('lc_active').siblings('li').removeClass('lc_active');
+            var i=$(_this).index();
+            $('.lc_item').eq(i).show().siblings('.lc_item').hide();
+        })
+        
+</script>
+</html>

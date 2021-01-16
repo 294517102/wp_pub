@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>新增医生</title> 
+<#include "/include/bg/in_head_res.html">
+     <style type="text/css">
+ 	.uploadeyu{
+ 		display:inline-block;
+ 		width:90px;
+ 		height:90px;
+ 		overflow:hidden;
+ 		background-color:#eee;
+ 		text-align:center;
+ 		cursor: pointer;
+ 	}
+ 	.uploadeyu>p:nth-of-type(1){
+ 		line-height:90px;
+ 		font-size:40px
+ 	}
+ 	.uploadeyu>img{
+ 		min-width:100%;
+ 		height:100%;
+ 	}
+ 	.img-lable{
+ 		height:100px !important;
+ 		line-height:85px !important;
+ 	}
+ 	.img-hint{
+ 		font-size:12px;
+ 		color: red
+ 	}
+ 	.layui-form-item{
+ 		margin-bottom:8px;		
+ 	}
+ 
+ 	.layui-upload-list img{
+ 	vertical-align: initial!important;
+ 	}
+/*  	预览图片的box */
+ 	.pic_box{
+ 		float:left;
+ 		position:relative;
+ 		max-width:100px;
+ 		max-height:100px;
+ 		margin-right: 12px;
+ 		overflow: hidden;
+ 	}
+ 	.pic_box img{
+ 	display:block;
+ 	width:100%;
+ 	}
+/*  	图片删除的小图标 */
+ 	.del_pic{
+ 	    position: absolute;
+	    top: 0px;
+	    right: 0px;
+	    width: 20px;
+	    height: 20px;
+	    z-index: 999;
+   		cursor: pointer;
+    }
+ </style>
+</head>
+<body class="inner-body clear">
+	<div class="layui-container bg_white" style="width: 100%;padding:10px">
+	<form class="layui-form layui-form-pane " action="" id="column_form"
+		onsubmit="return false">
+		<input type="hidden" value="${doctor.id}" name="id"> 
+		<input type="hidden" value="-1" name="isShow"> 
+			 <div class="layui-form-item ">
+			 <div class="layui-col-md4">
+				<label class="layui-form-label"><span style="color: red">*</span>医生名称</label>
+				<div class="layui-input-inline">
+					<input type="text" name="name" lay-verify="required"
+						placeholder="请输入医生名称" value="${doctor.name}" autocomplete="off" class="layui-input" >
+				</div>
+			</div>
+			<div class="layui-col-md4" >
+				<label class="layui-form-label">职称</label>
+				<div class="layui-input-inline">
+						<select  class="layui-select"  name="positions" lay-verify="required">
+						<#if posList?? &&posList?size gt 0>
+							<option value="">请选择</option>
+							<#list posList as c>
+								<option value="${c.id}" <#if doctor.position??&& doctor.position.id==c.id>  selected="selected" </#if> >${c.name}</option> 
+							</#list>
+						</#if>
+					</select>
+				</div>
+			</div>	
+			<div class="layui-col-md4 ">
+				<label class="layui-form-label">级别</label>
+				<div class="layui-input-inline">
+					<select name="level">
+						<option value="">请选择</option> 
+						<option value="一级专家" <#if doctor.level="一级专家"> selected="selected" </#if> >一级专家</option>
+						<option value="二级专家" <#if doctor.level="二级专家"> selected="selected" </#if> >二级专家</option>
+						<option value="三级专家" <#if doctor.level="三级专家"> selected="selected" </#if> >三级专家</option>
+						<option value="四级专家" <#if doctor.level="四级专家"> selected="selected" </#if> >四级专家</option>
+					</select>
+				</div>
+			</div>
+			</div>
+			<div class="layui-form-item">
+			<div class="layui-col-md4 ">
+				<label class="layui-form-label">所属科室</label>
+				<div class="layui-input-inline">
+					<select name="columnid" lay-verify="required">
+						<#if columnList?? &&columnList?size gt 0>
+							<#list columnList as c>
+								<option value="${c.id}" <#if doctor.column.id==c.id>  selected="selected" </#if> >${c.title}</option> 
+							</#list>
+						</#if>
+					</select>
+				</div>
+				</div>
+			<div class="layui-col-md4 ">
+			    <label class="layui-form-label">是否专家</label>
+			    <div class="layui-input-inline">
+			      <input type="radio" name="isMavin" value="1" title="是" checked="checked"  >
+			      <input type="radio" name="isMavin" value="2" title="否" <#if doctor.isMavin==2>checked="checked" </#if> >
+			    </div>
+			 </div>
+			<div class="layui-col-md4 ">
+			    <label class="layui-form-label">院内外</label>
+			    <div class="layui-input-inline">
+			      <input type="radio" name="type" value="-1" title="院内" checked="checked" >
+			      <input type="radio" name="type" value="1" title="院外" <#if doctor.type==1>checked="checked" </#if> >
+			    </div>
+			 </div>
+  		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">专业、特长</label>
+			<div class="layui-input-block">
+				<input type="text" name="speciality" placeholder="请输入医生专业、特长" value="${doctor.speciality}" autocomplete="off" class="layui-input" >
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<div class="layui-col-md4 ">
+			<label class="layui-form-label">排序</label>
+			<div class="layui-input-inline">
+				<input type="text" name="sequence" lay-verify="required"
+						placeholder="预留字段" value="${doctor.sequence!'1'}" autocomplete="off" class="layui-input" >
+			</div>
+			
+			</div>
+		<div class="layui-col-md4 ">
+			<label class="layui-form-label">备注</label>
+			<div class="layui-input-block">
+				<input type="text" name="remark" 			placeholder="预留字段" value="${doctor.remark}" autocomplete="off" class="layui-input" >
+			</div>
+			</div>
+			
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label"  style="height:100px;line-height: 87px">医生描述</label>
+			<div class="layui-input-block">
+				<textarea placeholder="请输入医生描述" class="layui-textarea" name="describes">${doctor.describes}</textarea>
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">头像上传</label>
+
+			  <input type="hidden" name="pic_id" id="pic_id">
+    		 <div class="layui-input-block" style="padding-left:12px">
+    		 <#if doctor.accessory ??>
+			    <div id="test1">
+			    <img  class="layui-upload-img" style="width: 90px;height: 90px;"  src="${(doctor.accessory.url)!''}">
+			     <p id="demoText"></p>
+			    </div>
+    		 <#else>
+     			<label for="upload" class="uploadeyu"  id="test1">
+	   			 <p>+</p>
+				</label>
+			</#if>
+			<p class=".img-hint">点击图片修改</p>
+			<button type="button" class="layui-btn layui-bg-blue" id="upload_1" style="position: absolute;left: 123px;top: 0px;"><i class="layui-icon">&#xe681;</i>上传文件</button>
+			</div>
+
+
+		</div>
+
+		<div style="text-align: center; vertical-align: bottom;">
+			<button class="layui-btn" lay-submit lay-filter="form_column">保存</button>
+			<button class="layui-btn layui-btn-danger cancel">取消</button>
+		</div>
+	</form>
+	</div>
+	<#include "/include/bg/in_bottom_res.html">
+	<script type="text/javascript">
+
+$(function(){
+    //注意进度条依赖 element 模块，否则无法进行正常渲染和功能性操作
+    var form = layui.form,laydate = layui.laydate;
+    
+layui.use('upload', function(){
+  var $ = layui.jquery
+  ,upload = layui.upload;
+  
+  //普通图片上传
+  var uploadInst = upload.render({
+	    elem: '#test1'
+	    ,url: '${base}/upload/uploadImgByAccessory.htm?type=client'
+	    ,auto: false
+	 	,size: 3000
+	 	,accept: "file"
+	 	,bindAction: '#upload_1'
+	 	,choose: function(obj){
+		    	 obj.preview(function(index, file, result){
+		    		   $("#test1").html("<img src='" + result + "'/>");
+		          });
+		    }
+	    ,before: function(obj){
+	      //预读本地文件示例，不支持ie8
+	      obj.preview(function(index, file, result){
+	    	  $("#test1").html("<img src='" + result + "'/>");
+	      });
+	    }
+	    ,done: function(res){
+	    	if(res.result){
+			    var files = res.data;
+			    for(var i=0;i<files.length;i++){
+			    	var name = files[i].name;
+			    	var url = files[i].url;
+			    	var id = files[i].acyId;
+			    	$("#pic_id").val(id);
+			    }
+	        return layer.msg(res.resultMsg);
+	    	}else{
+	        return layer.msg('上传失败');
+	    		
+	    	}
+	      //如果上传失败
+	      if(res.code > 0){
+	        return layer.msg('上传失败');
+	      }
+	    }
+	    ,error: function(){
+	      //演示失败状态，并实现重传
+	      var demoText = $('#demoText');
+	      demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
+	      demoText.find('.demo-reload').on('click', function(){
+	        uploadInst.upload();
+	      });
+	    }
+	  });
+  
+});
+    //监听提交
+    form.on('submit(form_column)', function(data){
+    	var params = $("#column_form").serializeObject();
+    	console.log(JSON.stringify(params));
+    	$.postJSON("admin/doctor/doctor_add$ajax.htm",params,function(data){
+    			layer.msg(data.resultMsg);
+    		if(data.result==true){
+    			parent.location.reload();
+    			closeWindow();
+    		}
+    	}); 
+    	
+        return false;
+    });
+})
+ $(".cancel").click(function(){
+ 	closeWindow();
+ });
+</script>
+
+
+</body>
+</html>

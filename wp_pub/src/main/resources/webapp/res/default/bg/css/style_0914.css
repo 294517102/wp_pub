@@ -1,0 +1,841 @@
+.layui-nav .layui-nav-more {
+	content: '';
+	width: 0;
+	height: 0;
+	border-style: solid dashed dashed;
+	border-color: #c2c2c2 transparent transparent;
+	overflow: hidden;
+	cursor: pointer;
+	transition: all .2s;
+	-webkit-transition: all .2s;
+	position: absolute;
+	top: 20px;
+	right: 25px;
+	border-top: 6px solid transparent;
+	border-left: 6px solid white;
+	border-bottom: 6px solid transparent;
+}
+#test .layui-nav .name >.layui-nav-more{
+	top: 23px;
+	right: -5px;
+}
+.infor-list-title li,
+thead {
+	height: 34px!important;
+	font-size: 14px;
+}
+
+.infor-list li,
+td {
+	font-size: 12px!important;
+}
+
+.box_title,
+.inf_title,
+.layui-form-pane .layui-form-label,
+.up_dic.up_noborder {
+	color: #353535!important;
+}
+
+.layui-input {
+	color: #151515!important;
+}
+
+.layui-input-block {
+	margin-left: 0;
+	text-align: center;
+}
+
+.layui-nav .layui-nav-mored,
+.layui-nav-itemed .layui-nav-more {
+	content: '';
+	width: 0;
+	height: 0;
+	border-style: solid dashed dashed;
+	border-color: white transparent transparent;
+	overflow: hidden;
+	cursor: pointer;
+	transition: all .2s;
+	-webkit-transition: all .2s;
+	position: absolute;
+	border-width: 6px;
+}
+
+.inforList ul li {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+
+/* my style */
+
+.layui-header {
+	background: none;
+}
+
+.my-header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 70px;
+	background: #BCCFE0;
+	z-index: 2;
+}
+
+.my-header .my-header-logo {
+	display: inline-block;
+	width: auto;
+	height: 30px;
+	color: white;
+	font-size: 18px;
+	line-height: 30px;
+	padding: 15px;
+	vertical-align: top;
+}
+
+.my-header img.my-header-logo {
+	width: 150px;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	padding: 10px;
+	border: none;
+}
+
+.my-header-user-nav {
+	float: right;
+}
+
+.my-header-user-nav img {
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	border: none;
+	border-radius: 5px;
+}
+
+.my-header-user-nav .layui-nav-item a.name {
+	padding-left: 5px !important;
+}
+
+.my-header ul.layui-nav {
+	display: inline-block;
+	vertical-align: top;
+	border-radius: 0;
+}
+
+.my-side {
+	position: fixed;
+	top: 60px;
+	bottom: 0;
+	width: 200px;
+	z-index: 2;
+	overflow-x: hidden;
+}
+
+.my-side .layui-nav {
+	border-radius: 0;
+	min-height: 100%;
+}
+
+.my-side ul.layui-nav li a i {
+	margin-right: 5px;
+}
+
+.my-body {
+	position: fixed;
+	top: 60px;
+	bottom: 0;
+	left: 250px;
+	right: 0;
+	z-index: 1;
+	overflow: hidden;
+}
+
+.body {
+	padding: 10px;
+	background-color: white;
+}
+
+.inner-body {
+	padding: 10px;
+	background-color: #f2f2f2;
+}
+
+.my-body .layui-tab,
+.my-body .layui-tab .layui-tab-content {
+	margin: 0;
+	padding: 0;
+}
+
+.my-body .layui-tab .layui-tab-title li:first-child i {
+	display: none;
+}
+
+.my-body .layui-tab,
+.my-body .layui-tab .layui-tab-content,
+.my-body .layui-tab .layui-tab-item {
+	height: 100%;
+}
+
+.my-body iframe {
+	width: 100%;
+	height: 92%;
+	border: none;
+	outline: none;
+}
+
+.layui-footer p {
+	height: 22px;
+	line-height: 22px;
+	text-align: center;
+}
+
+.my-btn-box {
+	height: 38px;
+	margin-bottom: 10px;
+}
+
+.my-pay-box>div p {
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+
+/* login */
+
+.login-body {
+	background: url("../image/bg.png") repeat fixed;
+}
+
+.login-box {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	width: 320px;
+	height: 241px;
+	max-height: 300px;
+}
+
+.login-body .login-box h3 {
+	color: #444;
+	font-size: 22px;
+	text-align: center;
+}
+
+.login-box .layui-input[type='number'] {
+	display: inline-block;
+	width: 50%;
+	vertical-align: top;
+}
+
+.login-box img {
+	display: inline-block;
+	width: 46%;
+	height: 38px;
+	border: none;
+	vertical-align: top;
+	cursor: pointer;
+	margin-left: 4%;
+}
+
+.login-box button.btn-reset {
+	width: 95px;
+}
+
+.login-box button.btn-submit {
+	width: 190px;
+}
+
+
+/* demo */
+
+.site-demo-button div {
+	margin: 20px 30px 10px;
+}
+
+.site-demo-button .layui-btn {
+	margin: 0 7px 10px 0;
+}
+
+
+/* check */
+
+input[type='checkbox'] {
+	vertical-align: middle;
+}
+
+.my-checkbox {
+	-webkit-appearance: none;
+	position: relative;
+	width: 20px;
+	height: 20px;
+	background-color: #FFFFFF;
+	border: solid 2px #28B779;
+	border-radius: 2px;
+	background-clip: padding-box;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.my-checkbox:checked {
+	background-color: #28B779;
+	border: solid 0 #28B779;
+}
+
+.my-checkbox:checked:before {
+	position: absolute;
+	display: inline-block;
+	right: 50%;
+	bottom: 50%;
+	-webkit-transform: translate(50%, 50%);
+	-ms-transform: translate(50%, 50%);
+	transform: translate(50%, 50%);
+	font-family: "Microsoft Yahei";
+	content: "√";
+	color: #FFFFFF;
+	font-size: 16px;
+	font-weight: 600;
+}
+
+
+/* table */
+
+.dataTables_length,
+.dataTables_filter,
+.dataTables_info,
+.dataTables_paginate {
+	margin-bottom: 10px;
+	display: inline-block;
+}
+
+.dataTables_length,
+.dataTables_info {
+	float: left;
+}
+
+.dataTables_filter,
+.dataTables_paginate {
+	float: right;
+}
+
+.dataTables_length select,
+.dataTables_filter input[type=search] {
+	width: 100px;
+	height: 30px;
+	border: 1px solid #ccc;
+	padding: 0 5px;
+	display: inline-block;
+}
+
+.dataTables_paginate span,
+.dataTables_paginate a.paginate_button {
+	border-radius: 2px;
+	cursor: pointer;
+}
+
+.dataTables_paginate a,
+.dataTables_paginate>span>span {
+	box-sizing: border-box;
+	display: inline-block;
+	min-width: 2em;
+	height: 30px;
+	line-height: 28px;
+	border: 1px solid transparent;
+	padding: 0 0.5em;
+	margin-left: 2px;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.dataTables_paginate span a.current,
+.dataTables_paginate a.paginate_button:hover {
+	color: white;
+	background: #009688;
+}
+
+.dataTables_length select {
+	width: 60px;
+	border-radius: 2px;
+}
+
+table.dataTable tbody tr.even {
+	background: #f2f2f2;
+}
+
+table.dataTable tbody tr.selected {
+	background: #eeeeee;
+}
+
+table.dataTable tr td:first-child,
+table.dataTable tr th:first-child {
+	width: 20px;
+}
+
+table.dataTable thead .sorting_asc {
+	background-image: url("../image/sort_asc.png");
+}
+
+table.dataTable thead .sorting_desc {
+	background-image: url("../image/sort_desc.png");
+}
+
+table.dataTable thead .sorting {
+	background-image: url("../image/sort_both.png");
+}
+
+table.dataTable thead .sorting,
+table.dataTable thead .sorting_desc,
+table.dataTable thead .sorting_asc {
+	background-repeat: no-repeat;
+	background-position: center right;
+}
+
+
+/* tips 404 */
+
+.my-page-box {
+	font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", FontAwesome, sans-serif;
+	text-align: center;
+	padding: 20px;
+	background-color: white;
+}
+
+.my-page-box i {
+	font-size: 100px;
+}
+
+.my-page-box h2,
+.my-page-box h3,
+.my-page-box h4,
+.my-page-box h5 {
+	font-size: 80px;
+}
+
+.my-page-box p.msg {
+	color: #dce2ec;
+	font-size: 20px;
+	margin-top: 20px;
+}
+
+.my-page-box p.text {
+	color: #666;
+	font-size: 16px;
+	margin-top: 20px;
+}
+
+.my-page-box .my-btn-box {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+
+/* tree table */
+
+.my-tree-table-box .tree-table-tree-box {
+	width: 20%;
+	min-height: 200px;
+	display: inline-block;
+	/*outline: 1px solid #ccc;*/
+	vertical-align: top;
+	overflow-y: auto;
+	overflow-x: auto;
+}
+
+.my-tree-table-box .tree-table-table-box {
+	display: inline-block;
+	vertical-align: top;
+	width: 79%;
+	margin-left: 1%;
+}
+
+
+/* tools */
+
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+
+.none {
+	display: none;
+}
+
+.block {
+	display: block;
+}
+
+
+/* media */
+
+@media screen and (max-width: 1023px) {
+	.my-header ul.layui-nav,
+	.my-side,
+	.layui-field-title,
+	.my-btn-box .fr {
+		display: none;
+	}
+	.layui-side-scroll {
+		width: 170px;
+	}
+	body div.my-mobile {
+		background: #393D49;
+	}
+	body div.my-mobile .layui-layer-content {
+		overflow-x: hidden;
+	}
+	.my-header ul.my-header-user-nav {
+		display: inline-block;
+		padding-left: 0;
+		padding-right: 10px;
+	}
+	.my-header ul.my-header-user-nav a {
+		padding: 0 10px;
+	}
+	.my-header ul.my-header-user-nav:last-child a:first-child {
+		padding-right: 20px;
+	}
+	.my-side,
+	.layui-nav-tree,
+	.my-btn-box input[type='text'] {
+		width: 150px;
+	}
+	.my-body {
+		left: 0;
+		width: 100%;
+		overflow-x: auto;
+	}
+	.my-body iframe {
+		width: 100%;
+	}
+	select {
+		background: white;
+	}
+	.layui-layout-admin .layui-footer {
+		left: 0;
+	}
+}
+
+.pageBotton {
+	padding: 20px;
+	text-align: right;
+	margin-top: 0px;
+}
+
+.pageBotton a.curr {
+	background-color: #009688;
+	color: white;
+}
+
+.bc_color {
+	background: #eee;
+}
+
+.search-way {
+	background: #fff;
+	padding: 15px 10px;
+	margin-bottom: 10px;
+}
+
+.content_main {
+	background: #fff;
+	padding: 10px;
+}
+
+.pad_right {
+	padding-right: 4.5%;
+}
+
+
+/* 整合1 2017/8/29 */
+
+
+/*接口编辑*/
+
+.noLeftMargin {
+	margin-left: 0!important;
+}
+
+.search-way-name {
+	text-align: right;
+	padding-right: 5%;
+}
+
+.search-way-input {
+	width: 70%;
+}
+
+th,
+td {
+	text-align: center!important;
+}
+
+.search-btn {
+	margin: 15px 0;
+}
+
+.service-edit-layer {
+	/*display: none;*/
+}
+
+.layui-layer-content {
+	padding: 0 20px;
+}
+
+.layui-layer-btn {
+	text-align: center!important;
+}
+
+.service-edit-layer-list {
+	width: 50%;
+	float: left;
+	height: 40px;
+	line-height: 40px;
+	margin-bottom: 15px;
+}
+
+.handel-btns .layui-unselect {
+	margin-top: 0;
+}
+
+
+/*服务编辑*/
+
+.noLeftMargin {
+	margin-left: 0!important;
+}
+
+.search-way-name {
+	text-align: right;
+	padding-right: 5%;
+}
+
+.search-way-input {
+	width: 70%;
+}
+
+th,
+td {
+	text-align: center!important;
+}
+
+.search-btn {
+	margin: 15px 0;
+}
+
+.service-edit-layer {
+	/*display: none;*/
+}
+
+.layui-layer-content {
+	padding: 0 20px;
+}
+
+.layui-layer-btn {
+	text-align: center!important;
+}
+
+.service-edit-layer-list {
+	width: 50%;
+	float: left;
+	height: 40px;
+	line-height: 40px;
+	margin-bottom: 15px;
+}
+
+
+/*hellow*/
+
+.edit-form {
+	margin-left: 0;
+	background: #ffffff;
+}
+
+.noLeftMargin {
+	margin-left: 0!important;
+}
+
+.output-box {
+	height: 150px;
+	background: #ffffff;
+	border: 1px solid #e2e2e2;
+	overflow-y: scroll;
+	padding: 10px;
+}
+
+.layui-layedit-iframe {
+	height: 170px;
+}
+
+.output-time {
+	height: 26px;
+	line-height: 26px;
+	font-size: 14px;
+	margin-top: 10px;
+}
+
+.output-time-box {
+	height: 24px;
+	width: 50px;
+	border: 1px solid #ccc;
+	background: #ffffff;
+	margin: 0 10px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+
+/*接口编辑弹窗*/
+
+.search-way-list {
+	width: 18%;
+	float: left;
+	height: 40px;
+	line-height: 40px;
+}
+
+.noLeftMargin {
+	margin-left: 0!important;
+}
+
+.search-way-name {
+	text-align: center;
+	padding-right: 5%;
+}
+
+.search-way-input {
+	width: 60%;
+}
+
+th,
+td {
+	text-align: center!important;
+}
+
+.search-btn {
+	margin: 15px 0;
+}
+
+.layui-layer-content {
+	padding: 0 20px;
+}
+
+.layui-layer-btn {
+	text-align: center!important;
+}
+
+.service-edit-layer-list {
+	width: 50%;
+	float: left;
+	height: 40px;
+	line-height: 40px;
+	margin-bottom: 15px;
+}
+
+.handel-btns .layui-unselect {
+	margin-top: 0;
+}
+
+
+/* 整合2 2017-8-29 */
+
+ol,
+ul {
+	list-style: none;
+}
+
+blockquote,
+q {
+	quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/*清除报头必用，clearfix在header上面*/
+
+.clear:before,
+.clear:after {
+	content: "";
+	display: table;
+}
+
+.clear:after {
+	clear: both;
+}
+
+.clear {
+	zoom: 1;
+}
+
+
+/*input去掉选中框*/
+
+input {
+	outline: none;
+}
+
+
+/*CSS不可选择*/
+
+
+/*body{
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}*/
+
+
+/*文字选中背景颜色*/
+
+::selection {
+	color: rgba(255, 255, 255, 0.9);
+	background: rgba(241, 90, 35, 0.9);
+	text-shadow: none;
+}
+
+::-moz-selection {
+	color: rgba(255, 255, 255, 0.9);
+	background: rgba(241, 90, 35, 0.9);
+	text-shadow: none;
+}
+
+a,
+a:hover,
+a:visited,
+a:link,
+a:active {
+	text-decoration: none;
+	cursor: pointer;
+}
+
+textarea {
+	resize: none;
+}
+
+*:focus {
+	outline: none;
+}

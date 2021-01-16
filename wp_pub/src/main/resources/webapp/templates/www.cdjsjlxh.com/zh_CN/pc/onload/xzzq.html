@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <#include "/${rp}/include/link.html">
+    
+</head>
+<body>
+<#include "/${rp}/include/header.html">
+<content>
+    <div class="ny">
+        <div class="ny_local bb">
+            <div class="width1200 ny_locala">
+                <a href="/index.html"><img class="home" src="../res/default/images/home.png" alt=""></a>
+                <#if pCol.children??>
+                <img class="dbx" src="../res/default/images/dbx.png" alt="">
+                <a href="${pCol.children[0].url!}">${pCol.title!}</a>
+                </#if>
+                <img class="dbx" src="../res/default/images/dbx.png" alt="">
+                <a >${sCol.title!}</a>
+            </div>
+        </div>
+        <div class="ny_con width1200">
+            <div class="ny_left fl">
+                <#include "/${rp}/include/ny_left.html">
+            </div>
+            <div class="ny_right fr">
+                <div class="minheight">
+                    <#if !pageIndex?? >  <#assign  pageIndex="1" > </#if>
+                    <#assign pageList= at.bc(sCol,pageIndex,9)> 
+                    <#if pageList.list?size gt 0>
+                    <#list pageList.list?sort_by('issueTime')?reverse as a>
+                    <div class="hy_list xz_list bb hvr-underline-from-left">
+                        <span class="hy_yuan"></span>
+                        <span class="hy_t textover">${a.title!}</span>
+                        <span class="hy_time fr">
+                            <span class="xzcs">下载次数：${a.viewTimes}</span>
+                            <span class="xz_s"></span>
+                            <a href="${a.th.ourl!}" onclick="seepdf('${a.id}')" class="xz_xz">点击下载</a>
+                        </span>
+                    </div>
+                    </#list>
+                    <#else>
+                     <div class="nodeta">
+                        <img src="../res/default/images/nodate.png" alt="" />
+                    </div>
+                     </#if>
+                     
+                </div>
+                <div style="clear: both"></div>
+                 <#if pageList.list?? && pageList.list?size gt 0>
+                <div class="sx_fenye">${cm.page(req,pageIndex,pageList)}</div>
+                </#if>
+            </div>
+            <div style="clear: both"></div>
+        </div>
+    </div>
+</content>
+<#include "/${rp}/include/footer.html">
+<#include "/${rp}/include/script.html">
+<script>
+   function seepdf(id){
+             $.ajax({
+             type: "post",
+             url: "/go.htm?url=view_times&id="+id,
+             dataType: "json",
+             success: function(data){
+                       if(data.result){
+                           var t=setTimeout(function(){
+                             window.location.reload();
+                           },1000)
+                       }
+             }
+           })
+   } 
+</script>
+</body>
+</html>

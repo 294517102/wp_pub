@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<items>
+  <item url="/welcome" template="site.welcome.ascx" />
+  <item url="/*/" template="channel.index.ascx" />
+  <item url="/*/detail" template="channel.detail.ascx" />
+  <item url="/zgsjs/*/" template="PicListA.ascx" />
+  <item url="/lddt/" template="LeaderPic.ascx" />
+</items>

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<base href="${base}/" />
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>中文栏目</title>
+    <link rel="stylesheet" href="res/default/bg/js/frame/layui/css/layui.css">
+    <link rel="stylesheet" href="res/default/bg/css/rolemanager.css">
+    <link rel="stylesheet" href="res/default/bg/css/informationadd.css">
+    <link rel="stylesheet" href="res/default/bg/js/frame/laydate/laydate.css">
+    <!-- <link rel="stylesheet" href="res/default/bg/css/style_02.css"> -->
+    <link rel="stylesheet" href="res/default/bg/css/style_0914.css">
+    <link rel="icon" href="res/default/bg/image/code.png">
+    <link rel="stylesheet" href="res/default/bg/css/index.css">
+    <link rel="stylesheet" href="res/default/bg/css/main.css">
+     <#include "/include/bg/in_head_res.html">
+       <style>
+        .layui-input{
+            border:0;
+            color: #b5b5b5;
+            padding:0;
+            height:30px;
+        }
+        .layui-form-select .layui-edge{
+            right:15px;
+        }
+    </style>
+    
+</head>
+<body class="body clear china_programa_page">
+<div class="mac china_programa_page">
+    <section>
+        <div class="for_search" style="margin-bottom: 18px;background: #fff;padding: 19px 10px; -webkit-border-radius: 3px; -moz-border-radius: 3px;border-radius: 3px;">
+            <input type="text" name="keywords" required lay-verify="required" placeholder="关键字" autocomplete="off" class=" layui-input laydate-time" style="width: 151px;float: left;margin-right: 11px;border:0;  color: #b5b5b5; padding:0; height:38px;border: 1px solid #b5b5b5;">
+            <input type="text" name="StartTime" required lay-verify="required" placeholder="开始日期" autocomplete="off" class=" time layui-input" onclick="laydate()" style="width: 151px;float: left;margin-right: 11px;border:0;  color: #b5b5b5; padding:0; height:38px;border: 1px solid #b5b5b5;" >
+            <input type="text" name="EndTime" required lay-verify="required" placeholder="截止日期" autocomplete="off" class=" layui-input" onclick="laydate()" style="width: 151px;float: left;margin-right: 11px;border:0;  color: #b5b5b5; padding:0; height:38px;border: 1px solid #b5b5b5;">
+            <button onclick="searchs()" class="layui-btn">查找</button>
+            <!-- <button class="layui-btn">导出</button>
+            <button class="layui-btn">导入</button> -->
+        </div>
+        <form  class="layui-form china_programa_form">
+            <div class="china_programa_btn_group site-demo-button">
+                <a href="admin/column/to_column_add.htm?url=cms/column/column_add" data-type="tabAdd" class="site-demo-active layui-btn    "><i class="layui-icon">&#xe608;</i>&nbsp;添加</a>
+                <a onclick="makeAll('确定要禁用选中的数据吗?',2);" class="layui-btn  btns_handel  btn-no-use"><i class="layui-icon">&#xe610;</i>&nbsp;禁用</a>
+                <a onclick="makeAll('确定要删除选中的数据吗?',1);" class="layui-btn  btns_handel layui-btn-danger btn-del-global"><i class="layui-icon">&#xe640;</i>&nbsp;删除</a>
+            </div>
+            
+            <div class="inforList">
+                <ul class="infor-list-title">
+                    <li>
+                        <input class="checkbox-chioce" type="checkbox" name="" lay-skin="primary" lay-filter="allChoose">
+                    </li>
+                    <li>序号</li>
+                    <li>栏目名称</li>
+                    <li>关键字</li>
+                    <li>测试地址</li>
+                    <li>发布时间</li>
+                    <li>栏目描述</li>
+                    <li>状态</li>
+                    <li>操作</li>
+                </ul>
+                    <#if resultList??>
+                                <!-- 开始循环 -->             
+                               <#list resultList! as column>
+                                <ul class="infor-list">
+                                    <li><input class="checkbox-chioce" type="checkbox" name="ids" lay-skin="primary" value="${column.id}"></li>
+                                    <li >${column.id}</li>
+                                    <li ><#if !column.title??>无记录<#else>${column.title!}</#if></li>
+                                    <li ><#if !column.keyword??>无记录<#else>${column.keyword!}</#if></li>
+                                    <li ><#if !column.url??>无记录<#else>${column.url!}</#if> </li>
+                                    <li ><#if !column.datatime??>无记录<#else>${(column.datatime?string("yyyy-MM-dd"))!''}</#if></li>
+		                            <li ><#if !column.describes??>无记录<#else>${column.describes!}</#if></li>
+                                    <li onclick="disable('${column.id?c!}','${column.title!}',2)">
+                                    <#if (column.state!)=0>
+                                    <input type="checkbox" checked="" name="state" lay-skin="switch" lay-filter="switchTest" lay-text="启用|禁用" value="0" />
+                                    
+                                    <#else>
+                                    <input type="checkbox" name="state" lay-skin="switch" lay-text="启用|禁用" value="1" />
+                                    </#if>
+                                    </li>
+                                    <li style="text-align: left;margin-left:4px">
+                                        <!-- <a class="layui-btn layui-btn-mini   btn-add-child"><i class="layui-icon">&#xe610;</i>&nbsp;添加子分类</a> -->
+				                        <a onclick="editColumn('${column.id?c!}');" class="layui-btn  layui-btn-small"><i class="layui-icon">&#xe608;</i>&nbsp;编辑</a>
+				                        <a onclick="delColumn('${column.id?c!}','${column.title!}',1)" class="layui-btn layui-btn-small layui-btn-danger del-child-list"><i class="layui-icon">&#xe640;</i>&nbsp;删除</a>
+                                   		<#if column.children?size gt 0>
+						                 <button class="layui-btn layui-btn-mini btn-no-bg show-child-list">展开</button>
+						                </#if>
+                                    </li>
+                                    </ul>
+                                    <#if column.children?size gt 0>
+                                    	<@column_list c2=column />
+                             		</#if>
+                             </#list>
+                    </#if>
+            </div>
+            <#macro column_list c2>
+            	<div class="second-list-box">
+                                    	<#list c2.children as cc>
+                                    	<ul class="infor-list infor-list-second">
+                                    		<li><input class="checkbox-chioce" type="checkbox" name="ids" lay-skin="primary" value="${cc.id}"></li>
+		                                    <li >${cc.id}</li>
+		                                    <li ><#if !cc.title??>无记录<#else>${cc.title!}</#if></li>
+                                   			 <li ><#if !cc.keyword??>无记录<#else>${cc.keyword!}</#if></li>
+		                                    <li ><#if !cc.url??>无记录<#else>${cc.url!}</#if> </li>
+		                                     <li ><#if !cc.datatime??>无记录<#else>${(cc.datatime?string("yyyy-MM-dd"))!''}</#if></li>
+				                            <li ><#if !cc.describes??>无记录<#else>${cc.describes!}</#if></li>
+		                                    <li onclick="disable('${cc.id?c!}','${cc.title!}',2)">
+		                                    <#if (cc.state!)=0>
+		                                    <input type="checkbox" checked="" name="state" lay-skin="switch" lay-filter="switchTest" lay-text="启用|禁用" value="0" />
+		                                    <#else>
+		                                    <input type="checkbox" name="state" lay-skin="switch" lay-text="启用|禁用" value=1 />
+		                                    </#if>
+		                                    </li>
+		                                    <li style="text-align: left;margin-left:4px">
+		                                       <!--  <a class="layui-btn layui-btn-mini   btn-add-child"><i class="layui-icon">&#xe610;</i>&nbsp;添加子分类</a> -->
+						                        <a onclick="editColumn('${cc.id?c!}');" class="layui-btn  layui-btn-small"><i class="layui-icon">&#xe608;</i>&nbsp;编辑</a>
+						                        <a onclick="delColumn('${cc.id?c!}','${cc.title!}',1)" class="layui-btn layui-btn-small layui-btn-danger del-child-list"><i class="layui-icon">&#xe640;</i>&nbsp;删除</a>
+		                                    	<#if cc.children?size gt 0>
+						                        <button class="layui-btn layui-btn-mini btn-no-bg show-child-list">展开</button>
+						                        </#if>
+		                                    </li>
+                                    	</ul>
+                                    	<#if cc.children?size gt 0>
+                                    		<@column_list c2=cc />
+                                    	</#if>
+                             		</#list>
+                                  </div>
+            </#macro>
+            
+        </form>
+        <div class="page-header position-relative" style="background:#fff;height:300px">
+              <table style="width:100%;">
+                     <tr>
+                        <td style="vertical-align:top;">
+                              <div class="pageBotton" style="padding:20px;float: right;margin-top: 0px;">	                                     
+                                   ${pageHtml!}
+                               </div>
+                         </td>
+                      </tr>
+               </table>
+          </div>
+    </section>
+</div>
+<script src="res/default/bg/js/jquery.min.js"></script>
+<script type="text/javascript" src="res/default/bg/js/frame/layui/layui.js"></script>
+<script src="res/default/bg/js/frame/laydate/laydate.js"></script>
+<script>
+
+
+$(".pageBotton").find("a").addClass("layui-btn").addClass("layui-btn layui-btn-primary layui-btn-small");
+	//查找
+	function searchs(){
+		var keywords = $('input[name=keywords]').val();
+		var StartTime = $('input[name=StartTime]').val();
+		var EndTime = $('input[name=EndTime]').val();
+		console.log(StartTime+","+EndTime)
+	    location.href="${base}/admin/column/obtain_like_column_list.htm?keywords="+keywords+"&StartTime="+StartTime+"&EndTime="+EndTime;
+	   /*  $("#userForm").submit(); */
+	}
+	//修改
+	function editColumn(column_id){
+		console.log(1);
+	     location.href="${base}/admin/column/obtain_edit_column.htm?id="+column_id;
+	}
+	//删除       传入id,,,栏目名 ,,,操作种类 1为删除,2为禁用
+	
+	//禁用
+	function disable(id,msg,judge){
+		var url = "admin/column/delete_column$ajax.htm?id="+id+"&judge="+judge;
+        //top.jzts();
+        console.log("get:"+url);
+        $.get(url,function(data){
+        	var objdata=eval('(' + data + ')');
+        	if(true==objdata.result){
+                //top.jzts();
+        		layer.msg(objdata.msg,{icon: 1},function(){
+					
+				});
+        	}else{
+        		layer.msg(objdata.msg,{icon: 2},function(){
+					window.location.reload();
+				});
+        	}
+        	
+        });
+	}
+
+	function delColumn(id,msg,judge){
+		 layer.confirm("你确定删除栏目["+msg+"]", {
+			    btn: ['提交','取消'], //按钮
+			    shade: false //不显示遮罩
+			}, function(index){
+				var url = "admin/column/delete_column$ajax.htm?id="+id+"&judge="+judge;
+                //top.jzts();
+                console.log("get:"+url);
+                $.get(url,function(data){
+                	var objdata=eval('(' + data + ')');
+                	if(objdata.result==true){
+                		layer.msg(objdata.msg,{icon: 1},function(){
+        					window.location.reload();
+        				});
+                	}else{
+                		layer.msg(objdata.msg,{icon: 2},function(){
+        					window.location.reload();
+        				});
+                	}
+                	
+                });
+			    layer.close(index);
+			}); 
+    }
+	
+	/* layer.confirm("确定要删除["+msg+"]吗?", {
+    btn: ['提交','取消'], //按钮
+    shade: false //不显示遮罩
+}, function(index){
+    // 提交表单的代码，需要你自己写，然后用 layer.close 关闭就可以了，取消可以省略
+    layer.close(index);
+}); */
+	
+	
+	//删除或禁用选择项
+	function makeAll(msg,judge){
+			layer.confirm(msg+"]吗?", {
+			    btn: ['提交','取消'], //按钮
+			    shade: false //不显示遮罩
+			}, function(index){
+				var spCodesTemp = "";
+		        $('input:checkbox[name=ids]:checked').each(function(i){
+		         if(0==i){
+		          spCodesTemp = $(this).val();
+		         }else{
+		          spCodesTemp += (","+$(this).val());
+		         }
+		        });
+		        console.log(spCodesTemp);
+		        $.ajax({
+		            type : "POST",  //提交方式  
+		            url : "admin/column/deleteAll_column$ajax.htm",//路径  
+		            data : {  
+		                "spCodesTemp" : spCodesTemp , 
+		                "judge" : judge
+		            },//数据，这里使用的是Json格式进行传输  
+		            success : function(data) {//返回数据根据结果进行相应的处理  
+		            	var objdata=eval('(' + data + ')');
+		            	if(objdata.result == true){
+		            		layer.msg(objdata.msg,{icon:1},function(){
+	        					window.location.reload();
+	        				});
+		            	}else{
+		            		layer.msg(objdata.msg,{icon: 2},function(){
+	        					window.location.reload();
+	        				});
+		            	}
+		            	
+		            } 
+		 });
+			    // 提交表单的代码，需要你自己写，然后用 layer.close 关闭就可以了，取消可以省略
+			    layer.close(index);
+			}); 
+    }
+
+    $(function () {
+    	
+    	
+    	$('input[name=state]').click(function(){
+    		
+    	})
+    	
+    	
+        //展开子分类
+        var secondShow = false;
+        $(".show-child-list").click(function () {
+            
+            var secondList = $(this).parents("ul").next(".second-list-box");
+            secondList.slideToggle();
+            
+            secondShow = !secondShow;
+            if(secondShow){
+                var str = "收起";
+                $(this).html(str);
+            }else {
+                $(this).html("展开");
+               
+            };
+            return false;
+        });
+        /*//删除单行
+        $(".del-child-list").click(function () {
+            if($(this).parents("ul").next(".second-list-box")){
+                return false
+            }else{
+                $(this).parents("ul").next(".second-list-box").remove();
+                $(this).parents("ul").remove();
+            }
+
+        });
+        //选择删除
+        $(".btn-del-global").click(function () {
+            $(".layui-form-checked").parents("ul.infor-list").remove();
+            return false;
+        })*/
+        //选择禁用
+        $(".btn-no-use").click(function () {
+            $(".layui-form-checked").parents("ul.infor-list").find(".layui-form-switch").removeClass("layui-form-onswitch");
+            return false;
+        });
+    })
+    layui.use(['form', 'layedit'], function(){
+        var form = layui.form()
+                ,layer = layui.layer
+                ,layedit = layui.layedit;
+
+        //创建一个编辑器
+        var editIndex = layedit.build('LAY_demo_editor');
+        //全选
+        form.on('checkbox(allChoose)', function(data){
+            var child = $(data.elem).parents('.inforList').find('ul .checkbox-chioce');
+            child.each(function(index, item){
+                item.checked = data.elem.checked;
+            });
+            form.render('checkbox');
+        });
+
+
+        //自定义验证规则
+        form.verify({
+            title: function(value){
+                if(value.length < 5){
+                    return '标题至少得5个字符啊';
+                }
+            }
+            ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+            ,content: function(value){
+                layedit.sync(editIndex);
+            }
+        });
+        //添加弹出层
+        var str = '<form class="layui-form" action="" id="add_children">'+
+        '<ul class="inf_input" style="margin:30px auto;width:90%;height:auto;">'+
+        '<li style="color:#a5a5a5;height:30px;width:100%;margin: 13px auto;border: 1px solid #ebebeb;">'+
+        '<i class="icon_del"></i>'+
+        '<span class="inf_title">栏目名称</span>'+
+        '<input type="text" name="title" class="inp" placeholder="请输入标签名称">'+
+        '</li>' +
+        '<li style="color:#a5a5a5;height:30px;width:100%;margin: 13px auto;border: 1px solid #ebebeb;">'+
+        '<i class="icon_del"></i>'+
+        '<span class="inf_title">序号</span>'+
+        '<input type="text" class="inp" placeholder="请输入标签名称">'+
+        '</li>' +
+        ' <li style="color:#a5a5a5;height:30px;width:100%;margin: 13px auto;border: 1px solid #ebebeb;">'+
+        '<label class="inf_title" style="">菜单图标</label>' +
+        '<div class="layui-input-block">' +
+        '<select style="border: 0;height: 30px;padding: 0;" name="interest" lay-filter="aihao">' +
+        '<option value=""></option>' +
+        '<option value="0">写作</option>' +
+        '<option value="1" selected="">阅读</option>' +
+        '<option value="2">游戏</option>' +
+        '<option value="3">音乐</option>' +
+        '<option value="4">旅行</option>' +
+        '</select>' +
+        '</div>' +
+        '</li>' +
+        '<li style="color:#a5a5a5;height:30px;width:100%;margin: 13px auto;border: 1px solid #ebebeb;">'+
+        '<i class="icon_del"></i>'+
+        '<span class="inf_title">地址</span>'+
+        '<input type="text" class="inp" placeholder="请输入标签名称">'+
+        '</li>' +
+        '<li style="color:#a5a5a5;height:30px;width:100%;margin: 13px auto;border: 1px solid #ebebeb;">'+
+        '<i class="icon_del"></i>'+
+        '<span class="inf_title">描述</span>'+
+        '<input type="text" class="inp" placeholder="请输入标签名称">'+
+        '</li>' +
+        '<li style="color:#a5a5a5;height:30px;width:100%;margin: 13px auto;">'+
+        '<span class="inf_title"  style="border:1px solid #ebebeb;margin-right:10px;">状态</span>'+
+        ' <input type="radio" name="sex" value="启用" title="启用" checked="">'+
+        ' <input type="radio" name="sex" value="禁用" title="禁用">'+
+        '</li>' +
+        '</ul>'+
+
+         '</form>'+
+        '<div class="layui-form-item">'+
+        '<div class="layui-input-block">'+
+        '<button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>'+
+        '<button type="reset" class="layui-btn layui-btn-primary">重置</button>'+
+        '</div>'+
+        '</div>'
+
+
+        $(".btn-add").click(function () {//添加顶级分类
+            layer.open({
+                type:1,
+                title:['添加子级分类','text-align:center'],
+                area:['500px','450px'],
+                content:str,
+                success: function () {
+                    form.render();
+                }
+            });
+            return false;
+        });
+        $(".btn-add-child").click(function () {//添加顶级分类
+            layer.open({
+                type:1,
+                title:['添加顶级分类','text-align:center'],
+                area:['500px','450px'],
+                content:str,
+                success: function () {
+                    form.render();
+                }
+            });
+            return false;
+        });
+
+        //监听提交
+        form.on('submit(demo1)', function(data){
+            layer.alert(JSON.stringify(data.field), {
+                title: '最终的提交信息'
+            })
+            return false;
+        });
+
+
+    });
+</script>
+
+</body>
+<#include "/include/bg/in_bottom_res.html">
+</html>

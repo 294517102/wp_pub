@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>新增文章</title>
+    <#include "/include/bg/in_head_res.html">
+      <link rel="stylesheet" href="${basePath}/res/default/bg/js/zTree_v3_3.5.29/css/zTreeStyle/zTreeStyle.css" type="text/css">
+</head>
+<body class="body clear">
+
+		<div style="margin-bottom: 10px;">
+			<button class="layui-btn copy_btn" >保存</button>
+			<button type="reset" class="layui-btn layui-btn-danger cancel">取消</button>
+		</div>
+
+
+<div style="width: 49%;float: left;">
+<blockquote class="layui-elem-quote layui-text">选择复制的文章</blockquote>
+<ul class="layui-timeline">
+
+  <#if alist?? && alist?size gt 0>
+  <#list alist as article>
+  <li class="layui-timeline-item">
+    <i class="layui-icon layui-timeline-axis"></i>
+    <div class="layui-timeline-content layui-text">
+    <h3 class="layui-timeline-title">${article.title!}</h3>
+    </div>
+  </li>
+  </#list>
+  </#if>
+  
+  </ul>
+</div>
+
+<div style="width: 49%;float: left;margin-left: 2%;margin-bottom: 50px;">
+<blockquote class="layui-elem-quote layui-text">请选择文章复制到的栏目</blockquote>
+<ul id="treeDemo_right" class="ztree" ></ul>
+</div>
+
+
+<#include "/include/bg/in_bottom_res.html">	
+	<script type="text/javascript" src="${basePath}/res/default/bg/js/zTree_v3_3.5.29/js/jquery.ztree.core.js"></script>
+	<script type="text/javascript" src="${basePath}/res/default/bg/js/zTree_v3_3.5.29/js/jquery.ztree.excheck.js"></script>
+
+	<SCRIPT type="text/javascript">
+		var setting = {
+			check: {
+				enable: true,
+				nocheckInherit: true,
+				chkboxType: { "Y": "", "N": "" }
+			},
+			data: {
+				simpleData: {
+					enable: true
+				}
+			}
+		};
+		
+		var setting_right = {
+			check: {
+				enable: true,
+				chkboxType: { "Y": "", "N": "" }
+			},
+			data: {
+				simpleData: {
+					enable: true
+				}
+			}
+		};
+		var zNodes_right =${rightList};
+		
+		var code;		
+		function setCheck() {
+			$.fn.zTree.init($("#treeDemo_right"), setting_right, zNodes_right);
+		}
+		
+		$(document).ready(function(){
+			setCheck();			
+			$("#level").bind("change", setCheck);
+			$("#all").bind("change", setCheck);
+		});
+		
+		
+		
+		$(".cancel").click(function(){
+			console.log("关闭");
+			layer.closeAll('iframe'); //关闭所有的iframe层
+		})
+		$(".copy_btn").click(function(){
+			var treeObj = $.fn.zTree.getZTreeObj("treeDemo_right");
+			var nodes = treeObj.getCheckedNodes(true);
+			if(nodes.length<=0){
+				layer.msg("请选择复制的栏目",{icon:2});
+				return;
+			}
+			var pcid="";
+			for(var i=0; i<nodes.length; i++){
+				pcid += nodes[i].id+",";	
+			}
+			
+			console.log("选择的栏目："+pcid);
+			console.log("选择的文章："+'${RequestParameters.articlelist!!}');
+			
+			
+			
+	    	$.postJSON("${base}/admin/article_copy$ajax.htm",{'columnList':pcid,'articlelist':'${RequestParameters.articlelist!!}'},function(data){
+            	layer.msg(data.msg,{time:1000},function(){
+            		if(data.result){
+            			parent.location.reload();
+                		closeWindow();
+                	}
+            	});
+	    	}); 
+	    	
+			
+			
+		})
+ $(".cancel").click(function(){
+ 	closeWindow();
+ });
+	</SCRIPT>
+
+
+
+</body>
+</html>

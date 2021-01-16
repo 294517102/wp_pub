@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <#include "/${rp}/metalink.html">
+    <link rel="stylesheet" href="res/default/css/jquery.idcode.css" />
+	<title>${webSet.title}</title>
+	<style>
+		#df_lb_tab ul li{
+			background: url(res/default/images/tubiao.png) no-repeat left center;;
+		}
+		#df_lb_tab ul li:hover{
+			background: rgba(230,230,250,1);
+			opacity: .4
+		}
+		.dq_active1{
+			display: inline-block;
+			height: 55px;
+			width: 56px;
+			color: #46c3f2;
+			font-size: 14px;
+			border-bottom: 2px solid #46c3f2;
+		}
+		#h4{
+			color: #46c3f2;
+			border-bottom: 2px solid #46c3f2;
+		}
+
+	</style>
+</head>
+<body>
+	<header>
+		<#include "/${rp}/header.html">
+	</header>
+	<div class="dangquangongzuo">
+		<div class="weizhi">
+					当前位置：<a href="" >首页</a>>
+					<a href="">意见改进</a>
+				</div>
+		<div class="df_lb" style="padding:0">
+			<div class="df_lb_title">
+				<h4 style="height: 64px" id="h4">意见改进</h4>
+			</div>
+			<div class="opinion">
+				<div class="name">
+					<p>姓名：</p>
+					<input type="text" placeholder="请输入姓名" id="uname">
+				</div>
+				<div class="phone">
+					<p>电话：</p>
+					<input type="text" placeholder="请输入电话" id="uphone">
+				</div>
+
+				<div class="qq">
+					<p>QQ号：</p>
+					<input type="text" placeholder="请输入QQ号" id="uqq">
+				</div>
+				<div class="weix">
+					<p>微信号：</p>
+					<input type="text" placeholder="请输入微信号" id="uwx">
+				</div>
+
+				<div class="sex">
+					性别：
+					<input type="radio" name="sex" value="男">男
+					<input type="radio" name="sex" value="女">女
+				</div>	
+				<div class="matter">
+					<p>
+						建议内容：
+					</p>
+					<textarea cols="30" rows="10" placeholder="请输入您的建议内容（不得超过1000字）" id="ucontent"></textarea>
+				</div>
+				<div class="icode">
+						<input type="text" id="Txtidcode" class="txtVerification" placeholder="请输入验证码" />
+						<span id="idcode"></span>
+					<button type="button" id="btns">提交</button>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+	    <#include "/${rp}/footer.html">
+	</footer>
+</body>
+<script src="res/js/jquery-1.12.3.js"></script>
+<script src="res/js/jquery.idcode.js"></script>
+<script>
+	$.idcode.setCode();
+			
+			$("#btns").on('click',function (){
+			    var uname=$('#uname').val().trim();
+			    var uphone=$('#uphone').val().trim();
+			    var uqq=$('#uqq').val().trim();
+			    var uwx=$('#uwx').val().trim();
+			    var sex=$('input[type=radio]:checked').val();
+			    var ucontent=$('#ucontent').val().trim();
+			    if(uname.length<1||uphone.length<1||sex==undefined||ucontent.length<1){
+			        alert("请完善信息")
+			    }else{
+			        var IsBy = $.idcode.validateCode(); 
+    				if (IsBy) {
+    					$.ajax({
+    					    type:"post",
+    					    url:"/comment_save.htm",
+    					    data:{
+    					        name:uname,
+    					        phone:uphone,
+    					        sex:sex,
+    					        content:ucontent
+    					    },
+    					    success:function(data){
+    					       // console.log(data.code);
+    					        if(data.code==-1){
+    					            alert('提交失败');
+    					        }else{
+    					            alert('提交成功');
+    					        }
+    					        $('#uname').val('');
+    					        $('#uphone').val('');
+    					        $('#uqq').val('');
+                			    $('#uwx').val('');
+                			    $('#ucontent').val('');
+    					    },
+    					    error:function(xhr){
+    					        console.log(xhr)
+    					    }
+    					})
+    				}else{
+    					alert("输入验证码错误！请重新输入")
+    				}
+			    }
+				
+			});
+
+</script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <#include "/${rp}/metalink.html">
+</head>
+<body>
+<div class="page">
+    <#assign ib= at.bi(id)>
+    <header class="bar bar-nav">
+        <a class="icon icon-left pull-left back"></a>
+        <a href="${cm.cp}" class="icon icon-home pull-right" external></a>
+        <h1 class="title">${ib.column.title}</h1>
+    </header>
+    <div class="content">
+        <div class="detail_header">
+            <h1>${ib.title}</h1>
+            <p>发布时间：${ib.issueTime?string('YYYY-MM-dd')}&emsp;来自：${ib.source}</p>
+        </div>
+        <div class="detail_content">
+            <div class="videobox" <#if ib.url??><#else>style='display:none;'</#if>>
+                <video id="invideo1" controls preload="none" width="100%" poster="" data-setup="{}" onended="load()" style="background:#000;">
+                    <source src="${ib.url}" type='video/mp4' />
+                    你的浏览器不支持
+                </video>
+            </div>
+            <div>
+                ${ib.ext.content}
+            </div>
+        </div>
+        <#include "/${rp}/footer.html">
+    </div>
+</div>
+
+<#include "/${rp}/jslink.html">
+<script>
+    $(".tuwenlist_desc").xdlines({
+        max:2
+    })
+</script>
+</body>
+</html>

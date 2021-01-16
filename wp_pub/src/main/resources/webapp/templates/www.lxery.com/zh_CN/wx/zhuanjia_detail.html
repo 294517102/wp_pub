@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <base href="${domainBase}"/>
+    <#include "${includePath}/data.html" >
+		<#include "${includePath}/searchKeyword.html" >
+    <title>${webSet.title!}-专家团队详情</title>
+    <link rel="stylesheet" href="res/default/css/resets.css">
+    <link rel="stylesheet" href="res/default/css/swiper.css">
+    <link rel="stylesheet" href="res/default/css/style.css">
+
+</head>
+<body>
+<div class="nav_zoom"></div>
+<div class="nav_zoom2"></div>
+<main>
+    <div class="main_expert">
+        <div class="main_expert_peo">
+            <img class="main_expert_pic" src="${(data.thumbnail.url!)}" alt="">
+            <div class="main_expert_dic">
+                <p class="main_expert_name">${data.title!}</p>
+                <p class="main_expert_intro">科室：${data.column.title!}</p>
+                <p class="main_expert_intro">职称：${data.position.name!}</p>
+            </div>
+            
+            
+            <div class="main_expert_goodat">
+                <p class="main_expert_infor">简介</p>
+            </div>
+            <#list data.articleExt! as da>
+            <p class="main_expert_goodat_con">${data.content!}</p>
+            </#list>
+        </div>
+    </div>
+</main>
+<script src="res/js/jquery.min.js"></script>
+<script src="res/js/style.js"></script>
+<script>
+    //星期选择
+    $(".choose_true").toggle(
+            function(){
+                $(this).addClass("choose_true_y");
+
+            },
+            function(){
+                $(this).removeClass("choose_true_y");
+            }
+    );
+    //弹框取消
+    $('.call_cancel').click(function(){
+        $('.nav_zoom2').css("display","none");
+        $('.call_phone').css("display","none");
+    })
+    //弹框确定
+    $('.call_confirm').click(function(){
+        $('.nav_zoom2').css("display","none");
+        $('.call_phone').css("display","none");
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<#include "/include/bg/in_bottom_res.html">
+<script type="text/javascript">
+$(function(){
+	//tjsj用户
+	
+	var login_url = "http://${cm.domain}:7002/index.php?user/loginSubmit&login_token=${Base64.encode(ds.editUser)}|${MD5.md5(ds.editUser+"Fger5&bgFY3GG*DS")}";
+	var link = "http://${cm.domain}:7002/index.php?explorer%26project";
+
+	location.href = login_url+"&"+"link="+link;
+	
+});
+</script>

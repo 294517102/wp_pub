@@ -1,0 +1,47 @@
+<div class="news_right">
+		<div class="news_right_top">
+			<div class="news_right_top_title">
+				<h2>热选新闻</h2>
+			</div>
+			<#list at.bpc(cl.bk('xin_wen_zhong_xin').id)?sort_by('issueTime')?reverse as a>
+			<#if a_index lt 12>
+			<#if a_index lt 2>
+			<div class="news_right_top_timg">
+			    
+				<div class="timg_zz"><a href="${cm.cp}go.htm?url=news_detail&id=${a.id}"></a></div>
+				<h2>${a.title}</h2>
+				<div class="rightboxdesc">
+				    ${a.desc}
+				</div>
+			</div>
+			</#if>
+			<ul class="news_right_top_lib">
+			    <#if a_index gte 2>
+				<li><span>${a_index-1}</span><a href="${cm.cp}go.htm?url=news_detail&id=${a.id}">${a.title}</a></li>
+				</#if>
+			</ul>
+			</#if>
+			</#list>
+		</div>
+
+		<div class="news_right_bottom"> 
+				<div class="news_right_bottom_title">
+					<h2>医院简介</h2>
+				</div>
+
+				<div class="news_right_bottom_lunbo">
+					<div class="swiper-container">
+					    <div class="swiper-wrapper">
+					      <#list sc.bks('yi_yuan_zhao_pian') as a>
+					      <div class="swiper-slide">
+							<a><img src="${a.acc.url}" alt="" style="height:auto;"></a>
+								<div class="lun_shuom" style="bottom:15px">${a.desc}</div>
+					      </div>
+					      </#list>
+					    </div>
+					     <div class="swiper-pagination" style="bottom:0"></div>
+				</div>
+		</div>
+
+	</div>
+</div>

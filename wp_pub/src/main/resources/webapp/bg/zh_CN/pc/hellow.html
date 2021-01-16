@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 	<base href="${base}/" /> 
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>CMS欢迎页</title>
+    <#include "/include/bg/in_head_res.html">
+    
+    <style>
+        .b{
+            border:1px solid red;
+        }
+/*         zoom: 70%; */
+        .container{margin: 0 auto;zoom: 70%;height: auto;width: 98%;}
+        .fl{float: left;}
+        .fr{float: right;}
+        .container_fl{width: 48%;margin-right: 25px;;height: 360px;border-radius: 10px;margin-top: 25px;background-color: #fff;}
+        .container .container_fl:nth-child(2n){margin-right: 0;}
+        .container_fl_head{height: 47px;line-height: 47px;border-bottom: 1px solid #e6e6e6;background-color: #f6f6f6;border-radius: 10px 10px 0 0;position:relative;font-size: 18px;color: #414141;}
+        .container_fl_content{width: 100%;height: auto;}
+        .container_fl_content li{list-style-type:none;}
+        .title span{width: 6px;height: 25px;background-color: #e50112;display: inline-block;margin: auto 14px;position: relative;top: 7px;}
+        .layui-form-switch{height: 70px;line-height: 70px;width: 75%;float: left;margin-left: 33px;margin-top: 125px;margin-right: 48px;}
+        .layui-form-switch em{font-size: 30px;-left: 20%;right: 20%;}
+        .layui-form-switch i{width: 50%;height: 90%;top:5%;left: 2%;-right: 2%;}
+        .layui-form-onswitch em{font-size: 30px;left: 20%;}
+        .layui-form-onswitch i{width: 50%;height: 90%;top:5%;left: auto;right: 2%;}
+        .layui-table{width: 92%;margin: 20px auto;}
+        .td_bg{background-color: #f6f6f6;}
+        .statistics{width: 29%;height: 90px;margin-left: 17px;margin-top: 40px;background-color: #f6f6f6;border-radius: 10px;}
+        .statistics .left{width: 50%;text-align: center;}
+        .statistics .left p:nth-child(1){font-size: 12px;margin: 16px auto;}
+        .statistics .left p:nth-child(2){font-size: 25px;font-weight: bold;}
+        .statistics img{margin-top: 11px;}
+        .layui-tab-title{width: 92%;margin: 0 auto;}
+        .layui-tab-title li{width: 29%;}
+        .layui-tab-content{width: 92%;margin: 0 auto;}
+        .layui-tab-item ul{border-bottom: 1px solid #e6e6e6;}
+        .layui-tab-item ul li{font-size: 14px;line-height: 38px;color: 333333;cursor: pointer;}
+        .layui-tab-item ul li:hover{color: #e7232f;}
+        .look_more{line-height: 50px;color: #e7232f;cursor: pointer;text-align: center;}
+        .container_b{background-color: #fff;border-radius: 10px;margin-bottom: 60px;}
+        .container_b_content{height: 230px;overflow: hidden;}
+        .container_b_content ul{width: 96%;margin: 0 auto;}
+        .container_b_content ul li{float: left;width: 23%;height: 120px;list-style-type:none;margin-top: 55px;margin-right: 2.6%;}
+        .container_b_content ul li:nth-child(4n){margin-right: 0;}
+        .container_b_content ul li img{width: 100%;height: 100%;}
+		.layui-table td{padding:10px 0 10px 5px}
+    </style>
+</head>
+<body class="body clear" style="background-color:#e6e6e6;">
+    <div class="container">
+        <div class="fl container_fl" >
+            <div class="container_fl_head">
+                <div class="title"><span class="line"></span>网站状态</div>
+            </div>
+            <div class="container_fl_content">
+                <div class="layui-form fl" style="width:44%;">
+                    <input class="state_btn" type="checkbox" value="${webSet.state!}" name="yyy" lay-skin="switch" lay-text="ON|OFF" <#if webSet.state==1> checked </#if> >
+                </div>
+                <div class="note fl" style="width:50%;">
+                    <p style="font-size:18px;color:#323232;margin-top:105px;margin-bottom: 35px;">点击按钮进行状态切换</p>
+                    <p style="font-size:13px;color:#727272;">当按钮处于ON状态时，即在线状态，网站页面正常显示；<br>处于OFF状态时间，即关闭状态，用户不能正常访问，请谨慎使用。</p>
+                </div>
+            </div>
+        </div>
+        <div class="fl container_fl">
+            <div class="container_fl_head">
+                <div class="title"><span class="line"></span>基本信息</div>                
+            </div>
+            <div class="container_fl_content">
+                <table class="layui-table">
+                  <colgroup>
+                    <col width="20%">
+                    <col width="30%">
+                    <col width="20%">
+                    <col width="30%">
+                  </colgroup>
+                  <tbody>
+                    <tr>
+                      <td class="td_bg">用户名：</td>
+                      <td>${Session[Const.SESSION_USER].username!}</td>
+                      <td class="td_bg">JAVA版本：</td>
+                      <td>${sysinfo.java_version}</td>
+                    </tr>
+                    <tr>
+                      <td class="td_bg">角色：</td>
+                      <td>${Session[Const.SESSION_USER].roles[0].name!}</td>
+                      <td class="td_bg">操作系统：</td>
+                      <td>${sysinfo.os_name}</td>
+                    </tr>
+                    <tr>
+                      <td class="td_bg">IP地址：</td>
+                      <td>${Session[Const.SESSION_USER].last_ip_address}</td>
+                      <td class="td_bg">数据库名称：</td>
+                      <td>${sysinfo.databaseProductName}</td>
+                    </tr>
+                    <tr>
+                      <td class="td_bg">地理位置：</td>
+                      <td>经纬度</td>
+                      <td class="td_bg">数据库版本：</td>
+                      <td>${sysinfo.databaseProductVersion}</td>
+                    </tr>
+                    <tr>
+                      <td class="td_bg">登录时间：</td>
+                      <td>${Session[Const.SESSION_USER].lastLogin?string('yyyy-MM-dd HH:mm:ss')}</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="td_bg">当前版本：</td>
+                      <td>V1.2</td>
+                      <td></td>
+                      <td></td>
+                    </tr>                                                                                                
+                  </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="fl container_fl">
+            <div class="container_fl_head">
+                <div class="title"><span class="line"></span>网站统计</div>                
+            </div>
+ <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan style='display:none' id='cnzz_stat_icon_${webSet.siteId}'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D${webSet.siteId}%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+ 
+            <div class="container_fl_content">
+                <div class="fl statistics">
+                    <div class="left fl">
+                        <p>当前在线</p>
+                        <p id="online_p">0</p>
+                    </div>
+                    <img src="res/default/bg/image/online.png" height="65" width="65" alt="">
+                </div>
+                <div class="fl statistics">
+                    <div class="left fl">
+                        <p>昨日IP</p>
+                        <p id="zuori_ip">0</p>
+                    </div>
+                    <img src="res/default/bg/image/tip.png" height="65" width="65" alt="">
+                </div>
+                <div class="fl statistics">
+                    <div class="left fl">
+                        <p>昨日PV</p>
+                        <p id="zuori_pv">0</p>
+                    </div>
+                    <img src="res/default/bg/image/tpv.png" height="65" width="65" alt="">                    
+                </div>
+                <div class="fl statistics">
+                    <div class="left fl">
+                        <p>今日IP</p>
+                        <p id="jinri_ip">0</p>
+                    </div>
+                    <img src="res/default/bg/image/zip.png" height="65" width="65" alt="">                    
+                </div>
+                <div class="fl statistics">
+                    <div class="left fl">
+                        <p>今日PV</p>
+                        <p id="jinri_pv">0</p>
+                    </div>
+                    <img src="res/default/bg/image/zpv.png" height="65" width="65" alt="">                    
+                </div>
+<!--                 <div class="fl statistics" style="background:url(res/default/bg/image/weather.png);background-size: cover;"> -->
+                    
+<!--                 </div> -->
+            </div>
+        </div>
+        <div class="fl container_fl">
+            <div class="container_fl_head">
+                <div class="title"><span class="line"></span>待处理事项</div>                
+            </div>
+            <div class="container_fl_content">
+                <div class="layui-tab layui-tab-brief">
+                  <ul class="layui-tab-title">
+                    <li class="layui-this">订单处理（<#if orderList ??&& orderList?size gt 0> ${orderList?size} <#else> 0 </#if>）</li>
+                    <li>在线留言（<#if commentList?? && commentList?size gt 0> ${commentList?size} <#else> 0</#if>）</li>
+                    <li>应聘信息（ <#if recruitList?? && recruitList?size gt 0> ${recruitList?size} <#else> 0</#if>）</li>
+                  </ul>
+                  <div class="layui-tab-content" style="height: 100px;">
+                  <!-- 待处理订单开始 -->
+                    <div class="layui-tab-item layui-show">
+                        <ul>
+                        	<#if orderList ??&& orderList?size gt 0>
+                        	<#list orderList as order>
+                        		<#if order_index lt 5>
+                            		<li>用户${(order.user.username)!}提交了新订单，订单编号${order.number!}待处理<span class="fr"><a href="obtain_order_list.htm?url=bg/business/order/order_list">[去处理]</a></span></li>
+                            	</#if>
+                            </#list>
+							<#else>
+								<li style="text-align: center;">暂无未处理订单</li>
+							</#if>
+                        </ul>
+                        <#if  orderList ??&& orderList?size gt 0>
+                        <div  class="look_more"><a href="obtain_order_list.htm?url=bg/business/order/order_list">处理更多>></a></div>
+                        </#if>
+                    </div>
+                    <!-- 待处理订单end -->
+                    
+                    <!-- 待处理留言开始 -->
+                    <div class="layui-tab-item">
+                    	<ul>
+                        	<#if commentList ??&& commentList?size gt 0>
+                        		
+                        	<#list commentList as comment>
+                        		<#if comment_index lt 5>
+                            		<li>用户${(comment.user.username)!}提交了新的留言信息<span class="fr"><a href="obtain_comment_list.htm?url=bg/business/comment/comment_list">[去查看]</a> </span></li>
+                            	</#if>
+                            </#list>
+							<#else>
+							<li style="text-align: center;">暂无未处理留言</li>
+							</#if>
+                        </ul>
+                        <#if  commentList ??&& commentList?size gt 0>
+                        <div  class="look_more"><a href="obtain_comment_list.htm?url=bg/business/comment/comment_list">处理更多>></a></div>
+                        </#if>
+                    </div>
+                    <!-- 待处理留言end -->
+                    
+                    <!-- 待处理招聘开始 -->
+                    <div class="layui-tab-item">
+                    		<ul>
+                        	<#if recruitList ??&& recruitList?size gt 0>
+                        		
+                        	<#list recruitList as recruit>
+                        		<#if recruit_index lt 5>
+                            		<li>用户提交了新的招聘信息<span class="fr"><a href="obtain_recritment_list.htm?url=bg/business/recruitment/recruitment_list">[去查看]</a> </span></li>
+                            	</#if>
+                            </#list>
+							<#else>
+							<li style="text-align: center;">暂无未处理招聘</li>
+							</#if>
+                        </ul>
+                        <#if  recruitList ??&& recruitList?size gt 0>
+                        <div  class="look_more"><a href="obtain_recritment_list.htm?url=bg/business/recruitment/recruitment_list">处理更多>></a></div>
+                        </#if>
+                    </div>
+                    <!-- 待处理招聘end -->
+                  </div>
+                </div>
+            </div>
+        </div>
+        <div class="fl container_fl">
+            <div class="container_fl_head">
+                <div class="title"><span class="line"></span>网站浏览量</div>                
+            </div>
+            <div class="container_fl_content">
+                <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+                <div id="web" style="width: 92%;height:300px;margin:0 auto;"></div>
+            </div>
+        </div>
+        <div class="fl container_fl" style="margin-bottom: 90px;">
+            <div class="container_fl_head">
+                <div class="title"><span class="line"></span>SEO分析</div>                
+            </div>
+            <div class="container_fl_content">
+             <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+                <div id="seo" style="width: 92%;height:300px;margin:0 auto;"></div>
+            </div>
+        </div>
+        <div class="container_b" style="clear:both;display:none;" >
+            <div class="container_fl_head">
+                <div class="title">
+                    <span class="line"></span>公司名称
+                    <img class="click_show" src="res/default/bg/image/more.png" alt="more" style="position:absolute;right:30px;top:12px;cursor: pointer;">  
+                </div>              
+            </div>
+            <div class="container_b_content" >
+                <ul>
+                
+                
+                    <li><a href=" " target="_blank"><img src="res/default/bg/image/weather.png" alt=""></a></li>
+                    
+                   <!--  <li><img src="res/default/bg/image/6.png" alt=""></li>
+                    <li><img src="res/default/bg/image/6.png" alt=""></li>
+                    <li><img src="res/default/bg/image/6.png" alt=""></li>
+                    <li><img src="res/default/bg/image/6.png" alt=""></li>
+                    <li><img src="res/default/bg/image/6.png" alt=""></li>
+                    <li><img src="res/default/bg/image/6.png" alt=""></li>
+                    <li><img src="res/default/bg/image/6.png" alt=""></li>
+                    <li><img src="res/default/bg/image/6.png" alt=""></li>
+                    <li><img src="res/default/bg/image/6.png" alt=""></li>
+                    <li><img src="res/default/bg/image/6.png" alt=""></li>
+                    <li><img src="res/default/bg/image/6.png" alt=""></li> -->
+                </ul>
+            </div>
+        </div>
+
+    </div>
+<#include "/include/bg/in_bottom_res.html">	
+<script type="text/javascript" src="res/default/bg/js/echarts-2.2.7/build/dist/echarts-all.js"></script>
+<script type="text/javascript">
+    //点击展开
+    var LiHeight = ($(".container_b_content ul li").height()+70) * ($(".container_b_content ul li").length/4);
+    $(".click_show").toggle(
+            function(){
+            $(".container_b_content").css("height",LiHeight + "px");
+        },
+            function(){
+            $(".container_b_content").css("height","230px");
+        }
+    )
+
+
+    layui.use(['layer', 'form'], function(){
+        var layer = layui.layer
+        ,form = layui.form;
+        
+        //监听指定开关
+        form.on('switch(switchTest)', function(data){
+          layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
+            offset: '6px'
+          });
+          layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+        });
+      });
+
+    // 基于准备好的dom，初始化echarts实例
+    var webChart = echarts.init(document.getElementById('web'));
+    var seoChart = echarts.init(document.getElementById('seo'));
+
+    var xdata=[];
+    var ydata=[];
+    <#if skilmLineMap?? && (skilmLineMap?size>0)>
+    <#list skilmLineMap?keys as key>
+    xdata.push("${key}");
+    console.log("${key}");
+    ydata.push(${skilmLineMap["${key}"]});
+    </#list>
+    
+    console.log(xdata);
+    console.log(ydata);
+    <#else>
+    
+    console.log("没有数据");
+    
+    </#if>
+    // 指定图表的配置项和数据
+    var weboption = {
+        title: {
+            text: ''
+        },
+        tooltip: {},
+        legend: {
+            data:['浏览量']
+        },
+        xAxis: {
+            data: xdata
+        },
+        yAxis : [
+                 {
+                     type : 'value'
+                 }
+             ],
+        series: [{
+            name: '浏览量',
+            type: 'bar',
+            data: ydata
+        }]
+    };
+    
+   var option = {
+    	    title : {
+    	        text: '网站浏览量',
+    	    },
+    	    tooltip : {
+    	        trigger: 'axis'
+    	    },
+    	    legend: {
+    	        data:['日浏览量']
+    	    },
+    	    toolbox: {
+    	        show : true,
+    	        feature : {
+    	            mark : {show: true},
+    	            dataView : {show: true, readOnly: false},
+    	            magicType : {show: true, type: ['line', 'bar']},
+    	            restore : {show: true},
+    	            saveAsImage : {show: true}
+    	        }
+    	    },
+    	    calculable : true,
+    	    xAxis : [
+    	        {
+    	            type : 'category',
+    	            data : xdata
+    	        }
+    	    ],
+    	    yAxis : [
+    	        {
+    	            type : 'value'
+    	        }
+    	    ],
+    	    series : [
+    	        {
+    	            name:'日浏览量',
+    	            type:'bar',
+    	            data:ydata,
+    	            markPoint : {
+    	                data : [
+    	                    {type : 'max', name: '最大值'},
+    	                    {type : 'min', name: '最小值'}
+    	                ]
+    	            },
+    	            markLine : {
+    	                data : [
+    	                    {type : 'average', name: '平均值'}
+    	                ]
+    	            }
+    	        }
+    	  
+    	    ]
+    	};
+    
+    var seooption = {
+    title: {
+        text: '收录量变化趋势'
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['360','百度']
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    toolbox: {
+        feature: {
+            saveAsImage: {}
+        }
+    },
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ['周一','周二','周三','周四','周五','周六','周日']
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [
+        {
+            name:'360',
+            type:'line',
+            stack: '总量',
+            data:[120, 132, 101, 134, 90, 230, 210]
+        },
+        {
+            name:'百度',
+            type:'line',
+            stack: '总量',
+            data:[20, 12, 101, 14, 90, 23, 10]
+        }
+    ]
+};
+    // 使用刚指定的配置项和数据显示图表。
+//     webChart.setOption(weboption);
+     <#if skilmLineMap??&&(skilmLineMap?size>0)>
+    webChart.setOption(option);
+     </#if>
+    seoChart.setOption(seooption);
+//     关闭打开网站
+    $(".state_btn").parent(".layui-form").click(function(){
+    	var site_state=1;
+    	var $this=this;
+    	var state=$($this).find("em").text();
+    	if(state=="OFF"){
+    		console.log("关闭");
+    	site_state=2;
+    	}
+    	if(state=="ON"){
+    		console.log("打开");
+    	site_state=1;
+    	}
+		$.postJSON("${base}/general_service_egpm7LrXKgtjS27Ae09$ajax.htm",{'id':${webSet.id!},'state':site_state,'_refresh':1},function(data){
+				layer.msg(data.msg);
+		});  
+    	
+    	
+    	
+    });
+//    初始化网站统计信息
+window.onload = function () {
+	var vip=$("#cnzz_stat_icon_${webSet.siteId} a:eq(1)").text();
+	var onli=$("#cnzz_stat_icon_${webSet.siteId} a:eq(2)").text();
+	
+	var arr=vip.split("|");
+ 	for (var i = 0; i < arr.length; i++) {
+	if(arr[i].indexOf("今日IP")!=-1){
+	$("#jinri_ip").text(arr[i].replace(/[^0-9]+/g, ''));
+	}
+	if(arr[i].indexOf("昨日IP")!=-1){
+	$("#zuori_ip").text(arr[i].replace(/[^0-9]+/g, ''));
+	}
+	if(arr[i].indexOf("今日PV")!=-1){
+	$("#jinri_pv").text(arr[i].replace(/[^0-9]+/g, ''));
+	}
+	if(arr[i].indexOf("昨日PV")!=-1){
+	$("#zuori_pv").text(arr[i].replace(/[^0-9]+/g, ''));
+	}
+	if(arr[i].indexOf("今日IP")!=-1){
+	$("#jinri_ip").text(arr[i].replace(/[^0-9]+/g, ''));
+	}
+	}
+$("#online_p").text(onli.replace(/[^0-9]+/g, ''));
+};
+</script>
+</body>
+</html>

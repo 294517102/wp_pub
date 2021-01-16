@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+	<base href="${base}/">
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<style type="text/css">
+	footer{height:50px;position:fixed;bottom:0px;left:0px;width:100%;text-align: center;}
+	</style>
+<body>
+<#include "/include/bg/res_include_ace.min.html" >
+
+
+
+</head>
+<body class="no-skin">
+
+	<!-- /section:basics/navbar.layout -->
+	<div class="main-container" id="main-container">
+		<!-- /section:basics/sidebar -->
+		<div class="main-content">
+			<div class="main-content-inner">
+				<div class="page-content">
+					<div class="row">
+						<div class="col-xs-12">
+							<div id="zhongxin">
+								<div style="overflow: scroll; scrolling: yes;height:415px;width: 319px;">
+								<ul id="tree" class="ztree" style="width:260px; overflow:auto;" ></ul>
+							</div>
+							<div id="zhongxin2" class="center" style="display:none"><br/><br/><br/><br/><img src="static/images/jiazai.gif" /><br/><h4 class="lighter block green">正在保存...</h4></div>
+							</div>
+						<!-- /.col -->
+						</div>
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /.page-content -->
+			</div>
+		</div>
+		<!-- /.main-content -->
+	
+		
+	
+	<script type="text/javascript">
+	 	var zTree;
+		var zn = '${zTreeNodes}';
+		alert(zn);
+		var zTreeNodes = eval(zn);
+		var code, log, className = "dark";
+		var setting = {
+				view: {
+					selectedMulti: false
+				},
+				
+				data: {
+					simpleData: {
+						enable: true
+					}
+				},
+				callback: {
+					beforeClick: beforeClick,
+					onClick: onClick
+				}
+			};
+		function onClick(event, treeId, treeNode, clickFlag) {
+			alert("[  onCheck ]&nbsp;&nbsp;&nbsp;&nbsp;" + treeNode.id );
+			window.location.href='${basePath}/admin/article/obtain_column_article_edit.htm?id='+treeNode.id;
+		}
+		function beforeClick(treeId, treeNode, clickFlag) {
+			className = (className === "dark" ? "":"dark");
+			console.log("[  beforeCheck ]&nbsp;&nbsp;&nbsp;&nbsp;" + treeNode.id );
+			return (treeNode.click !== false);
+		}
+		
+		$(document).ready(function(){
+			zTree = $.fn.zTree.init($("#tree_column"), setting, zTreeNodes);
+		});
+	
+		//保存
+		 function save(){
+			 var zTree = $.fn.zTree.getZTreeObj("tree_role");
+// 				type = e.data.type,
+			var nodes = zTree.getCheckedNodes();
+			
+			
+			var tmpNode;
+			var ids = "";
+			for(var i=0; i<nodes.length; i++){
+				tmpNode = nodes[i];
+				if(i!=nodes.length-1){
+					ids += tmpNode.id+",";
+				}else{
+					ids += tmpNode.id;
+				}
+			}
+			console.log("获取的的id:"+ids);
+			var msg = "asdf";
+			var role_id = "${roleId}";
+			var url = "admin/role/save_auth_role.htm";
+			var postData;
+			postData = {"role_id":role_id,"modelIds":ids,"msg":msg};
+			$("#zhongxin").hide();
+			$("#zhongxin2").show();
+ 			$.post(url,postData,function(data){
+				top.Dialog.close();
+ 			});
+		 }
+	
+	</script>
+</body>
+</html>

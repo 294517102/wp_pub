@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>网页列表</title>
+<#include "/include/bg/in_head_res.html">
+
+</head>
+<body class="inner-body clear">
+	<div class="layui-container bg-color" style="width:100%">
+		<form class="layui-form layui-form-pane" id="form_1" action="${base}/admin/to_target.htm?url=tools/web_page/web_page_bridge">	
+		<div class="layui-form-item layui-col-space10"  style="background-color: white;padding:15px 10px;display: none;">		
+			<div class="layui-col-md3">
+				<label class="layui-form-label">网页名称</label>
+				<div class="layui-input-block">
+					<input type="text" name="name"
+						autocomplete="off"  value="${RequestParameters.name!!}"  placeholder="请输入标题" class="layui-input">
+				</div>
+			</div>
+			 <div class="layui-col-md3">
+		        <label class="layui-form-label">上传者：</label>
+		        <div class="layui-input-block">
+		            <input type="text" name="username" lay-verify="title"    value="${RequestParameters.username!!}"  autocomplete="off" placeholder="请输入识别码" class="layui-input">
+		        </div>
+		    </div>
+
+			<div class="fl" style="margin-left:50px">
+				<button class="layui-btn fl search" lay-submit > <i class="layui-icon">&#xe615;</i> 搜索</button>
+				<button class="layui-btn layui-btn-warm  fl refresh" type="reset"><i class="layui-icon">&#x1002;</i> 刷新</button>
+			</div>
+		</div>
+		</form>
+		<div class="content_main">
+			<div class="layui-row">
+				<button class="layui-btn  web-edit-add fl ">
+					<i class="layui-icon">&#xe61f;</i> 新增
+				</button>
+				<button class="layui-btn layui-btn-warm  fl refresh" ><i class="layui-icon">&#x1002;</i> 刷新</button>
+			</div>
+			<div class="layui-row layui-form">
+				<table class="layui-table">
+					<thead>
+						<tr>
+							<th><input type="checkbox" name="" lay-skin="primary"
+								lay-filter="allChoose"></th>
+							<th >序号</th>
+							<th >网页标题</th>
+							<th >网页链接</th>
+							<th>创建人</th>
+							<th>创建时间</th>
+							<th width="20%">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<#if resultList_picweb?? && resultList_picweb?size gt 0 >
+
+						<#list resultList_picweb as r>
+						<tr>
+							<td><input type="checkbox" name="check" lay-skin="primary" id="${r.id}"></td>
+							<td>${r.id}</td>
+							<td>${r.name}</td>							
+							<td><a href="${r.url!}" target="_blank">${r.url!} </a></td>
+							<td>${(r.user.username)!"未知"}</td>
+							<td>${r.insertTime}</td>
+							<td>
+							<button class="layui-btn layui-btn-small detail ${r.state}" id="${r.id}"><i class="layui-icon">&#xe63c;</i>编辑</button>
+							 <input type="checkbox" id="${r.id}" lay-skin="switch" lay-filter="status" lay-text="开启|关闭" <#if r.state==2 >checked="" </#if> >							
+							<button class="layui-btn layui-btn-danger layui-btn-small delete"  id="${r.id}">
+									<i class="layui-icon">&#xe640;</i> 删除
+								</button></td>
+						</tr>
+						</#list> 
+						<#else> 
+						<tr>
+							<td colspan="6">无数据</td>
+						</tr>
+						</#if>
+					</tbody>
+				</table>
+				<div class="pageBotton">${pageHtml_picweb}</div>
+			</div>			
+		</div>
+	</div>
+	
+<#include "/include/bg/in_bottom_res.html">	
+	<script type="text/javascript">
+    //注意进度条依赖 element 模块，否则无法进行正常渲染和功能性操作
+    $(".detail").click(function(){
+    	var id=$(this).attr("id");
+        layer.open({
+            type: 2,
+            title: '网页编辑',
+            closeBtn: 1,
+            shadeClose: true,
+            shade: 0.8,
+            area: ['65%','480px'],
+            content:'${base}/general_service_K9iLp6Vfo75oVYmXuQa.htm?id='+id+'&_url=tools/web_page/add_web&_ttype=2' //iframe的url
+        });
+    });
+//     网页添加
+    $(".web-edit-add").click(function () {
+        layer.open({
+            type: 2,
+            title: '网页制作',
+            closeBtn: 1,
+            shadeClose: true,
+            shade: 0.8,
+            area: ['65%','480px'],
+            content:'${base}/admin/to_target.htm?url=tools/web_page/add_web' //iframe的url
+        });
+    }); 
+    $(".delete").click(function(){
+    	var id = $(this).attr("id");
+    	layer.confirm("确认删除？",{btn: ['确认','取消'],icon:3 },function(){
+    		 $.postJSON("${base}/admin/savepicweb$ajax.htm",{"id":id,"isDelete":1},function(data){              
+          	     if(data.result){
+          	    	layer.msg("删除成功");     
+          	    	window.location.reload();
+          	     }
+    			       	            	 
+            }); 
+    	});
+    });
+    
+    $(".refresh").click(function(){
+    	window.location.reload();
+    });
+    
+    $(".deleteAll").click(function(){
+    	if($("input:checked").length<=0){
+    		layer.msg("请选择待删除条目",{icon:2});
+    		return;
+    	}
+    	layer.confirm("确认删除？",{btn: ['确认','取消'],icon:3 },function(){
+    		$("input:checked").each(function(){
+        		var id = $(this).attr("id");        
+            	$.postJSON("${base}/admin/save_pi_interface.htm",{"id":id,"isDelete":1},function(data){              
+             	     if(!data.result){
+             	     	layer.msg("删除失败-"+id,{icon:2});
+             	     }      			       	            	 
+               }); 
+        	});
+    		layer.msg("操作完毕",function(){
+           		window.location.reload();
+           	});
+    	});
+
+    });
+    
+        var form = layui.form;
+
+
+        form.on("switch(status)",function(data){
+        	var status = 0;
+        	var obj = data.elem;
+        	if(data.elem.checked){
+        		status = 2;
+        	}else{
+        		status = 1;
+        	}
+        	
+        	var id = $(this).attr("id");      
+        		 $.postJSON("${base}/admin/savepicweb$ajax.htm",{"id":id,"state":status},function(res){      
+        	     if(res.result){
+        	    layer.tips('网页已关闭', data.othis)
+        	     }else{
+        	    	 layer.msg(res.msg)
+        	     }   			       	            	 
+          }); 
+        });
+        
+        //全选
+        form.on('checkbox(allChoose)', function(data){
+            var child = $(data.elem).parents('table').find('tbody input[name="check"]');
+            child.each(function(index, item){
+                item.checked = data.elem.checked;
+            });
+             form.render('checkbox');
+        });
+
+</script>
+
+</body>
+</html>

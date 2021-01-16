@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<#include "/${rp}/metalink.html">
+	<title>${webSet.title}</title>
+</head>
+<style>
+		.dq_active1{
+			display: inline-block;
+			height: 55px;
+			width: 56px;
+			color: #46c3f2;
+			font-size: 14px;
+			border-bottom: 2px solid #46c3f2;
+		}
+		#text_1{
+			width: 920px;
+			height: 90px;
+			margin-top: 10px;
+			font-size: 15px;
+			line-height:30px;
+
+		}
+</style>
+<body>
+	<header>
+		<#include "/${rp}/header.html">
+	</header>
+	<div class="dangquangongzuo">
+		<div class="dqgz_content_nav">
+		    <#assign ib = at.bi(id)>
+			<ul class="dangqun_li">	
+			<#list ib.column.parent.children as cc>
+				<li><a href="${cm.cp}${cc.url}" <#if ib.column.id==cc.id> class="dq_active1"</#if>>${cc.title}</a></li>
+			</#list>	
+			</ul>
+		</div>
+		<div class="df_lb">
+			<div class="hu_lb_title">
+				<h4 style="height:64px">${ib.column.title}</h4>
+				<a style="color:#23A2E5 " class="goback">返回上一级</a>
+			</div>
+				<div class="ld_deatil">
+					<!--<dl>-->
+					<!--	<dt><img src="res/default/images/ry.png" alt=""></dt>-->
+					<!--	<dd>-->
+					<!--		<h2 style="font-size: 13px;color: black">${ib.title}</h2>-->
+					<!--	</dd>-->
+					<!--</dl>-->
+
+					<div class="ld_deatil_text">
+                        ${ib.ext.content}
+					</div>
+
+					<div class="fenx4">
+						<div>
+						<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+						</div>
+					</div>
+				</div>
+
+
+
+			<#assign yygg=cl.bk('yi_yuan_gong_gao')>
+    		<div class="yiyan_gonggao">
+    			<div class="hu_lb_title">
+    				<h4 style="height: 64px">${yygg.title}</h4>
+    				<a href="${cm.cp}${yygg.url}">MORE+</a>
+    		    </div>
+    			<ul class="gonggao_lib">
+    			    <#list at.bc(yygg) as a>
+    			    <#if a_index lt 6>
+    				<li><a href="${cm.cp}go.htm?url=news_detail&id=${a.id}">${a.title}</a><span>${a.issueTime?string('MM-dd')} </span></li>
+    				</#if>
+    				</#list>
+    			</ul>
+    		</div>
+		</div>
+	</div>
+	<footer>
+		<#include "/${rp}/footer.html">
+	</footer>
+</body>
+<script src="res/js/jquery-1.12.3.js"></script>
+<script src="res/js/xdlines.jquery.js"></script>
+<script>
+		$('#text_1').xdlines({
+			max:3
+		});
+			$('.goback').on('click',function(){
+		    window.history.go(-1);
+		})
+</script>
+</html>

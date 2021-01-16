@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+
+<title>新增用户</title>
+ <#include "/include/bg/in_head_res.html">
+ <style type="text/css">
+ 	.uploadeyu{
+ 		display:inline-block;
+ 		width:90px;
+ 		height:90px;
+ 		overflow:hidden;
+ 		background-color:#eee;
+ 		text-align:center;
+ 		cursor: pointer;
+ 	}
+ 	.uploadeyu>p:nth-of-type(1){
+ 		line-height:90px;
+ 		font-size:40px
+ 	}
+ 	.uploadeyu>img{
+ 		min-width:100%;
+ 		height:100%;
+ 	}
+ 	.img-lable{
+ 		height:100px !important;
+ 		line-height:85px !important;
+ 	}
+ 	.img-hint{
+ 		font-size:12px;
+ 		color: red
+ 	}
+ 	.layui-form-item{
+ 		margin-bottom:8px;		
+ 	}
+ </style>
+</head>
+<body>
+<body class="inner-body clear">
+
+<div class="layui-container bg_white" style="width: 100%;padding:10px">
+<form onsubmit="return false;" name="userForm" id="userForm" class="layui-form layui-form-pane" method="post">
+		<div class="layui-form-item">
+			<label class="layui-form-label"><span style="color:red">* </span>角色名称</label>
+        		<div class="layui-input-block">
+        		
+						<#list sUser.roles! as sr>
+						<#assign srole=sr>
+						</#list>
+						
+					<select  name="role_ids" id="role_id" data-placeholder="请选择角色">
+						<#list user.createdRoles! as role>
+						<option value="${role.id}"  <#if srole?? && srole.id==role.id> selected="selected" </#if> >${role.name!}</option>
+						</#list>
+					</select>
+				</div>
+		</div>
+		<input type="hidden" name="id" value="${sUser.id!"0"}">
+		<div class="layui-form-item">
+			<label class="layui-form-label"><span style="color:red">* </span>用户名</label>
+        		<div class="layui-input-block">
+					<input type="text" class="layui-input" name="username" value="${sUser.username}"  <#if (sUser.username) ??> ${'disabled="disabled"'}  </#if> maxlength="32"  lay-verify="required" />
+				</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label"> <#if !sUser??><span style="color:red">* </span></#if>密码</label>
+        		<div class="layui-input-block">
+					<input type="password" name="password" class="layui-input" <#if !sUser??>placeholder="请输入密码"<#else>placeholder="修改密码"</#if>  <#if !sUser??> lay-verify="required" </#if>/>
+				</div>
+		</div>
+		 <#if !sUser??>
+		<div class="layui-form-item">
+			<label class="layui-form-label"><span style="color:red">* </span>确认密码</label>
+        		<div class="layui-input-block">
+					<input type="password" name="repassword" id="repassword" class="layui-input" placeholder="请确认密码" value="${user_edit.repassword}"   lay-verify="required"/>
+				</div>
+		</div>
+		 </#if>
+		<div class="layui-form-item">
+			<label class="layui-form-label"><span style="color:red">* </span>姓名</label>
+        		<div class="layui-input-block">
+					<input type="realName" name="realName" class="layui-input"  value="${sUser.realName}" lay-verify="required"/>
+				</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label"><span style="color:red">* </span>手机号</label>
+        		<div class="layui-input-block">
+					<input type="phone" name="phone" class="layui-input" value="${sUser.phone}" lay-verify="required|phone"/>
+				</div>
+		</div>
+		<div class="layui-form-item">
+		
+		<div class="layui-col-md4">
+			<label class="layui-form-label">邮箱</label>
+        		<div class="layui-input-block">
+					<input type="email" name="email" id="email" class="layui-input" value="${sUser.email}" /> 
+				</div>
+		</div>
+		<div class="layui-col-md4">
+			<label class="layui-form-label">是否审核</label>
+        		<div class="layui-input-inline">
+				<input type="radio" name="isAudit" value="1" title="开启审核" <#if sUser.isAudit?? ><#if sUser.isAudit==1>checked</#if> </#if>>
+      			<input type="radio" name="isAudit" value="9" title="关闭审核" <#if sUser.isAudit?? ><#if sUser.isAudit==9>checked </#if><#else>checked</#if> >
+				</div>
+		</div>
+		</div>
+		<div class="layui-form-item" style="position: relative;">
+			<label class="layui-form-label img-lable">头像</label>
+					
+        		<div class="layui-input-block" style="padding-left:12px">
+        			<label for="upload" class="uploadeyu" id="uploadeyu_1" >
+        			
+					<#if (sUser.thumbnail.originalUrl)??>
+							<img alt="" src="${sUser.thumbnail.originalUrl}">
+					<#else>
+							<p>+</p>
+					</#if>
+					
+					</label>
+					<p class=".img-hint">点击图片修改头像</p>
+					
+					<button type="button" class="layui-btn layui-btn-small layui-bg-blue" id="upload_1" style="position: absolute;right: 47px;top: 41px;"><i class="layui-icon">&#xe681;</i>上传文件</button>
+				</div>
+				<input name="thumbnails" value="${thumbnail.id}" style="display:none">		
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">备注</label>
+        		<div class="layui-input-block">
+					<input type="remark" name="remark" id="remark" class="layui-input"/>
+				</div>
+		</div>	
+		 <div class="layui-form-item center">
+                  <button  lay-submit  class="layui-btn " lay-filter="form_1">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-danger" onclick="closeWindow();">取消</button>
+        </div>
+</form>
+</div>
+</div>
+</body>
+<#include "/include/bg/in_bottom_res.html">
+
+<script type="text/javascript">
+	
+ 	var upload = layui.upload,form = layui.form;
+
+ 	
+ 	 //执行实例	 
+ 	upload.render({
+ 	    elem: '#uploadeyu_1' //绑定元素
+ 	    ,url: '${basePath}/upload/uploadImgByAccessory.htm?type=client' //上传接口
+ 	    ,auto: false
+ 	    ,size: 1500
+ 	    ,bindAction: '#upload_1'
+ 	    ,choose: function(obj){
+ 	    	 obj.preview(function(index, file, result){
+ 	    		   $("#uploadeyu_1").html("<img src='" + result + "'/>");
+ 	          });
+ 	    }
+ 	    ,done: function(res){
+ 	      //上传完毕回调
+ 	      layer.msg(res.resultMsg);
+ 	      if(res.result){
+ 	    	  var files = res.data;
+ 	    	  for(var i=0;i<files.length;i++){
+   		    	var aid = files[i].acyId;
+   		    	var url = files[i].url;
+   		    	$("input[name='thumbnails']").val(aid);
+ 	    	  }
+ 	      }
+ 	    }
+ 	    ,error: function(){
+ 	      //请求异常回调
+ 	      alert("error");
+ 	    }
+ 	  }); 
+
+ 	 var lock = false;
+ 	 form.on("submit(form_1)",function(data){
+ 		 <#if !sUser??>
+ 		if($("#password").val()!=$("#repassword").val()){
+ 			showVMsg($("#repassword"),"确认密码不一致");
+ 			return false;
+ 		}
+ 		 </#if>
+ 		$(data.elem).text("提交中");
+
+		if(lock){return false;}
+		lock = true;
+	
+ 		$.postJSON("${basePath}/admin/user/save_user$ajax.htm",data.field,function(res){
+ 		   $(data.elem).text("立即提交");
+       	   lock = false;
+	       	if(res.result){
+	       		layer.msg(res.msg,{icon:1,time:2000},function(){
+	       		 parent.location.reload();
+	   		       closeWindow();  
+    	   		});  	  
+	   	   }else{
+	   		layer.msg(res.msg,{icon:2})
+	   	   }
+    	        	   
+ 		});
+ 		 
+ 		 return false;
+ 	 });
+</script>
+</html>
+

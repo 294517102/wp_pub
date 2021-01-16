@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <#include "/${rp}/metalink.html">
+	<title>${webSet.title}</title>
+    <link rel="stylesheet" href="res/default/css/voice.css">
+</head>
+<body>
+    <#assign c="hui_yin_bi">
+    	<header>
+		<#include "/${rp}/header.html">	
+	</header>
+		<div class="dangquangongzuo">
+		<div class="dqgz_content_nav">
+			<ul class="dangqun_li">
+			    <#assign ck=cl.bk(c)>
+			    <#list ck.parent.children as cc>
+			      <#if cc_index!=4>
+				<li><a href="${cm.cp}${cc.url}" style="display:block;width:100%;height:100%" <#if cc.id==ck.id>class="dq_active"</#if>>${cc.title}</a></li>
+				</#if>
+				</#list>
+			</ul>
+		</div>
+		<div  class="dangquangongzuo_img"  style="height: 257px">
+			<img src="res/default/images/banner-lianzhen.png" alt="">
+		</div>
+		</div>
+<content>
+    <div class="hy_box width1200">
+        <div class="hy_bar">
+            <span>回音壁</span>
+        </div>
+        <#if resultList_r24??&&resultList_r24?size gt 0>
+        <#list resultList_r24 as r>
+        <div class="hy_list">
+            <div class="hy_title">
+                <span class="hy_ti">${r.title!}</span>
+                <span class="hy_time fr">${r.commentTime?string('MM-dd')}</span>
+            </div>
+            <div class="hy_desc"></div>
+            <div class="doc_replay">
+                <div class="indicator_triangle"></div>
+                <div class="re_desc"> <span class="re_title">医生解答：</span>${r.customerInfo!}</div>
+            </div>
+        </div>
+        </#list>
+        <div class="fenpage">${pageHtml_r24!}</div>
+        <#else>
+        <div class="nodata">暂无数据</div>
+        </#if>
+        </div>
+    </div>
+</content>
+	<footer>
+		<#include "/${rp}/footer.html">
+	</footer>
+	<script src="res/js/jquery-1.12.3.js"></script>
+	
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>留言列表</title>
+
+<#include "/include/bg/in_head_res.html">
+
+</head>
+<body class="inner-body clear">
+	<div class="layui-container bc-color" style="width:100%">
+		<form class="layui-form layui-form-pane" id="form_1" action="${base}/obtain_comment_list_like.htm">	
+		<div class="layui-form-item"  style="background-color: white;padding:15px 10px;">		
+			<div class="layui-col-md3">
+				<label class="layui-form-label">留言标题</label>
+				<div class="layui-input-block">
+					<input type="text" name="title"
+						autocomplete="off"  value="${RequestParameters.title!}"  placeholder="请输入标题关键字" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-col-md3">
+				<label class="layui-form-label">留言状态</label>
+				<div class="layui-input-block">
+					<select name="state" lay-filter="aihao" initValue="${RequestParameters.state!}">
+						<option value="1" <#if RequestParameters.state ==1>  selected="selected" </#if> >未读</option>
+						<option value="-1" <#if RequestParameters.state ==-1>  selected="selected" </#if> >已读</option>
+					</select>
+				</div>
+			</div>
+			<div class="fl" style="margin-left:50px">
+				<button class="layui-btn fl search" lay-submit > <i class="layui-icon">&#xe615;</i> 搜索</button>
+				<button class="layui-btn layui-btn-warm  fl refresh" type="reset"><i class="layui-icon">&#x1002;</i> 刷新</button>
+			</div>
+		</div>
+		</form>
+		<div class="content_main">
+			<div class="layui-row" style="display: none;">
+				<button class="layui-btn layui-btn-danger deleteAll fl ">
+					<i class="layui-icon">&#xe640;</i> 删除
+				</button>
+			</div>
+			<div class="layui-row layui-form">
+				<table class="layui-table">
+					<thead>
+						<tr>
+							<th><input type="checkbox" name="" lay-skin="primary"
+								lay-filter="allChoose"></th>
+				            <th>单位</th>
+				            <th>人数</th>
+				            <th>联系人</th>
+				            <th>联系电话</th>
+							<th>是否住宿</th>
+						</tr>
+					</thead>
+					<tbody>
+						<#if resultList??&& resultList?size lte 0 >
+						<tr>
+							<td colspan="9">无数据</td>
+						</tr>
+						<#else> <#list resultList! as comment>
+						<tr>
+							<td><input type="checkbox" name="check" lay-skin="primary" id="${comment.id}"></td>
+							<td>${comment.company!}</td>
+            				<td>${comment.title!}</td>					
+							<td>${comment.name!}</td>
+							<td>${comment.phone!}</td>
+							<td>${comment.sex!}</td>
+						</tr>
+						</#list> </#if>
+					</tbody>
+				</table>
+				<div class="pageBotton">${pageHtml}</div>
+			</div>			
+		</div>
+	</div>
+	
+<#include "/include/bg/in_bottom_res.html">	
+	<script type="text/javascript">
+	//回复 留言信息 
+	 $(".detail").click(function(){
+	    	layer.open({
+	            type: 2,
+	            title: '留言回复',
+	          //  btn: ['确定', '取消'],
+	            shadeClose: true,
+	            shade: 0.8,
+	            area: ['65%', '500px'],
+	            content:'${base}/admin/obtain_comment_by_id.htm?url=business/comment/comment_obtain&id='+$(this).attr("id") //iframe的url
+	        });
+	    });
+	//回复 留言信息 
+	 $(".query").click(function(){
+	    	layer.open({
+	            type: 2,
+	            title: '查看详情',
+	          //  btn: ['确定', '取消'],
+	            shadeClose: true,
+	            shade: 0.8,
+	            area: ['65%', '500px'],
+	            content:'${base}/admin/obtain_comment_by_id.htm?url=business/comment/comment_detail&id='+$(this).attr("id") //iframe的url
+	        });
+	    });
+	
+	
+	//删除留言信息 
+    $(".delete").click(function(){
+    	var id = $(this).attr("id");
+    	layer.confirm("确认删除？",{btn: ['确认','取消'],icon:3 },function(){
+    		 $.postJSON("${base}/updata_comment.htm",{"id":id,"isDelete":1},function(data){              
+          	     if(data.result){
+          	    	layer.msg("删除成功");     
+          	    	window.location.reload();
+          	     }
+            }); 
+    	});
+    });
+    
+    $(".refresh").click(function(){
+    	window.location.reload();
+    });
+    
+    $(".deleteAll").click(function(){
+    	if($("input:checked").length<=0){
+    		layer.msg("请选择待删除条目",{icon:2});
+    		return;
+    	}
+    	layer.confirm("确认删除？",{btn: ['确认','取消'],icon:3 },function(){
+    		$("input:checked").each(function(){
+        		var id = $(this).attr("id");        
+            	$.postJSON("${base}/updata_comment.htm",{"id":id,"isDelete":1},function(data){              
+             	     if(!data.result){
+             	     	layer.msg("删除失败-"+id,{icon:2});
+             	     }      			       	            	 
+               }); 
+        	});
+    		layer.msg("操作完毕",function(){
+           		window.location.reload();
+           	});
+    	});
+
+    });
+    
+        var form = layui.form;
+
+        //监听提交
+        form.on('submit(form_1)', function(data){
+            layer.alert(JSON.stringify(data.field), {
+                title: '最终的提交信息'
+            })
+            layer.load(1,{shade:true});
+            return false;
+        });
+
+	//更新留言状态
+        form.on("switch(state)",function(data){
+        	var state = 0;
+        	var obj = data.elem;
+        	if(data.elem.checked){
+        		state = -1;
+        	}else{
+        		state = 1;
+        	}
+        	$.postJSON("${base}/updata_comment.htm",{"id":$(obj).attr("id"),"state":state},function(data){ 
+        	     if(data.result==true){
+        	    	 window.location.reload();
+        	     }else{
+        	    	 layer.msg(data.resultMsg);
+        	     }      			       	            	 
+          }); 
+        });
+    	//更新审核状态 
+        form.on("switch(audit)",function(data){
+        	var state = 0;
+        	var obj = data.elem;
+        	if(data.elem.checked){
+        		audit = 2;
+        	}else{
+        		audit = 1;
+        	}
+        	$.postJSON("${base}/updata_comment.htm",{"id":$(obj).attr("id"),"audit":audit},function(data){ 
+        	     if(data.result==true){
+        	    	 window.location.reload();
+        	     }else{
+        	    	 layer.msg(data.resultMsg);
+        	     }      			       	            	 
+          }); 
+        });
+        //全选
+        form.on('checkbox(allChoose)', function(data){
+            var child = $(data.elem).parents('table').find('tbody input[name="check"]');
+            child.each(function(index, item){
+                item.checked = data.elem.checked;
+            });
+             form.render('checkbox');
+        });
+
+
+</script>
+
+</body>
+</html>

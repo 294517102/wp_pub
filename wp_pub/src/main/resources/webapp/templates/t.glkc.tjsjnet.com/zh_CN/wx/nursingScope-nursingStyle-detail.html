@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <#include "/${rp}/metalink.html">
+    <style type="text/css">
+        
+    </style>
+</head>
+<body>
+<div class="page">
+    <#assign ck=cl.bk(c)>
+    <header class="bar bar-nav">
+        <a class="icon icon-left pull-left back"></a>
+        <a href="${cm.cp}" class="icon icon-home pull-right" external></a>
+        <h1 class="title">${ck.title}</h1>
+    </header>
+    <div class="content">
+        <div class="pic_list erjibox">
+            <#assign gh = at.bc(ck)>
+            <ul class="sdd">
+                <#if !pageIndex?? >  <#assign  pageIndex="1" > </#if>
+                <#assign pageList= at.bc(ck,pageIndex,12)> 
+                <#if gh?size gt 0>
+                <#list gh[0].pic as a>
+                <li>
+                    <a>
+                        <img src="${a.url}" alt="">
+                        <p></p>
+                    </a>
+                </li>
+                </#list>
+            </ul>
+            </#if>
+        </div>
+        <#include "/${rp}/footer.html">
+        <div class="lundetail">
+            <span class="closelundetail">×</span>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                     <#list gh[0].pic as a>
+                    <a class="swiper-slide">
+                        <img src="${a.url}">
+                    </a>
+                    </#list>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<#include "/${rp}/jslink.html">
+<script>
+    $('.sdd').on('click','li',function(){
+        var _this = this;
+        // var leng=$(_this).find('div.lunwrap').find('span').length;
+        // console.log(leng);
+        // var h='';
+        // for(var i =0;i<leng;i++){
+        //   h +='<a class="swiper-slide"><img src="'+$(_this).find('div.lunwrap').find('span').eq(i).html()+'"></a>'
+        // }
+        // console.log(h)
+        // $('.lundetail .swiper-wrapper').html(h);
+        var i=$(_this).index();
+        // console.log(i);
+        var swiper3 = new Swiper('.lundetail .swiper-container', {
+        initialSlide:i,
+        pagination: '.lundetail .swiper-pagination',
+        paginationClickable: true,
+        autoplayDisableOnInteraction : false,
+        speed:500,
+        loop:true,
+        autoplay:20000,
+    });
+    })
+
+   
+    $('.pic_list').on('click','li',function () {
+        var _this=this;
+        $('.lundetail').css({
+            "zIndex":999,
+            "visibility": "visible"
+        });
+
+    })
+    $('.closelundetail').on('click',function () {
+        $('.lundetail').css({
+            "zIndex":-1,
+            "visibility": "hidden"
+        });;
+
+    })
+</script>
+</body>
+</html>

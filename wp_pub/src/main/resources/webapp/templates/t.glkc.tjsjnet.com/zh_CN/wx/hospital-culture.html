@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <#include "/${rp}/metalink.html">
+</head>
+<body>
+<div class="page">
+    <#assign ck=cl.bk(c)>
+    <header class="bar bar-nav">
+        <a class="icon icon-left pull-left back"></a>
+        <a href="${cm.cp}" class="icon icon-home pull-right" external></a>
+        <h1 class="title">${ck.title}</h1>
+    </header>
+    <div class="content">
+        <div class="culture_header">
+            <ul>
+                <li class="active">院训</li>
+                <li>宗旨</li>
+                <li>愿景</li>
+            </ul>
+
+        </div>
+        <div class="culture_body">
+            <div>
+               <#if at.bc(cl.bk('yuan_xun'))?size gt 0>
+               <#list at.bc(cl.bk('yuan_xun')) as a>
+                  ${a.ext.content}
+               </#list>
+               <#else>
+               <div class="nodata">
+                   <img src="res/default/image/nodata.png" alt="暂无数据" />
+                   <p>暂无数据</p>
+                </div>
+               </#if>
+            </div>
+            <div>
+               <#if at.bc(cl.bk('yuan_ge'))?size gt 0>
+               <#list at.bc(cl.bk('yuan_ge')) as a>
+                  ${a.ext.content}
+               </#list>
+               <#else>
+               <div class="nodata">
+                   <img src="res/default/image/nodata.png" alt="暂无数据" />
+                   <p>暂无数据</p>
+                </div>
+               </#if>
+            </div>
+            <div>
+               <#if at.bc(cl.bk('yuan_hui'))?size gt 0>
+               <#list at.bc(cl.bk('yuan_hui')) as a>
+                  ${a.ext.content}
+               </#list>
+               <#else>
+               <div class="nodata">
+                   <img src="res/default/image/nodata.png" alt="暂无数据" />
+                   <p>暂无数据</p>
+                </div>
+               </#if>    
+            </div>
+        </div>
+        <#include "/${rp}/footer.html">
+    </div>
+</div>
+
+<#include "/${rp}/jslink.html">
+<script>
+    $('.culture_header').on('click','li',function () {
+        var _this=this;
+        $(_this).addClass('active').siblings('li').removeClass('active');
+        var i =$(_this).index();
+        $('.culture_body>div').eq(i).show().siblings('div').hide()
+    })
+</script>
+</body>
+</html>

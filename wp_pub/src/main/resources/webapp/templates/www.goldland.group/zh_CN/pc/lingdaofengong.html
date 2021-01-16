@@ -1,0 +1,256 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html>
+<head><title>
+	${webSet.title!}
+</title><#include "${rp}/header.html"></head></head>
+<body style="background-color:#f5f2d9;background-position:center top;background-repeat:no-repeat; background-attachment:scroll;">
+    <div id="pagecontainer" style="width:100%px;margin:0 auto">
+        <div id="we7layout_147286947741813" class="sf_cols">
+ <div style="float: none; width: 100%; margin: 0; ;" class="sf_colsOut"><div class="sf_colsIn ">
+  
+<!--htmlWidgetStart-->
+<div class="TopInfo">
+    <div class="TopContent">
+        <div class="topdate">
+            <script language=JavaScript>
+            var d, s = "";
+            var x = new Array("星期日", "星期一", "星期二","星期三","星期四", "星期五","星期六");
+            d = new Date();
+            s+="今天是："+ d.getFullYear()+"年"+(d.getMonth() + 1)+"月"+d.getDate()+"日　";
+            s+=x[d.getDay()];
+            document.writeln(s);
+            </script>
+        </div>
+        
+        <div class="toplink">
+            <!-- <span>></span><a href="#">微信公众号</a> -->
+            <div class="weixin" onmouseover="this.className = 'weixin on';" onmouseout="this.className = 'weixin';">
+                <a href="javascript:;"></a>
+                <div class="weixin_nr">
+                    <div class="arrow"></div>
+                    <img src="res/default/images/eweima.png" width="110" height="110" />
+                    关注官方微信
+                </div>
+            </div>
+
+            <span>></span><a href="/go.htm?k=lian_xi_wo_men&url=lianxiwomen">联系我们</a>
+        </div>
+    </div>
+</div>
+<!--HtmlWidgetEnd--></div></div>
+<div style= "clear:both;height:0;font-size:1px;"></div></div><div id="we7layout_147286970363273" class="sf_cols">
+ <div style="float: none; width: 100%; margin: 0; ;" class="sf_colsOut"><div class="sf_colsIn layout">
+ <div id="we7layout_14788669276952" class="sf_cols">
+ <div style="float: left; width: 60%; margin: 0; ;" class="sf_colsOut"><div class="sf_colsIn ">
+  
+ <!--htmlWidgetStart--> 
+ 
+<div class="SiteHeader" >
+    <div class="logo"></div>
+</div>
+     
+ <!--HtmlWidgetEnd--></div></div>
+  <div style="float: left; width: 40%; margin: 0; ;" class="sf_colsOut"><div class="sf_colsIn ">
+ 
+<div class="Search2015">
+    <div class="searchbox">
+<!--头部-->
+    <div class="full_model_search">
+        <input value="请输入要搜索的关键词" class="model_search" onblur="if(this.value==''){this.value=this.defaultValue;}" onfocus="if(this.value==this.defaultValue){this.value='';}" value="输入关键字" /><a href="#" title="搜索" class="model_search_click"></a>
+    </div>
+<!--头部-->
+        </div>
+<script type="text/javascript">
+    $(function () {
+        //$('a[class="fav"]').addFavorite();
+        //$('a[class="home"]').setHomePage();
+
+        $('#change_search_model').click(function () {
+            if ($('.model_list').css('display') != 'block') {
+                $('.model_list').slideDown(500);
+                try { clearTimeout(timer); } catch (e) { }
+            } else {
+                $('.model_list').mouseleave();
+            };
+        })
+
+        $('.model_list').mouseleave(function () {
+            timer = setTimeout(function () {
+                $('.model_list').slideUp(100);
+            }, 500);
+        })
+
+        $('.model_list a').click(function () {
+            $('#change_search_model').text($(this).text())
+            $('.model_list').slideUp(100);
+            try { clearTimeout(timer); } catch (e) { }
+        })
+
+        $('.model_search_click').click(function () {
+            var model = checkSearchModel();
+            doModelSearch(model[0], model[1]);
+        })
+
+        $('#model_adv_search').click(function () {
+            var model = checkSearchModel();
+            doModelSearch(model[0], 2);
+        })
+
+        var checkSearchModel = function () {
+            var model = $('#change_search_model').text();
+            switch (model) {
+                case '文章':
+                    return [1, 1];
+                case '图片':
+                    return [2, 1];
+                case '软件':
+                    return [3, 1];
+                default:
+                    return [0, 2];
+            }
+        }
+
+        var doModelSearch = function (modelId, searchType) {
+            var searchValue = escape($('.model_search').val());
+
+            if (searchType != 2 && (searchValue == null || searchValue == '')) {
+                alert('请输入要搜索的关键词');
+                $('.model_search').focus();
+                return;
+            }
+            if (searchType == 2 && modelId == 0) {
+                location.href = 'Search.aspx?keywords=' + searchValue;
+                return;
+            }
+            switch (modelId) {
+                case 1:
+                    location.href = '/Search.aspx?searchtype=1&modelId=' + modelId + '&nodeId=1&fieldOption=title&keywords=' + searchValue;
+                    break;
+                case 2:
+                    location.href = '/Search.aspx?searchType=1&modelId=' + modelId + '&nodeId=2&fieldOption=title&keywords=' + searchValue;
+                    break;
+                default:
+                    location.href = '/Search.aspx?searchtype=1&modelId=' + modelId + '&nodeId=3&fieldOption=title&keywords=' + searchValue;
+                    break;
+            }
+        }
+    });
+</script>
+</div></div></div>
+<div style= "clear:both;height:0;font-size:1px;"></div></div></div></div>
+<div style= "clear:both;height:0;font-size:1px;"></div></div><div id="we7layout_147286969836981" class="sf_cols">
+ <div style="float: none; width: 100%; margin: 0; ;" class="sf_colsOut"><div class="sf_colsIn ">
+ 
+<!--[if IE 6]>
+<script type="text/javascript">
+    DD_belatedPNG.fix('img,a,ul,li,div');
+</script>
+<![endif]-->
+<div class="ChannelMenuV_DropDown">
+    <ul id="dropdown_nav">
+         <#include '${rp}include/topc.html'>
+    </ul>
+    <script type="text/javascript">
+        $(".ChannelMenuV_DropDown .sub").hide();
+        function showSub(index) {
+            $(".ChannelMenuV_DropDown .top_" + index + " .sub").show().parent().addClass("dropon");
+        }
+        function hideSub(index) {
+            $(".ChannelMenuV_DropDown .top_" + index + " .sub").removeClass("dropon").hide().parent().removeClass("dropon");
+        }
+        $("#dropdown_nav>li").last().children("ul").addClass("lastul");
+    </script>
+</div></div></div>
+<div style= "clear:both;height:0;font-size:1px;"></div></div><div id="we7layout_147280689072653" class="sf_cols">
+ <div style="float: none; width: 100%; margin: 0; ;" class="sf_colsOut"><div class="sf_colsIn layout_content">
+ <div id="we7layout_147280713969630" class="sf_cols">
+ <div style="float: none; width: 100%; margin: 0; ;" class="sf_colsOut"><div class="sf_colsIn ">
+ 
+<div class="ChannelMenu_CurrentLocation" >
+     <#include '${rp}location.html'>
+</div></div></div>
+<div style= "clear:both;height:0;font-size:1px;"></div></div><div id="we7layout_147280716159786" class="sf_cols">
+ <div style="float: left; width: 250px; margin: 0; ;" class="sf_colsOut"><div class="sf_colsIn ">
+ <div id="we7layout_147280760501016" class="sf_cols">
+ <div style="float: none; width: 100%; margin: 0; ;" class="sf_colsOut"><div class="sf_colsIn ">
+ <div id="we7layout_147280760707045" class="sf_cols">
+ <div style="float: none; width: 100%; margin: 0; ;" class="sf_colsOut"><div class="sf_colsIn ">
+ 
+<#include '${rp}zuo_nav.html'>
+<div style= "clear:both;height:0;font-size:1px;"></div></div></div></div>
+<div style= "clear:both;height:0;font-size:1px;"></div></div></div></div>
+<div style= "clear:both;height:0;font-size:1px;"></div></div></div></div>
+ <div style="float: left; width: 30px; margin: 0; ;" class="sf_colsOut"><div class="sf_colsIn ">
+ </div></div>
+  <div style="float: left; width: 780px; margin: 0; ;" class="sf_colsOut"><div class="sf_colsIn ">
+ 
+<div class="W_LeaderPic">
+    <h1 style="background:url(res/default/images/header_tit02.png) no-repeat;"><em>领导分工</em></h1>
+    <div class="W_LeaderPic_Box">
+         <#if !pageIndex?? ><#assign  pageIndex="1" ></#if>
+                        <#assign plist = at.bc(cl.bk('ling_dao_fen_gong'),pageIndex,10)>
+                        <#if plist.list?? && plist.list?size gt 0>
+                        <#list plist.list as a>
+                        <dl >
+            <dt><a target="_blank" href="/go.htm?k=${k!}&url=lingdaofengong-list&id=${a.id!}"><img width="90" height="120" src="${a.thumbnail.ourl!}" /></a></dt>
+            <dd>
+                <h2><a target="_blank" href="/go.htm?k=${k!}&url=lingdaofengong-list&id=${a.id!}">${a.title}</a><span></span></h2>
+                <p>${a.keyword}</p>
+                <a target="_blank" href="/go.htm?k=${k!}&url=lingdaofengong-list&id=${a.id!}" class="more">详情介绍>></a>
+            </dd>
+        </dl>
+                        </#list>
+                        <#else>
+                        暂无数据
+                        </#if>
+        
+    </div>
+            
+<div class="clear"></div>
+<!--### name="分页器" type="system" version="1.0" created="$CurrentDate" desc="分页器" author="We7 Group" ###-->
+<div class="page_css page_line">
+    <span class="pagecss">
+       <#assign prev = at.prev(art)>
+                            <#if prev?if_exists>
+    <li class="prev"><span>上一篇</span><a target="_self" href="/go.htm?k=${k!}&url=dangqungongzuo-list&id=${prev.id!}">${at.bi(prev.id).title}</a></p></li>
+                            </#if>
+                            <#assign next = at.next(art)> 
+                            <#if next?if_exists>
+    <li class="next"><span>下一篇</span><a target="_self" href="/go.htm?k=${k!}&url=dangqungongzuo-list&id=${next.id!}">${at.bi(next.id).title}</a></p></li>
+                            </#if>
+    </span>
+</div>
+
+</div>
+            
+        
+</div></div>
+<div style= "clear:both;height:0;font-size:1px;"></div></div></div></div>
+<div style= "clear:both;height:0;font-size:1px;"></div></div><div id="we7layout_147280718203451" class="sf_cols">
+ <div style="float: none; width: 100%; margin: 0; ;" class="sf_colsOut"><div class="sf_colsIn footer">
+ 
+<div class="Footer_Default">
+    <div class="footer_copyright">
+        <div class="footer_logo"></div>
+        <div class="footer_txt">
+            <p>Copyright © 2017-2018 广安金土地开发投资（集团）有限公司（www.goldland.group）版权所有 All Rights Reserved.</p>
+            <p>联系电话：(+86) 0826-2130688　传真：(+86)0826-2130688　<br>
+地址：四川省广安市金安大道二段52号　邮编：638000<br>
+网址：http://www.goldland.group/</p>
+        </div>
+        <div class="footer_jubao">
+            <a href="http://report.12377.cn:13225/toreportinputNormal_anis.do" target="_blank"><img src="res/default/images/jubao.png" title="互联网有害信息举报专区" alt="互联网有害信息举报专区"></a>
+        </div>
+        <div class="footer_eweima">
+            <p>扫描微信公众号</p>
+        </div>
+    </div>
+    <div class="footer_bottom">备案号：蜀ICP备18031257号-1　<a href="http://webscan.360.cn/index/checkwebsite/url/www.goldland.group" name="13cd280ef7864f6441e8299c5fc7ea97"   style="display:none;">360网站安全检测平台</a>　　</div>
+</div></div></div>
+<div style= "clear:both;height:0;font-size:1px;"></div></div>
+    </div>
+</body>
+</html>

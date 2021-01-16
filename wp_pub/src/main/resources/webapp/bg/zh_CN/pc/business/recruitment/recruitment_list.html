@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>招聘列表</title>
+
+<#include "/include/bg/in_head_res.html">
+
+</head>
+<body class="inner-body clear">
+	<div class="layui-container bc-color" style="width:100%">
+		<form class="layui-form layui-form-pane" id="form_1" action="${base}/obtain_recruit_list_like.htm">	
+		<div class="layui-form-item"  style="background-color: white;padding:15px 10px;">		
+			<div class="layui-col-md3">
+				<label class="layui-form-label">招聘职位</label>
+				<div class="layui-input-block">
+					<input type="text" name="position"
+						autocomplete="off"  value="${RequestParameters.position!}"  placeholder="请输入职位" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-col-md3">
+				<label class="layui-form-label">状态</label>
+				<div class="layui-input-block">
+					<select name="state" lay-filter="aihao" initValue="${RequestParameters.state!}">
+						<option value="1" <#if RequestParameters.state ==1>  selected="selected" </#if> >未读</option>
+						<option value="2" <#if RequestParameters.state ==2>  selected="selected" </#if> >已读</option>
+					</select>
+				</div>
+			</div>
+			<div class="fl" style="margin-left:50px">
+				<button class="layui-btn fl search" lay-submit > <i class="layui-icon">&#xe615;</i> 搜索</button>
+				<button class="layui-btn layui-btn-warm  fl refresh" type="reset"><i class="layui-icon">&#x1002;</i> 刷新</button>
+			</div>
+		</div>
+		</form>
+		<div class="content_main">
+			<div class="layui-row">
+				<button class="layui-btn layui-btn-danger deleteAll fl ">
+					<i class="layui-icon">&#xe640;</i> 删除
+				</button>
+			</div>
+			<div class="layui-row layui-form">
+				<table class="layui-table">
+					<thead>
+						<tr>
+							<th><input type="checkbox" name="" lay-skin="primary"
+								lay-filter="allChoose"></th>
+							<th>序号</th>
+				            <th>姓名</th>
+				            <th>性别</th>
+				            <th>手机</th>
+				            <th>职位</th>
+				            <th>时间</th>
+				            <th>状态</th>
+				            <th>详情</th>
+				            <th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<#if resultList?size <=0 >
+						<tr>
+							<td colspan="10">无数据</td>
+						</tr>
+						<#else> <#list resultList! as recruit>
+						<tr>
+							<td><input type="checkbox" name="check" lay-skin="primary" id="${recruit.id}"></td>
+							<td>${recruit.id!}</td>
+							<td>${recruit.name!}</td>
+            				<td><#if recruit.sex ==1> 男  <#else> 女  </#if> </td>					
+							<td>${recruit.phone!}</td>
+							<td>${recruit.position!}</td>
+							<td>${recruit.insertTime?string("yyyy-MM-dd HH:mm:ss")!}</td>
+							<td>
+							<#if recruit.state==1>
+							未读
+							<#else>
+							已读
+							</#if>
+							</td>
+							<td><button class="layui-btn  layui-btn-small details"  tid="${recruit.id?c}">
+								 查看详情
+								</button></td>
+							<td>
+							 <input type="checkbox" id="${recruit.id}" lay-skin="switch" lay-filter="state" lay-text="未读|已读" <#if recruit.state==2 > ${'checked'} </#if> >							
+							<button class="layui-btn layui-btn-danger layui-btn-small delete"  id="${recruit.id?c}">
+									<i class="layui-icon">&#xe640;</i> 删除
+								</button></td>
+						</tr>
+						</#list> </#if>
+					</tbody>
+				</table>
+				<div class="pageBotton">${pageHtml}</div>
+			</div>			
+		</div>
+	</div>
+	
+<#include "/include/bg/in_bottom_res.html">	
+	<script type="text/javascript">
+	//删除留言信息 
+    $(".delete").click(function(){
+    	var id = $(this).attr("id");
+    	layer.confirm("确认删除？",{btn: ['确认','取消'],icon:3 },function(){
+    		 $.postJSON("${base}/updata_state_recruitment.htm",{"id":id,"isDelete":1},function(data){              
+          	     if(data.result){
+          	    	layer.msg("删除成功");     
+          	    	window.location.reload();
+          	     }
+    			       	            	 
+            }); 
+    	});
+    });
+    
+    $(".refresh").click(function(){
+    	window.location.reload();
+    });
+    
+    $(".deleteAll").click(function(){
+    	if($("input:checked").length<=0){
+    		layer.msg("请选择待删除条目",{icon:2});
+    		return;
+    	}
+    	layer.confirm("确认删除？",{btn: ['确认','取消'],icon:3 },function(){
+    		$("input:checked").each(function(){
+        		var id = $(this).attr("id");        
+            	$.postJSON("${base}/updata_state_recruitment.htm",{"id":id,"isDelete":1},function(data){              
+             	     if(!data.result){
+             	     	layer.msg("删除失败-"+id,{icon:2});
+             	     }      			       	            	 
+               }); 
+        	});
+    		layer.msg("操作完毕",function(){
+           		window.location.reload();
+           	});
+    	});
+
+    });
+    
+        var form = layui.form;
+
+        //监听提交
+        form.on('submit(form_1)', function(data){
+            layer.alert(JSON.stringify(data.field), {
+                title: '最终的提交信息'
+            })
+            layer.load(1,{shade:true});
+            return false;
+        });
+
+	//更新留言状态
+        form.on("switch(state)",function(data){
+        	var state = 0;
+        	var obj = data.elem;
+        	if(data.elem.checked){
+        		state = 2;
+        	}else{
+        		state = 1;
+        	}
+        	$.postJSON("${base}/updata_state_recruitment.htm",{"id":$(obj).attr("id"),"state":state},function(data){ 
+        	     if(data.result==true){
+        	    	 window.location.reload();
+        	     }else{
+        	    	 layer.msg(data.resultMsg);
+        	     }      			       	            	 
+          }); 
+        });
+        
+	$(".details").click(function(){
+		 layer.open({
+	            type: 2,
+	            title: '个人信息',
+	            shadeClose: true,
+	            shade: 0.8,
+	            area: ['90%','600px'],
+	            content:'${base}/admin/recruitment/show_details.htm?url=business/recruitment/details&id='+$(this).attr("tid"), //iframe的url
+	            end:function(){
+	            	window.location.reload();
+	            }
+	        });
+	});
+        //全选
+        form.on('checkbox(allChoose)', function(data){
+            var child = $(data.elem).parents('table').find('tbody input[name="check"]');
+            child.each(function(index, item){
+                item.checked = data.elem.checked;
+            });
+             form.render('checkbox');
+        });
+
+
+</script>
+
+</body>
+</html>

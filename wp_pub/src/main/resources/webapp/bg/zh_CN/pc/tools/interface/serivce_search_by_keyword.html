@@ -1,0 +1,70 @@
+	<#include "/include/bg/in_head_res.html">
+	<div class="layui-container " style="margin:10px 5px">
+		<div class="layui-row center" style="width:95%;margin:0 auto">
+		 	<form class="layui-form" onsubmit="return false;" id="search_by_keyword">
+		 		<div class="layui-form-item">
+		 			  <div class="two-colum-left">
+		 			  	 <input type="text" name="keyword" lay-verify="required" placeholder="请输入关键字" autocomplete="off" class="layui-input">
+		 			  </div>
+		 			  <div class="fl">
+		 			  	 <button class="layui-btn" lay-submit lay-filter="search_by_keyword"> <i class="layui-icon">&#xe615;</i> 搜索</button>
+		 			  </div>
+		 		</div>
+		 	</form>
+		 	<div class="layui-row">
+            	<table  id="services" lay-filter="services">
+            	
+            	</table>
+            </div>
+		</div>
+	</div>
+	<#include "/include/bg/in_bottom_res.html">
+	<script>
+		var table = layui.table,form = layui.form;
+		
+		form.on('submit(search_by_keyword)',function(data){
+			
+			table_render.reload({
+					url:'${base}/admin/obtain_interface_by_keyword.htm'
+					,where:data.field
+					,request: {pageName: 'pageIndex' ,limitName: 'pageSize'} 
+					,response:{statusCode: "0",msgName: 'resultMsg'}
+					,loading:true
+			});
+		});
+		
+	var table_render = null;
+	$(function(){
+		table_render = table.render({
+			elem:'#services'
+				,cols: [[ //标题栏
+				           {field: 'id', title: '序号', width: 80,sort:true}
+				           ,{field: 'name', title: '名称', width: 120,sort:true}
+				           ,{field: 'otype', title: '类型', width: 80,templet: '#t_otype'}
+				           ,{field: 'sql', title: 'sql/实体', width: 170}
+				           ,{title: '操作', width: 80, templet: '#selectItem'}
+				        ]]
+				,data:[],
+				initSort: {
+				    field: 'id' //排序字段，对应 cols 设定的各字段名
+				    ,type: 'asc' //排序方式  asc: 升序、desc: 降序、null: 默认排序
+				  }
+			});
+	})		
+	
+	function selectItem(item){
+		parent.service_add(item);
+		closeWindow();
+	}
+	
+	</script>
+<script type="text/html" id="selectItem">
+  	<button class="layui-btn layui-btn-small layui-bg-blue" onclick="selectItem({'id':{{d.id}},'otype':'{{d.otype}}','name':'{{d.name}}','sql':'{{d.sql}}'})">选择</button>
+</script>
+<script id="t_otype" type="text/html">
+	{{#  if(d.otype == 1){ }}
+        		查询
+	{{# }else if(d.otype == 2){  }}
+				操作
+    {{#  } }}
+</script>

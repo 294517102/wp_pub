@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<base href="${base}/">
+<title>由html5实现的文件上传预览功能</title>
+<!-- 引用控制层插件样式 -->
+<link rel="stylesheet" href="res/js/plugins/fileUp/css/zyUpload.css" type="text/css">
+
+
+
+	<link rel="stylesheet" href="res/default/bg/js/frame/layui/css/layui.css">
+    <link rel="stylesheet" href="res/default/bg/css/style.css">
+    <link rel="icon" href="res/default/bg/image/code.png">
+    <link rel="stylesheet" href="res/default/bg/css/index.css">
+    <link rel="stylesheet" href="res/default/bg/css/main.css">
+    <link rel="stylesheet" href="res/default/bg/css/text.css">
+    <link rel="stylesheet" href="res/default/bg/css/style_01.css">
+
+</head>
+<body>
+
+<div class="mac">
+    <section>
+        <div class="panel-heading">文章编辑</div>
+        <div class="panel-table">
+            <form class="layui-form layui-form-pane" action='' id="userForm">
+            
+                <div class="layui-form-item">
+                    <label class="layui-form-label">文章标题</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">文章栏目</label>
+                    <div class="layui-input-block">
+                        <select name="column_id" id="column_id">
+                        	<#list column_list as c>
+                        		<#if c.id == columns.id >
+                        		<option value="${c.id?c!}" selected="selected" >${c.title!}</option>
+                        		<#else>
+                        		<option value="${c.id?c!}"  >${c.title!}</option>
+                        		</#if>
+                        	</#list>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">url</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="url" autocomplete="off" placeholder="请输入标题" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">关键字</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="keyword" autocomplete="off" placeholder="请输入标题" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">文章描述</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="describes" autocomplete="off" placeholder="请输入标题" class="layui-input">
+                    </div>
+                </div>
+
+                <div id="demo" class="demo"></div>
+                
+                <div class="layui-form-item layui-form-text">
+                    <div class="layui-input-block">
+                        <script id="container" name="content" type="text/plain" style="width:100%;float:left;">这里输入文章内容</script>
+                    </div>
+                </div>
+            </form>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn " lay-submit="" lay-filter="demo1" onclick="save()">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+
+</body>
+<script src="res/default/bg/js/jquery.min.js"></script>
+<script type="text/javascript" src="res/default/bg/js/frame/layui/layui.js"></script>
+<script src="res/js/myUtils.js"></script>
+<script src="res/js/plugins/ueditor/ueditor.all.js"></script>
+<script src="res/js/AjaxUploadFile/js/AjaxUploadFile.js"></script>
+<script type="text/javascript" src="res/js/utf8-jsp/ueditor.config.js"></script>
+<script type="text/javascript" src="res/js/utf8-jsp/ueditor.all.js"></script>
+<script src="res/js/plugins/fileUp/js/zyFile.js"></script>
+<script src="res/js/plugins/fileUp/js/zyUpload.js"></script>
+<script type="text/javascript">
+var ue = UE.getEditor('container');
+
+
+layui.use(['form', 'layedit', 'laydate','upload'], function(){
+    var form = layui.form()
+            ,layer = layui.layer
+            ,layedit = layui.layedit
+            ,laydate = layui.laydate;
+
+    //创建一个编辑器
+    var editIndex = layedit.build('LAY_demo_editor');
+
+    //自定义验证规则
+    form.verify({
+        title: function(value){
+            if(value.length < 5){
+                return '标题至少得5个字符啊';
+            }
+        }
+        ,content: function(value){
+            layedit.sync(editIndex);
+        }
+    });
+
+});
+$(function(){
+	// 初始化插件
+	$("#demo").zyUpload({
+		width            :   "650px",                 // 宽度
+		height           :   "400px",                 // 宽度
+		itemWidth        :   "120px",                 // 文件项的宽度
+		itemHeight       :   "100px",                 // 文件项的高度
+		url              :   "${base}/upload/uploadImgByAccessory.htm",  // 上传文件的路径
+		multiple         :   true,                    // 是否可以多个文件上传
+		dragDrop         :   true,                    // 是否可以拖动上传文件
+		del              :   true,                    // 是否可以删除文件
+		finishDel        :   false,  				  // 是否在上传文件完成后删除预览
+		/* 外部获得的回调接口 */
+		onSelect: function(files, allFiles){                    // 选择文件的回调方法
+			console.info("当前选择了以下文件：");
+			console.info(files);
+			console.info("之前没上传的文件：");
+			console.info(allFiles);
+		},
+		onDelete: function(file, surplusFiles){                     // 删除一个文件的回调方法
+			console.info("当前删除了此文件："+file.acyId);
+			console.info(file);
+			console.info("当前剩余的文件：");
+			console.info(surplusFiles);
+		},
+		onSuccess: function(file){                    // 文件上传成功的回调方法
+			console.info("此文件上传成功：");
+			console.info(file);
+		},
+		onFailure: function(file){                    // 文件上传失败的回调方法
+			console.info("此文件上传失败：");
+			console.info(file);
+		},
+		onComplete: function(responseInfo){           // 上传完成的回调方法
+			console.info("文件上传完成");
+			console.info(responseInfo);
+		}
+	});
+});
+</script>
+</html>

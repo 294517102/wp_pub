@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <base href="${domainBase}"/>
+    <#include "${includePath}/data.html" >
+		<#include "${includePath}/searchKeyword.html" >
+    <title>${webSet.title!}-${work.title!}</title>
+    <link rel="stylesheet" href="res/default/css/reset.css">
+    <link rel="stylesheet" href="res/default/css/video-js.css">
+
+    <link rel="stylesheet" href="res/default/css/style.css">
+    <link rel="icon" href="res/default/image/ico.png">
+    <script src="res/js/videojs-ie8.min.js"></script>
+</head>
+<body>
+<div class="tips clearfix">
+    <#include "${includePath}/top.html" >
+</div>
+<div class="nav">
+    <div class="nav_box">
+        <ul class="clearfix">
+            <li class="nav_list "><a href="${base}/index.htm">网站首页</a><span>|</span></li>
+             <#list About_Us.children?sort_by("id") as a>
+            <li class="nav_list ">
+                <a href="${base}/obtain_page_list.htm?url=about_us&keyword=${a.keyword!}&size=15">医院概况</a><span>|</span>
+                <#break>
+                </#list>
+                
+                <div class="nav_list_second">
+                <#list About_Us.children?sort_by("id") as a>
+                <#if a_index=0>
+                    <a href="${base}/obtain_page_list.htm?url=about_us&keyword=${a.keyword!}&size=15">${a.title!}</a>
+                    <#elseif a_index=1>
+                    <a href="${base}/obtain_page_list.htm?url=about_lead&keyword=${a.keyword!}&size=15">领导团队</a>
+                    <#elseif a_index=2>
+                    <a href="${base}/to_target.htm?url=about_zhuzhi">组织架构</a>
+                    <#elseif a_index=3>
+                    <a href="${base}/obtain_page_list.htm?url=about_honor&keyword=${a.keyword!}&size=9">医院荣誉</a>
+                    <#elseif a_index=4>
+                    <a href="${base}/to_target.htm?url=about_yuanz">院长寄语</a>
+                    <#elseif a_index=5>
+                    <a href="${base}/obtain_page_list.htm?url=about_history&keyword=${a.keyword!}&size=5">医院文化</a>
+                    <#elseif a_index=6>
+                    <a href="${base}/obtain_page_list.htm?url=about_shebei&keyword=${a.keyword!}&size=9">先进设备</a>
+                    <#elseif a_index=7>
+                    <a href="${base}/obtain_page_list.htm?url=about_huanj&keyword=${a.keyword!}&size=9">医院环境</a>
+                    </#if>
+                    </#list>
+                </div>
+                
+            </li>
+            
+            
+            <li class="nav_list "><a href="${base}/query_like_article.htm?url=guide">就医指南</a><span>|</span>
+           
+            <div class="nav_list_second">
+            <#list guide.children?sort_by("id") as d>
+            <#if d_index=0>
+           
+                   
+                    <a href="${base}/query_like_article.htm?url=guide">门诊时间</a>
+                   
+              <#elseif d_index=4>
+                    <a href="${base}/to_target.htm?url=guide_louceng">楼层导航</a>
+              <#elseif d_index=5>
+                    <a href="${base}/to_target.htm?url=guide_jiaot">交通指示</a>
+              <#elseif d_index=6>
+               <a href="${base}/to_ques_list.htm?url=guide_jiaoliu&id=${d.id?c!}">医患交流</a>
+               <#elseif d_index=7>
+               <a href="${base}/to_target.htm?url=guide_message">意见反馈</a>
+               <#elseif d_index=8>
+               <a href="${base}/obtain_page_list.htm?url=guide_churu&keyword=${d.keyword!}&size=9">出/入院流程</a>
+               <#elseif d_index==9>
+               <a href="${base}/obtain_page_list.htm?url=xi_sheng_men_zhen_biao&keyword=${d.keyword!}&size=9">${d.title!}</a>
+               <#else>
+               <a href="${base}/obtain_page_list.htm?url=guide_xuzhi&keyword=${d.keyword!}&size=9">${d.title!}</a>
+               </#if>
+               </#list>
+                </div></li>
+            <li class="nav_list"><a href="${base}/obtain_by_first_letter.htm?url=departments">科室导航</a><span>|</span></li>
+            
+                   
+            <li class="nav_list"><a href="${base}/query_like_article.htm?url=zhuanjia&type=1&type=1">专家介绍</a><span>|</span></li>
+           
+            
+           
+           <#list News.children! as n>
+            <li class="nav_list"><a href="${base}/obtain_page_list.htm?url=news&keyword=${n.keyword!}&size=9">护理天地</a><span>|</span>
+            <#break>
+            </#list>
+            <div class="nav_list_second">
+            <#list News.children?sort_by("id") as n>
+            <#if n_index=0>
+                    <a href="${base}/obtain_page_list.htm?url=news&keyword=${n.keyword!}&size=9">${n.title!}</a>
+                    <#elseif n_index=5>
+                    <a href="${base}/obtain_page_list.htm?url=news_last&keyword=${n.keyword!}&size=9">${n.title!}</a>
+                    <#else>
+                    <a href="${base}/obtain_page_list.htm?url=news_other&keyword=${n.keyword!}&size=9">${n.title!}</a>
+                    
+                    </#if>
+                    </#list>
+                </div></li>
+            <#list medical.children?sort_by("id") as n>
+            <li class="nav_list"><a href="${base}/obtain_page_list.htm?url=medical&keyword=${n.keyword!}&size=9">医学教育</a><span>|</span>
+            <#break>
+            </#list>
+            <div class="nav_list_second">
+            <#list medical.children?sort_by("id") as h>
+            <a href="${base}/obtain_page_list.htm?url=medical&keyword=${h.keyword!}&size=9">${h.title!}</a>
+            </#list>
+            </div>
+            </li>
+            <#list work.children?sort_by("id") as n>
+            <li class="nav_list active"><a href="${base}/obtain_page_list.htm?url=work&keyword=${n.keyword!}&size=9">党群工作</a><span>|</span>
+            <#break>
+            </#list>
+            <div class="nav_list_second">
+            <#list work.children?sort_by("id") as h>
+            <a href="${base}/obtain_page_list.htm?url=work&keyword=${h.keyword!}&size=9">${h.title!}</a>
+            </#list>
+            </div>
+            </li>
+            
+            <#list xinwen.children?sort_by("id") as h>
+            <li class="nav_list"><a href="${base}/obtain_page_list.htm?url=home1&keyword=${h.keyword!}&size=9">新闻公告</a>
+            <#break>
+            </#list>
+            <div class="nav_list_second">
+            <#list xinwen.children?sort_by("id") as h>
+            <#if h_index=3>
+            <a href="${base}/obtain_page_list.htm?url=home&keyword=${h.keyword!}&size=9">${h.title!}</a>
+            <#else>
+            <a href="${base}/obtain_page_list.htm?url=home1&keyword=${h.keyword!}&size=9">${h.title!}</a>
+            </#if>
+            </#list>
+            </div>
+            </li>
+        </ul>
+    </div>
+    <div class="nav_title">
+        <div class="nav_title_box">
+            <ul class="nav_title_content clearfix">
+            <#list work.children?sort_by("id") as n>
+            <#if column.id=n.id>
+                <li class="nav_title_list active">
+                    <a href="${base}/obtain_page_list.htm?url=work&keyword=${n.keyword!}&size=9">${n.title!}</a><span>|</span>
+
+                    <img class="nav_img" src="res/default/image/44.png" alt="">
+                </li>
+             
+                <#else>
+                <li class="nav_title_list"><a href="${base}/obtain_page_list.htm?url=work&keyword=${n.keyword!}&size=9">${n.title!}</a><span>|</span><img class="nav_img" src="res/default/image/44.png" alt=""></li>
+               </#if>
+               </#list>
+            </ul>
+            <div class="nav_position">
+                您的位置：<a href="${base}/index.htm">>泸县第二人民医院</a>>
+                <#list work.children?sort_by("id") as n>
+            	<#if n_index=0>
+                <a href="${base}/obtain_page_list.htm?url=work&keyword=${n.keyword!}&size=9">党群工作</a>>
+               </#if>
+               </#list>
+                <#list work.children?sort_by("id") as n>
+                <#if column.id=n.id>
+                
+                <a href="${base}/obtain_page_list.htm?url=work&keyword=${n.keyword!}&size=9">${n.title!}</a>>详情
+                
+                </#if>
+                </#list>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="work_main">
+    <div class="work_main_box clearfix" style="margin-top: 50px">
+        <div class="work_main_left" style="margin:0 auto;float:none;width:1100px;overflow:hidden">
+            <p class="work_del_title">${data.title!}</p>
+            <div class="work_del_date clearfix">
+                <span class="work_del_day">${(data.issueTime?string('yyyy-MM-dd'))!}</span>
+<!--                 <span class="work_del_num">浏览次数：23次</span> -->
+               
+            </div>
+            <#list data.articleExt! as da>
+            <div class="work_del_content">
+              ${da.content!}
+            </div>
+            </#list>
+<!--             <div class="prev_art"><a>上一篇：看上的风景卡萨丁回复仅</a></div> -->
+<!--             <div class="next_art"><a>下一篇：看上的风景卡萨丁回复仅</a></div> -->
+            <#assign aid=data.id!>
+		<#if column.articles??>
+		    <#list column.articles! as ca>
+		    	<#if ca.id=aid>  <!-- 遍历获取当前文章的下标 -->
+		    		<#assign a_index=ca_index>
+		    		<!-- 再次遍历取出上一个和下一个 -->
+		    		
+		    		
+		    		<#list column.articles! as can>
+		    			<#if can_index=(a_index-1)>
+		    			<div class="prev_art"><a title="${can.title!}" href="${base}/singleSearch_${can.id?c!}.htm?url=medical_detail&ctype=article&column_id=${column.id?c!}">上一篇:${can.title!}</a></div>
+		    			</#if>
+		    			<#if can_index=(a_index+1)>
+		    			<div class="next_art"><a title="${can.title!}" href="${base}/singleSearch_${can.id?c!}.htm?url=medical_detail&ctype=article&column_id=${column.id?c!}">下一篇:${can.title!}</a></div>
+		    			</#if>
+		    			</#list>	
+		    		
+		    		
+		    	</#if>
+		    </#list>
+		    <#else>
+		    	维护中...
+		    </#if>  
+            
+            <a class="art_btn" href="javascript:history.back()">返回列表</a>
+        </div>
+        
+
+    </div>
+</div>
+
+
+
+
+<div class="main_fifth">
+    <div class="main_fifth_box">
+        <div class="main_fifth_title">友情链接</div>
+        <#include "${includePath}/link.html" >
+    </div>
+
+</div>
+<div class="footer">
+    <#include "${includePath}/foot.html" >
+</div>
+<script src="res/js/jquery.min.js"></script>
+<script src="res/js/html5shiv.js"></script>
+<script src="res/js/jquery.SuperSlide.2.1.1.js"></script>
+<script src="res/js/video.min.js"></script>
+
+<script>
+
+    lastNoMargin($('.main_fifth_content_list'),5);
+    $(".nav_title_list").click(function(){
+        $(this).addClass("active").siblings().removeClass("active");
+    })
+    $(".nav_list").click(function(){
+        $(this).addClass("active").siblings().removeClass("active");
+    })
+
+
+    jQuery(".sideMenu").slide({titCell:".work_main_right_dis_title", targetCell:".work_main_right_dis_show",defaultIndex:0,effect:"slideDown",delayTime:300,trigger:"click"});
+</script>
+</body>
+</html>

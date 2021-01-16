@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>终端日志</title>
+    <script src="/res/default/bg/js/jquery.min.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+        	overflow:hidden;
+        }
+        .t{
+            background-color: #000;
+            color: #0FFC00;
+            letter-spacing: 1px;
+            word-spacing: 1px;
+            padding: 10px 0 10px 10px;
+            font-size: 13px;
+            font-family: "微软雅黑";
+            
+        }
+         .alert{
+            width: 80px;
+            height: 40px;
+            z-index: 100;
+            position: fixed;
+            top:5px;
+            right: 20px;
+            text-align: center;
+        }
+        .clear{
+            border: 0;
+            height: 40px;
+            line-height: 40px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+<script>
+    $(document).ready(function() {
+        // 指定websocket路径
+        var websocket = new WebSocket('ws://${cm.domain}/admin/log/error');
+       // var websocket = new WebSocket('ws://localhost/admin/log/error');
+        websocket.onopen = function(evt) { 
+        	$("#log-container div").html(""); 
+        }; 
+        websocket.onmessage = function(event) {
+        	 // 接收服务端的实时日志并添加到HTML页面中
+        	 var res = eval('(' + event.data + ')');
+        	 if(!res.result){
+        		  $("#log-container div").append(res.resultMsg);
+        		 return;
+        	 }
+            $("#log-container div").append(res.resultData+"</br>\n");
+            // 滚动条滚动到最低部
+            $("#log-container div").scrollTop($("#log-container div")[0].scrollHeight);            
+        };
+  
+       $("#log-container div").height($(window).height());
+
+       /*浏览器缩放*/
+       $(window).resize(function () {
+    	   $("#log-container div").height($(window).height());
+    	   $("#log-container div").scrollTop($("#log-container div")[0].scrollHeight);
+       })
+
+        $(".alert").click(function () {
+        /* var cm=window.confirm("是否去确定清除日志！")
+        if (cm===true){
+            $("#log-container div").html("");
+        } */
+        	 $("#log-container div").html("");
+    })
+    });
+</script>
+</head>
+<body class="inner-body">
+ <div id="log-container" class="t" style="margin:0 auto;margin:10px">
+ 	<div style="overflow:scroll;">
+		初始化中...
+	</div>
+ </div>
+ <div class="alert">
+    <img class="clear" src="/res/default/bg/image/clear.png" alt="">
+</div>
+</body>
+</html>

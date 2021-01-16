@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<base href="${domainBase}"/> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>${(webSet.title)!""}-首页</title>
+	<script src="res/js/jquery.min.js"></script>
+    <!--轮播图-->
+    <script src="res/js/owl/owl.carousel.min.js"></script>
+    <!--swiper-->
+    <script src="res/js/swiper/swiper.min.js"></script>
+	    <style type="text/css">
+    	html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header,menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+    font: 12px/1.5 "Hiragino Sans GB","Helvetica neue",Helvetica,"Microsoft Yahei", sans-serif;
+    background-color: #f2f2f2;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+/*清除报头必用，clearfix在header上面*/
+.clear:before, .clear:after { content: ""; display: table; }
+.clear:after { clear: both; }
+.clear { zoom: 1; }
+
+
+/*input去掉选中框*/
+input{outline:none;}
+
+/*CSS不可选择*/
+/*body{
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}*/
+
+/*文字选中背景颜色*/
+
+::selection {color: rgba(255,255,255,0.9);background: rgba(241,90,35,0.9);text-shadow: none;}
+::-moz-selection {color: rgba(255,255,255,0.9);background: rgba(241,90,35,0.9);text-shadow: none;}
+
+
+
+a,a:hover, a:visited, a:link, a:active {
+    text-decoration: none;
+    cursor: pointer;
+}
+textarea{
+    resize:none;
+}
+
+*:focus {outline: none;}
+
+@media screen and (min-width:320px){html{font-size:21.333333333333332px;}body{font-size:12px;}}@media screen and (min-width:360px){html{font-size:24px;}body{font-size:12px;}}@media screen and (min-width:375px){html{font-size:25px;}body{font-size:12px;}}@media screen and (min-width:384px){html{font-size:25.6px;}body{font-size:14px;}}@media screen and (min-width:400px){html{font-size:26.666666666666668px;}body{font-size:14px;}}@media screen and (min-width:414px){html{font-size:27.6px;}body{font-size:14px;}}@media screen and (min-width:424px){html{font-size:28.266666666666667px;}body{font-size:14px;}}@media screen and (min-width:480px){html{font-size:32px;}body{font-size:15.36px;}}@media screen and (min-width:540px){html{font-size:36px;}body{font-size:17.28px;}}@media screen and (min-width:720px){html{font-size:48px;}body{font-size:23.04px;}}@media screen and (min-width:750px){html{font-size:50px;}body{font-size:24px;}}
+body{
+    overflow-x: hidden;
+}
+.dis{
+    display: none;
+}
+.text{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.main{
+    width: 15rem;
+    margin: 0 auto;
+    overflow-x:hidden;
+}
+#owl{
+    height: 7.2rem;
+}
+.sear{
+    width: 15rem;
+    height: 2rem;
+    line-height: 2rem;
+    background-color: #f5f5f5;
+}
+.i-input{
+    display: inline-block;
+    width: 14.4rem;
+    height: 1.6rem;
+    position: relative;
+    padding:.2rem .3rem;
+    border-radius: .2rem;
+}
+.i-input::after{
+    content: '';
+    position: absolute;
+    left: .6rem;
+    top: .65rem;
+    width: .7rem;
+    height: .7rem;
+    background: url("../image/1.png") no-repeat center center;
+    background-size: 100% 100%;
+}
+
+.i-input input{
+    width: 100%;
+    height: 100%;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    float: left;
+    text-indent: 1.5rem;
+    font-size: .52rem;
+    color: #a9a9a9;
+}
+.main-ul{
+    width:15rem;
+    height: auto;
+    background: #FFF;
+    border-bottom: .3rem solid #f5f5f5;
+}
+.main-li{
+    width:7.46rem;
+    /* height: 3.7rem; */
+    float: left;
+    text-align: center;
+    border-bottom: .02rem solid #ececec;
+}
+.main-li:nth-child(2n-1){
+    width: 7.46rem;
+    border-right: .02rem solid #ececec;
+}
+.main-list{
+    display: inline-block;
+    margin-top: .95rem;
+}
+.main-img{
+    height: .9rem;
+}
+.main-name{
+    height: .5rem;
+    line-height: .5rem;
+    display: block;
+    margin-top: .3rem;
+    font-size: .42rem;
+    color: rgb(82, 82, 82);
+}
+.xx{
+    width: 13.8rem;
+    height: 14rem;
+    margin: .4rem;
+    border-radius: .5rem;
+    padding: .2rem;
+    box-shadow: 0 0 .5rem rgba(0,0,0,.2);
+}
+.xx h3{
+    width:100%;
+    height: 2rem;
+    line-height: 2rem;
+    font-size: .72rem;
+    text-align: center;
+}
+.xx p{
+    width: 90%;
+    line-height: 1.2rem;
+    margin: 0 5%;
+    overflow:hidden;
+}
+.xx p *{
+    display: inline-block;
+}
+.xx p label{
+    width: 4.01rem;
+    padding-right: .5rem;
+    float: left;
+    height: 1.2rem;
+    text-align: right;
+    font-size: .54rem;
+    color: #555555;
+}
+.xx p label img{
+    height: .5rem;
+    margin: .35rem 0 0 .5rem;
+    float: left;
+}
+.xx p span{
+    width: 7.9rem;
+    float: left;
+    font-size: .48rem;
+    color: #555555;
+}
+.main-li-img{
+	width:100%;
+	heght:auto;
+}
+.search-box{
+	overflow:hidden;
+	margin:.5rem auto .4rem;
+	height:1rem;
+	width:13rem;
+	background:#fff;
+	border-radius:.3rem;
+	padding:.1rem
+}
+.search-input{
+	height:.9rem;
+	margin:0;
+	padding:0;
+	width:11rem;
+	border:0;
+	padding-left:.3rem;
+	float:left;
+}
+.search-btn{
+	heihgt:.8rem;
+	width:.8rem;
+	margin-top:.1rem;
+	float:right;
+	margin-right:.4rem;
+	display:block;
+	border:0;
+}
+.search-result-box{
+	width:15rem;
+	background:#fff;
+	margin-top:.3rem;
+}
+.search-result-list{
+	heihgt:2rem;
+	border-bottom:1px solid #ccc;
+	line-height:2rem;
+	font-size:.6rem;
+	color:#7C7C7B;
+	text-indent:.5rem;
+	overflow:hidden;
+	width:100%;
+}
+.search-result-list:last-child(1){
+	border:0;
+}
+    </style>
+    <script type="text/javascript">
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function () {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = 72 * (clientWidth / 1080) + 'px';
+            };
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+
+
+    $(function () {
+        /*侧边栏js*/
+        var left = $('.left');
+        var bg = $('.bgDiv');
+        var leftNav = $('.leftNav');
+        var main = $(".left-main");
+        var headFoot = $(".head,.foot");
+        showNav(left, leftNav, "left");
+        function showNav(btn, navDiv, direction) {
+
+            btn.on('click', function () {
+                bg.css({
+                    display: "block",
+                    transition: "opacity .1s"
+                });
+                main.css({
+                    left:"10.4rem",
+                    transition: "left .3s"
+                });
+                headFoot.css({
+                    left: "10.4rem",
+                    transition: "left .3s"
+                });
+                if (direction == "left") {
+                    navDiv.css({
+                        left: "0px",
+                        transition: "left .3s"
+                    });
+                }
+            });
+        }
+        bg.on('click', function () {
+            hideNav();
+        });
+        function hideNav() {
+            leftNav.css({
+                left: "-10.4rem",
+                transition: "left .3s"
+            });
+            main.css({
+                left:"0",
+                transition: "left .3s"
+            });
+            headFoot.css({
+                left: "0",
+                transition: "left .3s"
+            });
+            bg.css({
+                display: "none",
+                transition: "display 1s"
+            });
+
+        }
+        $(".bgDiv,.leftNav").height($(window).height());
+        $(".foot li").on("click", function () {
+            $(this).siblings().removeClass("active");
+            $(this).addClass("active");
+        });
+    });
+    </script>
+</head>
+<body>
+<script type="text/javascript">
+function tohref (url) {
+	window.location.href=url;
+}
+</script>
+<#assign qpd = webSet.getColumnByKeyword("QPD")!! >
+<main class="main">
+    <div class="i-banner" id="owl">
+<a class="item"><img src="res/default/image/0.jpg" /></a>
+    </div>
+    
+    <ul class="clear search-result-box">
+    	<#list list! as a>
+    		<li class="search-result-list" onclick="window.location.href='${base}/to_fwd_page_${(a.column.id?c)!}.htm?url=fwd&aid=${a.id?c}'">${(a.column.title)!}</li>
+    	</#list>
+    </ul>
+</main>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>页面跳转</title>
+</head>
+<script type="text/javascript">
+
+//字符串用法
+<#switch column.type>  
+  <#case 2>  
+          <#break>  
+  <#case 3>  
+          <#break>  
+  <#case 4>  
+window.location.href = "${base}/admin/column_file_list.htm?cid=${column.id}";
+          <#break>  
+  <#case 5>  
+          <#break>  
+  <#case 6>  
+window.location.href = "${base}/admin/course_list.htm?cid=${column.id}";
+          <#break>  
+  <#default>  
+  
+</#switch>
+
+
+</script>
+</html>

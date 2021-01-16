@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>医生列表</title>
+<#include "/include/bg/in_head_res.html">
+   <style type="text/css">
+   .layui-table td, .layui-table th{
+       padding: 8px 8px !important;
+   }
+   </style> 
+</head>
+<body class="inner-body clear">
+	<div class="layui-container bc-color" style="width:100%">
+		<form class="layui-form layui-form-pane" id="form_1" method="post" action="/obtain_doctor_like_list.htm?url=business/doctor/doctor_list">	
+		<div class="layui-form-item layui-col-space10"  style="background-color: white;padding:15px 10px;">		
+			
+			<div class="layui-col-md3" >
+				<label class="layui-form-label">医生名称</label>
+				<div class="layui-input-block">
+					<input type="text" name="name"
+						autocomplete="off"  value="${RequestParameters.name!!}"  placeholder="请输入医生名称" class="layui-input">
+				</div>
+			</div>
+			 <div class="layui-col-md3" >
+		        <label class="layui-form-label">所属科室：</label>
+		        <div class="layui-input-block">
+					<select name="columnid">
+						<option value="0">请选择</option>
+					<#if columnList ??&&columnList?size gt 0>
+						<#list columnList as c>
+							<option value="${c.id}" <#if RequestParameters.columnid ??&& RequestParameters.columnid==c.id> selected="selected" </#if>>${c.title}</option>
+						</#list>
+					</#if>
+					</select>
+				</div>
+			</div>
+			<div  class="fl" style="margin-left:20px">
+				<button class="layui-btn fl search" lay-submit > <i class="layui-icon">&#xe615;</i> 搜索</button>
+				<button class="layui-btn layui-btn-warm  fl " onclick="location.href=location.href"  type="reset" ><i class="layui-icon">&#x1002;</i> 刷新</button>
+			</div>
+		</div>
+		</form>
+		<div class="content_main">
+			<div class="layui-row">
+				<button class="layui-btn  add_doctor fl ">
+					<i class="layui-icon">&#xe61f;</i> 新增
+				</button>
+				<!-- <button class="layui-btn layui-btn-danger deleteAll fl ">
+					<i class="layui-icon">&#xe640;</i> 删除
+				</button> -->
+			</div>
+			<div class="layui-row layui-form">
+				<table class="layui-table" >
+					<thead>
+						<tr>
+							<th>头像</th>
+							<th >医生名称</th>
+							<th >所属科室</th>
+							<th >职称</th>
+							<th>级别</th>
+							<th>院内外</th>
+							<th>创建时间</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<#if !resultList??|| resultList?size <=0 >
+						<tr>
+							<td colspan="8">无数据</td>
+						</tr>
+						<#else> <#list resultList as r>
+						<tr>
+							<td><img src="${r.accessory.url}" alt="${r.name}" style="width: 80px;height: 80px;"></td>
+							<td>${r.name}</td>							
+							<td>${r.column.title}</td>							
+							<td>${r.position.name!"暂无职称"}</td>
+							<td>${r.level!"暂无级别"}</td>
+							<td>
+							<#if r.type==-1>
+							院内
+							<#elseif r.type==1>
+							院外
+							</#if>
+							</td>
+							<td>${(r.insertTime?string('yyyy-MM-dd'))!}</td>
+							<td>
+							<button class="layui-btn layui-btn-small addDoc" id="${r.id}"><i class="layui-icon">&#xe63c;</i>编辑排班表</button>
+							<button class="layui-btn layui-btn-small detail" id="${r.id}"><i class="layui-icon">&#xe63c;</i>编辑</button>
+							 <input type="checkbox" name="close" lay-skin="switch" tid="${r.id}"  lay-filter="switchTest" <#if r.isShow==1>checked=""</#if> lay-text="OFF|ON">
+							<button class="layui-btn layui-btn-danger layui-btn-small delete"  id="${r.id}">
+									<i class="layui-icon">&#xe640;</i> 删除
+								</button></td>
+						</tr>
+						</#list> </#if>
+					</tbody>
+				</table>
+				<div class="pageBotton">${pageHtml}</div>
+			</div>			
+		</div>		
+		
+		</div>
+		<#include "/include/bg/in_bottom_res.html">	
+<script type="text/javascript">
+var form = layui.form;
+//监听指定开关
+form.on('switch(switchTest)', function(data){
+console.log(this.checked);
+// 取消排班
+var id=$(this).attr("tid");
+var isShow=-1;
+if(this.checked){
+	isShow=1
+}else{
+	isShow=-1
+}
+	$.postJSON("/general_service_avnpFxYjRxdngsLWRDN$ajax.htm",{"id":id,"isShow":isShow},function(data){
+			if(data.result==true){
+			if(isShow==1){
+			layer.msg(data.msg+"已关闭医生排班");
+			}else{
+			layer.msg(data.msg+"已开启医生排班");
+			}
+    		}else{
+			layer.msg(data.msg);
+    		}
+	}); 
+ /*  layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
+    offset: '6px'
+  }); */
+//   layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+});
+// 医生编辑
+$(".detail").click(function(){
+	layer.open({
+        type: 2,
+        title: '医生编辑',
+      //  btn: ['确定', '取消'],
+        shadeClose: true,
+        shade: 0.8,
+        area: ['1050px', '550px'],
+        offset: '40px',
+        content:'${base}/doctor/to_doctor_add.htm?url=business/doctor/doctor_add&did='+$(this).attr("id") //iframe的url
+    });
+});
+//新增排班信息 
+$(".addDoc").click(function(){
+	layer.open({
+        type: 2,
+        title: '排班表',
+      //  btn: ['确定', '取消'],
+        shadeClose: true,
+        shade: 0.8,
+        area: ['800px', '90%'],
+        offset: '40px',
+        content:'${base}/doctor/to_doctor_add.htm?url=business/doctor/position_add&did='+$(this).attr("id") //iframe的url
+    });
+});
+
+// 栏目删除
+$(".delete").click(function(){
+	var id = $(this).attr("id");
+	layer.confirm("确认删除？",{btn: ['确认','取消'],icon:3 },function(){
+		 $.postJSON("${base}/admin/delete_doctor$ajax.htm",{"id":id,"isDelete":1},function(data){              
+      	     if(data.result){
+      	    	layer.msg("删除成功");     
+      	    	window.location.reload();
+      	     }
+			       	            	 
+        }); 
+	});
+});
+
+
+
+$(function(){
+// 	栏目新增功能
+    $(".add_doctor").click(function () {
+        layer.open({
+            type: 2,
+            title: '新增医生',
+          //  btn: ['确定', '取消'],
+//             closeBtn: 1,
+            shadeClose: true,
+            shade: 0.8,
+            area: ['1050px','550px'],
+            offset: '40px',
+            content:'${base}/doctor/to_doctor_add.htm?url=business/doctor/doctor_add' //iframe的url
+        });
+    });    
+})
+
+</script>
+		</body>
+</html>

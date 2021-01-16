@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <#include "/${rp}/metalink.html">
+</head>
+<body>
+<div class="page">
+    <header class="bar bar-nav">
+         <#assign ib= at.bi(id)>
+        <a class="icon icon-left pull-left back"></a>
+        <a href="${cm.cp}" class="icon icon-home pull-right" external></a>
+        <h1 class="title">${ib.column.title}</h1>
+    </header>
+    <div class="content">
+        <div class="detail_header">
+            <h1>${ib.title}</h1>
+            <p>发布时间：${ib.issueTime?string('YYYY-MM-dd')}&emsp;来自：${ib.source}</p>
+        </div>
+        <div class="detail_content">
+            ${ib.ext.content}
+        </div>
+        <#include "/${rp}/footer.html">
+    </div>
+</div>
+
+<#include "/${rp}/jslink.html">
+<script>
+
+</script>
+</body>
+</html>

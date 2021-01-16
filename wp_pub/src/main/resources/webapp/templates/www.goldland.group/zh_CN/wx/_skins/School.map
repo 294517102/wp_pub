@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<items>
+  <item url="/gaikuang/leader/" template="LeaderPic.ascx" />
+  <item url="/gaikuang/jygk/detail" template="channel.Detail.All.ascx" />
+  <item url="/hdpt/" template="FeedbackA.ascx" />
+  <item url="/jszj/jsfc/" template="PicListA.ascx" />
+  <item url="/xxgk/ldjj/" template="LeaderPic.ascx" />
+  <item url="/jsgz/jsfc/" template="PicListA.ascx" />
+  <item url="/jsgz/szdw/" template="TeacherList.ascx" />
+  <item url="/xszx/xszp/" template="PicListA.ascx" />
+  <item url="/jxgt/zxfw/" template="FeedbackA.ascx" />
+  <item url="/jxgt/zxfw/detail" template="FeedbackA.Show.ascx" />
+  <item url="/xszx/xsfc/" template="PicNewsList.ascx" />
+  <item url="/xxgk/jxhj/" template="PicListA.ascx" />
+  <item url="/special/*/" template="SpecialList.ascx" />
+  <item url="/xxgk/jgsz/" template="DepartmentList.ascx" />
+  <item url="/welcome" template="site.welcome.ascx" />
+  <item url="/*/" template="channel.index.ascx" />
+  <item url="/*/detail" template="channel.detail.ascx" />
+  <item url="/*/search" template="channel.search.ascx" />
+  <item url="/register" template="site.register.ascx" />
+</items>

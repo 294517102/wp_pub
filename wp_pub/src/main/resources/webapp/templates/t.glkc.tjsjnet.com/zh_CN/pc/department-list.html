@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<#include "/${rp}/metalink.html">
+	<title>${webSet.title}</title>
+	<style>
+		.dq_active1{
+			display: inline-block;
+			height: 55px;
+			width: 56px;
+			color: #46c3f2;
+			font-size: 14px;
+			border-bottom: 2px solid #46c3f2;
+		}
+		#h4{
+			color: #46c3f2;
+			border-bottom: 2px solid #46c3f2;
+		}
+		#text{
+			position: absolute;
+			top:0;
+			left: 50px;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<#include "/${rp}/header.html">	
+	</header>
+	<div class="dangquangongzuo">
+	    <#assign ck = cl.bk(c)>
+			<div  class="dangquangongzuo_img">
+				<div class="dangquangongzuo_img_pos">
+					<span>${ck.title}</span>
+				</div>	
+		</div>
+		<div class="df_lb">
+			<div class="df_lb_title">
+				<h4 style="height: 64px" id="h4">科室动态</h4>
+				<a class="goback" style="color:#23A2E5 ">返回上一级</a>
+			</div>
+				<ul class="ksdt">
+    				<#if !pageIndex?? >  <#assign  pageIndex="1" > </#if>
+                    <#assign pageList= at.bc(ck,pageIndex,12)> 
+                    <#if pageList.list?size gt 0>
+                    <#list pageList.list?sort_by('issueTime')?reverse as a>
+                    <#if a.sequence lt 99999>
+					<li><a href="${cm.cp}go.htm?url=department-listdtail&id=${a.id}">${a.title}</a><span>${a.issueTime?string('YYYY-MM-dd')}</span></li>
+					</#if>
+					</#list>
+				</ul>
+				<div class="fenpage">
+                ${cm.page(req,pageIndex,pageList)}
+                </div>
+                 <#else>
+                <div class="nodata">
+                    <img src="res/default/images/nodata.png" alt="暂无数据" />
+                    <p>暂无数据</p>
+                </div>
+                </#if>
+		</div>
+	</div>
+	<footer>
+		<#include "/${rp}/footer.html">
+	</footer>
+	<script src="res/js/jquery-1.12.3.js"></script>
+<script>
+	$('.goback').on('click',function(){
+	    window.history.go(-1);
+	})
+</script>
+</body>
+</html>

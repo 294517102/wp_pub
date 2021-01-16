@@ -1,0 +1,31 @@
+<#if pCol.children??>
+<div class="nyl_box">
+    <div class="nyl_yj">${pCol.title!}</div>
+    <ul class="nyl_ej">
+        <#list pCol.children as nav>
+        <#if nav.keyword!="tu_pian_xin_wen">
+        <li class="bb <#if k = nav.keyword> nyl_ejactive </#if>"><a href="${nav.url!}">${nav.title!}</a></li>
+        </#if>
+        </#list>
+    </ul>
+</div>
+</#if>
+<div class="nyl1">
+    <div class="nyl1_t">联系信息</div>
+    <div class="nyl1b">
+        <div class="nyl1_row">
+            <div>电话</div>
+            <#assign sclist=sc.bks("dian_hua")>
+            <#list sclist as a>
+            <div>${a.desc!}</div>
+            </#list>
+        </div>
+<!--        <div class="nyl1_row">
+            <div>邮箱：</div>
+            <div> ${webSet.comEmail}</div>
+        </div>-->
+        <div class="nyl1_row">
+            <div>邮编：${sc.bk("you_bian").desc}</div>
+        </div>
+    </div>
+</div>

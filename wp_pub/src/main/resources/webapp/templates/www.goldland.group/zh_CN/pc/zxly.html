@@ -1,0 +1,214 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>${webSet.title}</title>
+      <#assign dqlm = cl.bk(k)>
+    <#include "${rp}/header.html">
+    <style>
+        .ask_a {
+    display: flex;
+    align-items: center;
+}
+.ask_b {
+    margin-right: 10px;
+}
+.ask{
+    display: flex;
+    justify-content: space-between;
+    margin: 17px auto;
+}
+.ask_c_1 {
+    width: 98%;
+    position: relative;
+}
+.tijiao {
+    width: 156px;
+    height: 50px;
+    background-color: #06b206;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 50px;
+}
+.ask_c span{
+    color: red;
+}
+    </style>
+</head>
+<body style="background-color:#f5f1da;background-position:center top;background-repeat:no-repeat; background-attachment:scroll;">
+    <div id="pagecontainer" style="width:100%px;margin:0 auto">
+        <div id="we7layout_14781574794220" class="sf_cols">
+ <div style="float: none; width: 100%; margin: 0; ;" class="sf_colsOut"><div class="sf_colsIn ">
+  
+    <#include "${rp}/include/top_header.html">
+
+
+
+<div id="we7layout_149615438292670" class="sf_cols">
+ <div style="float: none; width: 100%; margin: 0; ;" class="sf_colsOut"><div class="sf_colsIn ">
+ 
+<!--[if IE 6]>
+<script type="text/javascript">
+    DD_belatedPNG.fix('img,a,ul,li,div');
+</script>
+<![endif]-->
+<div class="ChannelMenuV_DropDown">
+    <ul id="dropdown_nav">
+         <#include '${rp}include/topc.html'>
+    </ul>
+    <script type="text/javascript">
+        $(".ChannelMenuV_DropDown .sub").hide();
+        function showSub(index) {
+            $(".ChannelMenuV_DropDown .top_" + index + " .sub").show().parent().addClass("dropon");
+        }
+        function hideSub(index) {
+            $(".ChannelMenuV_DropDown .top_" + index + " .sub").removeClass("dropon").hide().parent().removeClass("dropon");
+        }
+        $("#dropdown_nav>li").last().children("ul").addClass("lastul");
+    </script>
+</div><div id="we7layout_149786866279618" class="sf_cols">
+ <div style="float: none; width: 100%; margin: 0; ;" class="sf_colsOut"><div class="sf_colsIn ">
+  
+<!--htmlWidgetStart-->
+<!--<script type="text/javascript" src="/_skins/201608A/js/jquery.js" ></script>--> 
+<!--<script type="text/javascript" src="/_skins/201608A/js/jquery.caroufredsel-6.0.4-packed.js" ></script>-->
+<script type="text/javascript" src="res/default/js/focus_widgets_wid_mypart.js" ></script>
+<div class="allscroll">
+<!--滚动图-->
+<div id="banner_show" class="banner_show">
+    <!--焦点图-->
+    <a class="bannger_inbox" href="/"><img width="1920" src="res/default/images/banner01.jpg" alt="" /></a>
+    <a class="bannger_inbox" href="/"><img width="1920" src="res/default/images/banner02.jpg" alt="" /></a>
+  <!--  <a class="bannger_inbox" href="#"><img width="1920" src="/_skins/temp02/images/banner03.jpg" alt="" /></a>-->
+    <!--焦点图-->
+    <!--左右箭头-->
+    <div class="banner_pre_next">
+      <a class="banner_btn_left" href="javascript:;">上一个</a>
+      <a class="banner_btn_right" href="javascript:;">下一个</a>
+    </div>
+    <!--左右箭头-->
+</div>
+<!--滚动图-->
+</div>   
+ <!--HtmlWidgetEnd-->
+ <div id="we7layout_150470118677658" class="sf_cols">
+ <div style="float: none; width: 100%; margin: 0; background:#f9f9f9;" class="sf_colsOut"><div class="sf_colsIn ">
+ <div id="we7layout_150470119320272" class="sf_cols">
+ <div style="float: none; width: 100%; margin: 0; ;" class="sf_colsOut">
+     <div class="sf_colsIn layout">
+     
+     
+    <#include "${rp}/include/search_nav.html">
+
+
+<div style= "clear:both;height:0;font-size:1px;"></div>
+</div></div></div>
+
+<div style= "clear:both;height:0;font-size:1px;"></div></div></div></div>
+<div style= "clear:both;height:0;font-size:1px;"></div></div></div></div>
+<div style= "clear:both;height:0;font-size:1px;"></div></div></div></div>
+<div style= "clear:both;height:0;font-size:1px;"></div></div></div></div>
+<div style= "clear:both;height:0;font-size:1px;"></div></div><div id="we7layout_147815747672035" class="sf_cols">
+ <div style="float: none; width: 100%; margin: 0; ;" class="sf_colsOut"><div class="sf_colsIn layout_content">
+ <div id="we7layout_147815769862112" class="sf_cols">
+ <div style="float: none; width: 100%; margin: 0; ;" class="sf_colsOut"><div class="sf_colsIn ">
+ 
+    <#include "${rp}/include/bread_nav.html">
+
+</div></div>
+<div style= "clear:both;height:0;font-size:1px;"></div></div>
+
+    <#include "${rp}/include/left_menu.html">
+
+ <div style="float: left; width: 30px; margin: 0; ;" class="sf_colsOut"><div class="sf_colsIn ">
+ </div></div>
+  <div style="float: left; width: 780px; margin: 0; ;" class="sf_colsOut"><div class="sf_colsIn ">
+ 
+<div class="ArticleView_Default" >
+   
+	             
+   <!--标题-->
+    <h1>在线留言</h1>
+    <h2></h2>
+        <form class="layui-form" id="ask_form" onsubmit="return false;">
+            <div class="ask">
+                <div class="ask_a">
+                    <div class="ask_b">姓名：</div>
+                    <div class="ask_c"><input name="name" lay-verify="required" type="text" placeholder="请输入姓名"><span>*</span></div>
+                </div>
+                <div class="ask_a">
+                    <div class="ask_b">电话：</div>
+                    <div class="ask_c"><input name="phone" lay-verify="required|phone" type="text" placeholder="请输入电话"><span>*</span></div>
+                </div>
+                <div class="ask_a">
+                    <div class="ask_b">邮箱：</div>
+                    <div class="ask_c"><input name="email" lay-verify="required|email" type="text" placeholder="请输入邮箱"><span>*</span></div>
+                </div>
+            </div>
+            <div class="ask_1">
+                <div class="ask_b">提问：</div>
+                <div class="ask_c_1">
+                    <textarea name="content" id="" lay-verify="required" cols="20" rows="10" placeholder="请输入您的问题" style="width: 100%"></textarea>
+                    <span>*</span>
+                </div>
+            </div>
+            <div class="ask_ti" style="text-align: center;">
+                <button class="tijiao sub_ask" lay-submit="" lay-filter="form_content">
+                    提交
+                </button>
+            </div>
+        </form>
+   
+    
+
+    
+</div>
+
+	<script type="text/javascript" src="${basePath}/res/default/bg/js/layui-v2.1.5/layui.all.js"></script>
+	<script type="text/javascript" src="${basePath}/res/js/layer-v3.1.0/layer.js"></script>
+	<script src="/res/js/myUtils.js"></script>
+<script type="text/javascript" language="javascript">
+$(".sub_ask").click(function(){
+
+    	var params = $("#ask_form").serializeObject();
+    	$.postJSON("/comment_save.htm",params,function(data){
+	        	layer.msg(data.resultMsg,{time:1000},function(){
+	        		if(data.result){
+   	    	    window.location.reload();
+	            	}
+	        	});
+    	}); 
+
+})
+     $('#articleContent img').imageResize();
+
+    //更改字体大小
+    var status0 = '';
+    var curfontsize = 10;
+    var curlineheight = 18;
+    function fontZoomA() {
+        if (curfontsize > 8) {
+            document.getElementById('fontzoom').style.fontSize = (--curfontsize) + 'pt';
+            document.getElementById('fontzoom').style.lineHeight = (--curlineheight) + 'pt';
+        }
+    }
+    function fontZoomB() {
+        if (curfontsize < 64) {
+            document.getElementById('fontzoom').style.fontSize = (++curfontsize) + 'pt';
+            document.getElementById('fontzoom').style.lineHeight = (++curlineheight) + 'pt';
+        }
+    }
+
+    //设置附件显示
+    if ($(".ArticleView_Default .articleAttachments ul li").length == 0)
+        $(".ArticleView_Default .articleAttachments").hide();
+        
+</script>
+</div></div>
+<div style= "clear:both;height:0;font-size:1px;"></div></div></div></div>
+<div style= "clear:both;height:0;font-size:1px;"></div></div>
+<#include "${rp}/include/footer.html">
+
+    </div>
+</body>
+</html>

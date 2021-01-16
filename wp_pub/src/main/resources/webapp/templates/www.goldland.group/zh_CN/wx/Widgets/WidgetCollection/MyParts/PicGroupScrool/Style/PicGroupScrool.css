@@ -1,0 +1,44 @@
+﻿/*************************************************************
+ * Command:Start
+ * Control:PicGroupScrool
+ * Style:GroupList
+ * Desc:目前没有
+ * Quot:School
+*************************************************************/
+
+.GroupList{ width:100%; margin-top:20px; overflow: hidden;}
+.GroupList h2 { color:#fff; height:40px ;}
+.GroupList h2 em { float:left; font:normal 18px/40px "微软雅黑"; color:#06b206;text-align:center; display:block; width:100px;}
+.GroupList h2 i { float:left; font:normal 16px/35px "宋体"; color:#999; padding-top:5px; font-style:italic; margin-left:10px;}
+.GroupList h2 span { float:right; text-align:right; font:normal 12px/40px "宋体"; padding-right: 10px; }
+.GroupList h2 span a { }
+.GroupList h2 span a:hover { }
+
+.GroupList ul.rollBox{ clear: both; width:1020px; min-height:180px; margin:0 auto; overflow:hidden; padding:15px 0; }
+
+/*ScrollPic*/
+.GroupList .rollBox .LeftBotton { cursor: pointer; display: inline; float: left; margin:65px 0 0 0px; overflow: hidden; }
+.GroupList .rollBox .LeftBotton a { height:28px; width:14px; background: url("../images/scroll_l01.png") no-repeat scroll 0 0 transparent; display:block;}
+.GroupList .rollBox .LeftBotton a:hover { background: url("../images/scroll_l02.png") no-repeat scroll 0 0 transparent ;}
+
+.GroupList .rollBox .RightBotton { cursor: pointer; display: inline; float: right; margin:65px 0px 0 0; overflow: hidden; text-align: right; }
+.GroupList .rollBox .RightBotton a { height:28px; width:14px; background: url("../images/scroll_r01.png") no-repeat scroll 0 0 transparent; display:block;}
+.GroupList .rollBox .RightBotton a:hover { background: url("../images/scroll_r02.png") no-repeat scroll 0 0 transparent ;}
+
+.GroupList .rollBox .Cont { float:left; width:992px; margin-left:0px; margin-right:0px; overflow:hidden;}
+.GroupList .rollBox .ScrCont { width:10000000px; overflow:hidden;}
+.GroupList .rollBox .Cont li { float:left; text-align:center; list-style:none; width:220px; margin:0 14px; display: block; }
+.GroupList .rollBox .Cont li img { width:220px; height:132px;  border-radius:3px; }
+.GroupList .rollBox #List1, .rollBox #List2 { float:left;}
+.GroupList .rollBox .Cont p { width:220px; text-align:center; font-size:13px; font-family: "微软雅黑"; padding-top:5px; }
+.GroupList .rollBox .Cont a { color:#999; }
+.GroupList .rollBox .Cont a:hover { color:#06b206; }
+
+
+/*************************************************************
+ * Command:End
+ * Control:PicGroupScrool
+ * Style:GroupList
+ * Desc:目前没有
+ * Quot:School
+*************************************************************/

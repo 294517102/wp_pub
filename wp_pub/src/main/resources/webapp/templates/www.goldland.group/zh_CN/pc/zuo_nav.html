@@ -1,0 +1,39 @@
+<div class="ArticleRight  ">
+        <h3 style="background:url(res/default/images/header_tit05.jpg) no-repeat;">
+            <span><a title="更多" target="_blank" href="/notice/">更多>></a></span><em>招标公告<i>  </i></em>
+        </h3>
+        <ul>
+            
+           
+            <#assign zbgg = cl.bk('gong_gao')>
+            <#if !pageIndex??><#assign pageIndex="1"></#if>
+            <#assign zlist = at.bc(zbgg,"1",5)>
+                <#if zlist.list?? && zlist.list?size gt 0>
+	                <#list zlist.list as z>
+		
+		                 <li><span>${z.issueTime?string('yyyy-MM-dd')}</span><a target="_blank" href="/go.htm?k=zhao_biao_gong_gao&url=zhaobiaogonggao&id=${z.id!}" >${z.keyword!''}</a></li>
+	                </#list>
+                </#if>
+        
+        </ul>
+</div><div id="we7layout_147822660697511" class="sf_cols">
+ <div style="float: none; width: 100%; margin: 0; ;" class="sf_colsOut"><div class="sf_colsIn ">
+ 
+<div class="ArticleRight  mtop10 ">
+        <h3 style="background:url(res/default/images/header_tit05.jpg) no-repeat;">
+            <span><a title="更多" target="_blank" href="/news/">更多>></a></span><em>新闻资讯<i>  News Center</i></em>
+        </h3>
+        <ul>
+            
+            
+            <#assign jtdt = cl.bk('ji_tuan_dong_tai')>
+            <#if !pageIndex??><#assign pageIndex="1"></#if>
+            <#assign zlist = at.bc(jtdt,"1",5)>
+                <#if zlist.list?? && zlist.list?size gt 0>
+	                <#list zlist.list as z>
+		
+		              <li><span>${z.issueTime?string('yyyy-MM-dd')}</span><a target="_blank" href="/go.htm?k=ji_tuan_dong_tai&url=jituandongtai&id=${z.id!}" >${z.keyword!''}</a></li>
+	                </#list>
+                </#if>
+        </ul>
+</div></div></div>

@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <base href="${domainBase}"/>
+    <#include "${includePath}/data.html" >
+		<#include "${includePath}/searchKeyword.html" >
+    <title>${webSet.title!}-首页</title>
+    <link rel="stylesheet" href="res/default/css/reset.css">
+    <link rel="stylesheet" href="res/default/css/video-js.css">
+
+    <link rel="stylesheet" href="res/default/css/style.css">
+    <link rel="icon" href="res/default/image/ico.png">
+    <script src="res/js/videojs-ie8.min.js"></script>
+</head>
+<body>
+<div class="tips clearfix">
+    <#include "${includePath}/top.html" >
+</div>
+<div class="nav">
+    <div class="nav_box">
+        <ul class="clearfix">
+            <li class="nav_list active"><a href="${base}/index.htm">网站首页</a><span>|</span></li>
+             <#list About_Us.children?sort_by("id") as a>
+            <li class="nav_list ">
+                <a href="${base}/obtain_page_list.htm?url=about_us&keyword=${a.keyword!}&size=15">医院概况</a><span>|</span>
+                <#break>
+                </#list>
+                
+                <div class="nav_list_second">
+                <#list About_Us.children?sort_by("id") as a>
+                <#if a_index=0>
+                    <a href="${base}/obtain_page_list.htm?url=about_us&keyword=${a.keyword!}&size=15">${a.title!}</a>
+                    <#elseif a_index=1>
+                    <a href="${base}/obtain_page_list.htm?url=about_lead&keyword=${a.keyword!}&size=15">领导团队</a>
+                    <#elseif a_index=2>
+                    <a href="${base}/to_target.htm?url=about_zhuzhi">组织架构</a>
+                    <#elseif a_index=3>
+                    <a href="${base}/obtain_page_list.htm?url=about_honor&keyword=${a.keyword!}&size=9">医院荣誉</a>
+                    <#elseif a_index=4>
+                    <a href="${base}/to_target.htm?url=about_yuanz">院长寄语</a>
+                    <#elseif a_index=5>
+                    <a href="${base}/obtain_page_list.htm?url=about_history&keyword=${a.keyword!}&size=5">医院文化</a>
+                    <#elseif a_index=6>
+                    <a href="${base}/obtain_page_list.htm?url=about_shebei&keyword=${a.keyword!}&size=9">先进设备</a>
+                    <#elseif a_index=7>
+                    <a href="${base}/obtain_page_list.htm?url=about_huanj&keyword=${a.keyword!}&size=9">医院环境</a>
+                    </#if>
+                    </#list>
+                </div>
+                
+            </li>
+            
+            
+            <li class="nav_list "><a href="${base}/query_like_article.htm?url=guide">就医指南</a><span>|</span>
+           
+            <div class="nav_list_second">
+            <#list guide.children?sort_by("id") as d>
+            <#if d_index=0>
+           
+                   
+                    <a href="${base}/query_like_article.htm?url=guide">门诊时间</a>
+                   
+              <#elseif d_index=4>
+                    <a href="${base}/to_target.htm?url=guide_louceng">楼层导航</a>
+              <#elseif d_index=5>
+                    <a href="${base}/to_target.htm?url=guide_jiaot">交通指示</a>
+              <#elseif d_index=6>
+               <a href="${base}/to_ques_list.htm?url=guide_jiaoliu&id=${d.id?c!}">医患交流</a>
+               <#elseif d_index=7>
+               <a href="${base}/to_target.htm?url=guide_message">意见反馈</a>
+               <#elseif d_index=8>
+               <a href="${base}/obtain_page_list.htm?url=guide_churu&keyword=${d.keyword!}&size=9">出/入院流程</a>
+               <#elseif d_index==9>
+               <a href="${base}/obtain_page_list.htm?url=xi_sheng_men_zhen_biao&keyword=${d.keyword!}&size=9">${d.title!}</a>
+               <#else>
+               <a href="${base}/obtain_page_list.htm?url=guide_xuzhi&keyword=${d.keyword!}&size=9">${d.title!}</a>
+               </#if>
+               </#list>
+                </div></li>
+            <li class="nav_list"><a href="${base}/obtain_by_first_letter.htm?url=departments">科室导航</a><span>|</span></li>
+            
+                   
+            <li class="nav_list"><a href="${base}/query_like_article.htm?url=zhuanjia&type=1">专家介绍</a><span>|</span></li>
+           
+            
+           
+           <#list News.children! as n>
+            <li class="nav_list"><a href="${base}/obtain_page_list.htm?url=news&keyword=${n.keyword!}&size=9">护理天地</a><span>|</span>
+            <#break>
+            </#list>
+            <div class="nav_list_second">
+            <#list News.children?sort_by("id") as n>
+            <#if n_index=0>
+                    <a href="${base}/obtain_page_list.htm?url=news&keyword=${n.keyword!}&size=9">${n.title!}</a>
+                    <#elseif n_index=5>
+                    <a href="${base}/obtain_page_list.htm?url=news_last&keyword=${n.keyword!}&size=9">${n.title!}</a>
+                    <#else>
+                    <a href="${base}/obtain_page_list.htm?url=news_other&keyword=${n.keyword!}&size=9">${n.title!}</a>
+                    
+                    </#if>
+                    </#list>
+                </div></li>
+            <#list medical.children?sort_by("id") as n>
+            <li class="nav_list"><a href="${base}/obtain_page_list.htm?url=medical&keyword=${n.keyword!}&size=9">医学教育</a><span>|</span>
+            <#break>
+            </#list>
+            <div class="nav_list_second">
+            <#list medical.children?sort_by("id") as h>
+            <a href="${base}/obtain_page_list.htm?url=medical&keyword=${h.keyword!}&size=9">${h.title!}</a>
+            </#list>
+            </div>
+            </li>
+            <#list work.children?sort_by("id") as n>
+            <li class="nav_list"><a href="${base}/obtain_page_list.htm?url=work&keyword=${n.keyword!}&size=9">党群工作</a><span>|</span>
+            <#break>
+            </#list>
+            <div class="nav_list_second">
+            <#list work.children?sort_by("id") as h>
+            <a href="${base}/obtain_page_list.htm?url=work&keyword=${h.keyword!}&size=9">${h.title!}</a>
+            </#list>
+            </div>
+            </li>
+            
+            <#list xinwen.children?sort_by("id") as h>
+            <li class="nav_list"><a href="${base}/obtain_page_list.htm?url=home1&keyword=${h.keyword!}&size=9">新闻公告</a>
+            <#break>
+            </#list>
+            <div class="nav_list_second">
+            <#list xinwen.children?sort_by("id") as h>
+            <#if h_index=3>
+            <a href="${base}/obtain_page_list.htm?url=home&keyword=${h.keyword!}&size=9">${h.title!}</a>
+            <#else>
+            <a href="${base}/obtain_page_list.htm?url=home1&keyword=${h.keyword!}&size=9">${h.title!}</a>
+            </#if>
+            </#list>
+            </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="banner">
+    <div id="slideBox" class="slideBox">
+        <div class="hd">
+            <ul></ul>
+        </div>
+        <div class="bd" style="overflow:hidden;max-height:546px;">
+            <ul >
+                 <#list webSet.homeSlides! as h>
+                <li><img src="${(h.accessory.url)!}" /></li> 
+                 </#list>
+            </ul>
+        </div>
+    </div>
+    <div class="banner_content">
+        <ul class="banner_content_box clearfix">
+        
+        
+            <li class="banner_content_list">
+                <a href="${base}/query_like_article.htm?url=guide">
+                    <img src="res/default/image/4.png" alt="">
+                    <div class="banner_content_dis">门诊时间</div>
+                </a>
+
+            </li>
+            <#list guide.children?sort_by("id") as d>
+            <#if d_index=1>
+            <li class="banner_content_list">
+                <a href="${base}/obtain_page_list.htm?url=guide_xuzhi&keyword=${d.keyword!}&size=9">
+                    <img src="res/default/image/5.png" alt="">
+                    <div class="banner_content_dis">就诊须知</div>
+                </a>
+
+            </li>
+            </#if>
+            </#list>
+             <#list guide.children?sort_by("id") as d>
+            <#if d_index=2>
+            <li class="banner_content_list">
+                <a href="${base}/obtain_page_list.htm?url=guide_xuzhi&keyword=${d.keyword!}&size=9">
+                    <img src="res/default/image/6.png" alt="">
+                    <div class="banner_content_dis">预约挂号</div>
+                </a>
+
+            </li>
+            </#if>
+            </#list>
+            <li class="banner_content_list">
+                <a href="${base}/query_like_article.htm?url=zhuanjia&type=1">
+                    <img src="res/default/image/7.png" alt="">
+                    <div class="banner_content_dis">专家团队</div>
+                </a>
+
+            </li>
+            <li class="banner_content_list">
+                <a href="${base}/to_target.htm?url=guide_jiaoliu">
+                    <img src="res/default/image/8.png" alt="">
+                    <div class="banner_content_dis">医患互动</div>
+                </a>
+
+            </li>
+            <li class="banner_content_list">
+                <a href="${base}/to_target.htm?url=guide_louceng">
+                    <img src="res/default/image/9.png" alt="">
+                    <div class="banner_content_dis">楼层导航</div>
+                </a>
+
+            </li>
+            <li class="banner_content_list">
+                <a href="${base}/to_target.htm?url=guide_jiaot">
+                    <img src="res/default/image/10.png" alt="">
+                    <div class="banner_content_dis">交通指示</div>
+                </a>
+
+            </li>
+            <li class="banner_content_list">
+                <a href="${base}/to_target.htm?url=guide_message">
+                    <img src="res/default/image/11.png" alt="">
+                    <div class="banner_content_dis">意见反馈</div>
+                </a>
+
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="main_first">
+    <div class="main_first_box">
+        <div class="main_first_left">
+            <div class="main_first_left_con" style="display:block">
+                <video id="my-video" class="video-js" controls preload="auto" width="510" height="370"
+                       poster="res/default/image/videofm.png" data-setup="{}">
+                    <source src="http://www.lxery.com/video/lxeyy.mp4" type="video/mp4">
+                    <source src="http://www.lxery.com/video/lxeyy.mp4" type="video/webm">
+                    <source src="http://www.lxery.com/video/lxeyy.mp4" type="video/ogg">
+                    <p class="vjs-no-js">
+                        To view this video please enable JavaScript, and consider upgrading to a web browser that
+                        <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                    </p>
+                </video>
+            </div>
+            <div class="main_first_left_con" >
+                <div id="slideBox2" class="slideBox2">
+                    <div class="hd">
+                        <ul></ul>
+                    </div>
+                    <div class="bd">
+                        <ul>
+                        <#list xinwen.children?sort_by("id") as h>
+                        <#if h_index=1>
+                        <#list h.articles! as ha>
+                        <#if ha_index lt 3>
+                            <li>
+                                <img src="${(ha.thumbnail.url!)}" />
+                                <div class="slidebox_dis">${ha.title!}</div>
+                            </li>
+                            </#if>
+                            </#list>
+                            </#if>
+                            </#list>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <div class="main_first_left_con">
+                <div id="slideBox3" class="slideBox2">
+                    <div class="hd">
+                        <ul></ul>
+                    </div>
+                    <div class="bd">
+                        <ul>
+                        <#list xinwen.children?sort_by("id") as h>
+                        <#if h_index=1>
+                        <#list h.articles! as ha>
+                        <#if ha_index lt 3>
+                            <li>
+                                <img src="${(ha.thumbnail.url!)}" />
+                                <div class="slidebox_dis">${ha.title!}</div>
+                            </li>
+                            </#if>
+                            </#list>
+                            </#if>
+                            </#list>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <div class="main_first_left_con">
+                <div id="slideBox4" class="slideBox2">
+                    <div class="hd">
+                        <ul></ul>
+                    </div>
+                    <div class="bd">
+                        <ul>
+                        <#list xinwen.children?sort_by("id") as h>
+                        <#if h_index=1>
+                        <#list h.articles! as ha>
+                        <#if ha_index lt 3>
+                            <li>
+                                <img src="${(ha.thumbnail.url!)}" />
+                                <div class="slidebox_dis">${ha.title!}</div>
+                            </li>
+                            </#if>
+                            </#list>
+                            </#if>
+                            </#list>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="main_first_right clearfix">
+            <ul class="main_first_right_title">
+            <#list xinwen.children?sort_by("id") as h>
+            <#if h_index=0>
+                <li class="main_first_right_title_list active">
+                    <a>${h.title!}</a><span>|</span>
+                </li>
+                <#else>
+                <li class="main_first_right_title_list">
+                    <a>${h.title!}</a><span>|</span>
+                </li>
+                
+                </#if>
+                </#list>
+            </ul>
+            <div class="main_first_right_content">
+                <div class="main_first_right_inf active">
+                    <div class="main_first_right_inf_top">
+                    <#list xinwen.children?sort_by("id") as h>
+            		<#if h_index=0>
+            		<#list h.articles?sort_by("issueTime")?reverse as ha>
+            		<#if ha_index lt 1>
+            		<a href="${base}/singleSearch_${ha.id?c!}.htm?url=home_detail&ctype=article&column_id=${h.id?c!}">
+                        <h4 class="main_first_right_inf_title">${ha.title!}</h4>
+                        <div class="main_first_right_inf_title_dis" >${ha.describes!}</div>
+                        </a>
+                        </#if>
+                        </#list>
+                        </#if>
+                        </#list>
+                    </div>
+                    <ul class="main_first_right_inf_box">
+                    <#list xinwen.children?sort_by("id") as h>
+            		<#if h_index=0>
+            		<#list h.articles?sort_by("issueTime")?reverse as ha>
+            		<#if ha_index lt 4>
+                        <li class="main_first_right_inf_list">
+                            <a href="${base}/singleSearch_${ha.id?c!}.htm?url=home_detail&ctype=article&column_id=${h.id?c!}">
+                                <span class="dotted"></span>
+                                <span class="main_first_right_inf_list_date">${(ha.issueTime?string('yyyy-MM-dd'))!}</span>
+                                		<span>${ha.title!}</span>
+                            </a>
+			
+                        </li>
+                        </#if>
+                        </#list>
+                        </#if>
+                        </#list>
+                        <#list xinwen.children?sort_by("id") as h>
+            		<#if h_index=0>
+            		<#if h.articles?size gt 4>
+                       <a href="${base}/obtain_page_list.htm?url=home1&keyword=XIN_WEN_ZHONG_XIN&size=9" style="float: right;">查看更多>></a>
+                       </#if>
+                        </#if>
+                        </#list>
+                    </ul>
+                </div>
+                <div class="main_first_right_inf">
+                    <div class="main_first_right_inf_top">
+                    
+                       <#list xinwen.children?sort_by("id") as h>
+            		<#if h_index=1>
+            		<#list h.articles?sort_by("issueTime") as ha>
+            		<#if ha_index lt 1>
+            		<a href="${base}/singleSearch_${ha.id?c!}.htm?url=home_detail&ctype=article&column_id=${h.id?c!}">
+                        <h4 class="main_first_right_inf_title">${ha.title!}</h4>
+                        <div class="main_first_right_inf_title_dis" >${ha.describes!}</div>
+                        </a>
+                        </#if>
+                        </#list>
+                        </#if>
+                        </#list>
+                    </div>
+                    <ul class="main_first_right_inf_box">
+                    <#list xinwen.children?sort_by("id") as h>
+            		<#if h_index=1>
+            		<#list h.articles?sort_by("issueTime")?reverse as ha>
+            		<#if ha_index lt 4>
+                        <li class="main_first_right_inf_list">
+                            <a href="${base}/singleSearch_${ha.id?c!}.htm?url=home_detail&ctype=article&column_id=${h.id?c!}">
+                                <span class="dotted"></span>
+                                <span class="main_first_right_inf_list_date">${(ha.issueTime?string('yyyy-MM-dd'))!}</span>
+                                ${ha.title!}
+                            </a>
+			
+                        </li>
+                        </#if>
+                        </#list>
+                        </#if>
+                        </#list>
+                       <#list xinwen.children?sort_by("id") as h>
+            		<#if h_index=1>
+            		<#if h.articles?size gt 4>
+                       <a href="${base}/obtain_page_list.htm?url=home1&keyword=TONG_ZHI_GONG_GAO&size=9" style="float: right;">查看更多>></a>
+                       </#if>
+                        </#if>
+                        </#list>
+                    </ul>
+                </div>
+                <div class="main_first_right_inf ">
+                    <div class="main_first_right_inf_top">
+                        <#list xinwen.children?sort_by("id") as h>
+            		<#if h_index=2>
+            		<#list h.articles?sort_by("issueTime") as ha>
+            		<#if ha_index lt 1>
+            		<a href="${base}/singleSearch_${ha.id?c!}.htm?url=home_detail&ctype=article&column_id=${h.id?c!}">
+                        <h4 class="main_first_right_inf_title">${ha.title!}</h4>
+                        <div class="main_first_right_inf_title_dis" >${ha.describes!}</div>
+                        </a>
+                        </#if>
+                        </#list>
+                        </#if>
+                        </#list>
+                    </div>
+                    <ul class="main_first_right_inf_box">
+                    <#list xinwen.children?sort_by("id") as h>
+            		<#if h_index=2>
+            		<#list h.articles?sort_by("issueTime")?reverse as ha>
+            		<#if ha_index lt 4>
+                        <li class="main_first_right_inf_list">
+                            <a href="${base}/singleSearch_${ha.id?c!}.htm?url=home_detail&ctype=article&column_id=${h.id?c!}">
+                                <span class="dotted"></span>
+                                <span class="main_first_right_inf_list_date">${(ha.issueTime?string('yyyy-MM-dd'))!}</span>
+                                ${ha.title!}
+                            </a>
+			
+                        </li>
+                        </#if>
+                        </#list>
+                        </#if>
+                        </#list>
+                       <#list xinwen.children?sort_by("id") as h>
+            		<#if h_index=2>
+            		<#if h.articles?size gt 4>
+                       <a href="${base}/obtain_page_list.htm?url=home1&keyword=XUE_SHU_HUI_YI&size=9" style="float: right;">查看更多>></a>
+                       </#if>
+                        </#if>
+                        </#list>
+                    </ul>
+                </div>
+                <div class="main_first_right_inf">
+
+                    <ul class="main_first_right_inf_box">
+                    <#list xinwen.children?sort_by("id") as h>
+            		<#if h_index=3>
+            		<#list h.articles?sort_by("issueTime")?reverse as ha>
+            		<#if ha_index lt 4>
+                        <li class="main_first_right_inf_list">
+                            <a href="${base}/singleSearch_${ha.id?c!}.htm?url=home_detail&ctype=article&column_id=${h.id?c!}">
+                                <span class="dotted"></span>
+                                <span class="main_first_right_inf_list_date">${(ha.issueTime?string('yyyy-MM-dd'))!}</span>
+                                 ${ha.title!}
+                            </a>
+
+                        </li>
+                        </#if>
+                        </#list>
+                        </#if>
+                        </#list>
+                        <#list xinwen.children?sort_by("id") as h>
+            		<#if h_index=3>
+            		<#if h.articles?size gt 4>
+                       <a href="${base}/obtain_page_list.htm?url=home&keyword=ZHAO_PING_XIN_XI&size=9" style="float: right;">查看更多>></a>
+                       </#if>
+                        </#if>
+                        </#list>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<div class="main_second">
+    <div class="main_second_box">
+        <div class="main_second_title">
+            <span class="main_title_icon"></span>
+            <p class="main_second_title_dis">专家团队</p>
+            <a class="main_second_more" href="${base}/query_like_article.htm?url=zhuanjia&type=1&type=1&type=1&type=1"></a>
+        </div>
+        <div class="main_second_content">
+            <div class="picScroll-left" id="picScroll-left">
+                <div class="hd">
+                    <a class="next next_btn"></a>
+                    <a class="prev prev_btn"></a>
+                </div>
+                <div class="bd">
+                    <ul class="picList">
+                    <#list authorList! as da>
+                    	<#if da.author??&&da.author=="专家">
+                        <li>
+                            <div class="content_box">
+                                <img class="main_second_img" src="${(da.thumbnail.url!)}" alt="122${da.author}">
+                                <div class="main_second_name clearfix">
+                                    <span class="main_second_name_left">${da.title!}</span>
+                                    <span class="main_second_name_right"><a>详情</a></span>
+                                </div>
+                                <div class="main_second_inf">科室：${da.column.title!}</div>
+                                <div class="main_second_inf">职称：${da.position.name!}</div>
+                            </div>
+
+                            <div class="zoom_dis">
+                                <a href="${base}/singleSearch_${da.id?c!}.htm?url=departments_detail1&ctype=article&column_id=${da.column.id?c!}">${da.describes!}</a>
+                            </div>
+                        </li>
+                        <#else>
+                        	<li hidden="true"></li>
+                        	<#break>
+                        </#if>
+                        
+</#list>
+
+
+
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="main_third">
+    <div class="main_third_box">
+        <div class="main_second_title">
+            <span class="main_title_icon"></span>
+            <p class="main_second_title_dis">特色专科</p>
+            <a class="main_second_more" href="${base}/query_like_article.htm?url=departments"></a>
+        </div>
+        <div class="main_third_content">
+            <div class="picScroll-left" id="picScroll-left2">
+                <div class="hd">
+                    <a class="next next_btn"></a>
+                    <a class="prev prev_btn"></a>
+                </div>
+                <div class="bd">
+                    <ul class="picList">
+                   
+                    
+                        <li class="main_third_list">
+                            <div class="main_third_content_box clearfix" >
+                             <#list departments.children! as p>
+                             <#if p_index=0>
+                             <#list p.children! as pc>
+                             <#if pc_index lt 4>
+                                <div class="main_third_content_list clearfix">
+                                    <div class="main_third_content_list_left">
+
+                                    </div>
+                                    <div class="main_third_content_list_right">
+                                    <a href="${base}/obtain_page_list.htm?url=departments_detail&keyword=${pc.keyword!}&size=9">
+                                        <h4 class="main_third_content_list_right_title">${pc.title!}</h4>
+<!--                                         <div class="main_third_content_list_right_name">【主任】方晴雯  【副主任】张轩、吴国兵</div> -->
+                                        <div class="main_third_content_list_right_dis">${pc.describes!}</div>
+                                        </a>
+                                    </div>
+                                </div>
+                                </#if>
+                                </#list>
+                                </#if>
+                                </#list>
+                            </div>
+                        </li>
+                        <li class="main_third_list">
+                            <div class="main_third_content_box clearfix" >
+                                <#list departments.children! as p>
+                             <#if p_index=1>
+                             <#list p.children! as pc>
+                             <#if pc_index lt 4>
+                                <div class="main_third_content_list clearfix">
+                                    <div class="main_third_content_list_left">
+
+                                    </div>
+                                    <div class="main_third_content_list_right">
+                                     <a href="${base}/obtain_page_list.htm?url=departments_detail&keyword=${pc.keyword!}&size=9">
+                                        <h4 class="main_third_content_list_right_title">${pc.title!}</h4>
+<!--                                         <div class="main_third_content_list_right_name">【主任】方晴雯  【副主任】张轩、吴国兵</div> -->
+                                        <div class="main_third_content_list_right_dis">${pc.describes!}</div>
+                                        </a>
+                                    </div>
+                                </div>
+                                </#if>
+                                </#list>
+                                </#if>
+                                </#list>
+                            </div>
+                        </li>
+						<li class="main_third_list">
+                            <div class="main_third_content_box clearfix" >
+                                <#list departments.children! as p>
+                             <#if p_index=2>
+                             <#list p.children! as pc>
+                             <#if pc_index lt 4>
+                                <div class="main_third_content_list clearfix">
+                                    <div class="main_third_content_list_left">
+
+                                    </div>
+                                    <div class="main_third_content_list_right">
+                               <a href="${base}/obtain_page_list.htm?url=departments_detail&keyword=${pc.keyword!}&size=9">
+                                        <h4 class="main_third_content_list_right_title">${pc.title!}</h4>
+<!--                                         <div class="main_third_content_list_right_name">【主任】方晴雯  【副主任】张轩、吴国兵</div> -->
+                                        <div class="main_third_content_list_right_dis">${pc.describes!}</div>
+                                        </a>
+                                    </div>
+                                </div>
+                                </#if>
+                                </#list>
+                                </#if>
+                                </#list>
+                            </div>
+                        </li>
+                        <li class="main_third_list">
+                            <div class="main_third_content_box clearfix" >
+                                <#list departments.children! as p>
+                             <#if p_index=3>
+                             <#list p.children! as pc>
+                             <#if pc_index lt 4>
+                                <div class="main_third_content_list clearfix">
+                                    <div class="main_third_content_list_left">
+
+                                    </div>
+                                    <div class="main_third_content_list_right">
+                              <a href="${base}/obtain_page_list.htm?url=departments_detail&keyword=${pc.keyword!}&size=9">
+                                        <h4 class="main_third_content_list_right_title">${pc.title!}</h4>
+<!--                                         <div class="main_third_content_list_right_name">【主任】方晴雯  【副主任】张轩、吴国兵</div> -->
+                                        <div class="main_third_content_list_right_dis">${pc.describes!}</div>
+                                        </a>
+                                    </div>
+                                </div>
+                                </#if>
+                                </#list>
+                                </#if>
+                                </#list>
+                            </div>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="main_forth">
+    <div class="main_forth_box">
+        <div class="main_second_title clearfix">
+            <span class="main_title_icon"></span>
+            <p class="main_second_title_dis">科室设置</p>
+            <div class="main_forth_index">
+                <span>索引：</span>
+                <#if letterlist ??>
+                  <#list letterlist as letter>
+                     <a href="${base}/obtain_by_first_letter.htm?letter=${letter!}&url=index" <#if let??&&let==letter>class="active"</#if>>${letter!}</a><span>|</span>
+                  </#list>
+                </#if>
+
+
+            </div>
+        </div>
+        <div class="main_forth_content">
+            <ul class="main_forth_content_box clearfix">
+            <#if resultList ??&&resultList?size gt 0>
+            <#list resultList?sort_by("id") as d>
+            <#if d_index=0>
+                <li class="main_forth_content_list">
+                    <div class="main_forth_content_title active">
+                        <div class="main_forth_content_title_into">${d.title!}</div>
+                    </div>
+                    <ul  class="main_forth_content_dis active">
+                            <#list d.children! as dc>
+                        <li class="main_forth_content_dis_list"><a href="${base}/obtain_page_list.htm?url=departments_detail&keyword=${dc.keyword!}&size=9">${dc.title!}</a></li>
+                        </#list>
+                    </ul>
+
+                </li>
+                <#else>
+                <li class="main_forth_content_list">
+                    <div class="main_forth_content_title">
+                        <div class="main_forth_content_title_into">${d.title!}</div>
+                    </div>
+                    <ul  class="main_forth_content_dis active">
+                            <#list d.children! as dc>
+                        <li class="main_forth_content_dis_list"><a href="${base}/obtain_page_list.htm?url=departments_detail&keyword=${dc.keyword!}&size=9">${dc.title!}</a></li>
+                        </#list>
+                    </ul>
+                </li>
+                </#if>
+                </#list>
+                <#else>
+                	没有数据
+                </#if>
+            </ul>
+        </div>
+    </div>
+
+</div>
+<div class="main_fifth">
+    <div class="main_fifth_box">
+       <div class="main_fifth_title">友情链接</div>
+        <#include "${includePath}/link.html" >
+    </div>
+
+</div>
+<div class="footer">
+    <#include "${includePath}/foot.html" >
+</div>
+<script src="res/js/jquery.min.js"></script>
+<script src="res/js/html5shiv.js"></script>
+<script src="res/js/jquery.SuperSlide.2.1.1.js"></script>
+<script src="res/js/video.min.js"></script>
+
+<script>
+    $(".nav_list").click(function(){
+        $(this).addClass("active").siblings().removeClass("active");
+    })
+
+//科室设置手风琴
+$(".main_forth_content_list").click(function(){
+    $(".main_forth_content_dis").stop(true,true).animate({width:"0"},1000);
+    $(this).find(".main_forth_content_dis").stop(true,true).animate({width:"860px"},1000);
+    $(this).stop(true,true).animate({width:"920px"},1000).siblings().stop(true,true).animate({width:"60px"},1000);
+    $(".main_forth_content_title").removeClass("active");
+    $(this).find(".main_forth_content_title").addClass("active");
+})
+
+
+//    banner轮播图
+var length=$("#slideBox .bd ul li").length;
+var wid=$(window).width();    
+ $("#slideBox .bd ul li").width(wid);   
+for(var i=0;i<length;i++){
+    $("#slideBox .hd ul").append("<li></li>");
+}
+    jQuery("#slideBox").slide({mainCell:".bd ul",autoPlay:true,trigger:"click",easing:"easeOutElastic",delayTime:2000});
+    lastNoMargin($('.banner_content_list'),8);
+    lastNoMargin($('.main_third_content_list'),2);
+    lastNoMargin($('.main_fifth_content_list'),5);
+
+
+//    视频
+var myPlayer = videojs('my-video');
+videojs("my-video").ready(function(){
+    var myPlayer = this;
+    myPlayer.pause();
+});
+// 新闻轮播图
+var length2=$("#slideBox2 .bd ul li").length;
+for(var i=0;i<length2;i++){
+    $("#slideBox2 .hd ul").append("<li></li>");
+}
+jQuery("#slideBox2").slide({mainCell:".bd ul",effect:"leftLoop",autoPlay:true,trigger:"click",easing:"easeOutCirc"});
+
+
+var length3=$("#slideBox3 .bd ul li").length;
+for(var i=0;i<length3;i++){
+    $("#slideBox3 .hd ul").append("<li></li>");
+}
+jQuery("#slideBox3").slide({mainCell:".bd ul",effect:"leftLoop",autoPlay:true,trigger:"click",easing:"easeOutCirc"});
+
+
+var length4=$("#slideBox4 .bd ul li").length;
+for(var i=0;i<length4;i++){
+    $("#slideBox4 .hd ul").append("<li></li>");
+}
+jQuery("#slideBox4").slide({mainCell:".bd ul",effect:"leftLoop",autoPlay:true,trigger:"click",easing:"easeOutCirc"});
+
+$(".main_first_right_title_list ").click(function(){
+    var index= $(this).index();
+    $(this).addClass("active").siblings().removeClass("active");
+    $(".main_first_left_con").eq(index).css("display","block").siblings().css("display","none");
+    $(".main_first_right_inf").eq(index).addClass("active").siblings().removeClass("active");
+})
+
+
+//专家团队
+jQuery("#picScroll-left").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"leftLoop",autoPlay:true,vis:5});
+//特色专科
+jQuery("#picScroll-left2").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"leftLoop",autoPlay:true,vis:1,interTime:3000});
+
+
+</script>
+</body>
+</html>

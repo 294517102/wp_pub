@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<title>添加微信设置</title>
+	<#include "/include/bg/in_head_res.html">
+</head>
+<body class="inner-body clear">
+	<div class="layui-container bg_white center" style="width: 100%;padding:10px">
+		<form id="form1" action="" name="userForm" onsubmit="return false" id="userForm" class="layui-form layui-form-pane" method="post">
+			<div style="width: 60%;margin:5px auto">
+				<input type="hidden" name="web_set_id" value="${webSet.id?c!}" />
+				<div class="layui-form-item" >
+					<label class="layui-form-label"><span style="color:red">*</span>站点</label>
+					 <div class="layui-input-block">
+				<select class="chosen-select form-control" name="web_set_id" id="role_id" data-placeholder="webSet" style="vertical-align: top;width: 98%;padding-left: 7px;">
+						<#list resultList! as r>
+						<option  value="${r.id?c}">${r.comName!}</option>
+						</#list>
+				</select>
+				    </div>
+				</div>
+				<div class="layui-form-item" >
+					<label class="layui-form-label"><span style="color:red">*</span>微信appid</label>
+					 <div class="layui-input-block">
+				     <input type="text" name="appid" id="appSecret" placeholder="这里输入微信appid"  class="layui-input"/>
+				    </div>
+				</div>
+				<div class="layui-form-item" >
+					<label class="layui-form-label"><span style="color:red">*</span>商户号</label>
+					 <div class="layui-input-block">
+				     <input type="text" name="mchId" id="appSecret" placeholder="输入商户号"  class="layui-input"/>
+				    </div>
+				</div>	
+				<div class="layui-form-item" >
+					<label class="layui-form-label"><span style="color:red">*</span>微信key</label>
+					 <div class="layui-input-block">
+				     <input type="text" name="key" id="appSecret" placeholder="输入微信key"  class="layui-input"/>
+				    </div>
+				</div>
+				<div class="layui-form-item" >
+					<label class="layui-form-label"><span style="color:red">*</span>失效时间</label>
+					 <div class="layui-input-block">
+				     <input type="text" name="deadTime" id="test5" placeholder="选择失效时间"  class="layui-input"/>
+				    </div>
+				</div>
+				<div class="layui-form-item">	
+					<div class="layui-input-block">
+						<button class="layui-btn   layui-btn-big" lay-submit lay-filter="form_1">保存</button>
+					</div>
+				</div>		
+			</div>				
+		</form>
+	</div>
+
+</div>
+</body>
+	<#include "/include/bg/in_bottom_res.html">
+	<script type="text/javascript">
+	var form = layui.form,laydate = layui.laydate;
+	$(function(){
+		   laydate.render({
+	            elem: '#test5' //指定元素
+	            ,type: 'datetime'
+	        });
+	})
+	
+	$(".layui-btn-big").click(function(){
+		var a=$("#form1").serialize();
+		$.postJSON("${base}admin/addOrModifyWeChat$ajax.htm",a,function(data){
+		console.log(data.result);
+      	     if(data.result==true){
+      	    	layer.alert(data.msg,{icon:1},function(){
+      	    		parent.location.reload();
+					closeWindow();
+      	    	});
+      	     }else{
+      	    	layer.alert(data.msg,{icon:2});
+      	     }
+   		 });
+	})
+	</script>
+</html>
+

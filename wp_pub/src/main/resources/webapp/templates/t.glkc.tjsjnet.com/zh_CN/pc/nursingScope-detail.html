@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<#include "/${rp}/metalink.html">
+	<title>${webSet.title}</title>
+	<style>
+		.swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+    }
+    .swiper-container-v {
+      background: #eee;
+    }
+	</style>
+</head>
+<body>
+	<header>
+		<#include "/${rp}/header.html">	
+	</header>
+	<div class="dangquangongzuo">
+		<div class="dqgz_content_nav">
+		    <#assign ib = at.bi(id)>
+			<ul class="dangqun_li">	
+			    <#list ib.column.parent.children as ss>
+				<li><a href="${cm.cp}${ss.url}" <#if ib.column.id==ss.id>class="dq_active"</#if>>${ss.title}</a></li>
+				</#list>
+				
+			</ul>
+		</div>
+		<div class="weizhi">
+				你的位置：<a href="${cm.cp}">${webSet.title}</a>>
+						  <a href="${cm.cp}${ib.column.url}">${ib.column.title}</a>>
+						  <a class="wei_active">${ib.title}</a>
+			</div>
+		<div class="hulizixun">
+			<div class="hulizixun_left"> 
+				<div class="hulizixun_left_title">
+					<h5>${ib.column.title}</h5>
+				</div>
+				<div class="hulizixun_left_dea">
+					<div class="left_dea_title">
+						<h2>${ib.title}</h2>
+						<p>发布时间：<span>${ib.issueTime?string('YYYY-MM-dd HH:mm:ss')}</span> 本文出处：${ib.source}</p>
+						<div class="fx">
+						<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+						</div>
+					</div>
+				</div>
+				<div class="left_dea_con">
+				    ${ib.ext.content}		
+				</div>
+			</div>
+			
+			<div class="hulizixun_right">
+				<div class="hulizixun_right_title">
+					<h5>护理咨询</h5>
+				</div>
+				<div class="hulizixun_right_lunbo">
+			  <div class="swiper-container">
+				    <div class="swiper-wrapper">
+				      <div class="swiper-slide">
+				        <#list cl.bi(713).children as aa>
+				      	<ul class="swiper-slide_lunbo">
+				      		<li>
+				      			<a href="${cm.cp}go.htm?url=nursingScope-nursingStyle-detail&c=${aa.keyword}"><img src="<#if aa.thumbnail.url??>${aa.thumbnail.url}<#else>res/default/images/default_pic.png</#if>" alt=""></a>
+				      			<span><a href="${cm.cp}go.htm?url=nursingScope-nursingStyle-detail&c=${aa.keyword}">${aa.title}</a></span>
+				      		</li>
+				      	</ul>
+				      	</#list>
+				      </div>
+				    </div>
+				    <!-- Add Pagination -->
+				    <div class="swiper-pagination"></div>
+				  </div>
+				</div>
+			</div>
+		</div>
+		<div class="hulizixun_yigg">
+		    <#assign hlzx=cl.bk('hu_li_zi_xun')>
+			<div class="hulizixun_right_title">
+					<h5>${hlzx.title}</h5>
+					<a href="${cm.cp}${hlzx.url}">MOER+</a>
+				</div>
+				<ul class="gonggao_lib">
+				    <#list at.bc(hlzx) as a>
+					<li><a href="${cm.cp}go.htm?url=nursingScope-detail&id=${a.id}">${a.title}</a><span>${a.issueTime?string('YYYY-MM-dd')}</span></li>
+					</#list>
+				</ul>
+			</div>
+		</div>
+
+	<footer>
+    	<#include "/${rp}/footer.html">
+	</footer>
+</body>
+<script src="res/js/jquery-1.12.3.js"></script>
+<script src="res/js/jquery.SuperSlide.2.1.1.js"></script>
+<script src="res/js/swiper-4.1.6.min.js"></script>
+<script>
+	 var swiper = new Swiper('.swiper-container', {
+	   loop: true,
+        autoplay: {
+        	delay: 1000,
+        },
+      spaceBetween: 30,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+
+</script>	
+</html>

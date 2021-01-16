@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <#include "/${rp}/metalink.html">
+</head>
+<body>
+<div class="page">
+    <#assign ck=cl.bk(c)>
+    <header class="bar bar-nav">
+        <a class="icon icon-left pull-left back"></a>
+        <a href="${cm.cp}" class="icon icon-home pull-right" external></a>
+        <h1 class="title">${ck.title}</h1>
+    </header>
+    <div class="content">
+        <div class="innerbanner">
+            <img src="res/default/image/dangqun_banner.png" alt="">
+        </div>
+        <div class="inner_navbox">
+            <ul class="inner_nav">
+                <#list ck.children as cc>
+                    <#if cc_index !=3>
+                    <#if cc_index !=4>
+                <li>
+                
+                    <a href="${cm.cp}${cc.url}" external>
+                        <img src="res/default/image/dangqun_nav${cc_index+1}.png" alt="">
+                        <p>${cc.title}</p>
+                    </a>
+                   
+                </li>
+                 </#if>
+                    </#if>
+                </#list>
+            </ul>
+        </div>
+        <div class="dangqu_box1">
+            <#assign dqzx = cl.bk('dang_qun_zi_xun')>
+            <p class="dangqu_title">${dqzx.title}</p>
+            <a href="${cm.cp}${dqzx.url}">more +</a>
+            <hr>
+            <ul class="tuwenlist">
+                <#list at.bc(dqzx) as a>
+                <#if a_index lt 2>
+                <li>
+                    <a href="${cm.cp}go.htm?url=party-detail&id=${a.id}" external>
+                        <div class="tuwenlistpic">
+                            <img src="<#if a.th.url??>${a.th.url}<#else>res/default/image/default_pic.png</#if>" alt="">
+                        </div>
+                        <div class="tuwenlistinfo">
+                            <p class="list_title">${a.title}</p>
+                            <div class="tuwenlist_desc">
+                                ${a.desc}
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                </#if>
+                </#list>
+            </ul>
+            <ul class="wenlist">
+                <#list at.bc(dqzx) as a>
+                <#if a_index lt 6>
+                <#if a_index gte 2>
+                <li>
+                    <a href="${cm.cp}go.htm?url=party-detail&id=${a.id}" external>
+                        <p class="wenlist_title">${a.title}</p>
+                        <span class="wenlist_span">${a.issueTime?string('MM-dd')}</span>
+                    </a>
+                </li>
+                </#if>
+                </#if>
+                </#list>
+            </ul>
+        </div>
+       
+        <#include "/${rp}/footer.html">
+    </div>
+</div>
+
+<#include "/${rp}/jslink.html">
+<script>
+    $(".tuwenlist_desc").xdlines({
+        max:2
+    })
+</script>
+</body>
+</html>

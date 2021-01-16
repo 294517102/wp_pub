@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <base href="${domainBase}"/>
+    <#include "${includePath}/data.html" >
+		<#include "${includePath}/searchKeyword.html" >
+    <title>${webSet.title!}-首页</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <link rel="stylesheet" href="res/default/css/resets.css">
+    <link rel="stylesheet" href="res/default/css/style.css">
+    <link rel="stylesheet" href="res/js/ydui.flexible.js">
+</head>
+<body style="padding-bottom: 2.2rem;">
+<div class="banner">
+    <div class="m-slider" id="J_Slider">
+        <div class="slider-wrapper">
+            <div class="slider-item">
+                <a href="javascript:void(0)">
+                    <img src="res/default/image/banner.png">
+                </a>
+            </div>
+            <div class="slider-item">
+                <a href="javascript:void(0)">
+                    <img src="res/default/image/banner.png">
+                </a>
+            </div>
+            <div class="slider-item">
+                <a href="javascript:void(0)">
+                    <img src="res/default/image/banner.png">
+                </a>
+            </div>
+        </div>
+        <div class="slider-pagination"></div><!-- 分页标识 -->
+    </div>
+</div>
+<div class="nav_box">
+    <!--<ul class="nav_content">-->
+        <!--<li></li>-->
+    <!--</ul>-->
+    <table class="nav_content" width="100%">
+        <tr>
+            <td>
+            <a href="${base}/obtain_page_list.htm?url=about_us&keyword=${yyjj.keyword!}&size=15">
+                <img class="nav_img" src="res/default/image/12.png" alt="">
+                <div class="nav_dis">${yyjj.title!}</div>
+                </a>
+            </td>
+           
+           
+            <td>
+            <a href="${base}/to_target.htm?url=news">
+                <img class="nav_img" src="res/default/image/13.png" alt="">
+                <div class="nav_dis">${tzgg.title!}</div>
+                </a>
+            </td>
+            
+            <td>
+            <a href="${base}/obtain_page_list.htm?url=xinwen&keyword=${xwzx.keyword!}&size=6">
+                <img class="nav_img" src="res/default/image/14.png" alt="">
+                <div class="nav_dis">${xwzx.title!}</div>
+                </a>
+            </td>
+            
+            <td>
+            <a href="${base}/to_target.htm?url=guahao">
+                <img class="nav_img" src="res/default/image/15.png" alt="">
+                <div class="nav_dis">${yygh.title!}</div>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <a href="${base}/query_like_article.htm?url=shijian">
+                <img class="nav_img" src="res/default/image/16.png" alt="">
+                <div class="nav_dis">门诊时间</div>
+                </a>
+            </td>
+            <td>
+            <a href="${base}/query_like_article.htm?url=zhuanjia">
+                <img class="nav_img" src="res/default/image/17.png" alt="">
+                <div class="nav_dis">专家介绍</div>
+                </a>
+            </td>
+            <td>
+            <a href="${base}/obtain_by_first_letter.htm?url=keshi"">
+                <img class="nav_img" src="res/default/image/18.png" alt="">
+                <div class="nav_dis">科室导航</div>
+                </a>
+            </td>
+            <#list guide.children?sort_by("id") as d>
+            <#if d_index=6>
+            <td>
+            <a href="${base}/to_ques_list.htm?url=hudong&id=${d.id?c!}">
+                <img class="nav_img" src="res/default/image/19.png" alt="">
+                <div class="nav_dis">${yhjl.title!}</div>
+                </a>
+            </td>
+            </#if>
+            </#list>
+        </tr>
+        <tr>
+        
+            <td>
+            <a href="${base}/to_target.htm?url=luxian">
+                <img class="nav_img" src="res/default/image/20.png" alt="">
+                <div class="nav_dis">${jtzs.title!}</div>
+                </a>
+            </td>
+            
+            <td>
+            <a href="${base}/to_target.htm?url=louceng">
+                <img class="nav_img" src="res/default/image/21.png" alt="">
+                <div class="nav_dis">${lcdh.title!}</div>
+                </a>
+            </td>
+            <td>
+            <a href="${base}/to_target.htm?url=xuzhi">
+                <img class="nav_img" src="res/default/image/22.png" alt="">
+                <div class="nav_dis">${jzxz.title!}</div>
+                </a>
+            </td>
+            <td>
+            <a href="${base}/to_target.htm?url=message">
+                <img class="nav_img" src="res/default/image/23.png" alt="">
+                <div class="nav_dis">${yjfk.title!}</div>
+                </a>
+            </td>
+        </tr>
+
+    </table>
+</div>
+<div class="footer">
+    <a href="${base}/to_target.htm?url=index">
+        <img src="res/default/image/26.png" alt="">
+        <div>首页</div>
+    </a>
+    <a href="tel:08308892043">
+        <img src="res/default/image/25.png" alt="">
+        <div>电话</div>
+    </a>
+</div>
+
+<script src="res/js/jquery.min.js"></script>
+<script src="res/js/style.js"></script>
+<script src="res/js/ydui.js"></script>
+<script>
+    $('#J_Slider').slider({
+        speed: 500,
+        autoplay: 3000,
+        lazyLoad: true
+    });
+    $(".slider-wrapper").css("transform","translate3d(0,0,0)");
+</script>
+</body>
+</html>

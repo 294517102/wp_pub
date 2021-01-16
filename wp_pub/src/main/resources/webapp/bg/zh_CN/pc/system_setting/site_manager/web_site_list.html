@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<base href="${base}/" />
+	<title>网站列表</title>
+	<#include "/include/bg/in_head_res.html">   
+</head>
+<body class="inner-body clear">	
+  <div class="layui-container bg_color " style="width:100%">      
+  	<div class="content_main">    
+  	<blockquote class=" layui-elem-quote"> 网站列表  </blockquote> 
+        <table class="layui-table" >
+            <thead>
+	            <th >编号</th>
+	            <th>网站名称</th>
+	            <th style="width:200px">网站访问地址</th>
+	            <th>公司地址</th>
+	            <th>联系电话</th>
+	            <th>操作</th>  
+            </thead>
+            <tbody>
+            	<#if resultList?? && (resultList?size gt 0)>
+            		<#list resultList! as website>
+            		<tr>
+            		
+            		<td>${website.id?c!}</td>
+            		<td>${website.title!}</td>
+            		<td style="width:200px">${website.domain!}</td>
+            		<td>${website.comAddress!}</td>
+            		<td>${website.tel!}</td>
+            		
+            		<td>
+            		<a href="http://${website.domain!}" target="_blank" class="layui-btn  layui-btn-mini"><i class="layui-icon">&#xe608;</i>查看网站</a>
+            		</td>
+            		
+            		</tr>
+            		</#list>
+            		<#else>
+            		<tr>
+            		<td colspan="6">无数据</td>
+            		</tr>
+            	</#if>
+            </tbody>
+           </table>
+        <div class="pageBotton">${pageHtml}</div>
+     </div>
+  </div>
+<#include "/include/bg/in_bottom_res.html">
+</body>
+</html>

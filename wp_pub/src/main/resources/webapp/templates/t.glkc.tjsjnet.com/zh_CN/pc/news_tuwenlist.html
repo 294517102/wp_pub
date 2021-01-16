@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<#include "/${rp}/metalink.html">
+	<title>${webSet.title}</title>
+</head>
+<style>
+		.dq_active1{
+			display: inline-block;
+			height: 55px;
+			width: 56px;
+			color: #46c3f2;
+			font-size: 14px;
+			border-bottom: 2px solid #46c3f2;
+		}
+
+		#px{
+			color:#23A2E5;
+			border-bottom: 2px solid #23A2E5
+		}
+	.swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+      position: relative;
+    }
+</style>
+<body>
+	<header>
+		<#include "/${rp}/header.html">
+	</header>
+	<div class="dangquangongzuo">
+		<div class="dqgz_content_nav">
+		    <#assign ck = cl.bk(c)>
+			<ul class="dangqun_li">
+			    <#list ck.parent.children as cc>
+			    <#if cc.keyword != "mei_ti_ju_jiao">
+			     <#if cc.keyword !="hu_li_zi_xun"&&cc.keyword !="hu_li_gai_kuang">
+				<li><a href="${cm.cp}${cc.url}" <#if cc.id==ck.id>class="dq_active1"</#if>>${cc.title}</a></li>
+					</#if>
+				</#if>
+				</#list>
+				
+			</ul>
+		</div>
+		<div class="news"> 
+			
+			<div class="news_left">
+			
+				<div class="news_left_title">
+					<h2>${ck.title}</h2>
+				</div>
+				<div class="pxxz">
+					<a id="px">时间排序</a>
+					<a >阅读排序</a>
+				</div>
+				<div class="allbox">
+				    <div class="p_time">
+				        <#if !pageIndex?? >  <#assign  pageIndex="1" > </#if>
+                        <#assign pageList= at.bc(ck,pageIndex,6)> 
+                        <#if pageList.list?size gt 0>
+                        <#list pageList.list?sort_by('issueTime')?reverse as a>
+				         <dl class="yy_news">
+        					<dt><a href="${cm.cp}go.htm?url=news_detail&id=${a.id}"><img src="<#if a.th.url??>${a.th.ourl}<#else>res/default/images/default_pic.png</#if>" alt=""></a></dt>
+        					<dd>
+        						<h2><a href="${cm.cp}go.htm?url=news_detail&id=${a.id}">${a.title}</a></h2>
+        						<div class="fb_time">发布时间：${a.issueTime?string('YYYY-MM-dd')}   来自： ${a.source}</div>
+        						<div id="text_tet" class="text_tet">${a.desc}</div>
+        					</dd>
+        				</dl>
+        				</#list>
+        				<div class="fenpage">
+                        ${cm.page(req,pageIndex,pageList)}
+                        </div>
+                         <#else>
+                        <div class="nodata">
+                            <img src="res/default/images/nodata.png" alt="暂无数据" />
+                            <p>暂无数据</p>
+                        </div>
+                        </#if>
+				    </div>
+				    <div class='p_read' style="display:none;">
+				        <#if !pageIndex?? >  <#assign  pageIndex="1" > </#if>
+                        <#assign pageList= at.bc(ck,pageIndex,12)> 
+                        <#if pageList.list?size gt 0>
+                        <#list pageList.list?sort_by('viewTimes')?reverse as a>
+				        <dl class="yy_news">
+        					<dt><a href="${cm.cp}go.htm?url=news_detail&id=${a.id}"><img src="<#if a.th.url??>${a.th.url}<#else>res/default/images/default_pic.png</#if>" alt=""></a></dt>
+        					<dd>
+        						<h2><a href="${cm.cp}go.htm?url=news_detail&id=${a.id}">${a.title}</a></h2>
+        						<div class="fb_time">发布时间：${a.issueTime?string('YYYY-MM-dd')}   来自： ${a.source}</div>
+        						<div id="text_tet" class="text_tet">${a.desc}</div>
+        					</dd>
+        				</dl>
+        				</#list>
+        				<div class="fenpage">
+                        ${cm.page(req,pageIndex,pageList)}
+                        </div>
+                         <#else>
+                        <div class="nodata">
+                            <img src="res/default/images/nodata.png" alt="暂无数据" />
+                            <p>暂无数据</p>
+                        </div>
+                        </#if>
+				    </div>
+				</div>
+				
+				
+			</div>
+			<#include "/${rp}/rightbox.html">
+	</div>	
+	</div>
+	<footer>
+		<#include "/${rp}/footer.html">
+	</footer>
+</body>
+<script src="res/js/jquery-1.12.3.js"></script>
+<script src="res/js/swiper-4.1.6.min.js"></script>
+<script src="res/js/xdlines.jquery.js"></script>
+<script>
+		$('.text_tet').xdlines({
+			max:3
+		});
+</script>
+<script>
+	 var swiper = new Swiper('.swiper-container', {
+          spaceBetween: 30,
+          pagination: {
+            el: '.swiper-pagination',
+          },
+          loop: true,
+            autoplay:{
+            	 delay: 5000,
+            }
+        });
+        
+    $('.pxxz a').on('click',function(){
+        var _this=this;
+        var i=$(_this).index();
+        $(_this).attr('id','px').siblings().removeAttr('id');
+        $('.allbox>div').eq(i).show().siblings().hide();
+    })
+</script>
+</html>

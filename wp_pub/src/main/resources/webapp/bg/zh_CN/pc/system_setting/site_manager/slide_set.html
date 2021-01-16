@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>轮播图管理</title>
+    <style type="text/css">
+    .layui-form-switch em{
+     	width:27px;
+    }
+    table td{
+    max-height:70px !important;
+    }
+    .layui-form-item label{
+	    border: 1px solid #e6e6e6; 
+		border-radius: 2px 0 0 2px; 
+		text-align: center;
+		background-color: #FBFBFB;
+    }
+    </style>
+    <#include "/include/bg/in_head_res.html">
+</head>
+<body class="inner-body clear">
+<div class="layui-container bg_white" style="width: 100%;padding:10px">
+<form name="layui-form " id="form_1" method="post" class="layui-form " onsubmit="return false">
+	<div class="layui-form-item" >
+		<div class="layui-col-md3">
+			<label class="layui-form-label">所属站点 :</label>
+			<div class="layui-input-block">
+				<input type="text" value="${webSet.domain!!}" disabled="disabled" class="layui-input aa" style="width:135px; height:40px;">
+			</div>
+		</div>
+
+		<div class="layui-col-md3">
+			<label class="layui-form-label">切换时间 :</label>
+			<div class="layui-input-block">
+				<input type="text" style="width:135px; height:40px;" placeholder="<#if webSet??><#if webSet.homeSlides?size gt 0>${webSet.homeSlides[0].pauseTime?c!}</#if></#if>" name="pauseTime" id="pauseTime" value="<#if webSet??><#if webSet.homeSlides?size gt 0>${webSet.homeSlides[0].pauseTime?c!}</#if></#if>" class="layui-input aa">
+			</div>
+		</div>
+
+		<div class="layui-col-md3">
+			<label class="layui-form-label"><span></span>提示文字 :</label>
+			<div class="layui-input-block">
+					<input  class="remarkState"  value="-1" lay-filter="status"  type="checkbox" lay-skin="switch"  lay-text="开启|关闭" <#if webSet??><#if webSet.homeSlides?size gt 0><#if webSet.homeSlides[0].remarkState == -1>${'checked'}</#if></#if></#if>/>
+			</div>
+		</div>
+		<div class="layui-col-md3" >
+			<button id="saveAll" class="layui-btn   fl ">
+				<i class="layui-icon ">&#xe61d;</i> 保存
+			</button>
+		</div>
+	</div>
+	<div class="layui-form-item" >
+		<button class="layui-btn  item_add fl ">
+			<i class="layui-icon">&#xe61f;</i> 新增
+		</button>
+		<button class="layui-btn layui-btn-danger deleteAll fl ">
+			<i class="layui-icon">&#xe640;</i> 删除
+		</button>
+	</div>
+	<div class="layui-form-item" >
+		<table id="table1" class="layui-table layui-form" style="table-layout:fixed;">
+			<thead>
+				<tr>
+					<th><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose"></th>
+					<th style="width:15%;">图片</th>
+                    <th style="width:25%;">添加时间</th>
+                    <th style="width:10%;">图片名称</th>
+                    <th style="width:10%;">轮播顺序</th>
+                    <th style="width:20%;">文字说明</th>
+                    <th style="width:5%;">状态</th>
+                    <th style="width:15%;">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<#if homeSlide?? && homeSlide?size gt 0 >
+					<#list homeSlide as r>
+					<tr >
+						    <input type="hidden" name="id" value="${r.id?c!}">
+						    <td><input type="checkbox" name="check" lay-skin="primary" id="${r.id}"></td>
+						    <td class="img_click">
+						    		<input type="file" onchange="previewImage(this)" id="btn_file" style="display:none">
+						    		<img  src="${(r.accessory.url)!}"  style="max-width:40px;" class="box_img " alt="">
+						    		<input type="hidden" name="banner_id">
+						    </td>
+						    <td>${r.insertTime?datetime}</td>
+						    <td>${(r.name)!}</td>
+						    <td>${r.sequence!}</td>
+						    <td>${r.remark!}</td>
+						    <td>
+						    	<#if data.status == 1 > 
+								        隐藏 
+								<#else> 
+								  	显示
+								 </#if> 
+							</td>
+							<td>
+							<a onclick="F_Open_dialog(${r.id?c!})" id="${r.id?c!}" class="layui-btn layui-btn-mini show-child-list fl "><i class="layui-icon">&#xe60a;</i>&nbsp;编辑</a>
+		                   	<a onclick="delete_slide(${r.id?c!})" class="layui-btn layui-btn-mini layui-btn-danger del-child-list fl"><i class="layui-icon">&#xe640;</i>&nbsp;删除</a>
+		                    </td>
+					</tr>
+					</#list>
+				<#else>
+				<tr>
+					<td colspan="8">无数据</td>
+				</tr>
+				</#if>
+			</tbody>
+		</table>
+	</div>
+</form>
+</div>
+<#include "/include/bg/in_bottom_res.html">
+<script type="text/javascript">
+$(".deleteAll").click(function(){
+	if($("input:checked").length<=0){
+		layer.msg("请选择待删除条目",{icon:2});
+		return;
+	}
+	layer.confirm("确认删除？",{btn: ['确认','取消'],icon:3 },function(){
+		$("input:checked").each(function(){
+    		var id = $(this).attr("id");
+    		$.postJSON("${base}/admin/system/deleteSlide$ajax.htm",{"id":id},function(data){              
+         	     if(!data.result){
+         	     	layer.msg("删除失败-"+id,{icon:2});
+         	     }
+           }); 
+    	});
+		layer.msg("操作完毕",function(){
+       		window.location.reload();
+       	});
+	});
+
+});
+
+function delete_slide(id){
+	layer.confirm("确认删除？",{btn: ['确认','取消'],icon:3 },function(){
+		var url = "${base}/admin/system/deleteSlide$ajax.htm";
+        $.postJSON(url,{"id":id},function(data){
+        	if(data.result==true){
+				layer.alert(data.msg,{icon:1},function(){
+					window.location.reload();
+					})
+			}else if(data.result==false){
+				layer.alert(data.msg,{icon:2});
+			}
+        });
+	});
+}
+	function F_Open_dialog(id){
+		layer.open({
+	         type: 2,
+	         title: '修改轮播',
+	       //  btn: ['确定', '取消'],
+	         shadeClose: true,
+	         shade: 0.8,
+	         area: ['55%','520px'],
+	         content:'${base}/general_service_NQDm6fwobHh2jyY5fmr.htm?_ttype=2&_url=system_setting/site_manager/slide_update&id='+id //iframe的url
+	     });
+		
+    };
+
+    $(".layui-btn-big").click(function(){
+    	var nums="";
+    	　　$("#table1 tbody tr").each(function(){
+					console.log($(this))
+    	　　　　　　var num1=$(this).find("input:text:eq(0)").val();
+
+    	　　　　　　var num2=$(this).find("input:text:eq(1)").val();
+
+    	　　　　　　var num=num1+","+num2+","
+
+    	　　　　　　nums+=num;　　
+
+    	　　　　});
+    })
+    
+    //批量操作轮播
+     $("#saveAll").click(function(){
+    	var pauseTime=$("#pauseTime").val();
+    	var status=$(".remarkState").val();
+    	if(pauseTime ==null || pauseTime ==""){
+    		return ;
+    	}
+    	if(status ==null || status == ""){
+    		return ;
+    	}
+     $.postJSON("${base}/admin/save_home_slide_status$ajax.htm",{"pauseTime":pauseTime,"status":status},function(data){
+   	     if(data.result){
+   	    	layer.msg(data.msg,function(){
+   	    		location.reload();
+   	    	})
+   	     }      			       	            	 
+     }); 
+    }) 
+    
+    var form = layui.form;
+    form.on('checkbox(allChoose)', function(data){
+        var child = $(data.elem).parents('table').find('tbody input[type="checkbox"]');
+        child.each(function(index, item){
+            item.checked = data.elem.checked;
+        });
+         form.render('checkbox');
+    }); 
+    
+            form.on("switch(status)",function(data){
+        	var status = 0;
+        	var obj = data.elem;
+        	if(data.elem.checked){
+        		data.elem.value = -1;
+        	}else{
+        		data.elem.value = 1;
+        	}
+        });
+            
+    $(".item_add").click(function(){
+   	 layer.open({
+         type: 2,
+         title: '新增轮播',
+       //  btn: ['确定', '取消'],
+         shadeClose: true,
+         shade: 0.8,
+         area: ['55%','520px'],
+         content:'${base}/admin/to_home_slide_add.htm' //iframe的url
+     });
+    })
+     $(function() {
+			$('.img_click').on('click','img', function() {
+				layer.open({
+					type: 1,
+					title: false,
+					closeBtn: 0,
+					area: '',
+					skin: 'layui-layer-nobg', //没有背景色
+					shadeClose: true,
+					content: '<img src="' + $(this)[0].src + '" style="max-width:100%;max-height:430px;margin:0 auto;"/>'
+				});
+			});
+	})
+</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<items>
+  <item url="/ssfc/*/" template="channelPicList.index.ascx" />
+  <item url="/zysz/*/" template="channelPicList.index.ascx" />
+  <item url="/xyhj/*/" template="channelPicList.index.ascx" />
+  <item url="/*/" template="channel.index.ascx" />
+  <item url="/*/detail" template="channel.detail.ascx" />
+  <item url="/home" template="site.home.ascx" />
+</items>

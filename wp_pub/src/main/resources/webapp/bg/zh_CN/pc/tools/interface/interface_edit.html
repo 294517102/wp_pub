@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>接口编辑</title>
+	<#include "/include/bg/in_head_res.html">
+</head>
+<body class="body clear">
+<div class="center" style="width: 95%;margin: 0 auto">
+    <form  class="layui-form layui-form-pane" onsubmit="return false;">
+        <div class="layui-form-item two-colum-left">
+            <label class="layui-form-label"><span class="red">*</span>名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="name" value="${data.name}" valay-verify="required" autocomplete="off" placeholder="请输入标题" class="layui-input">
+            </div>
+        </div>
+            <input style="display:none" name="id" value="${(data.id)!0}"> 
+        <div class="layui-form-item two-colum-right">
+            <label class="layui-form-label"><span class="red">*</span>识别码</label>
+            <div class="layui-input-block">
+                <input type="text" name="iid" lay-verify="required" readonly="readonly" autocomplete="off" value="${(data.iid)!UuidUtil.uuid()}" placeholder="请输入标题" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item two-colum-left">
+            <label class="layui-form-label fl"><span class="red">*</span>状态</label>
+            <div class="layui-input-block fl">
+                <input type="checkbox" name="status" value="1"  <#if data.status==1 > ${'checked'} </#if> lay-skin="switch"  lay-filter="status" lay-text="开启|关闭">
+            </div>
+        </div>
+        <div class="layui-form-item two-colum-right">
+            <label class="layui-form-label">有效期</label>
+            <div class="layui-input-block ">
+                 <input type="text" class="layui-input" name="deadline" id="deadline">
+            </div>
+        </div>
+        <#if data.iid ??>
+        <div class="layui-form-item">
+            <label class="layui-form-label">访问地址</label>
+            <div class="layui-input-block ">
+                 <input type="text" class="layui-input" disabled="disabled" value="${basePath}/general_service_${data.iid}.htm">
+                 <a href="${basePath}/general_service_${data.iid}.htm" target="_blank" class="layui-icon" style="display:block;position:absolute;right:0;top:0;width:30px;height:36px;font-size:20px;line-height:40px;">&#xe64c;</a>
+            </div>
+        </div>
+        </#if>
+		<div class="clear"></div>
+        <div class="layui-container" style="width:100%;padding:0" >
+            <div class="layui-row">
+	            <div class="center" style="width: 100%;margin: 0 auto;">
+		               <div class="fl" style="font-size: 16px"><strong>服务列表</strong></div>
+		               <div class="fr" style="padding-right:10px"><a><i class="layui-icon" id="add_btn" style="font-size: 30px; color: #1E9FFF;">&#xe654;</i></a></div>		  
+		        </div>
+            </div>
+            <div class="layui-row" style="min-height:220px">
+            	<table class="layui-table" id="serices">
+            	 <thead>
+            		 <tr>
+                        <th>序号</th>
+                        <th>名称</th>
+                        <th>类型</th>
+                        <th>SQL/实体</th>
+                        <th>操作</th>
+                    </tr>
+                  </thead>
+                  
+                  <tbody>
+                 
+                  <#if !(data.services)?? >
+                  	<tr>
+                  			<td colspan="5" class="empty">无数据</td>
+                  	</tr>
+                  <#else>
+                  	<#list data.services as r>
+                  	<tr>
+                        <td class="eid" >${r.id}</td>
+                        <td><a href="javascript:showService(${r.id});" style="text-decoration:underline">${r.name}</a></td>
+                      	<td class="otype">${(ds.getCodeDesc("if_pi_service_tbl","otype",r.otype))!""}</td>
+                      	<td><#if r.stype==1 > ${r.sql} <#else>  ${r.entityName}  </#if></td>
+                        <td><button type="reset" onclick="del_row(this);" class="layui-btn layui-btn-small layui-bg-red">删除 </button> </td>
+                    </tr>
+                  	</#list>
+                  </#if>
+
+                  </tbody>
+                  
+            	</table>
+            </div>            
+        </div> 
+         <div style="text-align: center;vertical-align:bottom;">
+                 <button class="layui-btn" lay-submit lay-filter="form_1">保存</button>
+                 <button  type="reset" class="layui-btn layui-btn-danger cancel" >取消</button>
+        </div>
+    </form>
+</div>
+<#include "/include/bg/in_bottom_res.html">
+<script type="text/javascript">
+
+function showService(id){
+	layer.open({
+        type: 2,
+        title: '新增服务',
+      //  btn: ['确定', '取消'],
+        shadeClose: true,
+        shade: 0.8,
+        area: ['90%', '520px'],
+        content:'${base}/admin/obtain_pi_service.htm?url=tools/interface/service_edit&id='+id//iframe的url
+    });
+}
+
+$(function () {
+    //注意进度条依赖 element 模块，否则无法进行正常渲染和功能性操作
+        var form = layui.form,laydate = layui.laydate;
+
+        laydate.render({
+            elem: '#deadline' //指定元素
+        });
+
+        //监听提交
+        form.on('submit(form_1)', function(data){
+        	var fData = data.field;
+			var servces = [];
+			if($(".otype:contains('修改')").length　> 1){
+				layer.msg("不能有多个修改类服务",{icon:0});
+				return;
+			}
+        	$("#serices .eid").each(function(i){
+        		servces.push($(this).text());
+        	});
+        	if($.isEmptyObject(servces)){
+        		$("#serices .empty").css("border","1px solid #ff5722");
+        		layer.msg("请增加服务",{icon:0});
+        		return;
+        	}
+        	fData["serviceList"] = servces;          
+            $.postJSON("${base}/admin/save_pi_interface.htm",fData,function(data){
+            	layer.msg(data.resultMsg,{time:1000},function(){
+            		if(data.result){
+            			parent.location.reload();
+                		closeWindow();
+                	}
+            	});
+            	
+            });
+            return false;
+        });
+
+        
+        //全选
+        form.on('checkbox(allChoose)', function(data){
+            var child = $(data.elem).parents('table').find('tbody input[type="checkbox"]');
+            child.each(function(index, item){
+                item.checked = data.elem.checked;
+            });
+            form.render('checkbox');
+        });
+        
+        
+        $("#add_btn").click(function(){
+        	if($("#serices tbody > tr").length>=3){
+         		  layer.msg("服务数量不能超过3",{icon:0});
+         		  return;
+         	  }
+            layer.open({
+                type: 2,
+                title:"添加",
+                closeBtn: 1, //显示关闭按钮
+                shadeClose: false, //开启遮罩关闭
+                area: ['620px', '400px'],
+                content: '${base}/admin/to_target.htm?url=tools/interface/serivce_search_by_keyword',
+                end:function(){
+                   $(".serve_content table").append(str);
+                }
+            });
+           
+        })
+});
+    
+	function service_add(item){
+    	  if($("#serices tbody > tr").length>=3){
+    		  layer.msg("服务数量不能超过3",{icon:0});
+    		  return;
+    	  }
+    	  if($("#serices .empty").length>0){
+    		$("#serices .empty").parent().remove();
+    	  }
+    	var is_exist = false;
+    	$("#serices .eid").each(function(){
+    		if($(this).text()==item.id){
+    		 layer.msg("重复添加",{icon:0});
+    		is_exist = true;
+   		  return;
+      	  }
+    	});
+    	if(is_exist){ return;}  
+    	var otype = "";
+    	if(item.otype==1){
+    		otype = '查询';
+    	 }
+    	if(item.otype==2){
+    		otype = '修改';
+    	 }
+    	  $("#serices tbody").append('<tr><td class="eid">'+item.id+'</td><td><a href="javascript:showService('+item.id+');" style="text-decoration:underline">'+item.name+'</td><td class="otype">'+otype+'</td><td>'+item.sql+'</td><td><button type="reset" onclick="del_row(this);" class="layui-btn layui-btn-small layui-bg-red">删除 </button> </td></tr>');
+    }
+
+ function del_row(obj){
+ 	layer.alert("确认删除",{icon:3},function(index){
+ 		layer.close(index);
+ 		$(obj).closest("tr").remove();
+ 		if($("#serices tbody > tr").length<=0){
+ 			 $("#serices tbody").append(' <tr><td colspan="5" class="empty">无数据</td></tr>');
+ 		}
+ 	});
+ }
+ 
+ $(".cancel").click(function(){
+ 	closeWindow();
+ });
+</script>
+
+</body>
+</html>

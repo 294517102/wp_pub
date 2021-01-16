@@ -1,0 +1,32 @@
+﻿/*************************************************************
+ * Command:Start
+ * Control:TeacherList
+ * Style:TeacherList
+ * Desc:目前没有
+ * Quot:site.welcome
+*************************************************************/
+.TeacherList { min-height:500px; padding-left:20px; overflow:hidden;}
+.TeacherList h3 { height:40px; line-height:40px; /* border-bottom:1px solid #bababa; */ }
+.TeacherList h3 em {font:normal 16px/40px "microsoft yahei"; color:#fff; padding-left:40px;}
+.TeacherList h3 i{ font:normal 14px/40px "Times New Roman"; color:#999; font-style:italic;}
+.TeacherList h3 span { display: none; }
+
+.TeacherList table { border-left:1px solid #ddd; border-top:1px solid #ddd; }
+.TeacherList table th { border-right:1px solid #ddd; border-bottom:1px solid #ddd; padding: 3px 5px; text-align: center; font:bold 16px/30px "microsoft yahei"}
+.TeacherList table td { border-right:1px solid #ddd; border-bottom:1px solid #ddd; padding: 3px 5px; text-align: center; font:normal 14px/30px "microsoft yahei"}
+
+
+
+
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:TeacherList
+ * Style:TeacherList
+ * Desc:目前没有
+ * Quot:site.welcome
+*************************************************************/

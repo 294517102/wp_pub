@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<#include "/${rp}/metalink.html">
+	<title>${webSet.title}</title>
+	<style>
+		.dq_active1{
+			display: inline-block;
+			height: 55px;
+			width: 56px;
+			color: #46c3f2;
+			font-size: 14px;
+			border-bottom: 2px solid #46c3f2;
+		}
+		#h4{
+			color: #46c3f2;
+			border-bottom: 2px solid #46c3f2;
+		}
+		#text{
+			position: absolute;
+			top:0;
+			left: 50px;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<#include "/${rp}/header.html">	
+	</header>
+	<div class="dangquangongzuo">
+	    <#assign ck=cl.bk(c)>
+		<div class="df_lb">
+			<div class="df_lb_title">
+				<h4 style="height: 64px" id="h4">${ck.title}</h4>
+			</div>
+			<div class="ksdh">
+			     <#if !pageIndex?? >  <#assign  pageIndex="1" > </#if>
+                        <#assign pageList= at.bc(ck,pageIndex,12)> 
+                        <#if pageList.list?size gt 0>
+                        <#list pageList.list?sort_by('insertTime')?reverse as a>
+				<a href="${cm.cp}go.htm?url=news_detail&id=${a.id}">
+					<div class="ksdh_lib">
+						<div class="ksdh_left">
+							<img src="${a.thumbnail.ourl}" alt="">
+						</div>
+						<div class="ksdh_right">
+							<h2>${a.title}</h2>
+							<div class="ks_sm">
+							    ${a.describes}
+							</div>
+						</div>
+					</div>
+				</a>
+				</#list>
+		    	
+			</div>
+				<div class="fenpage">
+                        ${cm.page(req,pageIndex,pageList)}
+                        </div>
+                         <#else>
+                        <div class="nodata">
+                            <img src="res/default/images/nodata.png" alt="暂无数据" />
+                            <p>暂无数据</p>
+                        </div>
+                        </#if>
+		    <div>
+		        
+		    </div>
+		</div>
+				
+
+				
+	<footer>
+		<#include "/${rp}/footer.html">
+	</footer>
+</body>
+<script src="res/js/jquery-1.12.3.js"></script>
+<script src="res/js/xdlines.jquery.js"></script>
+<script>
+		$('.ks_sm').xdlines({
+			max:4
+		});
+</script>
+</html>

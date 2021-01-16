@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>数据导入</title>
+    <#include "/include/bg/in_head_res.html">
+</head>
+<body class="body clear">
+
+<form class="layui-form layui-form-pane" action="" id="ky_form" onsubmit="return false">
+  <div class="layui-form-item">
+  <label class="layui-form-label" >ecxel上传</label>
+  <input type="hidden" name="pic_id" id="pic_id">
+     <div class="layui-input-block demoTable" style="padding-left:12px">
+	<button type="button" class="layui-btn layui-btn-normal" id="select_file">选择文件</button>
+	<button type="button" class="layui-btn " id="upload_excel" ><i class="layui-icon">&#xe681;</i>数据导入</button>
+<!-- 	<button type="button" class="layui-btn  textexcel"  data-type="reload"><i class="layui-icon">&#xe681;</i>数据导入</button> -->
+  <button class="layui-btn" data-type="getCheckData">保存取选中行数据</button>
+	</div>
+
+    </div>
+
+</form>
+<table class="layui-hide" id="excel_tble" lay-filter="excel_tble" lay-data="{id: 'testReload'}"></table>
+ 
+
+<#include "/include/bg/in_bottom_res.html">	
+
+<script type="text/javascript">
+    //注意进度条依赖 element 模块，否则无法进行正常渲染和功能性操作
+    layui.use(['upload','table'], function(){
+    var form = layui.form, upload = layui.upload;
+    	  //普通图片上传
+    	  var uploadInst = upload.render({
+    	    elem: '#select_file'
+    	    ,url: '${base}/upload/uploadImgByAccessory.htm?type=client'
+    	    ,auto: false
+    	 	,size: 3000
+    	 	,accept: "file"
+    	 	,bindAction: '#upload_excel'
+    	    ,done: function(res){
+    	    	if(res.result){
+    			    var files = res.data;
+    			    	var id = files[0].acyId;
+    					table.reload('testReload', {
+    						  url: '/read_excel_data$ajax.htm?file_id='+id
+    						  ,height: 300
+    						  ,toolbar: '#toolbarDemo'
+    						}); 
+    	        
+    	    	}else{
+    	        return layer.msg('上传失败');
+    	    	}
+    
+    	      //如果上传失败
+    	      if(res.code > 0){
+    	        return layer.msg('上传失败');
+    	      }
+    	    }
+    	    ,error: function(){
+    	      //演示失败状态，并实现重传
+    	      var demoText = $('#demoText');
+    	      demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
+    	      demoText.find('.demo-reload').on('click', function(){
+    	        uploadInst.upload();
+    	      });
+    	    }
+    	  });
+//     			    表格	
+    			    	 var table = layui.table;
+    			    	  table.render({
+    			    	    elem: '#excel_tble'
+    			    	    ,url:''
+    			    	    ,title: '用户数据表'
+    			    	    ,totalRow: true
+    			    	    ,cols: [[
+    			    	             {checkbox: true, fixed: true}
+    			    	             ,{field:'number', title: '证书编号', width:80}
+    			    	             ,{field:'name', title: '姓名', width:80, }
+    			    	             ,{field:'idCard', title: '身份证', width:80}
+    			    	             ,{field:'record', title: '学历'}
+    			    	             ,{field:'strSex', title: '性别'}
+    			    	             ,{field:'major', title: '专业',width:80}
+    			    	             ,{field:'trainTime', title: '培训时间',width:80}
+    			    	             ,{field:'entTime', title: '有效期', width:80}
+    			    	             ,{field:'currentJob', title: '现单位',width:135}
+    			    	             ,{field:'formerUnit', title: '原单位', width:80}
+    			    	             ,{field:'updateTime', title: '变更时间', width:80}
+    			    	           ]]
+    			    	    ,page: false
+    			    	    ,id: 'testReload'
+    			    	    });
+ 			    	  
+    			    	  var $ = layui.$, active = {
+    			    			    getCheckData: function(){ //获取选中数据
+    			    			      var checkStatus = table.checkStatus('testReload')
+    			    			      ,data = checkStatus.data;
+//     			    			      layer.alert(JSON.stringify(data));
+    			    			      if(data.length==0){
+    			    			      layer.msg('请选择导入的数据');
+    			    			      return;
+    			    			      }else{
+    			    				 	$.postJSON("${base}/admin/save_jl_list$ajax.htm",{"datalist":JSON.stringify(data)},function(data){
+    			    			        	layer.msg(data.msg,{time:1000},function(){
+    			    			        		if(data.result){
+    			    			        			parent.location.reload();
+    			    			            		closeWindow();
+    			    			            	}
+    			    			        	});
+    			    				});
+    			    			      }
+    			    			      
+    			    			    }
+    			    			    ,getCheckLength: function(){ //获取选中数目
+    			    			      var checkStatus = table.checkStatus('testReload')
+    			    			      ,data = checkStatus.data;
+    			    			      layer.msg('选中了：'+ data.length + ' 个');
+    			    			    }
+    			    			    ,isAll: function(){ //验证是否全选
+    			    			      var checkStatus = table.checkStatus('testReload');
+    			    			      layer.msg(checkStatus.isAll ? '全选': '未全选')
+    			    			    }
+    			    			  };
+    			    			  
+    			    			  $('.demoTable .layui-btn').on('click', function(){
+    			    			    var type = $(this).data('type');
+    			    			    active[type] ? active[type].call(this) : '';
+    			    			  });		    	  
+//     保存内容
+    form.on('submit(save_content)', function(data){
+//     	var params = $("#article_form").serializeObject();
+//     	params.state=5;
+       			var frameId = window.frameElement && window.frameElement.id || '';
+        			console.log("当前id:"+frameId);
+        			var parentframeId='${RequestParameters.parentframeId}';
+        			console.log("服i发ram"+parentframeId);
+			console.log("得到得数据"+JSON.stringify(data.field))
+    	$.postJSON("${base}/general_service_QFOSEPrEKCqpmdb4m6J$ajax.htm?_sign=${MD5.md5(user.username+user.id)}",data.field,function(data){
+        	layer.msg(data.msg,{time:1000},function(){
+        		if(data.result){
+//         			切换到选项卡
+					 element.tabDelete('card',frameId); //删除：“商品管理”
+//         			 element.tabChange('test1', layid);
+//         			$(".layui-btn-danger").click();
+//         			location.reload();
+            	}
+        	});
+
+    	}); 
+    	
+        return false;
+    });
+$(".textexcel").click(function(){
+	 	$.postJSON("${base}/read_lsjs_excel_data$ajax.htm",{"file_id":2014},function(data){
+		console.log(data);
+	layer.msg(data.msg,{time:1000},function(){
+		if(data.result){
+			console.log(data.objList);
+			table.reload('testReload', {
+				  url: '/read_lsjs_excel_data$ajax.htm?file_id=2014'
+				  ,height: 300
+				  ,toolbar: '#toolbarDemo'
+				});
+
+    		}
+		})
+}); 
+
+	})
+    });
+    
+    
+    
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

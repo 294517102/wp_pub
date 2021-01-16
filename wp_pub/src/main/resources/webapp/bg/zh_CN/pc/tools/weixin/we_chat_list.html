@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>服务列表</title>
+<#include "/include/bg/in_head_res.html">
+<style>
+.img_click img{
+cursor: pointer;
+}
+</style>
+</head>
+<body class="inner-body clear">
+	<div class="layui-container bc_color" style="width:100%">
+		<form class="layui-form " id="form_1"  action="${base}/admin/to_we_chat_user_list.htm">
+		 <div class="layui-form-item" style="background-color: white;">
+			<div class="layui-col-md2" style="width: auto;">
+				<label class="layui-form-label">微信名称</label>
+				<div class="layui-input-block">
+					<input type="text" name="name" style="width:120px;"
+						autocomplete="off" placeholder="请输入微信名称" class="layui-input">
+				</div>
+			</div>
+			<div class="fl" style="margin-left:50px">
+				<button class="layui-btn fl search" lay-submit > <i class="layui-icon">&#xe615;</i> 搜索</button>
+				<button class="layui-btn layui-btn-warm  fl refresh" type="reset"><i class="layui-icon">&#x1002;</i> 刷新</button>
+				<button class="layui-btn fl upload" lay-submit > <i class="layui-icon">&#xe615;</i> 更新粉丝列表</button>
+				<button disabled="disabled" class="layui-btn">粉丝数量<span class="layui-badge layui-bg-gray">${userCount!}</span></button>
+			</div>
+		</div>
+		</form>
+		<div class="content_main">
+			<div class="layui-row layui-form">
+				<table class="layui-table" >
+					<thead>
+						<tr>
+							<th >微信名</th>
+							<th>头像</th>
+							<th>地址</th>
+							<th>关注时间</th>
+							<th>性别</th>
+							<th >操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<#if resultList?size <=0 >
+						<tr>
+							<td colspan="8">无记录</td>
+						</tr>
+						<#else> <#list resultList as r>
+						<tr class='img_click'>
+							<td>${r.nickname!}</td>
+							<td><img alt="" src="${r.headimgurl!}"></td>							
+							<td>${r.country!}&nbsp;${r.province!}&nbsp;${r.city}</td>
+							<#assign Dlong=r.subscribe_time?number*1000>
+							<td>${Dlong?long?number_to_datetime!}</td>
+							<td><#if r.sex==0>
+									未知
+								<#elseif r.sex==1>
+									男
+								<#else>
+									女
+								</#if>
+							</td>
+							<td>
+							<button class="layui-btn layui-btn-small detail" name="${r.nickname!}" id="${r.id}"><i class="layui-icon">&#xe611;</i> 发送消息</button>
+							<button class="layui-btn layui-btn-danger layui-btn-small delete"name="${r.nickname!}"  id="${r.id}">
+							<i class="layui-icon">&#xe63c;</i> 发送图文消息
+								</button></td>
+						</tr>
+						</#list> </#if>
+					</tbody>
+				</table>
+				<div class="pageBotton" style="padding: 35px;">${pageHtml!}</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+<#include "/include/bg/in_bottom_res.html">
+<script type="text/javascript">
+    //注意进度条依赖 element 模块，否则无法进行正常渲染和功能性操作
+  	 $(".detail").click(function(){
+  		var id=$(this).attr("id");
+  		var name=$(this).attr("name");
+  		 layer.prompt({title: '给 :'+name+' 发送消息！', formType: 2}, function(text, index){
+ 		    layer.close(index);
+ 			$.ajax({
+ 				'url':"admin/sendMsg$ajax.htm",
+ 				'type':"post",
+ 				'datatype':"json",
+ 				'data':{
+ 					'id':id,
+ 					'content':text
+ 				},
+ 				success:function(req){
+ 					var objdata=eval('(' + req + ')');
+ 					layer.msg(objdata.msg);
+ 				}
+ 			})
+ 		  });
+    });
+  	  layer.photos({
+    	  photos: '.infor-list'
+    	  ,anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
+    	}); 
+  $(".delete").click(function(){
+	  var name=$(this).attr("name");
+	  var data=$(this).attr("id");
+	  layer.open({
+	        type: 2,
+	        title: '向:'+name+'发送图文消息',
+	        area: ['700px', '400px'],
+	        shade: 0.8,
+	        closeBtn: 0,
+	        shadeClose: true,
+	        content:"${basePath}/admin/toSendPicMsg.htm?data="+data+"&name="+name,
+	        end:function(){
+	        	location.reload();
+	        }
+	    });
+	    return false;
+  })
+  
+	$(".upload").click(function(){
+		$.postJSON("${base}admin/uploadWeChatUserList$ajax.htm",null,function(data){
+				data=eval('(' + data + ')');
+          	     if(data.result){
+          	    	layer.msg(data.msg);
+          	    	window.location.reload();
+          	     }
+        });
+	});
+  
+  	$(".refresh").click(function(){
+  		window.location.reload();
+  	})
+  	$(function() {
+		$('.img_click').on('click','img', function() {
+			layer.open({
+				type: 1,
+				title: false,
+				closeBtn: 0,
+				area: '',
+				skin: 'layui-layer-nobg', //没有背景色
+				shadeClose: true,
+				content: '<img src="' + $(this)[0].src + '" style="max-width:100%;max-height:430px;margin:0 auto;"/>'
+			});
+		});
+	})
+</script>
+</html>

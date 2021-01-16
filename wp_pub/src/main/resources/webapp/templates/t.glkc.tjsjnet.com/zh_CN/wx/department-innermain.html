@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <#include "/${rp}/metalink.html">
+     <style type="text/css">
+         .ks_doctor_box > li a img{
+             height: 175px;
+         }
+         @media screen and (max-width: 320px){
+            .ks_doctor_box > li a img{
+             height: 160px;
+         }
+         }
+         @media screen and (max-width: 320px){
+            .ks_doctor_box > li a img{
+             height: 145px;
+         }
+         }
+     </style>
+</head>
+<body>
+<div class="page">
+    <header class="bar bar-nav">
+        <#assign ck=cl.bk(c)>
+        <a class="icon icon-left pull-left back"></a>
+        <a href="${cm.cp}" class="icon icon-home pull-right" external></a>
+        <h1 class="title">${ck.title}</h1>
+    </header>
+    <div class="content">
+        <div class="ksbanner">
+            <img src="res/default/image/ksbanner.png" alt="">
+            <p>${ck.title}</p>
+        </div>
+        <div class="inner_box1" style="margin-top: 0">
+            <p class="dangqu_title">${ck.title}</p>
+            <a href="${cm.cp}go.htm?url=departmentDetail&c=${ck.keyword}" external>more +</a>
+            <div class="where_room">楼层：${ck.floor}&emsp;&emsp;科室：${ck.remark}</div>
+            <hr>
+            <div class="ksdesc">
+                 ${ck.describes}
+            </div>
+        </div>
+        <div class="inner_box1">
+            <p class="dangqu_title">科室动态</p>
+            <a href="${cm.cp}go.htm?url=department-list&c=${ck.keyword}" external>more +</a>
+            <hr>
+            <ul class="wenlist">
+                <#if at.bc(ck)??&&at.bc(ck)?size gt 1>
+                <#list at.bc(ck) as a>
+			    <#if a_index gt 0>
+			    <#if a_index lt 5>
+                <li>
+                    <a href="${cm.cp}general_service_t3ncXUfMQv8itS1rnjr.htm?_url=department-listdtail&id=${a.id}">
+                        <p class="wenlist_title">${a.title}</p>
+                        <span class="wenlist_span">${a.issueTime?string('MM-dd')}</span>
+                    </a>
+                </li>
+                </#if>
+				</#if>
+				</#list>
+				<#else>
+				<div class="nodata">
+                    <img src="res/default/image/nodata.png" alt="暂无数据" />
+                    <p>暂无动态</p>
+                </div>
+				</#if>
+            </ul>
+        </div>
+        <div class="inner_box1">
+            <p class="dangqu_title">医生介绍</p>
+            <a href="${cm.cp}go.htm?url=doctor-list&c=${ck.keyword}" external>more +</a>
+            <hr>
+            <ul class="ks_doctor_box">
+                <#list ck.doctors as d>
+                <#if d_index lt 6>
+                <li>
+                    <a href="${cm.cp}general_service_t3ncXUfMQv8itS1rnjr.htm?_url=doctor_detail&id=${d.id}" external>
+                        <img src="${d.accessory.url}" alt="">
+                        <p>${d.name}</p>
+                    </a>
+                </li>
+                </#if>
+                </#list>
+            </ul>
+        </div>
+        <#include "/${rp}/footer.html">
+    </div>
+</div>
+
+<#include "/${rp}/jslink.html">
+<script>
+    $(".ksdesc").xdlines({
+        max:5
+    })
+</script>
+</body>
+</html>

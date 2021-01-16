@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <#include "/${rp}/metalink.html">
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=WSvBEaE2v9ZwwvAeV7suyAnKOZZrpUfC"></script>
+</head>
+<body>
+<div class="page">
+    <#assign ck=cl.bk(c)>
+    <header class="bar bar-nav">
+        <a class="icon icon-left pull-left back"></a>
+        <a href="${cm.cp}" class="icon icon-home pull-right" external></a>
+        <h1 class="title">${ck.title}</h1>
+    </header>
+    <div class="content">
+        <div class="jiaotong_box1">
+            <div>
+                <p>地理位置</p>
+                <!--<a href="https://map.baidu.com" target="_blank">导航由此去>></a>-->
+            </div>
+            <div>
+                <p class="mapaddr">地址：${webSet.comAddress}</p>
+                <div class="map">
+                    <div id="allmap" style="height: 150px"></div>
+                </div>
+            </div>
+        </div>
+        <div class="jiaotong_box1">
+            <div>
+                <p>公交车路线</p>
+            </div>
+            <div class="luxianbox">
+                ${sc.bk('gong_jiao_lu_xian').desc}
+            </div>
+        </div>
+        <div class="jiaotong_box1">
+            <div>
+                <p>地铁路线</p>
+            </div>
+            <div class="luxianbox">
+                ${sc.bk('di_tie_lu_xian').desc}
+            </div>
+        </div>
+        <div class="jiaotong_box1">
+            <div>
+                <p>自驾路线</p>
+            </div>
+            <div class="luxianbox">
+                ${sc.bk('zi_jia_lu_xian').desc}
+            </div>
+        </div>
+
+        <#include "/${rp}/footer.html">
+    </div>
+</div>
+
+<#include "/${rp}/jslink.html">
+<script>
+    var map = new BMap.Map("allmap");
+    var point = new BMap.Point(104.0353948911,30.7136320383);
+    var marker = new BMap.Marker(point, {
+//        icon: new BMap.Icon("res/default/image/mappng.png", new BMap.Size(30, 30))
+    })
+    map.addOverlay(marker);              // 将标注添加到地图中
+    marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+    map.centerAndZoom(point, 15);
+    map.disableScrollWheelZoom();
+
+    var mapStyle = {
+        features: ["road", "building", "water", "land"],//隐藏地图上的poi
+        style: "light"  //设置地图风格为高端黑
+    }
+    map.setMapStyle(mapStyle);
+
+    var opts = {
+        width: 200,     // 信息窗口宽度
+        height: 100,     // 信息窗口高度
+        title: "<p><b style='color:red;'>${webSet.title}</b></p>", // 信息窗口标题
+        enableMessage: true
+    }
+    var infoWindow = new BMap.InfoWindow("总部地址：${webSet.comAddress}", opts);  // 创建信息窗口对象
+    marker.addEventListener("click", function () {
+        map.openInfoWindow(infoWindow, point);
+    });
+    map.enableScrollWheelZoom(true);
+</script>
+</body>
+</html>

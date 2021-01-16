@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>欢迎页2</title>
+    <link rel="stylesheet" href="res/js/layui/css/layui.css">
+    <link rel="stylesheet" href="res/js/layer/skin/layer.css">
+    <link rel="stylesheet" href="res/default/bg/css/style.css">
+    <link rel="icon" href="res/default/bg/image/code.png">
+    <link rel="stylesheet" href="res/default/bg/css/index.css">
+    <link rel="stylesheet" href="res/default/bg/css/main.css">
+    <link rel="stylesheet" href="res/default/bg/css/new.css">
+</head>
+<body class="body clear">
+<form class="search-way layui-form clear">
+    <div class="search-way-list clear">
+        <span class="fl search-way-name">序号：</span>
+        <div class="layui-input-block search-way-input noLeftMargin fr">
+            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+        </div>
+    </div>
+    <div class="search-way-list clear">
+        <span class="fl search-way-name">接口名称：</span>
+        <div class="layui-input-block search-way-input noLeftMargin fr">
+            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+        </div>
+    </div>
+    <div class="search-way-list clear">
+        <span class="fl search-way-name">类别：</span>
+        <div class="layui-input-block search-way-input noLeftMargin fr">
+            <select name="interest" lay-filter="aihao">
+                <option value="1">查询</option>
+                <option value="2">操作</option>
+            </select>
+        </div>
+    </div>
+</form>
+<div class="clear search-btn">
+    <button class="layui-btn layui-btn-normal service-edit-add fl">新增</button>
+    <div class="fr clear">
+        <button class="layui-btn fl">查询</button>
+        <button class="layui-btn layui-btn-warm fl">取消</button>
+    </div>
+
+
+</div>
+<div class="layui-form">
+    <table class="layui-table">
+        <colgroup>
+            <col width="50">
+            <col width="100">
+            <col width="150">
+            <col width="200">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <th><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose"></th>
+            <th>序号</th>
+            <th>SQL</th>
+            <th>参数</th>
+            <th>创建人</th>
+            <th>时间</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><input type="checkbox" name="" lay-skin="primary"></td>
+            <td>贤心</td>
+            <td>汉族</td>
+            <td>1989-10-14</td>
+            <td>人生似修行</td>
+            <td>人生似修行</td>
+            <td><button class="layui-btn layui-btn-warm layui-btn-small">删除</button></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="" lay-skin="primary"></td>
+            <td>贤心</td>
+            <td>汉族</td>
+            <td>1989-10-14</td>
+            <td>人生似修行</td>
+            <td>人生似修行</td>
+            <td><button class="layui-btn layui-btn-warm layui-btn-small">删除</button></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="" lay-skin="primary"></td>
+            <td>贤心</td>
+            <td>汉族</td>
+            <td>1989-10-14</td>
+            <td>人生似修行</td>
+            <td>人生似修行</td>
+            <td><button class="layui-btn layui-btn-warm layui-btn-small">删除</button></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="" lay-skin="primary"></td>
+            <td>贤心</td>
+            <td>汉族</td>
+            <td>1989-10-14</td>
+            <td>人生似修行</td>
+            <td>人生似修行</td>
+            <td><button class="layui-btn layui-btn-warm layui-btn-small">删除</button></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="" lay-skin="primary"></td>
+            <td>贤心</td>
+            <td>汉族</td>
+            <td>1989-10-14</td>
+            <td>人生似修行</td>
+            <td>人生似修行</td>
+            <td><button class="layui-btn layui-btn-warm layui-btn-small">删除</button></td>
+        </tr>
+
+
+        </tbody>
+    </table>
+</div>
+<div class="service-edit-layer" style="display: none">
+    <div class="clear" style="padding-top: 20px;">
+        <div class="service-edit-layer-list clear">
+            <span class="fl search-way-name">创建人：</span>
+            <div class="layui-input-block search-way-input noLeftMargin fr">
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+            </div>
+        </div>
+        <div class="service-edit-layer-list clear">
+            <span class="fl search-way-name">时间：</span>
+            <div class="layui-input-block search-way-input noLeftMargin fr">
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">脚本</label>
+        <div class="layui-input-block">
+            <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">参数</label>
+        <div class="layui-input-block">
+            <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+        </div>
+    </div>
+</div>
+<script src="res/js/jquery.min.js"></script>
+<script type="text/javascript" src="res/js/layui/layui.js"></script>
+<script type="text/javascript" src="res/js/layer/layer.js"></script>
+<script type="text/javascript">
+    //注意进度条依赖 element 模块，否则无法进行正常渲染和功能性操作
+    layui.use(['form', 'layedit', 'laydate'], function(){
+        var form = layui.form()
+                ,layer = layui.layer
+                ,layedit = layui.layedit
+                ,laydate = layui.laydate;
+
+        //创建一个编辑器
+        var editIndex = layedit.build('LAY_demo_editor');
+
+        //自定义验证规则
+        form.verify({
+            title: function(value){
+                if(value.length < 5){
+                    return '标题至少得5个字符啊';
+                }
+            }
+            ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+            ,content: function(value){
+                layedit.sync(editIndex);
+            }
+        });
+
+        //监听指定开关
+        form.on('switch(switchTest)', function(data){
+            layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
+                offset: '6px'
+            });
+            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+        });
+
+        //监听提交
+        form.on('submit(demo1)', function(data){
+            layer.alert(JSON.stringify(data.field), {
+                title: '最终的提交信息'
+            })
+            return false;
+        });
+
+        var $ = layui.jquery, form = layui.form();
+
+        //全选
+        form.on('checkbox(allChoose)', function(data){
+            var child = $(data.elem).parents('table').find('tbody input[type="checkbox"]');
+            child.each(function(index, item){
+                item.checked = data.elem.checked;
+            });
+            form.render('checkbox');
+        });
+    });
+    $(function(){
+        $(".service-edit-add").click(function () {
+            layer.open({
+                type: 2,
+                title: '新增',
+                btn: ['确定', '取消'],
+                shadeClose: true,
+                shade: 0.8,
+                area: ['80%', '430px'],
+                content:'服务编辑弹窗.html' //iframe的url
+            });
+        });
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>系统用户列表</title>
+    <#include "/include/bg/in_head_res.html">
+</head>
+<body class="inner-body clear">
+<div class="layui-container bg-color" style="width: 100%;padding:10px">
+ <form class="layui-form layui-form-pane " id="form_1" action="${basePath}/general_service_LrmYyo05cFSurP7uIpp.htm?_url=system_setting/security/system_user_list&_ttype=2&_qtype=2" method="post">
+	<div class="layui-form-item layui-col-space10"  style="background-color: white;padding:15px 10px;">		
+		<div class="layui-col-md3">
+			<label class="layui-form-label">用户名</label>
+			<div class="layui-input-block">
+				<input type="text" name="username"
+					autocomplete="off"  value="${RequestParameters.username!!}"  class="layui-input">
+			</div>
+		</div>
+		 <div class="layui-col-md3">
+	        <label class="layui-form-label">开始日期</label>
+	        <div class="layui-input-block">
+	            <input type="text" name="start_insertTime" id="StartTime" lay-verify="title"   value="${RequestParameters.start_insertTime!!}"  autocomplete="off" class="layui-input">
+	        </div>
+	    </div>
+		<div class="layui-col-md3">
+			<label class="layui-form-label">截止日期</label>
+			<div class="layui-input-block">
+				 <input type="text" name="end_insertTime" id="EndTime" lay-verify="title"   value="${RequestParameters.end_insertTime!!}"  autocomplete="off" class="layui-input">
+			</div>
+		</div>
+		<div class="fl" style="margin-left:50px">
+			<button class="layui-btn fl "> <i class="layui-icon">&#xe615;</i> 搜索</button>
+			<button class="layui-btn layui-btn-warm  fl " onclick="excel()" ><i class="layui-icon"></i> 导出</button>
+		</div>
+	</div>
+ </form>
+ <div class="content_main">
+ 	<div class="layui-row">
+       	<button class="layui-btn fl " onclick="add()">
+			<i class="layui-icon">&#xe608;</i>&nbsp;新增
+		</button>
+       	<button class="layui-btn  layui-btn-danger fl deleteAll" >
+			<i class="layui-icon">&#xe640;</i>&nbsp;删除
+		</button>		
+    </div>
+    <div class="layui-row layui-form">
+    	<table class="layui-table">
+    		<thead>
+				<tr>
+					<th><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose"></th>
+					<th>序号</th>
+					<th>用户名</th>
+					<th>姓名</th>
+					<th>角色</th>
+					<th>电话</th>					
+					<th>邮箱</th>
+					<th>最近登录</th>
+					<th>上次登录IP</th>
+					<th>是否锁定</th>
+					<th width="15%">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<#if (resultList_sUser??)&&resultList_sUser?size <=0 >
+				<tr>
+					<td colspan="11">无数据</td>
+				</tr>
+				<#else> 
+					 <#list resultList_sUser as r>
+					 	<tr>
+					 		<td><input type="checkbox" name="check" lay-skin="primary" id="${r.id}"></td>
+					 		<td>${r.id!}</td>
+					 		<td>${r.username!}</td>
+					 		<td>${r.realName!}</td>
+					 		<td> <#list r.roles! as role>
+                                    ${role.name!}
+                                    </#list>
+                            </td>
+					 		 <td >${r.phone!}</td>
+					 		 <td ><a title="发送电子邮件" style="text-decoration:none;cursor:pointer;" >${r.email!}&nbsp;<i class="ace-icon fa fa-envelope-o"></i></a></td>
+					 		 <td >${(r.lastLogin?string("yyyy-MM-dd HH:mm:ss"))!''}</td> 
+                             <td >${r.last_ip_address!}</td>
+                             <td >
+                            	 <input type="checkbox" name="state" id="${r.id}" <#if r.parent.id != user.id && r.id != user.id>  ${'disabled="disabled"'}  </#if> lay-skin="switch" lay-filter="state" lay-text="未锁定|锁定" <#if r.isLocked==1> ${'checked'} </#if> />
+                             </td>
+                             <td>
+                             <#if r.parent.id == user.id || r.id == user.id>
+                             	 <a onclick="editUser('${r.id}');" class="layui-btn layui-btn-small "><i class="layui-icon">&#xe642;</i>&nbsp;编辑</a>
+                   				 <a onclick="delUser('${r.id!}','${r.username!}');" class="layui-btn layui-btn-small layui-btn-danger del-child-list"><i class="layui-icon">&#xe640;</i>&nbsp;删除</a>                            	
+                             <#else>
+                             	   <a href="javascript:void(0);" class="layui-btn layui-btn-small " style="background-color:#c2c2c2"><i class="layui-icon red">&#x1007;</i>&nbsp;不可操作</a>
+                             </#if>
+                             </td>
+					 	</tr>
+					 </#list> 
+				</#if>
+			</tbody>			 
+    	</table>
+    	<div class="pageBotton">${pageHtml_sUser}</div>
+    </div>
+ </div>
+
+
+<#include "/include/bg/in_bottom_res.html">
+<script type="text/javascript">
+
+ var form = layui.form,laydate = layui.laydate;
+ 
+ laydate.render({
+	    elem: '#StartTime'//指定元素
+	  });
+ laydate.render({
+	    elem: '#EndTime'//指定元素
+	  });
+ form.on("switch(state)",function(data){
+ 	
+	    var state = 1;
+	 	var obj = data.elem;
+	 	if(data.elem.checked){
+	 		state = 1;
+	 	}else{
+	 		state = 2;
+	 	}
+	 	var id = $(obj).attr("id");
+	 	if(id<=0){
+	 		return;
+	 	}
+
+	 	$.postJSON("${base}/admin/user/save_user$ajax.htm",{"id":id,"isLocked":state},function(data){              
+  			 layer.msg(data.msg);		            	 
+          });  
+ });
+    
+function delUser(user_id,msg){
+    	layer.confirm("确定要删除用户 ["+msg+"] 吗?", {
+    	    btn: ['提交','取消'], //按钮
+    	}, function(index){
+    		var url = "admin/user/delete_user$ajax.htm?id="+user_id+"&judge="+1;
+            console.log("get:"+url);
+            $.get(url,function(data){
+            	var objdata=eval('(' + data + ')');
+            	if(objdata.result==true){
+            		layer.msg(objdata.msg,{icon:1,time:1000},function(){
+            			window.location.reload();
+            		});
+            	}else{
+            		layer.msg(objdata.msg,{icon:2});	
+            	}
+                	
+            });
+    	    layer.close(index);
+    	});
+    	
+    
+}
+
+//新增
+function add(){
+	layer.open({
+        type: 2,
+        title: '新增用户',
+        area: ['55%', '85%'],
+        shade: 0.8,
+        closeBtn: 1,
+        shadeClose: true,
+        content:"${basePath}/admin/to_target.htm?url=system_setting/security/system_user_add"
+    });
+	
+    return false;
+}
+//修改
+function editUser(user_id){
+	
+		    	layer.open({
+	            type: 2,
+	            title: '信息修改',
+	            area: ['55%', '80%'],
+	            shade: 0.8,
+	            closeBtn: 1,
+	            shadeClose: true,
+	            content:"${basePath}/general_service_LrmYyo05cFSurP7uIpp.htm?_url=system_setting/security/system_user_editor&_ttype=2&id="+user_id/* ,
+	            end:function(){
+	            	location.reload();
+	            } */
+	        });
+/* 	layer.open({
+        type: 2,
+        title: '修改',
+        area: ['55%', '85%'],
+        shade: 0.8,
+        closeBtn: 1,
+        shadeClose: true,
+        content:"admin/user/obtain_edit_user.htm?user_id="+user_id
+    }); */
+	
+}
+<#if r.parent.id == user.id || r.id == user.id>
+$(".deleteAll").click(function(){
+	if($("input[name=check]:checked").length<=0){
+		layer.msg("请选择待删除条目",{icon:2});
+		return;
+	}
+	layer.confirm("确认删除？",{btn: ['确认','取消'],icon:3 },function(){
+		$("input[name=check]:checked").each(function(){
+    		var id = $(this).attr("id");        
+        	$.postJSON("${base}/admin/user/save_user$ajax.htm",{"id":id,"isDelete":1},function(data){              
+         	     if(!data.result){
+         	     	layer.msg("删除失败-"+id,{icon:2});
+         	     }
+   			       	            	 
+           }); 
+    	});
+		layer.msg("操作完毕",function(){
+       		window.location.reload();
+       	});
+	});
+});
+	
+</#if>
+
+</script>
+</body>
+</html>

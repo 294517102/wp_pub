@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>留言回复弹窗</title>
+    <#include "/include/bg/in_head_res.html">
+
+</head>
+<body class="body clear">
+<div class="layui-container" style="width:100%">
+    <form action="" class="layui-form layui-form-pane" onsubmit="return false;">
+    	<input type="hidden" name="id" value="${data.id}">
+    	<input type="hidden" name="state" value="-1">
+        <div class="layui-form-item two-colum-left">
+            <label class="layui-form-label">姓名</label>
+            <div class="layui-input-block">
+                <input type="text" name="name" lay-verify="required" value="${data.name}"  readonly="readonly" class="layui-input">
+            </div>
+        </div>  
+           <div class="layui-form-item two-colum-right">
+             <label class="layui-form-label">标题</label>
+            <div class="layui-input-block">
+                <input type="text" name="title" value="${data.title}" disabled="true"  readonly="readonly" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item two-colum-left" >
+            <label class="layui-form-label">手机</label>
+            <div class="layui-input-block">
+                <input type="text" name="phone" value="${data.phone}" disabled="true"  readonly="readonly" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item two-colum-right">
+            <label class="layui-form-label">预约时间</label>
+            <div class="layui-input-block ">
+                <input type="text" name="email" value="${data.email}"  readonly="readonly" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item two-colum-left" >
+            <label class="layui-form-label">身份证</label>
+           <div class="layui-input-block ">
+                <input type="text" name=""  value="${data.customerInfo}"  readonly="readonly" class="layui-input">
+            </div>
+
+        </div>
+        
+        <div class="layui-form-item two-colum-right" >
+            <label class="layui-form-label">免费儿童数</label>
+           <div class="layui-input-block ">
+                <input type="text" name="address"  value="${data.address}"  readonly="readonly" class="layui-input">
+            </div>
+        </div>      
+		<div class="layui-form-item two-colum-left" >
+            <label class="layui-form-label">是否是联系人</label>
+           <div class="layui-input-block ">
+                <input type="text" name="company"  value="${data.company}"  readonly="readonly" class="layui-input">
+            </div>
+        </div>
+       
+         
+         <div class="layui-form-item two-colum-right" >
+            <label class="layui-form-label">状态</label>
+           <div class="layui-input-block ">
+                <input type="text" name="" <#if data.state ==-1> value="已查看" <#else> value="未查看" </#if>  readonly="readonly" class="layui-input">
+            </div>
+        </div>        
+            <div class="layui-form-item">
+            	 <label class="layui-form-label" style="height:100px;line-height: 87px">预约信息</span></label>
+                 <div class="layui-input-block">
+                     <textarea  name="content" readonly="readonly" class="layui-textarea">${data.content}</textarea>
+                 </div>
+             </div> 
+             <div class="layui-form-item">
+            	 <label class="layui-form-label" style="height:100px;line-height: 87px">预约回复</span></label>
+                 <div class="layui-input-block">
+                     <textarea  name="customerInfo"  class="layui-textarea">${data.customerInfo}</textarea>
+                 </div>
+             </div>
+           <div class="layui-form-item center">
+                  <button  lay-submit  class="layui-btn " lay-filter="form_1">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-danger cancel">取消</button>
+        </div>
+    </form>
+</div>
+<#include "/include/bg/in_bottom_res.html">
+<script type="text/javascript">
+$(function(){
+	var form = layui.form,laydate = layui.laydate;
+	form.on('submit(form_1)', function(data){
+		console.log("--"+JSON.stringify(data.field));
+		$.postJSON("/general_service_ZyiZTKsAXJuasRUMKb2$ajax.htm",data.field,function(data){
+						layer.msg(data.msg);
+							if(data){
+								parent.location.reload();
+								closeWindow();
+							}
+					});
+	});
+})
+ $(".cancel").click(function(){
+ 	closeWindow();
+ });
+</script>
+</body>
+</html>

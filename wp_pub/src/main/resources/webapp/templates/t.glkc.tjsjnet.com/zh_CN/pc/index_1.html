@@ -1,0 +1,215 @@
+     <#assign ksdh = cl.bk("ke_shi_dao_hang")>
+      
+<div class="zj">
+	<div class="zj_content">
+		<div class="zj_content_left"> 
+			<div class="zj_content_left_top">
+				<h4>专家介绍</h4>
+				<span><a href="${cm.cp}${zjjs.url}">MORE+</a></span>
+			</div>
+			<ul class="zj_content_left_txt pks">
+            <li class='choseit quanbu'><a>全部</a></li>
+			  <#list ksdh.children as kc>
+			  <li data-id=${kc.id} class="li_ois"><a>${kc.title}</a></li>
+			  </#list>
+			</ul>
+			<div class="zj_content_left_img ksdoctor">
+			    <div class="swiper-container">
+			        <div class="swiper-wrapper">
+			     <#assign ksdh = cl.bk("ke_shi_dao_hang")>
+			    <#list ksdh.children as kc>
+			    <#list kc.doctors as d>
+				<dl  class="swiper-slide">
+					<dt style="text-align:center;">
+						<a href="${cm.cp}general_service_t3ncXUfMQv8itS1rnjr.htm?_url=doctor_detail&id=${d.id}">
+							<img src="${d.accessory.ourl}" alt="图片无法加载" height="200px">
+							<p></p>
+						</a>
+					</dt>
+					<dd>${d.name}</dd>
+				</dl>
+				</#list>
+				</#list>
+			        </div>
+			    </div>
+			</div>
+		</div>
+		<div class="zj_content_right">
+		    <#assign jktj=cl.bk('jian_kang_ti_jian')>
+		     <#assign tsyl=cl.bk('te_se_yi_liao')>
+		       <#assign jnyl=cl.bk('jin_niu_you_xi_ jian_kang_zhu_li')>
+		       <#assign jnyl_s = at.bc(jnyl)>
+		     <#assign lox = at.bc(tsyl)>
+			<div class="zj_content_right_title">
+				<h4 style="margin-left:10px;">${tsyl.title}</h4>
+				<h4 class="arrows">${jktj.title}</h4>
+				<h4>${jnyl.title}</h4>
+			</div> 
+			<ul class="oixos">
+			    <#list lox as a>
+				<li class="oppp"><a href="${cm.cp}go.htm?url=medicalService-detail&c=${a.column.keyword}&id=${a.id}" style="">${a.title}</a></li>
+				</#list>
+			</ul>
+			<ul>
+			    <#list jktj.children as a>
+				<li><a href="${cm.cp}go.htm?url=medicalServic-health&c=jian_kang_ti_jian" style="">${a.title}</a></li>
+				</#list>
+			</ul>
+		<ul class="oixos">
+			    <#list jnyl_s as s>
+				<li class="oppps"><a href="${cm.cp}go.htm?url=medicalService-detail&c=shou_ye&id=${s.id}">${s.title}</a></li>
+				</#list>
+			</ul>
+		</div>
+	</div>
+</div>
+<!--<div class="louceng">-->
+<!--<div class="lou">-->
+<!--		<div class="loutitle">-->
+<!--			<h4>楼层分布</h4>-->
+<!--			<ul class="loulib">-->
+<!--				<li>筛选：</li>-->
+<!--				<#list cl.bk('yi_liao_lou').children as a>-->
+<!--				<li class="plouitem"><a href="javascript:;">${a_index+1}</a></li>-->
+<!--				</#list>-->
+<!--				<li><a href="javascript:;">楼</a></li>-->
+<!--			</ul>-->
+<!--			<a href="${cm.cp}go.htm?url=louceng&c=lou_ceng_fen_bu" style="float:right;line-height:34px;">MORE+</a>-->
+<!--		</div>-->
+<!--		<div class="alllouceng">-->
+<!--		    <#list cl.bk('yi_liao_lou').children as a>-->
+<!--		    <div class="loucontent">-->
+<!--    			<h2>${a_index+1}F</h2>-->
+<!--    			<ul class="loucontent_li">-->
+<!--    			    <#list at.bc(a) as cd>-->
+<!--    				<li>${cd.title}</li>-->
+<!--    				</#list>-->
+<!--    			</ul>-->
+<!--    		</div>-->
+<!--    		</#list>-->
+<!--		</div>-->
+		
+<!--	</div>-->
+<!--</div>-->
+<!--<div class="xunyi">-->
+<!--	<div class="xunyi_content">-->
+<!--		<div class="xunyi_content_left"> -->
+<!--			<div class="xunyi_content_left_top">-->
+<!--			    <#assign xywz = cl.bk('xun_yi_wen_zhen')>-->
+				<!--<div class="xunyi_content_left_top_title">-->
+					<!--<h4>${xywz.title}</h4>-->
+				<!--	<span><a href="${cm.cp}${xywz.url}">MORE+</a></span>-->
+				<!--</div>-->
+<!--				<div class="xunyi_content_left_top_con">-->
+<!--                    <#list at.bc(xywz) as a>-->
+<!--                    <#if a_index lt 3>-->
+<!--					<dl>-->
+<!--						<div class="zhezhe"><a href="${cm.cp}go.htm?url=all_detail&id=${a.id}"></a></div>-->
+<!--						<dt>-->
+<!--							<img src="${a.th.ourl}" alt="图片无法加载" style="width:230px;height:142px;">-->
+<!--						</dt>-->
+<!--						<dd>-->
+<!--							<div class="con_lf">-->
+<!--								<h4>${a.issueTime?string('dd')}</h4>-->
+<!--								<p>${a.issueTime?string('YYYY-MM')}</p>-->
+<!--							</div>-->
+<!--							<div class="con_rg">-->
+<!--								<h2>-->
+<!--									${a.title}-->
+<!--								</h2>-->
+<!--								<p>${a.desc}</p>-->
+<!--							</div>-->
+<!--						</dd>-->
+<!--					</dl>-->
+<!--					</#if>-->
+<!--					</#list>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--			<div class="xunyi_content_left_bottom ">-->
+<!--				<div class="xunyi_content_left_bottom_l swiper-container">-->
+<!--					<div class="swiper-wrapper">-->
+<!--	                    <div class="swiper-slide swiper-content">-->
+<!--	                       <a><img src="${sc.bk('xun_yi_wen_zhen_pei_tu').acc.ourl}" alt="图片无法加载"></a>-->
+<!--	                    </div>-->
+	                    
+<!--	                </div>-->
+<!--				</div>-->
+<!--				<div class="xunyi_content_left_bottom_r">-->
+<!--					<ul style="width: 100%">-->
+<!--					    <#list at.bc(xywz) as a>-->
+<!--					    <#if a_index lt 5>-->
+<!--						<li><a href="${cm.cp}go.htm?url=all_detail&id=${a.id}">${a.title}</a><span>${a.issueTime?string('MM-dd')}</span></li>-->
+<!--						</#if>-->
+<!--					    </#list>-->
+						
+<!--					</ul>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--		<div class="xunyi_content_right">-->
+			<!--<div class="xunyi_content_right_title">-->
+			<!--    <#assign xywz = cl.bk('zhuan_jia_da_yi')>-->
+			<!--	<h4>${xywz.title}</h4>-->
+			<!--	<span><a href="${cm.cp}${xywz.url}">MORE+</a></span>-->
+			<!--</div>-->
+<!--			<div class="xunyi_content_right_con" style="height:auto;">-->
+<!--			    <#list at.bc(xywz) as a>-->
+<!--			    <#if a_index lt 4>-->
+<!--				<dl>-->
+<!--					<div class="con_zz"><a href="${cm.cp}go.htm?url=all_detail&id=${a.id}"></a></div>-->
+<!--						<dt>-->
+<!--							<img src="<#if a.th.url??>${a.th.ourl}<#else>res/default/images/default_pic.png</#if>" alt="图片无法加载">-->
+<!--						</dt>-->
+<!--					<dd>-->
+<!--						<h4>${a.title}</h4>-->
+<!--						<div class="xunyi_text">-->
+<!--						    ${a.desc}-->
+<!--					    </div>-->
+<!--					</dd>-->
+<!--				</dl>-->
+<!--				</#if>-->
+<!--				</#list>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--	</div>-->
+<!--</div>-->
+<div class="keshidaohang">
+	<div class="keshidao">
+	<div class="keshidaohang_title">
+		<h4>科室导航</h4>
+		<span><a href="${cm.cp}${ksdh.url}">MOER+</a></span>
+	</div>
+	<div class="keshidaohang_con">
+	    <#list ksdh.children as kc>
+	    <#if kc_index lt 10>
+		<dl>
+			<dt>
+				<a href="${cm.cp}go.htm?url=department-innermain&c=${kc.keyword}"><img src="${kc.thumbnail.ourl!'res/default/images/logo.png'}" alt="图片无法加载"></a></dt>
+			<dd>${kc.title}</dd>
+		</dl>
+		</#if>
+		</#list>
+	</div>
+</div>
+</div>
+<script>
+
+    $(".zj_content_right_title h4").each(function(a,b){
+        $(".zj_content_right ul").each(function(c,d){
+            if(a==0&&a==c){
+                  $(b).addClass("arrows").siblings().removeClass("arrows");
+                     $(d).addClass("dis_block").siblings("ul").removeClass("dis_block");
+            }
+            if(a==c){
+                $(b).on("click",function(){
+                    $(b).addClass("arrows").siblings().removeClass("arrows");
+                     $(d).addClass("dis_block").siblings("ul").removeClass("dis_block");
+                })
+            }
+        })
+    })
+</script>
+<script>
+
+
+</script>

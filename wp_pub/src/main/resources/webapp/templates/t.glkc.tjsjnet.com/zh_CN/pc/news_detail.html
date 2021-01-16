@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<#include "/${rp}/metalink.html">
+	<title>${webSet.title}</title>
+	<style>
+		.dq_active1{
+			display: inline-block;
+			height: 55px;
+			width: 56px;
+			color: #46c3f2;
+			font-size: 14px;
+			border-bottom: 2px solid #46c3f2;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<#include "/${rp}/header.html">
+	</header>
+	<div class="dangquangongzuo">
+		<div class="dqgz_content_nav">
+			<#assign ib = at.bi(id)>
+			<ul class="dangqun_li">	
+			    <#list ib.column.parent.children as ic>
+					<li><a href="${cm.cp}${ic.url}" <#if ic.id==ib.column.id>class="dq_active1"</#if>>${ic.title}</a></li>
+				</#list>
+			</ul>
+		</div>
+	</div>
+	<div class="news">
+	<div class="jx_gz_xx news_left">
+					<div class="jx_gz_xx_title">
+						<h2>${ib.title}</h2>
+						<p>发布时间：${ib.issueTime?string('YYYY-MM-dd')}  本文出处： ${ib.source}
+						 <a class="goback">返回上一级</a></p>
+						<div class="fx">
+						<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+						</div>
+					</div>
+				<div class="jx_gz_xx_con">
+						${ib.ext.content}
+				</div>
+	 </div>
+	 	<#include "/${rp}/rightbox.html">
+	 </div>
+	<footer>
+		<#include "/${rp}/footer.html">
+	</footer>
+</body>
+<script src="res/js/jquery-1.12.3.js"></script>
+<script src="res/js/jquery.SuperSlide.2.1.1.js"></script>
+<script src="res/js/swiper-4.1.6.min.js"></script>
+<script>
+    $("td").each(function(a,b){
+        if($(this).text()==""){
+            $(this).css("display","none");
+        }
+    })
+	 var swiper = new Swiper('.swiper-container', {
+	   loop: true,
+        autoplay: {
+        	delay: 1000,
+        },
+      spaceBetween: 30,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+    
+    $('.goback').on('click',function(){
+        window.history.go(-1);
+    })
+</script>	
+</html>

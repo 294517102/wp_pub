@@ -1,0 +1,1032 @@
+
+2021-01-14 20:20:42.946 [restartedMain] INFO  com.tjsj.wp.main.Application:48 - Starting Application on andrew_silence with PID 20912 (D:\eclipse_ide\eclipse-workspace\wp_1703\target\classes started by andrew-silence in D:\eclipse_ide\eclipse-workspace\wp_1703)
+
+2021-01-14 20:20:42.948 [restartedMain] INFO  com.tjsj.wp.main.Application:637 - No active profile set, falling back to default profiles: default
+
+2021-01-14 20:20:51.039 [localhost-startStop-1] INFO  com.tjsj.wp.orm.config.DruidDBConfig:113 - init Druid Servlet Configuration 
+
+2021-01-14 20:20:51.562 [localhost-startStop-1] INFO  com.tjsj.fwk.mvc.listener.StartUpListener:39 - StartUpListener init ... 
+
+2021-01-14 20:21:00.367 [restartedMain] INFO  com.tjsj.wp.main.Application:57 - Started Application in 17.87 seconds (JVM running for 18.816)
+
+2021-01-14 20:21:00.368 [restartedMain] INFO  com.tjsj.wp.tools.DataLoadService:30 - load CmCodeTbl data from db.
+
+2021-01-14 20:21:00.679 [restartedMain] INFO  com.tjsj.wp.tools.DataLoadService:33 - 28 CmCodeTbl records has loaded.
+
+2021-01-14 20:21:00.679 [restartedMain] INFO  com.tjsj.wp.tools.DataLoadService:38 - load SmRequestInterceptTbl data from db.
+
+2021-01-14 20:21:00.958 [restartedMain] INFO  com.tjsj.wp.tools.DataLoadService:63 - 0 SmRequestInterceptTbl records has loaded.
+
+2021-01-14 20:21:16.297 [http-nio-127.0.0.1-80-exec-2] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:21:17.008 [http-nio-127.0.0.1-80-exec-4] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:21:17.083 [http-nio-127.0.0.1-80-exec-8] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:21:22.410 [http-nio-127.0.0.1-80-exec-9] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:21:22.454 [http-nio-127.0.0.1-80-exec-9] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:22:05.965 [http-nio-127.0.0.1-80-exec-4] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:22:31.422 [http-nio-127.0.0.1-80-exec-4] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:22:31.771 [http-nio-127.0.0.1-80-exec-6] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:22:31.866 [http-nio-127.0.0.1-80-exec-1] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:22:33.371 [http-nio-127.0.0.1-80-exec-2] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:22:33.436 [http-nio-127.0.0.1-80-exec-1] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:22:33.490 [http-nio-127.0.0.1-80-exec-4] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:22:40.852 [http-nio-127.0.0.1-80-exec-10] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:22:40.855 [http-nio-127.0.0.1-80-exec-10] INFO  com.tjsj.wp.mvc.controller.portal.LoginMaintenanceController:355 - login: username-39a52d07570df744bb37d1e0e18f4fafd74578960f4665792ef01879cd717fa161dd191ce61255a930cc1d3eefeb7f9710c01080ce3684b17bc9c31679b4841ae1ea4e5f7ef55f96107db54789277349f7ac8e7c0c3685c6446cb83f6f439d261af14fbbecdef98cd4ba4d0f01c3dad4ec22ed93d5e4f8977690a43474145e79,verifyCode-7tn6
+
+2021-01-14 20:22:42.344 [http-nio-127.0.0.1-80-exec-9] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:22:42.346 [http-nio-127.0.0.1-80-exec-9] INFO  com.tjsj.wp.mvc.controller.portal.LoginMaintenanceController:355 - login: username-39a52d07570df744bb37d1e0e18f4fafd74578960f4665792ef01879cd717fa161dd191ce61255a930cc1d3eefeb7f9710c01080ce3684b17bc9c31679b4841ae1ea4e5f7ef55f96107db54789277349f7ac8e7c0c3685c6446cb83f6f439d261af14fbbecdef98cd4ba4d0f01c3dad4ec22ed93d5e4f8977690a43474145e79,verifyCode-7tn6
+
+2021-01-14 20:22:43.026 [http-nio-127.0.0.1-80-exec-1] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:22:43.070 [http-nio-127.0.0.1-80-exec-3] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:22:45.550 [http-nio-127.0.0.1-80-exec-6] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:22:45.556 [http-nio-127.0.0.1-80-exec-7] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:22:53.213 [http-nio-127.0.0.1-80-exec-8] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:22:58.282 [http-nio-127.0.0.1-80-exec-1] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:23:01.203 [http-nio-127.0.0.1-80-exec-6] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:23:03.933 [http-nio-127.0.0.1-80-exec-8] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:23:07.205 [http-nio-127.0.0.1-80-exec-5] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:23:13.655 [http-nio-127.0.0.1-80-exec-2] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:23:16.847 [http-nio-127.0.0.1-80-exec-3] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:23:25.298 [http-nio-127.0.0.1-80-exec-9] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:23:28.160 [http-nio-127.0.0.1-80-exec-10] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:23:33.724 [http-nio-127.0.0.1-80-exec-4] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:23:33.736 [http-nio-127.0.0.1-80-exec-4] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:23:40.440 [http-nio-127.0.0.1-80-exec-8] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:23:43.817 [http-nio-127.0.0.1-80-exec-7] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:23:44.894 [http-nio-127.0.0.1-80-exec-5] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:23:59.020 [http-nio-127.0.0.1-80-exec-4] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:24:01.134 [http-nio-127.0.0.1-80-exec-6] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:24:03.094 [http-nio-127.0.0.1-80-exec-1] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:24:05.771 [http-nio-127.0.0.1-80-exec-9] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:27:02.768 [http-nio-127.0.0.1-80-exec-4] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:27:02.775 [http-nio-127.0.0.1-80-exec-4] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:27:10.204 [http-nio-127.0.0.1-80-exec-9] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:27:15.457 [http-nio-127.0.0.1-80-exec-2] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1610627235455,"status":404,"error":"Not Found","message":"No message available","path":"/templates/www.goldland.group/zh_CN/pc/res/default/images/icon_dot02.png"}
+
+2021-01-14 20:27:18.738 [http-nio-127.0.0.1-80-exec-7] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:27:18.748 [http-nio-127.0.0.1-80-exec-7] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:27:20.171 [http-nio-127.0.0.1-80-exec-6] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1610627240171,"status":404,"error":"Not Found","message":"No message available","path":"/templates/www.goldland.group/zh_CN/pc/res/default/images/btn_over.png"}
+
+2021-01-14 20:27:22.055 [http-nio-127.0.0.1-80-exec-5] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1610627242055,"status":404,"error":"Not Found","message":"No message available","path":"/templates/www.goldland.group/zh_CN/pc/res/default/images/icon_dot02.png"}
+
+2021-01-14 20:28:52.117 [http-nio-127.0.0.1-80-exec-10] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:28:52.122 [http-nio-127.0.0.1-80-exec-10] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:29:01.824 [http-nio-127.0.0.1-80-exec-8] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1610627341824,"status":404,"error":"Not Found","message":"No message available","path":"/templates/www.goldland.group/zh_CN/pc/res/default/images/icon_dot02.png"}
+
+2021-01-14 20:40:16.127 [http-nio-127.0.0.1-80-exec-6] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:40:16.135 [http-nio-127.0.0.1-80-exec-6] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:40:43.290 [http-nio-127.0.0.1-80-exec-3] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:40:43.298 [http-nio-127.0.0.1-80-exec-3] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:40:52.209 [http-nio-127.0.0.1-80-exec-2] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1610628052208,"status":404,"error":"Not Found","message":"No message available","path":"/templates/www.goldland.group/zh_CN/pc/res/default/images/icon_dot02.png"}
+
+2021-01-14 20:43:31.032 [http-nio-127.0.0.1-80-exec-7] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:43:31.039 [http-nio-127.0.0.1-80-exec-7] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:43:37.640 [http-nio-127.0.0.1-80-exec-4] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1610628217640,"status":404,"error":"Not Found","message":"No message available","path":"/templates/www.goldland.group/zh_CN/pc/res/default/images/btn_over.png"}
+
+2021-01-14 20:44:02.171 [http-nio-127.0.0.1-80-exec-6] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:44:11.289 [http-nio-127.0.0.1-80-exec-8] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:44:16.595 [http-nio-127.0.0.1-80-exec-5] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1610628256595,"status":404,"error":"Not Found","message":"No message available","path":"/_data/2020/09/18/f5f68075_0e9d_49de_b06c_ae71dc5b1fec/images/QQ%E5%9B%BE%E7%89%8720200918171144.png"}
+
+2021-01-14 20:44:16.595 [http-nio-127.0.0.1-80-exec-1] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1610628256595,"status":404,"error":"Not Found","message":"No message available","path":"/templates/www.goldland.group/zh_CN/pc/res/default/images/icon1.gif"}
+
+2021-01-14 20:44:38.506 [http-nio-127.0.0.1-80-exec-7] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1610628278506,"status":404,"error":"Not Found","message":"No message available","path":"/templates/www.goldland.group/zh_CN/pc/res/default/images/navbg02.jpg"}
+
+2021-01-14 20:44:38.520 [http-nio-127.0.0.1-80-exec-9] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1610628278519,"status":404,"error":"Not Found","message":"No message available","path":"/_data/2020/09/18/f5f68075_0e9d_49de_b06c_ae71dc5b1fec/images/QQ%E5%9B%BE%E7%89%8720200918171144.png"}
+
+2021-01-14 20:44:53.867 [http-nio-127.0.0.1-80-exec-4] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:44:53.873 [http-nio-127.0.0.1-80-exec-4] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:44:55.844 [http-nio-127.0.0.1-80-exec-3] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:44:55.849 [http-nio-127.0.0.1-80-exec-3] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:45:44.127 [http-nio-127.0.0.1-80-exec-2] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:45:44.379 [http-nio-127.0.0.1-80-exec-2] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:45:51.565 [http-nio-127.0.0.1-80-exec-5] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:45:55.618 [http-nio-127.0.0.1-80-exec-3] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1610628355617,"status":404,"error":"Not Found","message":"No message available","path":"/templates/www.goldland.group/zh_CN/pc/res/default/images/navbg02.jpg"}
+
+2021-01-14 20:46:06.702 [http-nio-127.0.0.1-80-exec-8] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:46:14.155 [http-nio-127.0.0.1-80-exec-1] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:46:57.916 [http-nio-127.0.0.1-80-exec-3] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:47:04.499 [http-nio-127.0.0.1-80-exec-4] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:47:04.508 [http-nio-127.0.0.1-80-exec-4] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:47:10.351 [http-nio-127.0.0.1-80-exec-1] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:47:16.232 [http-nio-127.0.0.1-80-exec-10] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:48:00.722 [restartedMain] INFO  com.tjsj.wp.main.Application:48 - Starting Application on andrew_silence with PID 20912 (D:\eclipse_ide\eclipse-workspace\wp_1703\target\classes started by andrew-silence in D:\eclipse_ide\eclipse-workspace\wp_1703)
+
+2021-01-14 20:48:00.723 [restartedMain] INFO  com.tjsj.wp.main.Application:637 - No active profile set, falling back to default profiles: default
+
+2021-01-14 20:48:02.660 [localhost-startStop-1] INFO  com.tjsj.wp.orm.config.DruidDBConfig:113 - init Druid Servlet Configuration 
+
+2021-01-14 20:48:02.913 [localhost-startStop-1] INFO  com.tjsj.fwk.mvc.listener.StartUpListener:39 - StartUpListener init ... 
+
+2021-01-14 20:48:09.568 [restartedMain] INFO  com.tjsj.wp.main.Application:57 - Started Application in 8.982 seconds (JVM running for 1648.017)
+
+2021-01-14 20:48:09.570 [restartedMain] INFO  com.tjsj.wp.tools.DataLoadService:30 - load CmCodeTbl data from db.
+
+2021-01-14 20:48:09.770 [restartedMain] INFO  com.tjsj.wp.tools.DataLoadService:33 - 28 CmCodeTbl records has loaded.
+
+2021-01-14 20:48:09.770 [restartedMain] INFO  com.tjsj.wp.tools.DataLoadService:38 - load SmRequestInterceptTbl data from db.
+
+2021-01-14 20:48:09.968 [restartedMain] INFO  com.tjsj.wp.tools.DataLoadService:63 - 0 SmRequestInterceptTbl records has loaded.
+
+2021-01-14 20:49:00.349 [http-nio-127.0.0.1-80-exec-1] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:49:00.574 [http-nio-127.0.0.1-80-exec-1] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:49:05.381 [http-nio-127.0.0.1-80-exec-4] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:49:10.757 [http-nio-127.0.0.1-80-exec-5] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1610628550757,"status":404,"error":"Not Found","message":"No message available","path":"/templates/www.goldland.group/zh_CN/pc/res/default/images/navbg02.jpg"}
+
+2021-01-14 20:49:11.889 [http-nio-127.0.0.1-80-exec-8] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:49:11.908 [http-nio-127.0.0.1-80-exec-8] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:49:15.877 [http-nio-127.0.0.1-80-exec-9] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:49:22.105 [http-nio-127.0.0.1-80-exec-10] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1610628562105,"status":404,"error":"Not Found","message":"No message available","path":"/templates/www.goldland.group/zh_CN/pc/res/default/images/btn_over.png"}
+
+2021-01-14 20:49:28.726 [http-nio-127.0.0.1-80-exec-7] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1610628568726,"status":404,"error":"Not Found","message":"No message available","path":"/templates/www.goldland.group/zh_CN/pc/res/default/images/icon_dot02.png"}
+
+2021-01-14 20:50:46.506 [http-nio-127.0.0.1-80-exec-6] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:56:53.658 [http-nio-127.0.0.1-80-exec-8] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:57:11.359 [http-nio-127.0.0.1-80-exec-9] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:57:30.771 [http-nio-127.0.0.1-80-exec-9] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:57:32.222 [http-nio-127.0.0.1-80-exec-8] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:57:34.313 [http-nio-127.0.0.1-80-exec-10] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 20:57:42.864 [http-nio-127.0.0.1-80-exec-7] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 21:00:55.768 [http-nio-127.0.0.1-80-exec-6] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 21:00:55.774 [http-nio-127.0.0.1-80-exec-6] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 21:00:56.715 [http-nio-127.0.0.1-80-exec-6] WARN  com.tjsj.fwk.mvc.interceptors.FreemarkerExceptionHandler:29 - [Freemarker Error: No compatible overloaded variation was found; declared parameter types and argument value types mismatch.
+The FTL type of the argument values were: Null, string (wrapper: f.t.SimpleScalar), number (wrapper: f.t.SimpleNumber).
+The Java type of the argument values were: Null, String, Integer.
+The matching overload was searched among these members:
+    com.tjsj.wp.mvc.view.label.At.bcac(String, String, String, Integer),
+    com.tjsj.wp.mvc.view.label.At.bcac(com.tjsj.wp.orm.entity.CmColumnTbl, String, Integer)
+
+----
+Tip: You seem to use BeansWrapper with incompatibleImprovements set below 2.3.21. If you think this error is unfounded, enabling 2.3.21 fixes may helps. See version history for more.
+----
+
+----
+FTL stack trace ("~" means nesting-related):
+	- Failed at: #assign plist = at.bcac(xwzxc, "1", 6)  [in template "templates/www.goldland.group/zh_CN/pc/index.html" at line 263, column 2]
+----]
+
+2021-01-14 21:00:56.716 [http-nio-127.0.0.1-80-exec-6] ERROR com.tjsj.fwk.mvc.interceptors.FreemarkerExceptionHandler:38 - [出错了，请联系网站管理员]
+freemarker.core._TemplateModelException: No compatible overloaded variation was found; declared parameter types and argument value types mismatch.
+The FTL type of the argument values were: Null, string (wrapper: f.t.SimpleScalar), number (wrapper: f.t.SimpleNumber).
+The Java type of the argument values were: Null, String, Integer.
+The matching overload was searched among these members:
+    com.tjsj.wp.mvc.view.label.At.bcac(String, String, String, Integer),
+    com.tjsj.wp.mvc.view.label.At.bcac(com.tjsj.wp.orm.entity.CmColumnTbl, String, Integer)
+
+----
+Tip: You seem to use BeansWrapper with incompatibleImprovements set below 2.3.21. If you think this error is unfounded, enabling 2.3.21 fixes may helps. See version history for more.
+----
+
+----
+FTL stack trace ("~" means nesting-related):
+	- Failed at: #assign plist = at.bcac(xwzxc, "1", 6)  [in template "templates/www.goldland.group/zh_CN/pc/index.html" at line 263, column 2]
+----
+	at freemarker.ext.beans.OverloadedMethods.getMemberAndArguments(OverloadedMethods.java:107)
+	at freemarker.ext.beans.OverloadedMethodsModel.exec(OverloadedMethodsModel.java:59)
+	at freemarker.core.MethodCall._eval(MethodCall.java:65)
+	at freemarker.core.Expression.eval(Expression.java:81)
+	at freemarker.core.Assignment.accept(Assignment.java:134)
+	at freemarker.core.Environment.visit(Environment.java:326)
+	at freemarker.core.Environment.visit(Environment.java:332)
+	at freemarker.core.Environment.process(Environment.java:305)
+	at freemarker.template.Template.process(Template.java:378)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.processTemplate(FreeMarkerView.java:367)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.doRender(FreeMarkerView.java:284)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.renderMergedTemplateModel(FreeMarkerView.java:234)
+	at org.springframework.web.servlet.view.AbstractTemplateView.renderMergedOutputModel(AbstractTemplateView.java:167)
+	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:303)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1282)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1037)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:980)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:897)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:687)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:112)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.tuckey.web.filters.urlrewrite.RuleChain.handleRewrite(RuleChain.java:176)
+	at org.tuckey.web.filters.urlrewrite.RuleChain.doRules(RuleChain.java:145)
+	at org.tuckey.web.filters.urlrewrite.UrlRewriter.processRequest(UrlRewriter.java:92)
+	at org.tuckey.web.filters.urlrewrite.UrlRewriteFilter.doFilter(UrlRewriteFilter.java:389)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:728)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:467)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:392)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:311)
+	at org.springframework.web.servlet.view.InternalResourceView.renderMergedOutputModel(InternalResourceView.java:168)
+	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:303)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1282)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1037)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:980)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:897)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:687)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.web.filter.ApplicationContextHeaderFilter.doFilterInternal(ApplicationContextHeaderFilter.java:55)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter$1.call(AbstractShiroFilter.java:365)
+	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)
+	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)
+	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:387)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.trace.WebRequestTraceFilter.doFilterInternal(WebRequestTraceFilter.java:110)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:105)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.autoconfigure.MetricsFilter.doFilterInternal(MetricsFilter.java:106)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:478)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:80)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:799)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1455)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+2021-01-14 21:01:00.176 [http-nio-127.0.0.1-80-exec-1] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 21:01:01.420 [http-nio-127.0.0.1-80-exec-4] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 21:01:05.297 [http-nio-127.0.0.1-80-exec-5] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 21:01:05.736 [http-nio-127.0.0.1-80-exec-9] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 21:01:08.721 [http-nio-127.0.0.1-80-exec-8] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1610629268721,"status":404,"error":"Not Found","message":"No message available","path":"/templates/www.goldland.group/zh_CN/pc/res/default/images/navbg02.jpg"}
+
+2021-01-14 21:01:09.692 [http-nio-127.0.0.1-80-exec-10] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 21:01:14.139 [http-nio-127.0.0.1-80-exec-7] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1610629274139,"status":404,"error":"Not Found","message":"No message available","path":"/_data/2019/08/06/bc5f2da8_1ae1_42a9_8939_fe265619f6a0/images/%E5%B7%A1%E5%AF%9F.JPG"}
+
+2021-01-14 21:01:14.194 [http-nio-127.0.0.1-80-exec-2] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1610629274194,"status":404,"error":"Not Found","message":"No message available","path":"/templates/www.goldland.group/zh_CN/pc/res/default/images/icon1.gif"}
+
+2021-01-14 21:01:46.458 [http-nio-127.0.0.1-80-exec-6] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 21:01:46.465 [http-nio-127.0.0.1-80-exec-6] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 21:01:47.813 [http-nio-127.0.0.1-80-exec-6] WARN  com.tjsj.fwk.mvc.interceptors.FreemarkerExceptionHandler:29 - [Freemarker Error: No compatible overloaded variation was found; declared parameter types and argument value types mismatch.
+The FTL type of the argument values were: Null, string (wrapper: f.t.SimpleScalar), number (wrapper: f.t.SimpleNumber).
+The Java type of the argument values were: Null, String, Integer.
+The matching overload was searched among these members:
+    com.tjsj.wp.mvc.view.label.At.bcac(String, String, String, Integer),
+    com.tjsj.wp.mvc.view.label.At.bcac(com.tjsj.wp.orm.entity.CmColumnTbl, String, Integer)
+
+----
+Tip: You seem to use BeansWrapper with incompatibleImprovements set below 2.3.21. If you think this error is unfounded, enabling 2.3.21 fixes may helps. See version history for more.
+----
+
+----
+FTL stack trace ("~" means nesting-related):
+	- Failed at: #assign plist = at.bcac(xwzxc, "1", 6)  [in template "templates/www.goldland.group/zh_CN/pc/index.html" at line 263, column 2]
+----]
+
+2021-01-14 21:01:47.814 [http-nio-127.0.0.1-80-exec-6] ERROR com.tjsj.fwk.mvc.interceptors.FreemarkerExceptionHandler:38 - [出错了，请联系网站管理员]
+freemarker.core._TemplateModelException: No compatible overloaded variation was found; declared parameter types and argument value types mismatch.
+The FTL type of the argument values were: Null, string (wrapper: f.t.SimpleScalar), number (wrapper: f.t.SimpleNumber).
+The Java type of the argument values were: Null, String, Integer.
+The matching overload was searched among these members:
+    com.tjsj.wp.mvc.view.label.At.bcac(String, String, String, Integer),
+    com.tjsj.wp.mvc.view.label.At.bcac(com.tjsj.wp.orm.entity.CmColumnTbl, String, Integer)
+
+----
+Tip: You seem to use BeansWrapper with incompatibleImprovements set below 2.3.21. If you think this error is unfounded, enabling 2.3.21 fixes may helps. See version history for more.
+----
+
+----
+FTL stack trace ("~" means nesting-related):
+	- Failed at: #assign plist = at.bcac(xwzxc, "1", 6)  [in template "templates/www.goldland.group/zh_CN/pc/index.html" at line 263, column 2]
+----
+	at freemarker.ext.beans.OverloadedMethods.getMemberAndArguments(OverloadedMethods.java:107)
+	at freemarker.ext.beans.OverloadedMethodsModel.exec(OverloadedMethodsModel.java:59)
+	at freemarker.core.MethodCall._eval(MethodCall.java:65)
+	at freemarker.core.Expression.eval(Expression.java:81)
+	at freemarker.core.Assignment.accept(Assignment.java:134)
+	at freemarker.core.Environment.visit(Environment.java:326)
+	at freemarker.core.Environment.visit(Environment.java:332)
+	at freemarker.core.Environment.process(Environment.java:305)
+	at freemarker.template.Template.process(Template.java:378)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.processTemplate(FreeMarkerView.java:367)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.doRender(FreeMarkerView.java:284)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.renderMergedTemplateModel(FreeMarkerView.java:234)
+	at org.springframework.web.servlet.view.AbstractTemplateView.renderMergedOutputModel(AbstractTemplateView.java:167)
+	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:303)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1282)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1037)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:980)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:897)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:687)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:112)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.tuckey.web.filters.urlrewrite.RuleChain.handleRewrite(RuleChain.java:176)
+	at org.tuckey.web.filters.urlrewrite.RuleChain.doRules(RuleChain.java:145)
+	at org.tuckey.web.filters.urlrewrite.UrlRewriter.processRequest(UrlRewriter.java:92)
+	at org.tuckey.web.filters.urlrewrite.UrlRewriteFilter.doFilter(UrlRewriteFilter.java:389)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:728)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:467)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:392)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:311)
+	at org.springframework.web.servlet.view.InternalResourceView.renderMergedOutputModel(InternalResourceView.java:168)
+	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:303)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1282)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1037)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:980)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:897)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:687)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.web.filter.ApplicationContextHeaderFilter.doFilterInternal(ApplicationContextHeaderFilter.java:55)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter$1.call(AbstractShiroFilter.java:365)
+	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)
+	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)
+	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:387)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.trace.WebRequestTraceFilter.doFilterInternal(WebRequestTraceFilter.java:110)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:105)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.autoconfigure.MetricsFilter.doFilterInternal(MetricsFilter.java:106)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:478)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:80)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:799)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1455)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+2021-01-14 21:01:54.724 [http-nio-127.0.0.1-80-exec-4] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 21:02:38.702 [http-nio-127.0.0.1-80-exec-5] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 21:02:42.026 [http-nio-127.0.0.1-80-exec-10] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 21:02:42.039 [http-nio-127.0.0.1-80-exec-10] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 21:02:42.215 [http-nio-127.0.0.1-80-exec-7] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1610629362215,"status":404,"error":"Not Found","message":"No message available","path":"/_data/2019/08/06/bc5f2da8_1ae1_42a9_8939_fe265619f6a0/images/%E5%B7%A1%E5%AF%9F.JPG"}
+
+2021-01-14 21:04:29.546 [http-nio-127.0.0.1-80-exec-9] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 21:04:33.834 [http-nio-127.0.0.1-80-exec-8] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1610629473834,"status":404,"error":"Not Found","message":"No message available","path":"/_data/2019/10/16/65fca55d_32ea_4fd0_a5fa_c47880c63261/images/%E5%B8%82%E5%9F%8E%E5%B8%82%E8%A7%84%E5%88%92%E5%B1%80%E5%85%9A%E5%A7%94%E4%B9%A6%E8%AE%B0%E8%AE%B2%E5%85%9A%E8%AF%BE.jpg"}
+
+2021-01-14 21:04:33.834 [http-nio-127.0.0.1-80-exec-5] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1610629473834,"status":404,"error":"Not Found","message":"No message available","path":"/_data/2019/10/16/65fca55d_32ea_4fd0_a5fa_c47880c63261/images/%E5%B8%82%E5%9F%8E%E5%B8%82%E8%A7%84%E5%88%92%E5%B1%80%E5%85%9A%E5%A7%94%E4%B9%A6%E8%AE%B0%E6%9D%8E%E7%8E%89%E4%BA%AC%E8%AE%B2%E5%85%9A%E8%AF%BE2.jpg"}
+
+2021-01-14 21:04:33.873 [http-nio-127.0.0.1-80-exec-7] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1610629473873,"status":404,"error":"Not Found","message":"No message available","path":"/templates/www.goldland.group/zh_CN/pc/res/default/images/icon1.gif"}
+
+2021-01-14 21:05:34.971 [http-nio-127.0.0.1-80-exec-6] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 21:05:34.978 [http-nio-127.0.0.1-80-exec-6] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 21:05:56.769 [http-nio-127.0.0.1-80-exec-1] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 21:07:50.852 [http-nio-127.0.0.1-80-exec-5] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 21:07:50.858 [http-nio-127.0.0.1-80-exec-5] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 21:07:57.047 [http-nio-127.0.0.1-80-exec-7] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 21:07:58.860 [http-nio-127.0.0.1-80-exec-3] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1610629678860,"status":404,"error":"Not Found","message":"No message available","path":"/templates/www.goldland.group/zh_CN/pc/res/default/images/icon01.gif"}
+
+2021-01-14 21:10:33.677 [http-nio-127.0.0.1-80-exec-1] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 21:10:41.301 [http-nio-127.0.0.1-80-exec-4] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 21:12:54.907 [http-nio-127.0.0.1-80-exec-7] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 21:14:17.717 [http-nio-127.0.0.1-80-exec-6] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 21:15:20.133 [http-nio-127.0.0.1-80-exec-9] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 22:20:52.739 [restartedMain] INFO  com.tjsj.wp.main.Application:48 - Starting Application on andrew_silence with PID 14512 (D:\eclipse_ide\eclipse-workspace\wp_1703\target\classes started by andrew-silence in D:\eclipse_ide\eclipse-workspace\wp_1703)
+
+2021-01-14 22:20:52.740 [restartedMain] INFO  com.tjsj.wp.main.Application:637 - No active profile set, falling back to default profiles: default
+
+2021-01-14 22:21:00.081 [localhost-startStop-1] INFO  com.tjsj.wp.orm.config.DruidDBConfig:113 - init Druid Servlet Configuration 
+
+2021-01-14 22:21:00.582 [localhost-startStop-1] INFO  com.tjsj.fwk.mvc.listener.StartUpListener:39 - StartUpListener init ... 
+
+2021-01-14 22:21:08.361 [restartedMain] INFO  com.tjsj.wp.main.Application:57 - Started Application in 16.028 seconds (JVM running for 19.871)
+
+2021-01-14 22:21:08.362 [restartedMain] INFO  com.tjsj.wp.tools.DataLoadService:30 - load CmCodeTbl data from db.
+
+2021-01-14 22:21:08.611 [restartedMain] INFO  com.tjsj.wp.tools.DataLoadService:33 - 28 CmCodeTbl records has loaded.
+
+2021-01-14 22:21:08.612 [restartedMain] INFO  com.tjsj.wp.tools.DataLoadService:38 - load SmRequestInterceptTbl data from db.
+
+2021-01-14 22:21:08.827 [restartedMain] INFO  com.tjsj.wp.tools.DataLoadService:63 - 0 SmRequestInterceptTbl records has loaded.
+
+2021-01-14 22:25:46.972 [http-nio-127.0.0.1-80-exec-1] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 22:25:47.245 [http-nio-127.0.0.1-80-exec-1] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 22:27:28.992 [restartedMain] INFO  com.tjsj.wp.main.Application:48 - Starting Application on andrew_silence with PID 14512 (D:\eclipse_ide\eclipse-workspace\wp_1703\target\classes started by andrew-silence in D:\eclipse_ide\eclipse-workspace\wp_1703)
+
+2021-01-14 22:27:28.993 [restartedMain] INFO  com.tjsj.wp.main.Application:637 - No active profile set, falling back to default profiles: default
+
+2021-01-14 22:27:31.037 [localhost-startStop-1] INFO  com.tjsj.wp.orm.config.DruidDBConfig:113 - init Druid Servlet Configuration 
+
+2021-01-14 22:27:31.233 [localhost-startStop-1] INFO  com.tjsj.fwk.mvc.listener.StartUpListener:39 - StartUpListener init ... 
+
+2021-01-14 22:27:36.936 [restartedMain] INFO  com.tjsj.wp.main.Application:57 - Started Application in 8.28 seconds (JVM running for 408.445)
+
+2021-01-14 22:27:36.937 [restartedMain] INFO  com.tjsj.wp.tools.DataLoadService:30 - load CmCodeTbl data from db.
+
+2021-01-14 22:27:37.126 [restartedMain] INFO  com.tjsj.wp.tools.DataLoadService:33 - 28 CmCodeTbl records has loaded.
+
+2021-01-14 22:27:37.126 [restartedMain] INFO  com.tjsj.wp.tools.DataLoadService:38 - load SmRequestInterceptTbl data from db.
+
+2021-01-14 22:27:37.315 [restartedMain] INFO  com.tjsj.wp.tools.DataLoadService:63 - 0 SmRequestInterceptTbl records has loaded.
+
+2021-01-14 22:54:10.173 [http-nio-127.0.0.1-80-exec-4] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 22:54:10.250 [http-nio-127.0.0.1-80-exec-4] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 22:54:14.871 [http-nio-127.0.0.1-80-exec-5] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1610636054791,"status":404,"error":"Not Found","message":"No message available","path":"/templates/www.goldland.group/zh_CN/pc/res/default/images/icon_dot02.png"}
+
+2021-01-14 23:13:48.254 [http-nio-127.0.0.1-80-exec-3] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:13:48.473 [http-nio-127.0.0.1-80-exec-3] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:14:00.743 [http-nio-127.0.0.1-80-exec-3] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1610637240743,"status":404,"error":"Not Found","message":"No message available","path":"/links/"}
+
+2021-01-14 23:14:06.056 [http-nio-127.0.0.1-80-exec-8] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:14:09.253 [http-nio-127.0.0.1-80-exec-4] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1610637249253,"status":404,"error":"Not Found","message":"No message available","path":"/templates/www.goldland.group/zh_CN/pc/"}
+
+2021-01-14 23:21:33.967 [http-nio-127.0.0.1-80-exec-7] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:21:34.148 [http-nio-127.0.0.1-80-exec-2] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:21:34.319 [http-nio-127.0.0.1-80-exec-5] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:21:45.063 [http-nio-127.0.0.1-80-exec-10] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:21:45.084 [http-nio-127.0.0.1-80-exec-10] INFO  com.tjsj.wp.mvc.controller.portal.LoginMaintenanceController:355 - login: username-39a52d07570df744bb37d1e0e18f4fafd74578960f4665792ef01879cd717fa161dd191ce61255a930cc1d3eefeb7f9710c01080ce3684b17bc9c31679b4841ae1ea4e5f7ef55f96107db54789277349f7ac8e7c0c3685c6446cb83f6f439d261af14fbbecdef98cd4ba4d0f01c3dad4ec22ed93d5e4f8977690a43474145e79,verifyCode-rd2a
+
+2021-01-14 23:21:47.123 [http-nio-127.0.0.1-80-exec-4] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:21:47.156 [http-nio-127.0.0.1-80-exec-3] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:21:53.311 [http-nio-127.0.0.1-80-exec-8] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:22:01.053 [http-nio-127.0.0.1-80-exec-2] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:22:03.210 [http-nio-127.0.0.1-80-exec-7] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:22:04.259 [http-nio-127.0.0.1-80-exec-9] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:22:10.297 [http-nio-127.0.0.1-80-exec-4] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:22:11.970 [http-nio-127.0.0.1-80-exec-5] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:22:14.903 [http-nio-127.0.0.1-80-exec-1] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:22:20.665 [http-nio-127.0.0.1-80-exec-6] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:22:26.592 [http-nio-127.0.0.1-80-exec-2] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:22:31.107 [http-nio-127.0.0.1-80-exec-7] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:22:38.420 [http-nio-127.0.0.1-80-exec-10] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:22:43.551 [http-nio-127.0.0.1-80-exec-3] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:22:49.840 [http-nio-127.0.0.1-80-exec-5] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:22:51.683 [http-nio-127.0.0.1-80-exec-8] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:22:57.225 [http-nio-127.0.0.1-80-exec-2] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:23:03.695 [http-nio-127.0.0.1-80-exec-7] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:23:09.824 [http-nio-127.0.0.1-80-exec-9] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:23:14.817 [http-nio-127.0.0.1-80-exec-4] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:23:18.586 [http-nio-127.0.0.1-80-exec-3] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:23:21.797 [http-nio-127.0.0.1-80-exec-5] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:23:23.613 [http-nio-127.0.0.1-80-exec-8] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:23:27.737 [http-nio-127.0.0.1-80-exec-1] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:23:32.778 [http-nio-127.0.0.1-80-exec-6] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:23:36.634 [http-nio-127.0.0.1-80-exec-2] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:23:42.237 [http-nio-127.0.0.1-80-exec-7] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:23:43.948 [http-nio-127.0.0.1-80-exec-9] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:23:47.930 [http-nio-127.0.0.1-80-exec-4] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:23:51.649 [http-nio-127.0.0.1-80-exec-10] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:24:01.292 [http-nio-127.0.0.1-80-exec-3] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1610637841292,"status":404,"error":"Not Found","message":"No message available","path":"/templates/www.goldland.group/zh_CN/pc/res/default/images/navbg02.jpg"}
+
+2021-01-14 23:24:02.458 [http-nio-127.0.0.1-80-exec-5] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:24:02.468 [http-nio-127.0.0.1-80-exec-5] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:24:32.429 [http-nio-127.0.0.1-80-exec-8] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1610637872429,"status":404,"error":"Not Found","message":"No message available","path":"/templates/www.goldland.group/zh_CN/pc/"}
+
+2021-01-14 23:24:44.529 [http-nio-127.0.0.1-80-exec-1] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1610637884529,"status":404,"error":"Not Found","message":"No message available","path":"/templates/www.goldland.group/zh_CN/pc/res/default/images/icon_dot02.png"}
+
+2021-01-14 23:25:10.159 [http-nio-127.0.0.1-80-exec-6] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:25:10.167 [http-nio-127.0.0.1-80-exec-6] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:25:18.377 [http-nio-127.0.0.1-80-exec-2] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:25:19.982 [http-nio-127.0.0.1-80-exec-7] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1610637919981,"status":404,"error":"Not Found","message":"No message available","path":"/templates/www.goldland.group/zh_CN/pc/res/default/images/icon01.gif"}
+
+2021-01-14 23:25:38.559 [http-nio-127.0.0.1-80-exec-9] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:26:10.427 [http-nio-127.0.0.1-80-exec-4] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:26:10.434 [http-nio-127.0.0.1-80-exec-4] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:26:31.571 [http-nio-127.0.0.1-80-exec-10] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:26:32.744 [http-nio-127.0.0.1-80-exec-3] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1610637992744,"status":404,"error":"Not Found","message":"No message available","path":"/templates/www.goldland.group/zh_CN/pc/res/default/images/icon01.gif"}
+
+2021-01-14 23:31:28.964 [http-nio-127.0.0.1-80-exec-8] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:31:28.973 [http-nio-127.0.0.1-80-exec-8] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:31:35.726 [http-nio-127.0.0.1-80-exec-1] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:31:36.321 [http-nio-127.0.0.1-80-exec-1] WARN  com.tjsj.fwk.mvc.interceptors.FreemarkerExceptionHandler:29 - [Freemarker Error: For "." left-hand operand: Expected a hash, but this has evaluated to a string (wrapper: f.t.SimpleScalar):
+==> pcolumn  [in template "templates/www.goldland.group/zh_CN/pc//include/left_menu.html" at line 13, column 30]
+
+----
+FTL stack trace ("~" means nesting-related):
+	- Failed at: ${pcolumn.title!}  [in template "templates/www.goldland.group/zh_CN/pc//include/left_menu.html" at line 13, column 28]
+	- Reached through: #include "${rp}/include/left_menu.html"  [in template "templates/www.goldland.group/zh_CN/pc/ldfg.html" at line 178, column 5]
+----]
+
+2021-01-14 23:31:36.322 [http-nio-127.0.0.1-80-exec-1] ERROR com.tjsj.fwk.mvc.interceptors.FreemarkerExceptionHandler:38 - [出错了，请联系网站管理员]
+freemarker.core.NonHashException: For "." left-hand operand: Expected a hash, but this has evaluated to a string (wrapper: f.t.SimpleScalar):
+==> pcolumn  [in template "templates/www.goldland.group/zh_CN/pc//include/left_menu.html" at line 13, column 30]
+
+----
+FTL stack trace ("~" means nesting-related):
+	- Failed at: ${pcolumn.title!}  [in template "templates/www.goldland.group/zh_CN/pc//include/left_menu.html" at line 13, column 28]
+	- Reached through: #include "${rp}/include/left_menu.html"  [in template "templates/www.goldland.group/zh_CN/pc/ldfg.html" at line 178, column 5]
+----
+	at freemarker.core.Dot._eval(Dot.java:48)
+	at freemarker.core.Expression.eval(Expression.java:81)
+	at freemarker.core.DefaultToExpression._eval(DefaultToExpression.java:84)
+	at freemarker.core.Expression.eval(Expression.java:81)
+	at freemarker.core.DollarVariable.calculateInterpolatedStringOrMarkup(DollarVariable.java:96)
+	at freemarker.core.DollarVariable.accept(DollarVariable.java:59)
+	at freemarker.core.Environment.visit(Environment.java:326)
+	at freemarker.core.Environment.visit(Environment.java:332)
+	at freemarker.core.Environment.include(Environment.java:2508)
+	at freemarker.core.Include.accept(Include.java:171)
+	at freemarker.core.Environment.visit(Environment.java:326)
+	at freemarker.core.Environment.visit(Environment.java:332)
+	at freemarker.core.Environment.process(Environment.java:305)
+	at freemarker.template.Template.process(Template.java:378)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.processTemplate(FreeMarkerView.java:367)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.doRender(FreeMarkerView.java:284)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.renderMergedTemplateModel(FreeMarkerView.java:234)
+	at org.springframework.web.servlet.view.AbstractTemplateView.renderMergedOutputModel(AbstractTemplateView.java:167)
+	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:303)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1282)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1037)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:980)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:897)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:687)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.web.filter.ApplicationContextHeaderFilter.doFilterInternal(ApplicationContextHeaderFilter.java:55)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter$1.call(AbstractShiroFilter.java:365)
+	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)
+	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)
+	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:387)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.trace.WebRequestTraceFilter.doFilterInternal(WebRequestTraceFilter.java:110)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.tuckey.web.filters.urlrewrite.RuleChain.handleRewrite(RuleChain.java:176)
+	at org.tuckey.web.filters.urlrewrite.RuleChain.doRules(RuleChain.java:145)
+	at org.tuckey.web.filters.urlrewrite.UrlRewriter.processRequest(UrlRewriter.java:92)
+	at org.tuckey.web.filters.urlrewrite.UrlRewriteFilter.doFilter(UrlRewriteFilter.java:389)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:105)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.autoconfigure.MetricsFilter.doFilterInternal(MetricsFilter.java:106)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:478)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:80)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:799)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1455)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+2021-01-14 23:31:36.324 [http-nio-127.0.0.1-80-exec-1] WARN  com.tjsj.fwk.mvc.interceptors.FreemarkerExceptionHandler:29 - [Freemarker Error: For "." left-hand operand: Expected a hash, but this has evaluated to a string (wrapper: f.t.SimpleScalar):
+==> pcolumn  [in template "templates/www.goldland.group/zh_CN/pc//include/left_menu.html" at line 16, column 30]
+
+----
+FTL stack trace ("~" means nesting-related):
+	- Failed at: #if pcolumn.children?? && pcolumn.chi...  [in template "templates/www.goldland.group/zh_CN/pc//include/left_menu.html" at line 16, column 25]
+	- Reached through: #include "${rp}/include/left_menu.html"  [in template "templates/www.goldland.group/zh_CN/pc/ldfg.html" at line 178, column 5]
+----]
+
+2021-01-14 23:31:36.324 [http-nio-127.0.0.1-80-exec-1] ERROR com.tjsj.fwk.mvc.interceptors.FreemarkerExceptionHandler:38 - [出错了，请联系网站管理员]
+freemarker.core.NonHashException: For "." left-hand operand: Expected a hash, but this has evaluated to a string (wrapper: f.t.SimpleScalar):
+==> pcolumn  [in template "templates/www.goldland.group/zh_CN/pc//include/left_menu.html" at line 16, column 30]
+
+----
+FTL stack trace ("~" means nesting-related):
+	- Failed at: #if pcolumn.children?? && pcolumn.chi...  [in template "templates/www.goldland.group/zh_CN/pc//include/left_menu.html" at line 16, column 25]
+	- Reached through: #include "${rp}/include/left_menu.html"  [in template "templates/www.goldland.group/zh_CN/pc/ldfg.html" at line 178, column 5]
+----
+	at freemarker.core.Dot._eval(Dot.java:48)
+	at freemarker.core.Expression.eval(Expression.java:81)
+	at freemarker.core.ExistsExpression._eval(ExistsExpression.java:49)
+	at freemarker.core.Expression.eval(Expression.java:81)
+	at freemarker.core.Expression.evalToBoolean(Expression.java:145)
+	at freemarker.core.Expression.evalToBoolean(Expression.java:131)
+	at freemarker.core.AndExpression.evalToBoolean(AndExpression.java:36)
+	at freemarker.core.ConditionalBlock.accept(ConditionalBlock.java:48)
+	at freemarker.core.Environment.visit(Environment.java:326)
+	at freemarker.core.Environment.visit(Environment.java:332)
+	at freemarker.core.Environment.include(Environment.java:2508)
+	at freemarker.core.Include.accept(Include.java:171)
+	at freemarker.core.Environment.visit(Environment.java:326)
+	at freemarker.core.Environment.visit(Environment.java:332)
+	at freemarker.core.Environment.process(Environment.java:305)
+	at freemarker.template.Template.process(Template.java:378)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.processTemplate(FreeMarkerView.java:367)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.doRender(FreeMarkerView.java:284)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.renderMergedTemplateModel(FreeMarkerView.java:234)
+	at org.springframework.web.servlet.view.AbstractTemplateView.renderMergedOutputModel(AbstractTemplateView.java:167)
+	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:303)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1282)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1037)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:980)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:897)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:687)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.web.filter.ApplicationContextHeaderFilter.doFilterInternal(ApplicationContextHeaderFilter.java:55)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter$1.call(AbstractShiroFilter.java:365)
+	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)
+	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)
+	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:387)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.trace.WebRequestTraceFilter.doFilterInternal(WebRequestTraceFilter.java:110)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.tuckey.web.filters.urlrewrite.RuleChain.handleRewrite(RuleChain.java:176)
+	at org.tuckey.web.filters.urlrewrite.RuleChain.doRules(RuleChain.java:145)
+	at org.tuckey.web.filters.urlrewrite.UrlRewriter.processRequest(UrlRewriter.java:92)
+	at org.tuckey.web.filters.urlrewrite.UrlRewriteFilter.doFilter(UrlRewriteFilter.java:389)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:105)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.autoconfigure.MetricsFilter.doFilterInternal(MetricsFilter.java:106)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:478)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:80)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:799)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1455)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+2021-01-14 23:31:37.849 [http-nio-127.0.0.1-80-exec-6] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1610638297849,"status":404,"error":"Not Found","message":"No message available","path":"/templates/www.goldland.group/zh_CN/pc/res/default/images/icon01.gif"}
+
+2021-01-14 23:32:30.414 [http-nio-127.0.0.1-80-exec-7] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:32:54.855 [http-nio-127.0.0.1-80-exec-9] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:34:23.234 [http-nio-127.0.0.1-80-exec-10] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:38:28.264 [http-nio-127.0.0.1-80-exec-8] INFO  com.tjsj.fwk.mvc.interceptors.ObjectInterceptor:95 - domain : www.goldland.group
+
+2021-01-14 23:38:30.405 [http-nio-127.0.0.1-80-exec-1] ERROR com.tjsj.wp.mvc.controller.system.MyErrorController:55 - {"timestamp":1610638710405,"status":404,"error":"Not Found","message":"No message available","path":"/templates/www.goldland.group/zh_CN/pc/res/default/images/icon01.gif"}

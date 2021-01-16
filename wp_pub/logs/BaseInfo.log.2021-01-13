@@ -1,0 +1,8 @@
+
+2021-01-13 10:33:38.640 [restartedMain] INFO  com.tjsj.wp.main.Application:48 - Starting Application on andrew_silence with PID 12412 (D:\eclipse_ide\eclipse-workspace\wp_1703\target\classes started by andrew-silence in D:\eclipse_ide\eclipse-workspace\wp_1703)
+
+2021-01-13 10:33:38.643 [restartedMain] INFO  com.tjsj.wp.main.Application:637 - No active profile set, falling back to default profiles: default
+
+2021-01-13 10:33:53.645 [localhost-startStop-1] INFO  com.tjsj.wp.orm.config.DruidDBConfig:113 - init Druid Servlet Configuration 
+
+2021-01-13 10:33:54.157 [localhost-startStop-1] INFO  com.tjsj.fwk.mvc.listener.StartUpListener:39 - StartUpListener init ... 

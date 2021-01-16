@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>邮件设置</title>
+    <#include "/include/bg/in_head_res.html">
+</head>
+<body class="inner-body clear">
+	<div class="layui-container bg_white center" style="width: 100%;padding:10px">
+	<blockquote class=" layui-elem-quote" style="text-align: left">邮件设置 </blockquote>
+	<div style="width: 70%;margin:5px auto">
+    <form id="form1"  class="layui-form layui-form-pane">
+        <div class="layui-form-item ">
+            <label class="layui-form-label"><span class="red">*</span> 用户名</label>
+            <div class="layui-input-block">
+                <input type="text" name="username" lay-verify="required" value="${mail.username!}" autocomplete="off" placeholder="请输入邮箱用户名" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item ">
+            <label class="layui-form-label"><span class="red">*</span> 邮箱密码</label>
+            <div class="layui-input-block">
+            	<input type="hidden" value=${mail.id?c!} name="id">
+                <input type="text" name="password" lay-verify="required" value="${mail.password!}" autocomplete="off" placeholder="请输入邮箱密码" class="layui-input">
+            </div>
+        </div>       
+        <div  class="layui-form-item " >
+            <label class="layui-form-label"><span style="color:red">* </span>邮箱类别</label>
+            <div class="layui-input-block">
+                <select name="otype" id="otype" lay-verify="required" initValue="${mail.mailConfig.id?c!}">
+                	<#if mailList??>
+	                	<#list mailList as m>
+	               		 		<option value="${m.id?c!}">${m.supplierName!}</option>
+	               		</#list>
+               		</#if>
+                </select>
+            </div>
+        </div>
+		<div class="layui-form-item ">
+             <label class="layui-form-label">站点：</label>
+            <div class="layui-input-block">
+                <input type="text"  value="${webset.comName!}" disabled="true"  autocomplete="off" placeholder="请输入标题" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item ">
+            <label class="layui-form-label"><span class="red">*</span>地址：</label>
+            <div class="layui-input-block ">
+                <input type="text" name="address" lay-verify="required" value="${mail.address!}" autocomplete="off" placeholder="请输入邮箱地址" class="layui-input">
+            </div>
+        </div>
+    </form>
+         <div class="layui-form-item" >
+	        <div style="text-align: center;margin-top:20px">
+	                 <button class="layui-btn" id="save" lay-filter="form_1">保存</button>
+	                 <button class="layui-btn" id="send" lay-filter="form_1">发送邮件</button>
+	        </div>
+	    </div>
+	</div>
+</div>
+<#include "/include/bg/in_bottom_res.html">
+<script type="text/javascript">
+		$("#save").click(function(){
+			var a=$("#form1").serialize();
+			$.postJSON("${base}admin/saveMailSet$ajax.htm",a,function(data){
+			/* 	data=eval('(' + data + ')'); */
+			console.log(data.result);
+          	     if(data.result==true){
+          	    	layer.alert(data.msg,{icon:1},function(){
+          	    		window.location.reload();
+          	    	});
+          	     }else{
+          	    	layer.alert(data.msg,{icon:2});
+          	     }
+          	     
+       		 });
+		})
+	$("#send").click(function(){
+			var a=$("#form1").serialize();
+	         layer.open({
+	                type: 2,
+	                title: '发送邮件',
+	              //  btn: ['确定', '取消'],
+	                shadeClose: true,
+	                shade: 0.8,
+	                area: ['55%','400px'],
+	                content:'${base}/admin/toSendMail.htm' //iframe的url
+	            });
+		})
+		
+	 $(function () {
+	 
+	 var form = layui.form;
+       
+	 initValue();
+     form.render();
+	 });
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<footer>
+    <div class="footer_bg">
+        <div class="footer width1200">
+            <div class="fl_l fl">
+                <div class="foot_row">电话：
+                    <#assign sclist=sc.bks("dian_hua")>
+                    <#list sclist as a>
+                    <span>${a.desc!}</span>
+                    </#list>
+                </div>
+                <div class="foot_row">
+                    <span>地址：${webSet.comAddress!}</span>
+<!--                    <span>邮箱：${webSet.comEmail}</span>-->
+                </div>
+            </div>
+            <div class="fl_r fr">
+                <img class="ewm" src="${sc.bk('er_wei_ma').acc.url!}" alt="">
+            </div>
+        </div>
+        <div class="footer1 width1200">
+            <div class="f2_l fl">
+                <span>${webSet.copyright!}</span>
+                <span><a href="http://beian.miit.gov.cn/" target="_blank">${webSet.record!}</a></span>
+            </div>
+            <div class="f2_r fr">
+                <a target="_blank" href="http://www.sctjsj.com">技术支持：天健世纪</a>
+            </div>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <base href="${domainBase}"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    
+    <#include "${includePath}/data.html" >
+		<#include "${includePath}/searchKeyword.html" >
+    <title>${webSet.title!}-${yjfk.title!}</title>
+    <link rel="stylesheet" href="res/default/css/resets.css">
+    <link rel="stylesheet" href="res/default/css/swiper.css">
+    <link rel="stylesheet" href="res/default/css/style.css">
+    <link rel="stylesheet" href="res/default/css/style.css">
+
+</head>
+<body>
+<main>
+    <div class="main_feedback">
+        <form action="">
+            <div class="main_feekback_name">
+                <span class="main_feekback_dic">姓名：</span>
+                <input class="main_feekback_inp" type="text" id="name">
+            </div>
+            <div class="main_feekback_phone">
+                <span class="main_feekback_num">联系电话：</span>
+                <input class="main_feekback_inp" type="text" id="phone">
+            </div>
+            <div class="main_feekback_message">
+                <span class="main_feekback_words">留言板</span>
+                <textarea class="main_feekback_text" name="" id="message" cols="30" rows="10"></textarea>
+            </div>
+        </form>
+        <p class="main_feekback_btn" onclick="submit()">提交</p>
+    </div>
+
+</main>
+<script src="res/js/jquery.min.js"></script>
+<script src="res/js/style.js"></script>
+<script type="text/javascript" src="${base}/res/default/bg//js/layui-2.1.2/layui.all.js"></script>
+<script>
+function submit(){
+	 var message=$("#message").val();
+	 if(!message){
+		 layer.msg("请输入您的反馈意见!");
+	 }else{
+		 var webSetId = ${webSet.id!};
+ 	 var name = $('#name').val();
+ 	 var phone= $('#phone').val();
+ 	 
+ 	 
+ 	 
+	 	$.ajax({
+                cache: true,
+                type: "POST",
+                url:"${base}/comment.htm",
+                data:{content:message,
+	  				webset:webSetId,
+	  				phone:phone,
+	  				name:name
+					},
+                async: false,
+                error: function(request) {
+				layer.msg("系统出错了");
+                },
+                success: function(data) {
+					if(data.result==true){
+				    	layer.msg("你的留言已提交，我们会尽快处理",{time:1000},function(){
+							location.reload();
+						$("#feedback").val("");
+	    				});
+					}else{
+						 layer.msg(data.resultMsg);
+						location.reload();
+					}
+                }
+            });
+	 }
+	
+}
+</script>
+</body>
+</html>

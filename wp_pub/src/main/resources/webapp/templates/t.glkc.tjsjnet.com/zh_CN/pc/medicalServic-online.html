@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<#include "/${rp}/metalink.html">
+	<title>${webSet.title}</title>
+	<style>
+		.dq_active1{
+			display: inline-block;
+			height: 55px;
+			width: 56px;
+			color: #46c3f2;
+			font-size: 14px;
+			border-bottom: 2px solid #46c3f2;
+		}
+		#h4{
+			color: #46c3f2;
+			border-bottom: 2px solid #46c3f2;
+		}
+        .jktj_nav li{
+            cursor: pointer;
+        }
+        .jktj_img{
+            display: none;
+        }
+        .jktj_img:nth-of-type(1){
+            display: block;
+        }
+	</style>
+</head>
+<body>
+	<header>
+	    <#include "/${rp}/header.html">	
+	</header>
+	<div class="dangquangongzuo">
+		<div class="dqgz_content_nav">
+			<ul class="dangqun_li">
+			    <#assign ck=cl.bk(c)>
+			    <#list ck.parent.children as cc>
+			    <#if cc.keyword != "zhu_yuan_zhi_nan">
+				<li><a href="${cm.cp}${cc.url}" <#if cc.id==ck.id>class="dq_active"</#if>>${cc.title}</a></li>
+				</#if>
+				</#list>
+			</ul>
+		</div>
+		<div class="df_lb">
+			<div class="df_lb_title">
+				<h4 style="height: 64px" id="h4">${ck.title}</h4>
+			</div>
+			<div class="jktj">
+				<ul class="jktj_nav">
+				    <#list cl.bi(ck.id).children as ckc>
+					<li><a <#if ckc_index==0>class="jktj_actve"</#if>>${ckc.title}</a></li>
+					</#list>
+				</ul>
+				<div>
+				    <#list cl.bi(ck.id).children as ckc>
+				    <div class="jktj_img">
+				        <#if at.bc(ckc)?size gt 0>
+				        <#list at.bc(ckc) as a>
+					        ${a.ext.content}
+					    </#list>
+					    <#else>
+					    <div class="nodata">
+					        <img src="res/default/images/nodata.png" alt="" />
+					        <p>内容编辑中</p>
+					    </div>
+					    </#if>
+				    </div>
+				    </#list>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	<footer>
+		<#include "/${rp}/footer.html">
+	</footer>
+	<script src="res/js/jquery-1.12.3.js"></script>
+    <script type="text/javascript">
+        $('.jktj_nav').on('click','li a',function(){
+            var _this=this;
+            $(_this).addClass('jktj_actve');
+            $(_this).parent().siblings('li').find('a').removeClass('jktj_actve');
+            var i=$(_this).parent().index();
+            $('.jktj_img').eq(i).show().siblings('.jktj_img').hide();
+            
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<#include "/${rp}/metalink.html">
+	<title>${webSet.title}</title>
+	<style>
+		#df_lb_tab ul li{
+			background: url(res/default/images/tubiao.png) no-repeat left center;;
+		}
+		#df_lb_tab ul li:hover{
+			background: rgba(230,230,250,1);
+			opacity: .4
+		}
+		.dq_active1{
+			display: inline-block;
+			height: 55px;
+			width: 56px;
+			color: #46c3f2;
+			font-size: 14px;
+			border-bottom: 2px solid #46c3f2;
+		}
+		#h4{
+			color: #46c3f2;
+			border-bottom: 2px solid #46c3f2;
+		}
+
+	</style>
+</head>
+<body>
+	<header>
+		<#include "/${rp}/header.html">	
+	</header>
+	<div class="dangquangongzuo">
+		<div class="dqgz_content_nav">
+			<ul class="dangqun_li">	
+			    <#assign ck=cl.bk(c)>
+			    <#list ck.parent.children as cc>
+				<li><a href="${cm.cp}${cc.url}" <#if cc.id==ck.id>class="dq_active1"</#if>>${cc.title}</a></li>
+				</#list>
+			</ul>
+		</div>
+		<div class="df_lb">
+			<div class="df_lb_title">
+				<h4 style="height: 64px" id="h4">${ck.title}</h4>
+			</div>
+			<div class="df_lb_tab" id="df_lb_tab">
+				<ul style="width: 100%;">
+				    <#if !pageIndex?? >  <#assign  pageIndex="1" > </#if>
+                    <#assign pageList= at.bc(ck,pageIndex,8)> 
+                    <#if pageList.list?size gt 0>
+                    <#list pageList.list?sort_by('issueTime')?reverse as a>
+					<li> <a href="${cm.cp}go.htm?url=telfResearch-detail&id=${a.id}">${a.title}</a> <span>${a.issueTime?string('MM-dd')}</span></li>
+					</#list>
+				</ul>
+				<div class="fenpage">
+                ${cm.page(req,pageIndex,pageList)}
+                </div>
+                 <#else>
+                <div class="nodata">
+                    <img src="res/default/images/nodata.png" alt="暂无数据" />
+                    <p>暂无数据</p>
+                </div>
+                </#if>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<#include "/${rp}/footer.html">
+	</footer>
+</body>
+</html>

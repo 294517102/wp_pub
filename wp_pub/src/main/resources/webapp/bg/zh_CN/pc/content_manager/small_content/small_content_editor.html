@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>模块编辑</title>
+    <#include "/include/bg/in_head_res.html">
+    <style type="text/css">
+ 	.uploadeyu{
+ 		display:inline-block;
+ 		width:90px;
+ 		height:90px;
+ 		overflow:hidden;
+ 		background-color:#eee;
+ 		text-align:center;
+ 		cursor: pointer;
+ 	}
+ 	.uploadeyu>p:nth-of-type(1){
+ 		line-height:90px;
+ 		font-size:40px
+ 	}
+ 	.uploadeyu>img{
+ 		min-width:100%;
+ 		height:100%;
+ 	}
+ 	.img-lable{
+ 		height:100px !important;
+ 		line-height:85px !important;
+ 	}
+ 	.img-hint{
+ 		font-size:12px;
+ 		color: red
+ 	}
+ 	.layui-form-item{
+ 		margin-bottom:8px;		
+ 	}
+ </style>
+</head>
+<body class="inner-body clear">
+
+<form class="layui-form layui-form-pane bg_white" action="" id="content_form" onsubmit="return false" style="width: 100%;padding: 10px;">
+
+  <div class="layui-form-item">
+  <input type="hidden" name="id" value="${data.id}">
+   <div class="layui-inline">
+    <label class="layui-form-label"><span style="color: red">*</span>标题</label>
+    <div class="layui-input-inline">
+      <input type="text" name="title" value="${data.title!}" lay-verify="required" placeholder="标题" autocomplete="off" class="layui-input" >
+    </div>
+    </div>
+    <div class="layui-inline">
+    <label class="layui-form-label"><span style="color: red">*</span>关键字</label>
+    <div class="layui-input-inline">
+      <input type="text" name="keyword" value="${data.keyword!}" readonly="readonly" lay-verify="required" placeholder="请输入关键字" autocomplete="off" class="layui-input">
+    </div>
+    </div>
+  </div>
+  <div class="layui-form-item">
+			<label class="layui-form-label" >链接地址</label>
+			<div class="layui-input-block">
+				<input type="text" name="url" 
+						value="${data.url}"	placeholder="请输入链接地址" autocomplete="off" class="layui-input">
+			</div>
+		</div>
+  <div class="layui-form-item ">
+    <label class="layui-form-label"  style="height:100px;line-height: 87px">文本值</label>
+    <div class="layui-input-block">
+      <textarea placeholder="请输入文本值" class="layui-textarea" name="describes">${data.describes!}</textarea>
+    </div>
+  </div>
+  
+<div class="layui-form-item">
+			<label class="layui-form-label img-lable">图片</label>
+					
+        		<div class="layui-input-block" style="padding-left:12px">
+        			<label for="upload" class="uploadeyu" id="uploadeyu_1" >
+        			
+					<#if (data.accessory.originalUrl)??>
+							<img alt="" src="${data.accessory.originalUrl}">
+					<#else>
+							<p>+</p>
+					</#if>
+					
+					</label>
+					<p class=".img-hint">点击图片修改图片</p>
+					
+					<button type="button" class="layui-btn layui-btn-small layui-bg-blue" id="upload_1"><i class="layui-icon">&#xe681;</i>上传文件</button>
+				</div>
+				<input name="pic_id" value="" style="display:none">		
+		</div>
+  
+ <div style="text-align: center;vertical-align:bottom;">
+                 <button class="layui-btn" lay-submit lay-filter="form_content">保存</button>
+                 <button  type="reset" class="layui-btn layui-btn-danger cancel" >取消</button>
+        </div>
+</form>
+<#include "/include/bg/in_bottom_res.html">	
+<script type="text/javascript">
+
+$(function(){
+    //注意进度条依赖 element 模块，否则无法进行正常渲染和功能性操作
+  var upload = layui.upload,form = layui.form;
+    
+    //执行实例	 
+ 	upload.render({
+ 	    elem: '#uploadeyu_1' //绑定元素
+ 	    ,url: '${basePath}/upload/uploadImgByAccessory.htm?type=client' //上传接口
+ 	    ,auto: false
+ 	    ,size: 1500
+ 	    ,bindAction: '#upload_1'
+ 	    ,choose: function(obj){
+ 	    	 obj.preview(function(index, file, result){
+ 	    		   $("#uploadeyu_1").html("<img src='" + result + "'/>");
+ 	          });
+ 	    }
+ 	    ,done: function(res){
+ 	      //上传完毕回调
+ 	      layer.msg(res.resultMsg);
+ 	      if(res.result){
+ 	    	  var files = res.data;
+ 	    	  for(var i=0;i<files.length;i++){
+   		    	var aid = files[i].acyId;
+   		    	var url = files[i].url;
+   		    	$("input[name='pic_id']").val(aid);
+ 	    	  }
+ 	      }
+ 	    }
+ 	    ,error: function(){
+ 	      //请求异常回调
+ 	      alert("error");
+ 	    }
+ 	  }); 
+    //监听提交
+    form.on('submit(form_content)', function(data){
+    	var params = $("#content_form").serializeObject();
+    	$.postJSON("${base}/admin/small_content/add_small_content$ajax.htm",params,function(data){
+    		layer.msg(data.resultMsg,{time:1000},function(){
+        		if(data.result){
+        			parent.location.reload();
+            		closeWindow();
+            	}
+        	});
+    	}); 
+        return false;
+    });
+    
+	 $(".cancel").click(function(){
+		 	closeWindow();
+		 });
+    
+
+})
+
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<#include "/${rp}/metalink.html">
+	<title>${webSet.title}</title>
+</head>
+<body>
+	<header>
+		<#include "/${rp}/header.html">
+	</header>
+	<div class="dangquangongzuo">
+		<div class="dqgz_content_nav">
+		    <#assign ib = at.bi(id)>
+			<ul class="dangqun_li">	
+			    <#list ib.column.parent.children as cc>
+				<li><a href="${cm.cp}${cc.url}" <#if ib.column.id==cc.id>class="dq_active"</#if>>${cc.title}</a></li>
+				</#list>
+			</ul>
+		</div>
+		
+		<div class="df_lb">
+		<!-- 	<div class="df_lb_title">
+				<h4>工作</h4>
+				<a href="">返回上一级</a>
+			</div> -->
+			<div class="df_lb_det">
+			<h4>${ib.title}</h4>
+					<!-- JiaThis Button BEGIN -->
+				<span>发布时间:${ib.issueTime?string('YYYY-MM-dd')}  来自：${ib.source}</span>
+					<div class="fenx_1">
+						<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+					</div>
+					
+			</div>
+			<div class="df_lb_det_text">
+			    ${ib.ext.content}
+			</div>	
+		</div>
+	</div>
+	<footer>
+		<#include "/${rp}/footer.html">
+	</footer>
+</body>
+</html>

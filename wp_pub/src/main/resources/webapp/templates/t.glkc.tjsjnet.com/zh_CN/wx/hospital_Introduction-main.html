@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <#include "/${rp}/metalink.html">
+</head>
+<body>
+<div class="page">
+    <#assign yyjs=cl.bk(c)>
+    <header class="bar bar-nav">
+        <a class="icon icon-left pull-left back"></a>
+        <a href="${cm.cp}" class="icon icon-home pull-right" external></a>
+        <h1 class="title">${yyjs.title}</h1>
+    </header>
+    <div class="content">
+        <div class="innerbanner">
+            <img src="${sc.bk('shou_ji_yi_yuan_jie_shao_banner').acc.url}" alt="">
+        </div>
+        <div class="inner_navbox">
+            <ul class="inner_nav hispitol_navbox">
+               <#list yyjs.children as yc>
+               <#if yc.keyword!="yi_yuan_rong_yu"&&yc.keyword!="ling_dao_tuan_dui">
+                <li>
+                    <a href="${cm.cp}${yc.url}" external>
+                        <img src="res/default/image/hispitol_nav${yc_index+1}.png" alt="">
+                        <p>${yc.title}</p>
+                    </a>
+                </li>
+                </#if>
+                </#list>
+            </ul>
+        </div>
+        <div class="inner_box1">
+            <#assign yyinfo=cl.bk('yi_yuan_jian_jie')>
+            <p class="dangqu_title">${yyinfo.title}</p>
+            <hr>
+            <div class="hispitol_info">
+                <#list at.bc(yyinfo) as a>
+                <a href="${cm.cp}${yyinfo.url}">
+                    <div class="hispitol_infopic">
+                        <img src="${a.th.url}" alt="${a.title}">
+                    </div>
+                    <div class="hispitol_infodesc">
+                        <p class="hispitol_title">${a.title}</p>
+                        <div class="hispitol_desc">
+                            ${a.desc}
+                        </div>
+                    </div>
+                </a>
+                </#list>
+            </div>
+        </div>
+        <div class="inner_box1">
+            <#assign culture = cl.bk('yi_yuan_wen_hua')>
+            <p class="dangqu_title">${culture.title}</p>
+            <hr>
+            <ul class="wenlist">
+                <#list culture.children as a>
+                <li>
+                    <a href="${cm.cp}${culture.url}" external>
+                        <p class="wenlist_title">${a.title}</p>
+                    </a>
+                </li>
+                </#list>
+            </ul>
+        </div>
+        
+        <div class="inner_box1">
+            <#assign yyhonor = cl.bk('yi_yuan_rong_yu')> 
+            <p class="dangqu_title">${yyhonor.title}</p>
+            <a href="${cm.cp}${yyhonor.url}" external>more +</a>
+            <hr>
+            <ul class="wenlist">
+                <#if at.bc(yyhonor)?size gt 0>
+                <#list at.bc(yyhonor) as a>
+                <#if a_index lt 3>
+                <li>
+                    <a href="${cm.cp}go.htm?url=hospital-detail&id=${a.id}" external>
+                        <p class="wenlist_title">${a.title}</p>
+                        <span class="wenlist_span">${a.issueTime?string('MM-dd')}</span>
+                    </a>
+                </li>
+                </#if>
+                </#list>
+                <#else>
+                    <div class='nodata'>
+                        <img src="res/default/image/nodata.png" alt="" />
+                        <p>暂无数据</p>
+                    </div>
+                </#if>
+            </ul>
+        </div>
+        <div class="inner_box1">
+            <#assign yyly=cl.bk('yi_yuan_lu:e_ying')>
+            <p class="dangqu_title">${yyly.title}</p>
+            <a href="${cm.cp}${yyly.url}">more +</a>
+            <hr>
+            <div class="tunav">
+                <#list at.bc(yyly) as a>
+                <a href="${cm.cp}go.htm?url=hospital-inTheDetail&id=${a.id}" external>
+                    <img src="res/default/image/yuanjing.png" alt="${a.title}">
+                    <p>${a.title}</p>
+                </a>
+                </#list>
+                
+            </div>
+        </div>
+
+        <#include "/${rp}/footer.html">
+    </div>
+</div>
+
+<#include "/${rp}/jslink.html">
+<script>
+    $(".tuwenlist_desc").xdlines({
+        max:2
+    })
+    $('.hispitol_desc').xdlines({
+        max:3
+    })
+    $('.lingdaolist_desc').xdlines({
+        max:3
+    })
+</script>
+</body>
+</html>

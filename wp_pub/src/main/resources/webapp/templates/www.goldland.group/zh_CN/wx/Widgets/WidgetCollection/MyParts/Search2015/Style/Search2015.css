@@ -1,0 +1,45 @@
+﻿/*************************************************************
+ * Command:Start
+ * Control:Search2015
+ * Style:Search2015
+ * Desc:Header.LogoQueryQuick部件的样式
+ * Quot:site.home|site.welcome
+*************************************************************/
+
+/*Header*/
+.Search2015 {  overflow:hidden; }
+.Search2015 .searchbox { width:400px; padding-top:6px; overflow: hidden ; }
+.Search2015 .full_model_search { float:right; height:28px; width:317px; text-align:left;}
+.Search2015 .full_model_search input.model_search { width: 270px; float:left; height:28px; line-height:28px; border:1px solid #c2c2c2; border-right:none; padding:0 8px; background:#fff; color: #666; font-family: "microsoft yahei";font-size:12px;}
+.Search2015 .full_model_search a.model_search_click{ width:28px; float:left; height:30px; background:url(../Images/icon_search.png) no-repeat center center #06b206; color: #333; cursor:pointer;}
+.Search2015 .full_model_search a:hover{ background:url(../Images/icon_search.png) no-repeat center center #dab176;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:Search2015
+ * Style:Search2015
+ * Desc:Header.LogoQueryQuick部件的样式
+ * Quot:site.home|site.welcome
+*************************************************************/

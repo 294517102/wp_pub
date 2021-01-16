@@ -1,0 +1,97 @@
+﻿/*************************************************************
+ * Command:Start
+ * Control:SliderBanner
+ * Style:SliderBanner
+ * Desc:目前没有
+ * Quot:
+*************************************************************/
+
+.SliderBanner { width:100%; position:relative; min-height: 80px; }
+.SliderBanner .banner_zz { position: absolute; bottom:-1px; background: url("/_skins/mobile/images/banner_zhezhao.png") no-repeat bottom center; z-index: 1; width:100%; height: 20px;}
+
+/**
+ * 轮播组件
+ */
+ .ui-slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding-top: 31.25%; }
+  
+  .ui-slider-content {
+    display: -webkit-box;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%; }
+  
+  .ui-slider-content > li {
+    -webkit-box-flex: 1;
+    width: 100%;
+    height: 100%; }
+  
+  .ui-slider-content > li img {
+    display: block;
+    width: 100%; }
+  
+  .ui-slider-content > li span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    -webkit-background-size: 100% 100%; }
+  
+  .ui-slider-content > li.active {
+    opacity: .5; }
+  
+  .ui-slider-indicators {
+    position: absolute;
+    display: -webkit-box;
+    -webkit-box-pack: end;
+    width: 100%;
+    bottom: 10px;
+    right: 4px;
+    font-size: 0; 
+    width:50px;
+    margin:0 auto;
+    padding-bottom:10px;
+}
+  
+  .ui-slider-indicators li {
+    display: block;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 0;
+    width: 13px;
+    height: 13px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 100%;
+    margin-right: 6px;
+    -webkit-box-sizing: border-box;
+    background-clip: padding-box;
+    position: relative; }
+  
+  .ui-slider-indicators li.current:before {
+    content: '';
+    position: absolute;
+    background-color: #f00;
+    left: 0px;
+    top: 0px;
+    width: 13px;
+    height: 13px;
+    border-radius: 100%;
+    -webkit-box-sizing: border-box;
+    background-clip: padding-box; }
+  
+  .ui-slider-indicators-center {
+    -webkit-box-pack: center;
+    right: 0; }
+
+/*************************************************************
+ * Command:End
+ * Control:SliderBanner
+ * Style:SliderBanner
+ * Desc:目前没有
+ * Quot:
+*************************************************************/

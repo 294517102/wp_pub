@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <base href="${domainBase}"/>
+    <#include "${includePath}/data.html" >
+		<#include "${includePath}/searchKeyword.html" >
+    <title>${webSet.title!}-${medical.title!}</title>
+    <link rel="stylesheet" href="res/default/css/reset.css">
+    <link rel="stylesheet" href="res/default/css/video-js.css">
+
+    <link rel="stylesheet" href="res/default/css/style.css">
+    <link rel="icon" href="res/default/image/ico.png">
+    <script src="res/js/videojs-ie8.min.js"></script>
+</head>
+<body>
+<div class="tips clearfix">
+    <#include "${includePath}/top.html" >
+</div>
+<div class="nav">
+    <#include "${includePath}/nav.html" >
+    
+</div>
+<div class="work_main">
+    <div class="work_main_box clearfix" style="margin-top: 50px">
+        <div class="work_main_left" style="margin:0 auto;float:none;width:1100px;">
+            <p class="work_del_title">${data.title!}</p>
+            <div class="work_del_date clearfix">
+                <span class="work_del_day">${(data.issueTime?string('yyyy-MM-dd'))!}</span>
+<!--                 <span class="work_del_num">浏览次数：23次</span> -->
+                <span class="work_del_men">发布者：${data.author!}</span>
+            </div>
+            <#list data.articleExt! as da>
+            <div class="work_del_content">
+              ${da.content!}
+            </div>
+            </#list>
+<!--             <div class="prev_art"><a>上一篇：看上的风景卡萨丁回复仅</a></div> -->
+<!--             <div class="next_art"><a>下一篇：看上的风景卡萨丁回复仅</a></div> -->
+            <#assign aid=data.id!>
+		<#if column.articles??>
+		    <#list column.articles! as ca>
+		    	<#if ca.id=aid>  <!-- 遍历获取当前文章的下标 -->
+		    		<#assign a_index=ca_index>
+		    		<!-- 再次遍历取出上一个和下一个 -->
+		    		
+		    		
+		    		<#list column.articles! as can>
+		    			<#if can_index=(a_index-1)>
+		    			<div class="prev_art"><a title="${can.title!}" href="${base}/singleSearch_${can.id?c!}.htm?url=medical_detail&ctype=article&column_id=${column.id?c!}">上一篇:${can.title!}</a></div>
+		    			</#if>
+		    			<#if can_index=(a_index+1)>
+		    			<div class="next_art"><a title="${can.title!}" href="${base}/singleSearch_${can.id?c!}.htm?url=medical_detail&ctype=article&column_id=${column.id?c!}">下一篇:${can.title!}</a></div>
+		    			</#if>
+		    			</#list>	
+		    		
+		    		
+		    	</#if>
+		    </#list>
+		    <#else>
+		    	维护中...
+		    </#if>  
+            
+            <a class="art_btn" href="javascript:history.back()">返回列表</a>
+        </div>
+        
+
+    </div>
+</div>
+
+
+
+
+<div class="main_fifth">
+    <div class="main_fifth_box">
+        <div class="main_fifth_title">友情链接</div>
+        <#include "${includePath}/link.html" >
+    </div>
+
+</div>
+<div class="footer">
+    <#include "${includePath}/foot.html" >
+</div>
+<script src="res/js/jquery.min.js"></script>
+<script src="res/js/html5shiv.js"></script>
+<script src="res/js/jquery.SuperSlide.2.1.1.js"></script>
+<script src="res/js/video.min.js"></script>
+
+<script>
+
+    lastNoMargin($('.main_fifth_content_list'),5);
+    $(".nav_title_list").click(function(){
+        $(this).addClass("active").siblings().removeClass("active");
+    })
+    $(".nav_list").click(function(){
+        $(this).addClass("active").siblings().removeClass("active");
+    })
+
+
+    jQuery(".sideMenu").slide({titCell:".work_main_right_dis_title", targetCell:".work_main_right_dis_show",defaultIndex:0,effect:"slideDown",delayTime:300,trigger:"click"});
+</script>
+</body>
+</html>

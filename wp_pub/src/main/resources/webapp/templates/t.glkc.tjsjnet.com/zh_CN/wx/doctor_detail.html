@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <#include "/${rp}/metalink.html">
+</head>
+<body>
+<div class="page">
+    <header class="bar bar-nav">
+        <a class="icon icon-left pull-left back"></a>
+         <a href="${cm.cp}" class="icon icon-home pull-right" external></a>
+        <h1 class="title">${doctor.name}</h1>
+    </header>
+    <div class="content">
+        <div class="detail_content doctor_detail">
+            <img src="${doctor.accessory.url}" alt="">
+            <p>${doctor.name}&emsp;&emsp;${doctor.position.name}</p>
+            <div class="doctor_detail_info">
+                <p>科室：${doctor.column.title}</p>
+                <p>级别：${doctor.level}</p>
+                <div>
+                    擅长：${doctor.speciality}
+                </div>
+                <div>简介：${doctor.describes}</div>
+            </div>
+            <div class="inner_box1 paiban_box">
+                <p class="dangqu_title">医院文化</p>
+                <hr>
+                <div>
+                    <table border="1" id="paiban" cellspacing='0' cellpadding='0' width="100%">
+                        <thead>
+                            <tr>
+                                <td>周</td>
+                                <td>一</td>
+                                <td>二</td>
+                                <td>三</td>
+                                <td>四</td>
+                                <td>五</td>
+                                <td>六</td>
+                                <td>日</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                             <tr>
+                                <td>
+                                   上午
+                                </td>
+                                <#if doctor.dutys??&&doctor.dutys?size gt 0>
+                                    <#list doctor.dutys as d>
+                                        <#if d.typeAm ??>
+                                            <#if d.typeAm==1><td>特</td>
+                                            <#elseif d.typeAm==2><td>专</td>
+                                            <#elseif d.typeAm==3><td>普</td>
+                                            <#elseif d.typeAm==4><td>停</td>
+                                            </#if>
+                                        <#else>
+                                            <td> </td>
+                                        </#if>
+                                    </#list>
+                                </#if>
+                            </tr>
+                            <tr>
+                                <td>
+                                   下午
+                                </td>
+                                <#if doctor.dutys??&&doctor.dutys?size gt 0>
+                                    <#list doctor.dutys as d>
+                                        <#if d.typePm ??>
+                                            <#if d.typePm==1><td>特</td>
+                                            <#elseif d.typePm==2><td>专</td>
+                                            <#elseif d.typePm==3><td>普</td>
+                                            <#elseif d.typePm==4><td>停</td>
+                                            </#if>
+                                        <#else>
+                                            <td> </td>
+                                        </#if>
+                                    </#list>
+                                </#if>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <#include "/${rp}/footer.html">
+    </div>
+</div>
+<#include "/${rp}/jslink.html">
+<script>
+
+</script>
+</body>
+</html>

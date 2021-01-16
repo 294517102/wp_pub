@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <#include "/${rp}/metalink.html">
+</head>
+<body>
+<div class="page">
+    <#assign ck=cl.bk(c)>
+    <header class="bar bar-nav">
+        <a class="icon icon-left pull-left back"></a>
+        <a href="${cm.cp}" class="icon icon-home pull-right" external></a>
+        <h1 class="title">${ck.title}</h1>
+    </header>
+    <div class="content">
+        <div class="huli_header">
+            <ul>
+                <#list ck.parent.children as a>
+                <#if a_index==2>
+                <li <#if a.id==ck.id> class="active"</#if>><a href="${cm.cp}${a.url}" external>${a.title}</a></li>
+                </#if>
+                </#list>
+            </ul>
+        </div>
+        <div class="pic_list erjibox" style="margin-top: 0">
+            <#list at.bc(ck) as a>
+            <div class="content-swiper">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <#list a.pic as p>
+                        <a class="swiper-slide">
+                            <img src="${p.url}" alt="">
+                        </a>
+                        </#list>
+                        
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+            <div class="huli_content">
+               ${a.ext.content}
+            </div>
+            </#list>
+        </div>
+        <#include "/${rp}/footer.html">
+    </div>
+</div>
+
+<#include "/${rp}/jslink.html">
+<script>
+    var swiper2 = new Swiper('.content-swiper .swiper-container', {
+        pagination: '.content-swiper .swiper-pagination',
+        paginationClickable: true,
+        autoplayDisableOnInteraction : false,
+        speed:500,
+        loop:true,
+        autoplay:3000,
+    });
+</script>
+</body>
+</html>

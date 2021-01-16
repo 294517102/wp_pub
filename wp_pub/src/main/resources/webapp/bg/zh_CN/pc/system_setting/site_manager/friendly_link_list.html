@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>服务列表</title>
+
+<#include "/include/bg/in_head_res.html">
+
+</head>
+<body class="inner-body clear">
+	<div class="layui-container bc_color" style="width:100%">
+		<form class="layui-form " id="form_1"  action="${basePath}/general_service_fD2pi5C3EbLr9FCNJuJ.htm?_url=system_setting/site_manager/friendly_link_list&_ttype=2&_sObject=SESSION_WEB_SET&_sKey=webSet&isDelete=-1" method="post">
+		 <div class="layui-form-item" style="background-color: white;padding:15px 10px;">
+			<div class="layui-col-md3">
+				<label class="layui-form-label">站点名称</label>
+				<div class="layui-input-block" >
+					<input type="text" name="name"  value="${RequestParameters.name}"
+						autocomplete="off" placeholder="请输入站点名称" class="layui-input" >
+				</div>
+			</div>
+			<div class="layui-col-md3">
+				<label class="layui-form-label">链接地址</label>
+				<div class="layui-input-block">
+					<input type="text" name="url" value="${RequestParameters.url}"
+						autocomplete="off" placeholder="请输入站点地址" class="layui-input">
+				</div>
+			</div>
+			<div class="fl" style="margin-left:50px">
+				<button class="layui-btn fl search" lay-submit > <i class="layui-icon">&#xe615;</i> 搜索</button>
+				<button class="layui-btn layui-btn-warm  fl refresh" type="reset"><i class="layui-icon">&#x1002;</i> 刷新</button>
+			</div>
+		</div>
+		
+		</form>
+		<div class="content_main">
+			<div class="layui-row">
+				<button class="layui-btn  service-edit-add fl ">
+					<i class="layui-icon">&#xe61f;</i> 新增
+				</button>
+				<button class="layui-btn layui-btn-danger deleteAll fl ">
+					<i class="layui-icon">&#xe640;</i> 删除
+				</button>
+			</div>
+			<div class="layui-row layui-form">
+				<table class="layui-table" >
+					<thead>
+						<tr>
+							<th><input type="checkbox"  lay-filter="allChoose" lay-skin="primary"></th>
+							<th width="10%">序号</th>
+							<th>链接名称</th>
+							<th width="25%">链接地址</th>
+							<th width="15%">新增时间</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<#if !(resultList_friendlyLink??) || resultList_friendlyLink?size <=0 >
+						<tr>
+							<td colspan="6">无记录</td>
+						</tr>
+						<#else> <#list resultList_friendlyLink as r>
+						<tr>
+							<td><input type="checkbox" lay-skin="primary" id="${r.id}"></td>
+							<td>${r.sequence!}</td>
+							<td>${r.name!}</td>							
+							<td>${r.url!}</td>
+							<td>${r.insertTime}</td>
+							<td>
+							<button class="layui-btn layui-btn-small detail" id="${r.id}"><i class="layui-icon">&#xe63c;</i> 编辑</button>
+							<button class="layui-btn layui-btn-danger layui-btn-small delete"  id="${r.id}">
+									<i class="layui-icon">&#xe640;</i> 删除
+								</button></td>
+						</tr>
+						</#list> </#if>
+					</tbody>
+				</table>
+				<div class="pageBotton">${pageHtml_friendlyLink}</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+<#include "/include/bg/in_bottom_res.html">
+<script type="text/javascript">
+    //注意进度条依赖 element 模块，否则无法进行正常渲染和功能性操作
+  
+    $(".detail").click(function(){
+    	layer.open({
+            type: 2,
+            title: '修改',
+          //  btn: ['确定', '取消'],
+            shadeClose: true,
+            shade: 0.8,
+            area: ['45%', '400px'],
+            content:'${basePath}/general_service_fD2pi5C3EbLr9FCNJuJ.htm?_url=system_setting/site_manager/friendly_link_add&_ttype=2&_sObject=WEB_SET&_sKey=webSet&isDelete=-1&id='+$(this).attr("id") //iframe的url
+        });
+    });
+
+    $(".delete").click(function(){
+    	var id = $(this).attr("id");
+    	layer.confirm("确认删除？",{btn: ['确认','取消'],icon:3 },function(){
+    		 $.postJSON("${basePath}/general_service_OoqzTPAMAzeMwFECm4I$ajax.htm",{"id":id,"isDelete":1},function(data){              
+          	     if(data.result){
+          	    	layer.msg("删除成功");     
+          	    	window.location.reload();
+          	     }
+    			       	            	 
+            }); 
+    	});
+    });
+    
+    $(".refresh").click(function(){
+    	window.location.href="${base}/general_service_fD2pi5C3EbLr9FCNJuJ.htm?_url=system_setting/site_manager/friendly_link_list&_ttype=2&_sObject=WEB_SET&_sKey=webSet&isDelete=-1";
+    });
+    
+    $(".deleteAll").click(function(){
+    	if($("input:checked").length<=0){
+    		layer.msg("请选择待删除条目",{icon:2});
+    		return;
+    	}
+    	layer.confirm("确认删除？",{btn: ['确认','取消'],icon:3 },function(){
+    		$("input:checked").each(function(){
+        		var id = $(this).attr("id");        
+        		$.postJSON("${basePath}/general_service_OoqzTPAMAzeMwFECm4I$ajax.htm",{"id":id,"isDelete":1},function(data){              
+             	     if(!data.result){
+             	     	layer.msg("删除失败-"+id,{icon:2});
+             	     }
+       			       	            	 
+               }); 
+        	});
+    		layer.msg("操作完毕",function(){
+           		window.location.reload();
+           	});
+    	});
+
+    });
+    
+         var form = layui.form;
+
+        //监听提交
+       /*  form.on('submit(form_1)', function(data){
+            layer.alert(JSON.stringify(data.field), {
+                title: '最终的提交信息'
+            })
+            layer.load(1,{shade:true});
+            return false;
+        }); */
+
+        //全选
+        form.on('checkbox(allChoose)', function(data){
+            var child = $(data.elem).parents('table').find('tbody input[type="checkbox"]');
+            child.each(function(index, item){
+                item.checked = data.elem.checked;
+            });
+             form.render('checkbox');
+        }); 
+
+    $(function(){
+        $(".service-edit-add").click(function () {
+        	var id = $(this).attr("id");        
+            layer.open({
+                type: 2,
+                title: '新增',
+              //  btn: ['确定', '取消'],
+                shadeClose: true,
+                shade: 0.8,
+                area: ['45%','400px'],
+                content:'${base}/admin/to_target.htm?url=system_setting/site_manager/friendly_link_add' //iframe的url
+            });
+        });     
+    })
+</script>
+</html>

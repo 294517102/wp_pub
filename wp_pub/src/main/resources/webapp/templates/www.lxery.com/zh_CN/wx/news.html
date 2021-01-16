@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <base href="${domainBase}"/>
+    <#include "${includePath}/data.html" >
+		<#include "${includePath}/searchKeyword.html" >
+    <title>${webSet.title!}-${tzgg.title!}</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <link rel="stylesheet" href="res/default/css/resets.css">
+    <link rel="stylesheet" href="res/default/css/style.css">
+    <link rel="stylesheet" href="res/js/ydui.flexible.js">
+</head>
+<body>
+<#if  tzgg.children?? &&  tzgg.children?size gt 0>
+<div class="banner" style="height:8.4rem">
+    <div class="m-slider" style="height:8.4rem" id="J_Slider">
+        <div class="slider-wrapper" >
+         <#list tzgg.children?sort_by("id") as h>
+                        <#if h_index=1>
+                        <#list h.articles! as ha>
+                        <#if ha_index lt 3>
+            <div class="slider-item" >
+                <a href="${base}/singleSearch_${ha.id?c!}.htm?url=news_detail&ctype=article&column_id=${h.id?c!}">
+                    <img src="${(ha.thumbnail.url!)}">
+                    <div class="banner_dis">${ha.title!}</div>
+                </a>
+            </div>
+            </#if>
+            </#list>
+            </#if>
+            </#list>
+        </div>
+        <div class="slider-pagination" style="text-align: right;justify-content: flex-end;bottom: .5rem;"></div><!-- 分页标识 -->
+    </div>
+</div>
+</#if>
+
+<div class="notice_content">
+    <ul>
+    <#if tzgg.articles??>
+    <#list tzgg.articles?sort_by("issueTime")?reverse as ha>
+        <li class="notice_list">
+            <a href="${base}/singleSearch_${ha.id?c!}.htm?url=news_detail&ctype=article">
+                <div class="notice_list_dis">${ha.title!}</div>
+                <div class="notice_list_inf clear">
+                    <span class="notice_list_inf_right">${(ha.issueTime?string('yyyy-MM-dd'))!}</span>
+                    <span>${ha.column.title!}</span>
+                </div>
+            </a>
+        </li>
+        </#list>
+        <#else>
+        <p style="text-align: center;">内容编辑中...</p>
+    </#if>
+    </ul>
+</div>
+
+<script src="res/js/jquery.min.js"></script>
+<script src="res/js/style.js"></script>
+<script src="res/js/ydui.js"></script>
+<script>
+    $('#J_Slider').slider({
+        speed: 500,
+        autoplay: 3000,
+        lazyLoad: true
+    });
+    $(".slider-wrapper").css("transform","translate3d(0,0,0)");
+</script>
+</body>
+</html>

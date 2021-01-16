@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <base href="${domainBase}"/>
+    <#include "${includePath}/data.html" >
+		<#include "${includePath}/searchKeyword.html" >
+    <title>${webSet.title!}-${jtzs.title!}</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <link rel="stylesheet" href="res/default/css/resets.css">
+    <link rel="stylesheet" href="res/default/css/style.css">
+    <link rel="stylesheet" href="res/js/ydui.flexible.js">
+</head>
+<body>
+    <div id="map"></div>
+
+
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=wDxBEId6c3iWc0BMTCNxnP7jwyfYS6l6"></script>
+
+<script src="res/js/jquery.min.js"></script>
+<script src="res/js/style.js"></script>
+<script>
+    //百度api
+    var sContent =
+//            "<h4 style='margin:0 0 5px 0;padding:0.2em 0'></h4>" +
+//            "<img style='float:right;margin:4px' id='imgDemo' src='res/default/bg/image/logo.png'  height='104' title='开元科技'/>" +
+//            "<p style='margin:10px 0 0 0;line-height:1.5;font-size:13px;text-indent:2em'>地址：腾飞九路15号.........</p>" +
+//            "</div>";
+            "<div style='font-size: .5rem;letter-spacing: .02rem;'>泸县第二人民医院</div>"+
+            "<div style='font-size:.42rem;letter-spacing:.02rem;'>四川省泸州市泸县</div>";
+
+    var map = new BMap.Map("map");
+    var point = new BMap.Point(105.576803,29.210485);
+    var marker = new BMap.Marker(point);
+
+
+    var infoWindow = new BMap.InfoWindow(sContent);  // 创建信息窗口对象
+    map.openInfoWindow(infoWindow,point); //开启信息窗口
+
+    map.centerAndZoom(point, 20);
+    map.addOverlay(marker);
+    marker.addEventListener("click", function(){
+        this.openInfoWindow(infoWindow);
+        //图片加载完毕重绘infowindow
+        document.getElementById('imgDemo').onload = function (){
+            infoWindow.redraw();   //防止在网速较慢，图片未加载时，生成的信息框高度比图片的总高度小，导致图片部分被隐藏
+        }
+    });
+    map.enableScrollWheelZoom(true);
+</script>
+</body>
+</html>

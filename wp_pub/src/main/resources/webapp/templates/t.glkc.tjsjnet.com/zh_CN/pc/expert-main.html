@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<#include "/${rp}/metalink.html">
+	<title>${webSet.title}</title>
+	<style>
+		.dq_active1{
+			display: inline-block;
+			height: 55px;
+			width: 56px;
+			color: #46c3f2;
+			font-size: 14px;
+			border-bottom: 2px solid #46c3f2;
+		}
+		#h4{
+			color: #46c3f2;
+			border-bottom: 2px solid #46c3f2;
+		}
+		#text{
+			position: absolute;
+			top:0;
+		
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<#include "/${rp}/header.html">	
+	</header>
+	<div class="dangquangongzuo">
+	    <div class="dqgz_content_nav">
+			<#assign ck = cl.bk(c)>
+			<ul class="dangqun_li">
+			    <#list ck.parent.children as cc>
+				<li><a href="${cm.cp}${cc.url}" <#if cc.id==ck.id>class="dq_active1"</#if>>${cc.title}</a></li>
+				</#list>
+			</ul>
+		</div>
+		<div class="df_lb">
+			<div class="df_lb_title">
+				<h4 style="height: 64px" id="h4">${ck.title!}</h4>
+			</div>
+			<div class="zj_keshi"> 
+				<div class="ksxz">
+					<div class="ksxz_ks">
+						<h3 >科室选择：</h3>
+						<ul style="width: 1094px">
+						    <#assign col = cl.bk('ke_shi_dao_hang')>
+						    <li ><a class="ks_chose all xz_color_active" v_id=''>所有</a></li>
+						    <#list col.children as t>
+							<li ><a class="ks_chose" v_id='${t.id}'>${t.title}</a></li>
+						    </#list>
+						</ul>
+					</div>				              
+				</div>
+				<div class="zcxz">
+					<div >
+						<h3>职称选择：</h3>
+						<ul style="width: 1094px;">
+					    	<li class="al"><a class="xz_color_active">所有</a></li>
+					    	<li><a >主治医师</a></li>
+					    	<li><a >主任医师</a></li>
+						</ul>
+					</div>
+					
+				</div>
+			</div>
+
+			<div class="df_lb_title" style="position: relative;">
+				<h4 style="height: 64px" id="h4">医生信息</h4>
+				<div class="seach_left" style="float: right;">
+							<form  id="form">
+								<input type="text"  id="text" class="ys_searchval" placeholder="请输入医生名字" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\u4E00-\u9FA5]/g,''))">
+								<a href="#" id="btn1"></a>
+								<input type="button" class="ys_searchval_btn" value="搜索" id="btn2">
+							</form>
+				</div>
+			</div>
+
+			<div class="ysxx"><div class="loading">数据加载中。。。</div></div>
+		</div>
+		<div class="fenpage"></div>
+	</div>
+	<footer>
+			<#include "/${rp}/footer.html">
+	</footer>
+	<script src="res/js/jquery-1.12.3.js"></script>
+	<script type="text/javascript" charset="utf-8">
+	    $(function(){ 
+        	var columnid ="",position ="",level = '';
+        	
+        	$.post('/query_like_doctor$ajax.htm',{size:1},function(res){
+        	    var _res =JSON.parse(res)
+        	    var len = _res.positionList.length;
+        	    var str = '<li class="al"><a class="xz_color_active zc_chose" v_val="">所有</a></li>';
+        	    for(var i = 0;i<len;i++){
+        	        str +="<li><a class='zc_chose' v_val='"+_res.positionList[i].name+"'>"+_res.positionList[i].name+"</a></li>"
+        	    }
+        	    $('.zcxz ul').html(str);
+        	})
+                // 定义
+            	  var csh_ajax =  function(_data){
+            	        _data.type=${type};
+                          $.ajax({ 
+                                type: "post", 
+                                url: "/query_like_doctor$ajax.htm",
+                                data:_data,
+                                beforeSend: function () {
+                                    $(".loading").show();
+                                },
+                                success: function (data) {
+                                    var _data = JSON.parse(data);
+                                    console.log(_data)
+                                    var ys_len = _data.resultList.length;
+                                    var str1 = '';
+                                    if(_data.resultList.length > 0){
+                                        for(var i = 0; i< ys_len ; i++){
+                                        var level=_data.resultList[i].level
+                                        if(level==null){
+                                            level='暂无'
+                                        }
+                                        str1 += "<div class='ysxx_lf'><dl><dt><a href='${cm.cp}general_service_t3ncXUfMQv8itS1rnjr.htm?_url=doctor_detail&id="+_data.resultList[i].id+"'><span class='pho_wrap' style='background:url("+_data.resultList[i].accessory.originalUrl+");'  alt=''></span></a></dt><dd><div class='xingming'><h5><a href='${cm.cp}general_service_t3ncXUfMQv8itS1rnjr.htm?_url=doctor_detail&id="+_data.resultList[i].id+"'>"+_data.resultList[i].name+"</a></h5><span>"+_data.resultList[i].position.name+"</span></div><div class='keshi'>科室："+_data.resultList[i].column.title+"</div><div class='shanchang'>擅长:"+_data.resultList[i].speciality+"</div></dd></dl></div>"
+                                        }
+                                        $('.ysxx').html(str1);
+                                        $('.fenpage').html(_data.pageHtml);
+                                    }else{
+                                        $('.fenpage').html('');
+                                         $('.ysxx').html("<div class='nodata'><img src='res/default/images/ys.png' alt='抱歉！没有筛选到相关医生' /><p>抱歉！没有筛选到相关医生</p></div>");
+                                    }
+                                },
+                                complete: function () {
+                                    $(".loading").hide();
+                                },
+                                error: function (data) {
+                                    console.info("error: " + data.responseText);
+                                }
+                            });
+                        }
+        	
+        	 //  初始化
+    	    csh_ajax({size:9});
+            // 	 筛选
+                $(document).on('click','.zj_keshi li',function(){
+                   $(this).find('a').addClass('xz_color_active');
+                   $(this).siblings().find("a").removeClass('xz_color_active');
+                        $('.xz_color_active').each(function(){
+                            var _this = $(this);
+                            if(_this.hasClass('ks_chose')){
+                                columnid = _this.attr('v_id') ;
+                            }else if(_this.hasClass('zc_chose')){
+                                 position = _this.attr('v_val');
+                            }else if(_this.hasClass('jb_chose')){
+                                 level = _this.attr('v_val');
+                            }
+                        })
+                        csh_ajax({size:9,columnid:columnid,position:position,level:level,isMavin:1});
+                        
+                    })
+
+        //搜索
+            var search_btn = $('.ys_searchval_btn');
+            var search =  function(){
+                var search_text = $('.ys_searchval').val();
+                csh_ajax({size:9,keyword:search_text});
+           }
+            $('.ys_searchval').on('keydown',function(e){
+                var oe = e || window.event;
+                if(oe.keyCode == 13){
+                    search();
+                    return false;
+                }
+            })
+             search_btn.on('click',search)
+	    })
+	    
+	    
+       function ajaxPage(url,pageIndex,obj){
+        	$.post(url,{"pageIndex":pageIndex},function(res){
+        		
+                var _data = JSON.parse(res);
+                var ys_len = _data.resultList.length;
+                console.log("size:"+ys_len);
+                var str1 = '';
+                if(_data.resultList.length > 0){
+                    for(var i = 0; i< ys_len ; i++){
+                        var level=_data.resultList[i].level
+                        if(level==null){
+                            level='暂无'
+                        }
+                    str1 += "<div class='ysxx_lf'><dl><dt><a href='${cm.cp}general_service_t3ncXUfMQv8itS1rnjr.htm?_url=doctor_detail&id="+_data.resultList[i].id+"'><span class='pho_wrap' style='background:url("+_data.resultList[i].accessory.originalUrl+");'  alt=''></span></a></dt><dd><div class='xingming'><h5><a href='${cm.cp}general_service_t3ncXUfMQv8itS1rnjr.htm?_url=doctor_detail&id="+_data.resultList[i].id+"'>"+_data.resultList[i].name+"</a></h5><span>"+_data.resultList[i].position.name+"</span></div><div class='keshi'>科室："+_data.resultList[i].column.title+"</div><div class='shanchang'>擅长:"+_data.resultList[i].speciality+"</div></dd></dl></div>"
+                    }
+                    $('.ysxx').html(str1);
+                    $('.fenpage').html(_data.pageHtml);
+                }else{
+                    $('.fenpage').html('');
+                     $('.ysxx').html("<div class='nodata'><img src='res/default/images/ys.png' alt='抱歉！没有筛选到相关医生' /><p>抱歉！没有筛选到相关医生</p></div>");
+                }
+        	})
+ 
+
+	    };
+	    
+	</script>
+</body>
+</html>

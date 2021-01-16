@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+<base href="${base}/">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title></title>
+<link rel="stylesheet" href="res/default/bg/js/frame/layui/css/layui.css">
+<link rel="stylesheet" href="res/default/bg/js/frame/laydate/laydate.css">
+<style type="text/css">
+	form{
+	background: #fff;
+	}
+	form input{
+	display: block;
+    width: 98%;
+    padding-left: 10px;
+	}
+	table{
+	width: 100%;
+	}
+	.box_title{
+		border:1px solid #ebebeb;
+		background-color:#fafafa;
+		width:100px;
+		height:30px;
+		text-align:center;
+		line-height:30px;
+		font-size:12px;
+		color:#b5b5b5;
+		box-sizing:border-box;
+	}
+	.box_dic{
+		height:30px;
+		line-height:30px;
+		
+	}
+	.box_dic select,.box_dic input{
+		height:30px;
+		line-height:30px;
+		border:1px solid #ebebeb;
+		box-sizing:border-box;
+	}
+	.panel-heading {
+    padding: 10px 15px;
+    line-height: 26px;
+    background-color: #f6f6f6;
+    text-indent: 20px;
+    position: relative;
+    font-size: 16px;
+}
+.panel-heading::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    height: 26px;
+    width: 5px;
+    left: 15px;
+    background-color: #e60012;
+}
+	</style>
+</head>
+
+<style type="text/css">
+	form{
+	background: #fff;
+	}
+	form input{
+	display: block;
+    width: 98%;
+    padding-left: 10px;
+	}
+	table{
+	width: 100%;
+	}
+	.box_title{
+		border:1px solid #ebebeb;
+		background-color:#fafafa;
+		width:100px;
+		height:30px;
+		text-align:center;
+		line-height:30px;
+		font-size:12px;
+		color:#b5b5b5;
+		box-sizing:border-box;
+	}
+	.box_dic{
+		height:30px;
+		line-height:30px;
+		
+	}
+	.box_dic select,.box_dic input{
+		height:30px;
+		line-height:30px;
+		border:1px solid #ebebeb;
+		box-sizing:border-box;
+	}
+	.panel-heading {
+    padding: 10px 15px;
+    line-height: 26px;
+    background-color: #f6f6f6;
+    text-indent: 20px;
+    position: relative;
+    font-size: 16px;
+}
+.panel-heading::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    height: 26px;
+    width: 5px;
+    left: 15px;
+    background-color: #e60012;
+}
+	</style>
+
+<body>
+	<!-- /section:basics/navbar.layout -->
+	
+								<form action="" name="userForm" id="userForm" method="post">
+									<input type="hidden" name="id" id="user_id" value="${user_edit.id}"/>
+									<div id="zhongxin" style="padding-top: 13px;">
+									<table id="table_report" class="table table-striped table-bordered table-hover">
+										
+										<tr>
+											<td class="box_title">角色:</td>
+											<td class="box_dic">
+											<select class="chosen-select form-control" name="role_id" id="role_id" data-placeholder="请选择角色" style="vertical-align: top;width: 98%;padding-left: 7px;">
+											<#list user_edit.roles! as role>
+											<option value="${role.id!}"> ${role.name!}</option>
+											</#list>
+											</select>
+											</td>
+											<td><div style="width:17px;height:30px;"></div></td>
+										</tr>
+										<tr style="height:15px"></tr>
+										<tr>
+											<td class="box_title">用户名:</td>
+											<td class="box_dic">
+											<input type="text" name="username" id="username"  maxlength="32"  value="${user_edit.username!}" title="用户名" style="width:98%;" disabled="true"/>
+											</td>
+											<td><div style="width:17px;height:30px;"></div></td>
+										</tr>
+										<tr style="height:15px"></tr>
+										<tr>
+											<td class="box_title">密码:</td>
+											<td class="box_dic"><input  type="password" name="password" id="password"   datatype="*3-15" nullmsg="密碼不能爲空" errormsg="密碼範圍3至15位"  maxlength="32" sucmsg="長度校驗通過" placeholder="输入密码" title="密码" style="width:98%;"/></td>
+											<td><div class="alidform_checktip"></div></td>
+										</tr>
+										<tr style="height:15px"></tr>
+										<tr>
+											<td class="box_title">确认密码:</td>
+											<td class="box_dic"><input  type="password"  name="repassword" id="chkpwd"   datatype="*" recheck="password"  nullmsg="確認密碼不能爲空" errormsg="两次密碼不一致" sucmsg="密碼匹配 "   placeholder="再次輸入您的密碼"  title="确认密码" style="width:98%;"/></td>
+											<td><div class="alidform_checktip"></div></td>
+										</tr>
+										<tr style="height:15px"></tr>
+										<tr>
+											<td class="box_title">姓名:</td>
+											<td class="box_dic"><input type="text" name="realName" id="name"  value="${user_edit.realName!}"  maxlength="32" placeholder="这里输入姓名" title="姓名" style="width:98%;"/></td>
+										    <td><div style="width:17px;height:30px;"></div></td>
+										</tr>
+										<tr style="height:15px"></tr>
+										<tr>
+											<td class="box_title">手机号:</td>
+											<td class="box_dic"><input value="${user_edit.phone!}" type="number" name="phone" id="PHONE"  datatype="m" ajaxurl="verify.htm?"   value="${user_edit.phone!}"  maxlength="32" placeholder="这里输入手机号" title="手机号" style="width:98%;"/></td>
+											<td><div class="alidform_checktip"></div></td>
+										</tr>
+										<tr style="height:15px"></tr>
+										<tr>
+											<td class="box_title">邮箱:</td>
+											<td class="box_dic"><input value="${user_edit.email!}" type="email" name="email" id="EMAIL"  value="${user_edit.email!}"  datatype="e" ajaxurl="verify.htm?"  maxlength="32" placeholder="这里输入邮箱" title="邮箱" onblur="" style="width:98%;"/></td>
+											<td><div class="alidform_checktip"></div></td>
+										</tr>
+										<tr style="height:15px"></tr>
+										<!-- <tr>
+											<td style="width:79px;text-align: right;padding-top: 13px;">头像:</td>
+											<td><input type="file"   value="${(user_edit.thumbnail.url)!}" placeholder="请上传头像" title="头像" style="width:98%;"/><span id="uploading">上传</span>
+											<input type="text" name="thumbnail" id="headphoto" value="${(user_edit.thumbnail.url)!}" /></td>
+										    <td><div style="width:17px;height:30px;"></div></td>
+										</tr> -->
+										<tr>
+											<td class="box_title">备注:</td>
+											<td class="box_dic"><input type="text" name="remark" id="BZ" value="${user_edit.remark!}" placeholder="这里输入备注" maxlength="64" title="备注" style="width:98%;"/></td>
+										    <td><div style="width:17px;height:30px;"></div></td>
+										</tr>
+										<tr style="height:15px"></tr>
+										<tr>
+											<td class="box_title" >头像:</td>
+											<td class="box_dic">
+											<input type="file" id="theFile" style="width: 200px;display: inline-block;" />
+											<input type="hidden" id="thumbnail" name="thumbnails"/>
+											<span id="success" ></span>
+											<a style="float: right;margin-right: 8px;" class="layui-btn layui-btn-small" id="uppicture">上传</a>
+											</td>
+											<td class="box_check" ></td>
+										</tr>
+										<tr style="height:15px"></tr>
+										<tr>
+											<td style="text-align: center;" colspan="9">
+												<a class="layui-btn" onclick="save();">保存</a>
+												<a class="layui-btn layui-btn-danger layui-btn-normal" onclick="close_iframe();">取消</a>
+											</td>
+										</tr>
+									</table>
+									</div>
+									<div id="zhongxin2" class="center" style="display:none"><br/><br/><br/><br/><img src="static/images/jiazai.gif" /><br/><h4 class="lighter block green"></h4></div>
+								</form>
+					
+					
+	<!-- /.main-container -->
+	<!-- basic scripts -->
+	
+</body>
+<script src="res/default/bg/js/jquery.min.js"></script>
+<script type="text/javascript" src="res/default/bg/js/frame/layui/layui.js"></script>
+<script src="res/default/bg/js/frame/laydate/laydate.js"></script>
+<script src="res/default/bg/js/frame/layer/layer.js"></script>
+<script src="res/js/myUtils.js"></script>
+<link rel="stylesheet" type="text/css" href="res/js/Validform_v5.3.2/validForm.css" />
+<script src="res/js/Validform_v5.3.2/Validform_v5.3.2.js"></script>
+<script src="res/js/Validform_v5.3.2/Validform_Datatype.js"></script>
+<script src="res/js/AjaxUploadFile/js/AjaxUploadFile.js"></script>
+<script type="text/javascript">
+//验证
+	$(function(){
+		$("#userForm").Validform({
+			tiptype:2
+		});
+	})
+	$("#uppicture").click(function(){
+		ajaxUploadFile('upload/uploadImgByAccessory.htm?type=client',
+				{"file":{"object":$("#theFile")[0].files[0]}},
+				function(data){
+					var response = eval("("+data+")");  
+					if(response.result==true){
+						 var files = eval("("+response.resultData+")");
+			    		    for(var i=0;i<files.length;i++){
+			    		    	var creator = files[i].acyId;
+			    		    	var url = files[i].url;
+								/* $("#urlsaa").val(url); */
+			    		    	$("#thumbnail").val(creator);
+			    		    	$("#theFilePath").text(url);
+			    		    	$("#success").text("上传成功!");
+								console.log(creator);
+			    		    	break;
+			    		    }
+		    		   
+		    		 }else{
+		    			
+		    		 }
+				});
+	});
+	
+	//保存
+	function save(){
+		
+		var params = $("#userForm").serializeObject();
+		console.log(params.toString());
+		$.postJSON("admin/user/update_login_user$ajax.htm",params,function(data){
+			if(data.result==true){
+				layer.msg(data.msg,{icon:1});
+				var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+				setTimeout('parent.location.reload()',1000); 
+			}else{
+				layer.msg(data.msg,{icon:2});
+			}
+		});
+
+	}
+	function close_iframe(){
+		var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+		parent.layer.close(index);
+	}
+
+</script>
+</html>

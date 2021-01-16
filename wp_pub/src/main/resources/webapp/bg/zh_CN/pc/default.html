@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<base href="${base}/" />
+    <meta charset="UTF-8">
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title></title>  
+    <#include "/include/bg/res_include_no2.html" >
+    <style>
+        ul,li,body,p{padding: 0;margin: 0;}
+        .list-lan{background-color:#BDC9D7;height:40px;color:#555555;line-height:40px;width:98.5%;margin-top:20px;border-left: 1px solid #6FB3E0;border-right: 1px solid #6FB3E0;}
+        .list-lan span{margin-left: 20px;font-weight: bold;}
+        .all-website li{list-style:none;display:inline-block;width:17%;margin-left:2%;text-align:center;margin-top:20px;vertical-align: top;}
+        .all-website li div{border:1px solid #EAEAEA;height:90px;}
+        .all-website li img{vertical-align: middle;height:90px;width:80%;border:none;}
+        .all-website li p{margin-top: 10px;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+        .new-fabu{border: 1px solid #D9EDF7;border-top:none;overflow: hidden;padding-bottom: 20px;width:98.5%;}
+        .new-fabu ul{margin-top: 20px;}
+        .new-fabu ul li{list-style: none;background-color: #F2F2F2;margin-top: 10px;width: 87.5%;margin-left: 5%;height: 46px;padding-left: 2%;line-height: 46px;color: #2F2F2F;}
+		#main-tu{height:350px;width:55%;float:left;margin-top:15px;border-top:1px dotted #D9EDF7;}
+		#main-tu>div:nth-child(1){width:100% !important}
+		#main-tu>div:nth-child(1)>canvas{width:100% !important}
+		.main-informa{border: 1px solid #D9EDF7;border-top: none;height:360px;width:98.5%;position:relative;overflow:hidden;}
+		.banben-infor{width:45%;position:absolute;right:0;top:15px;border-top:1px dotted #D9EDF7;border-left:1px dotted #D9EDF7;height:100%;}
+		.banben-infor>li{height:40px;list-style:none;font-size:12px;margin:0 30px;line-height:40px;}
+		.banben-infor>li:nth-child(even){background-color:#F6F6F6}
+		.banben-infor>li:not(:first-child){border-top:1px solid #DDDDDD;border-right:1px solid #DDDDDD;border-left:1px solid #DDDDDD;}
+		.banben-infor>li:last-of-type{border:1px solid #DDDDDD;}
+		.banben-infor>li>span{display:inline-block;width:21%;}
+		.banben-infor>li:not(:first-child)>span{border-right:1px solid #DDDDDD;}
+		.banben-infor>li:nth-child(1)>span{color:#333333;font-size:18px;font-weight:bold;font-family:microsoft yahei;}
+		.banben-infor>li:nth-child(1){margin-bottom:20px;background-color:white;margin-top:0;}
+		.pageBottonmain{margin-top:15px;height:30px;width:98.5%;}
+    </style>
+</head>
+<body>
+<div class="main-home">
+<#if !user.webSet??>
+<div class="list-lan" style="margin-top:0px;"><span>网站管理</span></div>
+<ul class="all-website">
+   <li style="text-align: center;width:100%">数据加载中...</li>
+<script>
+var jtpl = null;
+$(function(){
+	jtpl = juicer($("#tpl").html());
+
+    $.postJSON("user/pageSearch$ajax.htm?ctype=webSet&orderby=insertTime desc&size=5", null, function(data) {			 
+			 if(data.result==true){	
+				var html = jtpl.render({data:data.resultList});
+				html += "\n\n<div class=\"pageBottonmain\"><div class=\"pageBotton\">" + data.pageHtml +"</div>"+"</div>";
+				$(".all-website").html(html);
+			} 
+		});
+});
+</script>
+<script id="tpl" type="text/template">
+{@each data as it}
+   <li><div><img src="${'$'}{it.logoUrl}" alt=""/></div><p>${'$'}{it.title}</p></li>
+{@/each}
+</script>
+</ul>
+</#if>
+<div class="list-lan"><span>网站信息</span></div>
+<div class="main-informa">
+	<div id="main-tu"></div>
+	<ul class="banben-infor">
+		<li><span>&nbsp;版本信息</span></li>
+		<li><span>&nbsp;当前用户：</span>&nbsp;${Session[Const.SESSION_USER].username}</li>
+		<li><span>&nbsp;JAVA版本：</span>&nbsp;JDK 1.8.0</li>
+        <li><span>&nbsp;网站域名：</span>&nbsp;${Session[Const.SESSION_DOMAIN]}</li>
+        <li><span>&nbsp;操作系统：</span>&nbsp;Linux 3.10.0-123.el7.x86_64</li>
+        <li><span>&nbsp;CPU使用率：</span>&nbsp;20%</li>
+        <li><span>&nbsp;内存使用率：</span>&nbsp;32%</li>
+	</ul>
+</div>
+<div class="list-lan"><span>最新发布</span></div>
+<div class="new-fabu">
+    <ul>
+        <li style="text-align: center">模块建设中...</li>
+       <!--  <li>2016-11-11&nbsp;14:28:13&nbsp;admin添加了一篇公司新闻，网站建设的几大步骤</li>
+        <li>2016-11-11&nbsp;14:28:13&nbsp;admin添加了一篇公司新闻，网站建设的几大步骤</li> -->
+    </ul>
+   <!--  <div>分页</div> -->
+</div>
+</div>
+<script src="res/js/echarts.min.js"></script>
+<script type="text/javascript">
+// $(function(){
+	
+// 	var Heights9=$(document).height()+"px";
+// 	$(".main-home").css("height",Heights9);
+	
+// })
+
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main-tu'));
+    // 指定图表的配置项和数据
+    var option = {
+        title: {
+            text: '网站浏览量'
+        },
+        tooltip: {},
+        legend: {
+            data:['浏览量']
+        },
+        xAxis: {
+            data: ["11-5","11-6","11-7","11-8","11-9","11-10","11-11"]
+        },
+        yAxis: {},
+        series: [{
+            name: '浏览量',
+            type: 'bar',
+            data: [5, 20, 36, 10, 10, 20,27]
+        }]
+    };
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+</body>
+</html>

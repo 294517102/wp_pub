@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <#include "/${rp}/include/link.html">
+    <script type="text/javascript" src="res/js/ScrollHolder.js"></script>
+</head>
+<body>
+<#include "/${rp}/include/header.html">
+<content>
+    <div class="ny">
+        <div class="ny_local bb">
+            <div class="width1200 ny_locala">
+                <a href="/index.html"><img class="home" src="../res/default/images/home.png" alt=""></a>
+                <img class="dbx" src="../res/default/images/dbx.png" alt="">
+                <a href="${pCol.children[0].url!}">${pCol.title!}</a>
+                <img class="dbx" src="../res/default/images/dbx.png" alt="">
+                <a >${sCol.title!}</a>
+            </div>
+        </div>
+        <div class="ny_con width1200">
+            <div class="ny_left fl">
+                <#include "/${rp}/include/ny_left.html">
+            </div>
+            <div class="ny_right fr">
+                <div class="rhxz" style="background: url('${sCol.thumbnail.url!}') no-repeat center center" >
+                    <div class="rhxz_t">
+                        <div class="rhxz_tz"> ${sCol.title!}</div>
+                        <div class="rhxz_te">${sCol.describes!}</div>
+                    </div>
+                </div>
+                <#assign aa = at.bc(sCol)>
+                <#if aa??&&aa?size gt 0>
+                <div class="rhxz_con">
+                    ${aa[0].ext.content!'暂无数据'}
+                </div>
+                <#else>
+                <div class="nodeta">
+                    <img src="../res/default/images/nodate.png" alt="" />
+                </div>
+                </#if>
+            </div>
+            <div style="clear: both"></div>
+        </div>
+    </div>
+</content>
+<#include "/${rp}/include/footer.html">
+<#include "/${rp}/include/script.html">
+
+</body>
+</html>

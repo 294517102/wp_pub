@@ -1,0 +1,698 @@
+﻿/*************************************************************
+ * Command:Start
+ * Control:Mobile_TopA
+ * Style:Mobile_TopA
+ * Desc:目前没有
+ * Quot:mobile
+*************************************************************/
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:Mobile_TopA
+ * Style:Mobile_TopA
+ * Desc:目前没有
+ * Quot:mobile
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:PagedArticleList.Default
+ * Style:PagedArticleList_Default
+ * Desc:目前没有
+ * Quot:mobile
+*************************************************************/
+
+.PagedArticleList_Default { /*width:100%; overflow:hidden;min-height:500px;*/}
+
+/* 标题 */
+.PagedArticleList_Default h3 { height:40px;}
+.PagedArticleList_Default h3 em {   font:normal 16px/40px "microsoft yahei"; padding-left:10px; display: block; color:#fff;}
+
+
+.PagedArticleList_Default .clear{ clear: both;}
+.PagedArticleList_Default .clear:after{ content: "."; display: block; height:0; clear:both; visibility: hidden;}
+.PagedArticleList_Default .page_css, .class_page { text-align:center; padding:10px 0;}
+.PagedArticleList_Default .page_css a, .class_page a { display: inline-block; border:1px solid #999; padding:2px 6px; color:#999; line-height:100%; border-radius: 3px;}
+.PagedArticleList_Default .page_css a:hover, .class_page a:hover{ color: #333; border: 1px solid #999; background: #999;}
+.PagedArticleList_Default .page_css b a, .class_page b a { color: #333; border:1px solid #999; background: #999;}
+.PagedArticleList_Default .page_line { }
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:PagedArticleList.Default
+ * Style:PagedArticleList_Default
+ * Desc:目前没有
+ * Quot:mobile
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:Mobile_footer
+ * Style:Mobile_footer
+ * Desc:目前没有
+ * Quot:mobile
+*************************************************************/
+
+
+
+.Mobile_footer { padding:10px 0px; width:100%; border-top:1px solid #ddd; background: url("/_skins/mobile/images/footerbg.png") repeat-x center bottom; height:80px; }
+.Mobile_footer p { text-align: center; color:#fff; font-size:12px;}
+
+
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:Mobile_footer
+ * Style:Mobile_footer
+ * Desc:目前没有
+ * Quot:mobile
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:ArticleView.Default
+ * Style:ArticleView_Default
+ * Desc:目前没有
+ * Quot:mobile
+*************************************************************/
+
+
+
+/**************文章正文开始*****************/
+.ArticleView_Default { width:749px; padding:20px 0; padding-right:30px; border-right:1px solid #ddd;}
+.ArticleView_Default h1 { color:#333; font: normal 30px/40px "microsoft yahei"; text-align: center; border-bottom:1px solid #ddd; padding-bottom:10px;}
+.ArticleView_Default .article_info { height:30px; line-height:30px; text-align:center;}
+
+.ArticleView_Default .article_content { line-height:180%; font-size:16px; color:#212121; margin:30px 30px 10px 30px}
+.ArticleView_Default .article_content p { line-height:26px; margin-bottom:10px;  text-indent:2em; text-align: justify;/* word-wrap:break-word; word-break:normal; letter-spacing:0px; */ }
+.ArticleView_Default .article_content h3 { font:bold 18px/40px "microsoft yahei"; color:#003399;}
+.ArticleView_Default .article_content ul { margin-left:45px;}
+.ArticleView_Default .article_content ul li { list-style:outside; margin:5px 0; font:normal 14px/26px "microsoft yahei";}
+
+.ArticleView_Default table { border-top:1px solid #ddd; border-left:1px solid #ddd;}
+.ArticleView_Default table th { border-bottom:1px solid #ddd; border-right:1px solid #ddd; font:bold 14px/30px "microsoft yahei"; background:#f9f9f9;}
+.ArticleView_Default table td { border-bottom:1px solid #ddd; border-right:1px solid #ddd; padding:3px 5px;}
+
+/***********附件****************/
+.ArticleView_Default .articleAttachments { color:#000; margin-bottom:30px; padding:0 30px;}
+.ArticleView_Default .articleAttachments h3 { font:normal 16px/30px "microsoft yahei"; border-bottom:1px dotted #ddd;  }
+.ArticleView_Default .articleAttachments li { display:block; font-family:"宋体"; margin:10px 0;}
+.ArticleView_Default .articleAttachments li a { margin-left:15px; color:#ff0000; text-decoration:underline; font:14px/30px "microsoft yahei"; }
+.ArticleView_Default .articleAttachments li a:hover { color:#003399; text-decoration:none;}
+.ArticleView_Default .articleAttachments li span { float:right; margin-left:20px; }
+.ArticleView_Default .articleAttachments li span a { padding:5px 10px; background:#009900; color:#fff; border-radius:5px; -webkit-border-radius:5px; text-decoration:none;}
+.ArticleView_Default .articleAttachments li span a:hover{ background:#cc0000; color:#fff; }
+
+/***********分享****************/
+.ArticleView_Default .artilcle_share{ margin:20px 30px; overflow:hidden;}
+
+/***********字号大小/打印/关闭****************/
+.ArticleView_Default .artilcle_tool { height:26px; line-height:26px; text-align:right; background:#f2f2f2; padding-right:8px;}
+.ArticleView_Default .artilcle_tool a { color: #333;}
+.ArticleView_Default .artilcle_tool a:hover { color: #cc0000;}
+
+/***********上一篇/下一篇****************/
+.ArticleView_Default .article_page { height: 31px; line-height:31px; margin-top: 15px; overflow:hidden;}
+.ArticleView_Default .article_page li { float:left; width:490px; margin:0 15px; padding-left:10px; background:url(/Widgets/WidgetCollection/Mobile/ArticleView.Default/Images/icon5.gif) no-repeat left center;}
+.ArticleView_Default .article_page li.next { background:url(/Widgets/WidgetCollection/Mobile/ArticleView.Default/Images/icon7.gif) no-repeat left center;}
+.ArticleView_Default .article_page li span { color: #003399;}
+.ArticleView_Default .article_page li a { color: #333;}
+.ArticleView_Default .article_page li a:hover { color: #003399;}
+
+/***********相关信息****************/
+.ArticleView_Default .article_about  { margin-top:10px; overflow:hidden; border-top:3px solid #000;}
+.ArticleView_Default .article_about h3 { font:normal 16px/40px "microsoft yahei"; border-bottom:1px solid #ddd;}
+.ArticleView_Default .article_about ul { padding:10px 0; overflow:hidden;}
+.ArticleView_Default .article_about li { float:left; width:490px; margin:0 15px; padding-left:10px; height:30px; line-height:30px; background:url(/Widgets/WidgetCollection/Mobile/ArticleView.Default/Images/icon1.gif) no-repeat left center; font-size:14px;}
+.ArticleView_Default .article_about li a { color: #666;}
+.ArticleView_Default .article_about li a:hover { color: #003399;}
+.ArticleView_Default .article_about li span { font-size:12px; color:#666; margin-left:10px; float:right; text-align:right;}
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:ArticleView.Default
+ * Style:ArticleView_Default
+ * Desc:目前没有
+ * Quot:mobile
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:ArticleView.Default
+ * Style:ArticleViewAll
+ * Desc:目前没有
+ * Quot:mobile
+*************************************************************/
+
+.ArticleViewAll { width:100%;  background: #fff; }
+.ArticleViewAll h3 { line-height:30px; border-bottom:3px solid #ddd; padding:15px 10px; background: linear-gradient(#fff, #f9f9f9) repeat scroll 0 0 #2b7ecc; }
+.ArticleViewAll .article_info { display:none;}
+.ArticleViewAll .article_info span { color: #5cb720; }
+
+.ArticleViewAll .article_content { margin:20px 10px; }
+.ArticleViewAll .article_content p { font-size:16px; line-height:26px; margin-bottom:22px; color:#333;/*  text-align: justify;text-indent:2em; word-wrap:break-word; word-break:normal; letter-spacing:0px; */}
+.ArticleViewAll .article_content ul { margin-left:45px;}
+.ArticleViewAll .article_content ul li { list-style:circle; margin:5px 0; }
+.ArticleViewAll .article_content a { color:#ff0000;text-decoration:underline;}
+.ArticleViewAll .article_content a:hover { color:#0066cc;text-decoration:underline;}
+.ArticleViewAll .article_content img { float: left; width:100%; height: 100%; }
+
+/***********附件****************/
+.ArticleViewAll .articleAttachments { color:#000; margin-bottom:30px; padding:0 30px;}
+.ArticleViewAll .articleAttachments h3 { font:normal 16px/30px "microsoft yahei"; border-bottom:1px dotted #ddd; display: none;  }
+.ArticleViewAll .articleAttachments li { display:block; font-family:"宋体"; margin:10px 0;}
+.ArticleViewAll .articleAttachments li a { margin-left:15px; color:#ff0000; text-decoration:underline; font:14px/30px "microsoft yahei"; }
+.ArticleViewAll .articleAttachments li a:hover { color:#003399; text-decoration:none;}
+.ArticleViewAll .articleAttachments li span { float:right; margin-left:20px; }
+.ArticleViewAll .articleAttachments li span a { padding:5px 10px; background:#009900; color:#fff; border-radius:5px; -webkit-border-radius:5px; text-decoration:none;}
+.ArticleViewAll .articleAttachments li span a:hover{ background:#cc0000; color:#fff; }
+
+/***********分享****************/
+.ArticleViewAll .artilcle_share{ padding-left:10px; margin:8px 0px; overflow:hidden;}
+
+/***********字号大小/打印/关闭****************/
+.ArticleViewAll .artilcle_tool { height:26px; line-height:26px; text-align:right; background:#f2f2f2; padding-right:8px;}
+.ArticleViewAll .artilcle_tool a { color: #333;}
+.ArticleViewAll .artilcle_tool a:hover { color: #cc0000;}
+
+/***********上一篇/下一篇****************/
+.ArticleViewAll .article_page { margin-top: 15px; overflow:hidden;}
+.ArticleViewAll .article_page li { width:100%; margin:0 10px; padding-left:10px; background:url(/Widgets/WidgetCollection/Mobile/ArticleView.Default/Images/icon5.gif) no-repeat left center; font-size:12px;}
+.ArticleViewAll .article_page li.next { background:url(/Widgets/WidgetCollection/Mobile/ArticleView.Default/Images/icon7.gif) no-repeat left center;}
+.ArticleViewAll .article_page li span { color: #003399;}
+.ArticleViewAll .article_page li a { color: #333;}
+.ArticleViewAll .article_page li a:hover { color: #003399;}
+
+/***********相关信息****************/
+.ArticleViewAll .article_about  {  margin-top:10px; overflow:hidden; border-top:3px solid #000;}
+.ArticleViewAll .article_about h3 { font:normal 16px/40px "microsoft yahei"; border-bottom:1px solid #ddd;}
+.ArticleViewAll .article_about ul { padding:10px 0; overflow:hidden;}
+.ArticleViewAll .article_about li { float:left; width:490px; margin:0 15px; padding-left:10px; height:30px; line-height:30px; background:url(/Widgets/WidgetCollection/Mobile/ArticleView.Default/Images/icon1.gif) no-repeat left center; font-size:14px;}
+.ArticleViewAll .article_about li a { color: #666;}
+.ArticleViewAll .article_about li a:hover { color: #003399;}
+.ArticleViewAll .article_about li span { font-size:12px; color:#666; margin-left:10px; float:right; text-align:right;}
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:ArticleView.Default
+ * Style:ArticleViewAll
+ * Desc:目前没有
+ * Quot:mobile
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:W_LeaderPic
+ * Style:W_LeaderPic
+ * Desc:目前没有
+ * Quot:mobile
+*************************************************************/
+
+.W_LeaderPic { min-height:500px; overflow:hidden; background:#fff; padding:10px 10px; box-shadow:0 2px 6px rgba(100, 100, 100, 0.3); }
+
+.W_LeaderPic h1{  height:40px; line-height:40px; font:normal 16px/40px "microsoft yahei";}
+.W_LeaderPic h1 em { float:left; width:110px; text-align:center; color:#fff;  display: block; }
+
+.W_LeaderPic .W_LeaderPic_Box { margin:20px auto;}
+.W_LeaderPic img { float: left; width:100%; height: 100%; }
+.W_LeaderPic p { }
+
+/* 列表 */
+/* 
+.W_LeaderPic h2 { font:normal 12px/30px "微软雅黑","宋体"; height:30px; background:url(/Widgets/WidgetCollection/Mobile/W_LeaderPic/Images/icon01.gif) no-repeat left; border-bottom:1px solid #ddd; margin-bottom:10px; padding-left:10px; color:#000;}
+.W_LeaderPic h2 span { font:normal 12px/30px "微软雅黑","宋体"; color:#042586; margin-left: 10px;}
+
+.W_LeaderPic dl { width:95%; margin:10px auto; overflow:hidden; display:block; min-height:180px; box-shadow:0 4px 8px rgba(100, 100, 100, 0.8);}
+.W_LeaderPic dl dt { float:left; width:200px;}
+.W_LeaderPic dl dd { float:left; }
+.W_LeaderPic dl dd p { font:normal 12px/14px "microsoft yahei"; color:#666; min-height: 60px;}
+ */
+.W_LeaderPic .more { display: block; float: right; }
+.W_LeaderPic a.more  { color: #333; text-decoration:underline; }
+.W_LeaderPic a.more:hover { color: #ff3300; }
+.W_LeaderPic .clear{ clear: both;}
+
+.W_LeaderPic .clear{ clear: both;}
+.W_LeaderPic .clear:after{ content: "."; display: block; height:0; clear:both; visibility: hidden;}
+.W_LeaderPic .page_css, .class_page { text-align:center; padding:10px 0; display:none;}
+.W_LeaderPic .page_css a, .class_page a { display: inline-block; border:1px solid #999; padding:2px 6px; color:#999; line-height:100%; border-radius: 3px;}
+.W_LeaderPic .page_css a:hover, .class_page a:hover{ color: #333; border: 1px solid #999; background: #999;}
+.W_LeaderPic .page_css b a, .class_page b a { color: #333; border:1px solid #999; background: #999;}
+.W_LeaderPic .page_line { }
+
+
+
+
+
+
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:W_LeaderPic
+ * Style:W_LeaderPic
+ * Desc:目前没有
+ * Quot:mobile
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:M.ArticleList
+ * Style:ArticleListAuto
+ * Desc:目前没有
+ * Quot:mobile
+*************************************************************/
+
+.ArticleListAuto { width:100%; overflow:hidden;}
+.ArticleListAuto h3 { height:40px;}
+.ArticleListAuto h3 em {   font:normal 16px/40px "microsoft yahei"; padding-left:10px; display: block; color:#fff;}
+.ArticleListAuto h3 i{ /*font:normal 16px/40px "Times New Roman"; color:#999; font-style:italic;*/}
+.ArticleListAuto h3 span { float:right; text-align:right; font:normal 12px/40px "microsoft yahei"; padding-right:10px;}
+.ArticleListAuto h3 span a { /**/color:#fff;}
+.ArticleListAuto h3 span a:hover { /**/color:#ff0; font-weight:bold;}
+
+.ArticleListAuto ul { /* width:100%; margin:6px 0; */ min-height:100px;}
+.ArticleListAuto ul li { /* height:35px; font:14px/35px "microsoft yahei"; border-bottom:1px dashed #ddd;*/}
+.ArticleListAuto ul li a { color:#333; /* display:block; background:url(/Widgets/WidgetCollection/Mobile/M.ArticleList/Images/icon02a.gif) no-repeat left center; padding-left:10px;*/ }
+.ArticleListAuto ul li a:hover { color:#339900; /* background:url(/Widgets/WidgetCollection/Mobile/M.ArticleList/Images/icon02b.gif) no-repeat left center; */ }
+.ArticleListAuto ul li span {  display: none;/*color:#aaa; font-size:12px; font-style:italic; margin-left:10px;   font:italic 12px/32px arial; */}
+
+.ArticleListAuto ul li.hotnews a { /*color:#000; display:block; background:url(/Widgets/WidgetCollection/Mobile/M.ArticleList/Images/icon02a.gif) no-repeat left center; padding-left:10px; */}
+.ArticleListAuto li.hotnews a:hover { /*color:#c00;*/}
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:M.ArticleList
+ * Style:ArticleListAuto
+ * Desc:目前没有
+ * Quot:mobile
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:Sidebar.ChannelNav
+ * Style:Sidebar_ChannelNav
+ * Desc:目前没有
+ * Quot:mobile
+*************************************************************/
+
+/******栏目分类**********/
+.Sidebar_ChannelNav { width:100%; }
+.Sidebar_ChannelNav h3 { border-bottom: 1px solid #ddd; height:35px;line-height:35px; font-size:16px; padding-left:15px;}
+.Sidebar_ChannelNav h3 span { float:left; width:300px; color:#000; }
+.Sidebar_ChannelNav ul { width:100%; margin:10px auto; overflow:hidden;}
+.Sidebar_ChannelNav ul li { display: inline-block; text-align: center;/*  float: left; margin:5px 5px; */}
+.Sidebar_ChannelNav ul li a { /* display: block; */ color:#666;}
+.Sidebar_ChannelNav ul li a:hover, li.class_on a { }
+.Sidebar_ChannelNav ul li .icon_bg { background: linear-gradient(#fff200, #0099ff) repeat scroll 0 0 #fff200; border-radius: 50%; width:50px; height: 50px; /* text-align: center;  */ margin:0 auto;}
+.Sidebar_ChannelNav ul li img { width:32px; height: 32px; line-height: 50px; padding-top:8px;}
+.Sidebar_ChannelNav ul li p {  font-size:12px; text-align: center; /* display: block;  color: #666; margin-top:2px; */ }
+
+
+/*************************************************************
+ * Command:End
+ * Control:Sidebar.ChannelNav
+ * Style:Sidebar_ChannelNav
+ * Desc:目前没有
+ * Quot:mobile
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:QuickLink
+ * Style:QuickLink
+ * Desc:目前没有
+ * Quot:mobile
+*************************************************************/
+
+
+.QuickLink { /*background:url(/Widgets/WidgetCollection/Mobile/QuickLink/Images/test.png) no-repeat center top;*/ width:90%; height:200px; margin:0 auto; position:relative; bottom:30px; }
+.QuickLink h3 { display:none;}
+
+.QuickLink ul { width:100%; margin:10px auto; overflow:hidden; }
+.QuickLink ul li{  }
+
+.QuickLink ul li a.btn01 { position:relative; top:0px; left:0px; width:52%; padding-left:50px; height:65px; display:block; background:#0171c7 url("/_skins/mobile/images/icon01.png") no-repeat 10px center; color:#fff; font:16px/65px "microsoft yahei"; }
+.QuickLink ul li a.btn01:hover { background:#005da5  url("/_skins/mobile/images/icon01.png") no-repeat 8px center;}
+
+.QuickLink ul li a.btn02 { position:absolute; top:75px; left:0px; width:35%; height:50px; display:block; background:#01befe url("/_skins/mobile/images/icon02.png") no-repeat center 8px; color:#fff; font:16px/65px "microsoft yahei"; text-align:center; padding-top:15px;}
+.QuickLink ul li a.btn02:hover { background:#03a5dc  url("/_skins/mobile/images/icon02.png") no-repeat center 6px;}
+
+.QuickLink ul li a.btn03 { position:absolute; top:75px; left:32%; width:35%; height:50px; display:block; background:#ff9c00 url("/_skins/mobile/images/icon03.png") no-repeat center 8px; color:#fff; font:16px/65px "microsoft yahei"; text-align:center; padding-top:15px;}
+.QuickLink ul li a.btn03:hover { background:#de8904  url("/_skins/mobile/images/icon03.png") no-repeat center 6px;}
+
+.QuickLink ul li a.btn04 { position:absolute; top:0px; left:70%; width:30%; height:90px; padding-top:50px; display:block; background:#00c18c url("/_skins/mobile/images/icon04.png") no-repeat center 40px; color:#fff; font:16px/65px "microsoft yahei"; text-align:center;}
+.QuickLink ul li a.btn04:hover { background:#019a70  url("/_skins/mobile/images/icon04.png") no-repeat center 38px;}
+
+.QuickLink ul li a.btn05 { position:absolute; top:150px; left:0px; width:35%; height:55px; display:block; background:#ff4e00 url("/_skins/mobile/images/icon05.png") no-repeat center 8px; color:#fff; font:16px/70px "microsoft yahei"; text-align:center; padding-top:15px;}
+.QuickLink ul li a.btn05:hover { background:#da4301  url("/_skins/mobile/images/icon05.png") no-repeat center 6px;}
+
+.QuickLink ul li a.btn06 { position:absolute; top:150px; left:37%; width:38%; padding-left:25%; height:70px; display:block; background:#ad4398 url("/_skins/mobile/images/icon06.png") no-repeat 20% center; color:#fff; font:16px/70px "microsoft yahei";}
+.QuickLink ul li a.btn06:hover { background:#853375  url("/_skins/mobile/images/icon06.png") no-repeat 8px center;}
+
+
+/*************************************************************
+ * Command:End
+ * Control:QuickLink
+ * Style:QuickLink
+ * Desc:目前没有
+ * Quot:mobile
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:mobileHeader
+ * Style:mobileHeader
+ * Desc:目前没有
+ * Quot:mobile
+*************************************************************/
+
+
+.mobileHeader { width:100%; height: 60px; background: url("/_skins/mobile/Images/mobile_bg.jpg")  repeat-x center center; bottom:3px solid #2dd59a; }
+.mobileHeader .logo { width:360px; height: 60px; background: url("/_skins/mobile/Images/mobile_logo.png") no-repeat left center; }
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:mobileHeader
+ * Style:mobileHeader
+ * Desc:目前没有
+ * Quot:mobile
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:Mbguide
+ * Style:Mbguide
+ * Desc:目前没有
+ * Quot:mobile
+*************************************************************/
+
+            #close {
+                position: absolute;
+                width: 160px;
+                left: 50%;
+                margin-left: -80px;
+                bottom: 15%;
+                padding: 10px;
+                color: #fff;
+                border-color: #fff;
+            }
+            .item-logo {
+                width: 100%;
+                height: 100%;
+                position: relative;
+            }
+            .item-logo a {
+                width: 200px;
+                height: 200px;
+                display: block;
+                border: 1px solid #FFFFFF;
+                border-color: rgba(255, 255, 255, 0.5);
+                text-align: center;
+                line-height: 200px;
+                border-radius: 50%;
+                font-size: 40px;
+                color: #fff;
+                position: absolute;
+                top: 15%;
+                left: 50%;
+                margin-left: -100px;
+            }
+            .animate {
+                position: absolute;
+                left: 0;
+                bottom: 15%;
+                width: 100%;
+                color: #fff;
+                display: -moz-box;
+            }
+            .animate h2 {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            .animate li {
+                width: 50%;
+                height: 30px;
+                line-height: 30px;
+                list-style: none;
+                font-size: 16px;
+                text-align: right;
+            }
+            .animate li:nth-child(3) {
+                text-align: left;
+                float: right;
+            }
+            .animated {
+                -webkit-animation-duration: 1s;
+                -webkit-animation-play-state: paused;
+                -webkit-animation-fill-mode: both;
+            }
+            .guide-show .bounceInDown {
+                -webkit-animation-name: bounceInDown;
+                -webkit-animation-play-state: running;
+                -webkit-animation-delay: 1s;
+                display: block;
+            }
+            .guide-show .bounceInLeft {
+                -webkit-animation-name: bounceInLeft;
+                display: block;
+                -webkit-animation-play-state: running;
+            }
+            .guide-show .bounceInRight {
+                -webkit-animation-name: bounceInRight;
+                display: block;
+                -webkit-animation-play-state: running;
+                -webkit-animation-delay: 0.5s;
+            }
+            @-webkit-keyframes bounceInDown {
+                0%, 60%, 75%, 90%, 100% {
+                    -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+                    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+                }
+                0% {
+                    opacity: 0;
+                    -webkit-transform: translate3d(0, -3000px, 0);
+                    transform: translate3d(0, -3000px, 0);
+                }
+                60% {
+                    opacity: 1;
+                    -webkit-transform: translate3d(0, 25px, 0);
+                    transform: translate3d(0, 25px, 0);
+                }
+                75% {
+                    -webkit-transform: translate3d(0, -5px, 0);
+                    transform: translate3d(0, -5px, 0);
+                }
+                90% {
+                    -webkit-transform: translate3d(0, 3px, 0);
+                    transform: translate3d(0, 3px, 0);
+                }
+                100% {
+                    -webkit-transform: none;
+                    transform: none;
+                }
+            }
+            @-webkit-keyframes bounceInLeft {
+                0%, 60%, 75%, 90%, 100% {
+                    -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+                    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+                }
+                0% {
+                    opacity: 0;
+                    -webkit-transform: translate3d(-3000px, 0, 0);
+                    transform: translate3d(-3000px, 0, 0);
+                }
+                60% {
+                    opacity: 1;
+                    -webkit-transform: translate3d(25px, 0, 0);
+                    transform: translate3d(25px, 0, 0);
+                }
+                75% {
+                    -webkit-transform: translate3d(-10px, 0, 0);
+                    transform: translate3d(-10px, 0, 0);
+                }
+                90% {
+                    -webkit-transform: translate3d(5px, 0, 0);
+                    transform: translate3d(5px, 0, 0);
+                }
+                100% {
+                    -webkit-transform: none;
+                    transform: none;
+                }
+            }
+            @-webkit-keyframes bounceInRight {
+                0%, 60%, 75%, 90%, 100% {
+                    -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+                    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+                }
+                0% {
+                    opacity: 0;
+                    -webkit-transform: translate3d(3000px, 0, 0);
+                    transform: translate3d(3000px, 0, 0);
+                }
+                60% {
+                    opacity: 1;
+                    -webkit-transform: translate3d(-25px, 0, 0);
+                    transform: translate3d(-25px, 0, 0);
+                }
+                75% {
+                    -webkit-transform: translate3d(10px, 0, 0);
+                    transform: translate3d(10px, 0, 0);
+                }
+                90% {
+                    -webkit-transform: translate3d(-5px, 0, 0);
+                    transform: translate3d(-5px, 0, 0);
+                }
+                100% {
+                    -webkit-transform: none;
+                    transform: none;
+                }
+            }
+
+
+/*************************************************************
+ * Command:End
+ * Control:Mbguide
+ * Style:Mbguide
+ * Desc:目前没有
+ * Quot:mobile
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:SliderBanner
+ * Style:SliderBanner
+ * Desc:目前没有
+ * Quot:mobile
+*************************************************************/
+
+
+.SliderBanner { width:100%; position:relative; min-height: 80px; }
+.SliderBanner .banner_zz { position: absolute; bottom:-1px; background:url(/Widgets/WidgetCollection/Mobile/SliderBanner/Images/banner_zhezhao.png) no-repeat bottom center; z-index: 1; width:100%; height: 20px;}
+
+/**
+ * 轮播组件
+ */
+ .ui-slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding-top: 31.25%; }
+  
+  .ui-slider-content {
+    display: -webkit-box;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%; }
+  
+  .ui-slider-content > li {
+    -webkit-box-flex: 1;
+    width: 100%;
+    height: 100%; }
+  
+  .ui-slider-content > li img {
+    display: block;
+    width: 100%; }
+  
+  .ui-slider-content > li span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    -webkit-background-size: 100% 100%; }
+  
+  .ui-slider-content > li.active {
+    opacity: .5; }
+  
+  .ui-slider-indicators {
+    position: absolute;
+    display: -webkit-box;
+    -webkit-box-pack: end;
+    width: 100%;
+    bottom: 10px;
+    right: 4px;
+    font-size: 0; 
+    width:50px;
+    margin:0 auto;
+    padding-bottom:10px;
+}
+  
+  .ui-slider-indicators li {
+    display: block;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 0;
+    width: 13px;
+    height: 13px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 100%;
+    margin-right: 6px;
+    -webkit-box-sizing: border-box;
+    background-clip: padding-box;
+    position: relative; }
+  
+  .ui-slider-indicators li.current:before {
+    content: '';
+    position: absolute;
+    background-color: #f00;
+    left: 0px;
+    top: 0px;
+    width: 13px;
+    height: 13px;
+    border-radius: 100%;
+    -webkit-box-sizing: border-box;
+    background-clip: padding-box; }
+  
+  .ui-slider-indicators-center {
+    -webkit-box-pack: center;
+    right: 0; }
+
+
+/*************************************************************
+ * Command:End
+ * Control:SliderBanner
+ * Style:SliderBanner
+ * Desc:目前没有
+ * Quot:mobile
+*************************************************************/

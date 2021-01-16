@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <#include "/${rp}/metalink.html">
+	<title>${webSet.title}</title>
+    <link rel="stylesheet" href="res/default/css/voice.css">
+</head>
+<body>
+    	<header>
+		<#include "/${rp}/header.html">	
+	</header>
+	<div class="dangquangongzuo">
+		<div class="dqgz_content_nav">
+			<ul class="dangqun_li">
+			    <#assign ck=cl.bk(c)>
+			    <#list ck.parent.children as cc>
+			      <#if cc_index!=4>
+				<li><a href="${cm.cp}${cc.url}" style="display:block;width:100%;height:100%" <#if cc.id==ck.id>class="dq_active"</#if>>${cc.title}</a></li>
+				</#if>
+				</#list>
+			</ul>
+		</div>
+		<div  class="dangquangongzuo_img"  style="height: 257px">
+			<img src="res/default/images/banner-lianzhen.png" alt="">
+		</div>
+		</div>
+<content>
+    <div class="hy_box width1200">
+        <div class="hy_bar">
+            <span>声音</span>
+        </div>
+        <div class="sy_box">
+            <div class="sy_left fl">
+                <img src="res/default/images/sy_img.png" alt="">
+            </div>
+            <div class="sy_right fl">
+                <div class="sy_bar">
+                    <span class="sy_shu"></span>
+                    <span class="sy_title">如果你有什么好的意见或其他反馈，可在声音进行反馈</span>
+                </div>
+                <div class="hh">
+                    <div class="in_list">
+                        <div class="sy_input">
+                            <input class="guest_input"  name="name" type="text" placeholder="请填写姓名" autocomplete="off">
+                        </div>
+                        <div class="sy_input">
+                            <input class="guest_input" name="tel" type="text" placeholder="请填写您的联系方式" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="in_list">
+                        <div class="sy_input1">
+                            <input  class="guest_input" type="text" name="email" placeholder="请填写您的邮箱" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="in_list">
+                        <div class="sy_sele2">
+                            <input class="guest_input" type="radio" name="sex" value="男">男
+                            <input class="guest_input" type="radio" name="sex" value="女">女
+                        </div>
+                    </div>
+                    <div class="in_list">
+                        <div class="sy_input2">
+                            <input class="guest_input" name="title" type="text" placeholder="请输入反馈标题" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="in_list">
+                        <div class="sy_textarea">
+                            <textarea  name="content"></textarea>
+                        </div>
+                    </div>
+                    <div class="sy_sub"><a id="sure" href="javascript:void(0);">提交</a></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</content>
+<footer>
+		<#include "/${rp}/footer.html">
+	</footer>
+	 <script src="res/js/jquery-1.12.3.js"></script>
+<script>
+     $("#sure").click(function(){
+          var isok = true;
+          var nameh = $('.guest_input[name="name"]').val().replace(/(^\s*)|(\s*$)/g, '');
+          var phoneh = $('.guest_input[name="tel"]').val().replace(/(^\s*)|(\s*$)/g, '');
+          var sexh = $('.guest_input[name="sex"]:checked').val();
+          var titleh = $('.guest_input[name="title"]').val().replace(/(^\s*)|(\s*$)/g, '');
+          var contenth = $('.sy_textarea').find("textarea[name='content']").val().replace(/(^\s*)|(\s*$)/g, '');
+           var emailh = $('.guest_input[name="email"]').val().replace(/(^\s*)|(\s*$)/g, '');
+          var emailreg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+           var phonereg=/^[1][3,4,5,7,8][0-9]{9}$/;
+          if(nameh==""){
+            alert("姓名不能为空，请重新输入！");
+              return ;
+          }
+          isok = phonereg.test(phoneh);
+          if(!isok){
+            alert("电话号码格式不正确，请重新输入！");
+              return ;
+          }
+          isok= emailreg.test(emailh);
+          if(!isok){
+            alert("邮箱格式不正确，请重新输入！");
+              return ;
+          }
+          
+          if(sexh==""||sexh==undefined){
+             alert("性别不能为空，请重新选择！");
+              return ;
+          }
+          if(titleh==""){
+             alert("标题不能为空，请重新输入！");
+              return ;
+          }
+          if(contenth==""){
+            alert("留言不能为空，请重新输入！");
+              return ;
+          }
+           $.ajax({
+             type: "post",
+             url: "/comment_save$ajax.htm",
+             data: {
+                 name:nameh,
+                 phone:phoneh,
+                 sex:sexh,
+                 email:emailh,
+                 content:contenth,
+                 state:1,
+                 type:1,
+                 title:titleh
+             },
+             dataType: "json",
+             success: function(data){
+                       alert(data.resultMsg);
+                       if(data.result){
+                          window.location.reload();
+                       }
+                      }
+         });
+          
+      });
+
+</script>
+</body>
+</html>

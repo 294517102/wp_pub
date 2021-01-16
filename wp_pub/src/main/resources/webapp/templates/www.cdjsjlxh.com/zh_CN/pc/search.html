@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <#include "/${rp}/include/link.html">
+</head>
+<body>
+<header>
+    <div class="header">
+        <div class="header_row1">
+            <div class="header_top width1200">
+                <div class="ht_l fl">欢迎光临成都建设监理协会官方网站</div>
+                <div class="ht_r fr"><iframe name="weather_inc" style="margin-top: 4px" src="http://i.tianqi.com/index.php?c=code&id=5" width="200" height="30" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" ></iframe></div>
+            </div>
+        </div>
+        <div class="header_row2">
+            <div class="header_center width1200">
+                <a href="/index.html" class="hr_l fl"><img src="res/default/images/logo.png" alt=""></a>
+                <div class="hr_c fl">
+                    <input type="text" placeholder="${key}">
+                    <span class="hrc_ss">搜索</span>
+                </div>
+                <div class="hr_r fr">
+                    <div class="hrr_l fl"><img src="res/default/images/indh.png" alt=""></div>
+                    <div class="hrr_c fl"></div>
+                    <div class="hrr_r fl">
+                        <#assign sclist=sc.bks("dian_hua")>
+                        <#list sclist as a>
+                        <div>${a.desc!}</div>
+                        </#list>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="header_row3 width1200">
+            <ul class="hrader_ul">
+                <#assign top=cl.top()>
+                <#if top?? && top?size gt 0>
+                <#list top as a>
+                <li class="header_li"><a href="<#if a.children??&& a.children?size gt 0&& a.keyword!='shou_ye'> ${a.children[0].url!} <#else>  ${a.url!}  </#if>" class="header_a">${a.title!} <#if a_index==0><span class="nav_h"></span></#if> <span class="nav_h1"></span></a></li>
+                </#list>
+                </#if>
+            </ul>
+        </div>
+        <div class="ny_banner">
+            <img src="res/default/images/gyxh_banner.png" alt="">
+        </div>
+    </div>
+</header>
+<content>
+    <div class="ny">
+        <div class="ny_local bb">
+            <div class="width1200 ny_locala">
+                <a href="/index.html"><img class="home" src="../res/default/images/home.png" alt=""></a>
+                <img class="dbx" src="res/default/images/dbx.png" alt="">
+                <a>搜索结果</a>
+            </div>
+        </div>
+        <div class="ny_con width1200">
+            <div class="search">
+                <div class="minheight">
+                    <#if !pageIndex?? >  <#assign  pageIndex="1" > </#if>
+                    <#assign pageList= at.sr(key,pageIndex,12)> 
+                    <#if pageList.list?size gt 0>
+                    <#list pageList.list as art>
+                    <a href="${cm.cp}go.htm?url=detail&k=${art.column.keyword}&id=${art.id}" class="hy_list bb hvr-underline-from-left">
+                        <span class="hy_yuan"></span>
+                        <span class="hy_t textover">${art.title!}</span>
+                        <span class="hy_time fr">${art.issueTime?string("yyyy-MM-dd")}</span>
+                    </a>
+                    </#list>
+                     <#else>
+                      <div class="nodeta">
+                        <img src="res/default/images/nodate.png" alt="" />
+                     </div>
+                    </#if>
+                </div>
+                <div style="clear: both"></div>
+                <#if pageList.list?? && pageList.list?size gt 0>
+                <div class="sx_fenye">${cm.page(req,pageIndex,pageList)}</div>
+                </#if>
+                
+            </div>
+            <div style="clear: both"></div>
+        </div>
+    </div>
+</content>
+<#include "/${rp}/include/footer.html">
+<#include "/${rp}/include/script.html">
+</body>
+</html>

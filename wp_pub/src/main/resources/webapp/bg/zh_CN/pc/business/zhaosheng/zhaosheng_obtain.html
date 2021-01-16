@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>留言回复弹窗</title>
+    <#include "/include/bg/in_head_res.html">
+
+</head>
+<body class="body clear">
+<div class="layui-container" style="width:100%">
+    <form action="" class="layui-form layui-form-pane" onsubmit="return false;">
+        <div class="layui-form-item two-colum-left">
+            <label class="layui-form-label">姓名</label>
+            <div class="layui-input-block">
+                <input type="text" name="name" lay-verify="required" value="${sign.name}"  readonly="readonly" class="layui-input">
+            </div>
+        </div>  
+           <div class="layui-form-item two-colum-right">
+             <label class="layui-form-label">性别</label>
+            <div class="layui-input-block">
+                <input type="text" name="title" value="<#if sign.sex==1>男<#else>女</#if>" disabled="true"  readonly="readonly" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item two-colum-left" >
+            <label class="layui-form-label">身份证号码</label>
+            <div class="layui-input-block">
+                <input type="text" name="phone" value="${sign.idCard}" disabled="true"  readonly="readonly" class="layui-input">
+            </div>
+        </div>
+        
+        <div class="layui-form-item two-colum-right" >
+            <label class="layui-form-label">欲就读年纪</label>
+           <div class="layui-input-block ">
+                <input type="text" name="address"  value="${sign.grade}"  readonly="readonly" class="layui-input">
+            </div>
+        </div> 
+        
+        <div class="layui-form-item two-colum-left" >
+            <label class="layui-form-label">担任职务</label>
+            <div class="layui-input-block">
+                <input type="text" name="phone" value="${sign.job}" disabled="true"  readonly="readonly" class="layui-input">
+            </div>
+        </div>
+        
+        <div class="layui-form-item two-colum-right" >
+            <label class="layui-form-label">推荐老师</label>
+           <div class="layui-input-block ">
+                <input type="text" name="address"  value="${sign.teacher}"  readonly="readonly" class="layui-input">
+            </div>
+        </div> 
+        
+        <div class="layui-form-item two-colum-left" >
+            <label class="layui-form-label">父亲姓名</label>
+            <div class="layui-input-block">
+                <input type="text" name="phone" value="${sign.fatherName}" disabled="true"  readonly="readonly" class="layui-input">
+            </div>
+        </div>
+        
+        <div class="layui-form-item two-colum-right" >
+            <label class="layui-form-label">父工作单位</label>
+           <div class="layui-input-block ">
+                <input type="text" name="address"  value="${sign.fWork}"  readonly="readonly" class="layui-input">
+            </div>
+        </div> 
+        
+        
+        <div class="layui-form-item two-colum-left" >
+            <label class="layui-form-label">父联系方式</label>
+            <div class="layui-input-block">
+                <input type="text" name="phone" value="${sign.fPhone}" disabled="true"  readonly="readonly" class="layui-input">
+            </div>
+        </div>
+        
+        <div class="layui-form-item two-colum-right" >
+            <label class="layui-form-label">母亲姓名</label>
+           <div class="layui-input-block ">
+                <input type="text" name="address"  value="${sign.motherName}"  readonly="readonly" class="layui-input">
+            </div>
+        </div> 
+        
+        <div class="layui-form-item two-colum-left" >
+            <label class="layui-form-label">母工作单位</label>
+            <div class="layui-input-block">
+                <input type="text" name="phone" value="${sign.mWork}" disabled="true"  readonly="readonly" class="layui-input">
+            </div>
+        </div>
+        
+        <div class="layui-form-item two-colum-right" >
+            <label class="layui-form-label">母联系方式</label>
+           <div class="layui-input-block ">
+                <input type="text" name="address"  value="${sign.mPhone}"  readonly="readonly" class="layui-input">
+            </div>
+        </div> 
+        
+         <div class="layui-form-item layui-form-text">
+		    <label class="layui-form-label">获奖情况</label>
+		    <div class="layui-input-block">
+		      <textarea  class="layui-textarea" readonly="readonly">${sign.prize}</textarea>
+		    </div>
+		  </div>
+        
+        <div class="layui-form-item layui-form-text">
+		    <label class="layui-form-label">学生特长</label>
+		    <div class="layui-input-block">
+		      <textarea  class="layui-textarea" readonly="readonly">${sign.specialty}</textarea>
+		    </div>
+		  </div>
+		  
+		  <div class="layui-form-item layui-form-text">
+		    <label class="layui-form-label">学生成绩</label>
+		    <div class="layui-input-block">
+		      <textarea  class="layui-textarea" readonly="readonly">${sign.achievement}</textarea>
+		    </div>
+		  </div>
+             
+    </form>
+</div>
+<#include "/include/bg/in_bottom_res.html">
+<script type="text/javascript">
+$(function(){
+	var form = layui.form,laydate = layui.laydate;
+	form.on('submit(form_1)', function(data){
+		console.log("--"+JSON.stringify(data.field));
+		$.postJSON("/general_service_ZyiZTKsAXJuasRUMKb2$ajax.htm",data.field,function(data){
+						layer.msg(data.msg);
+							if(data){
+								parent.location.reload();
+								closeWindow();
+							}
+					});
+	});
+})
+ $(".cancel").click(function(){
+ 	closeWindow();
+ });
+</script>
+</body>
+</html>

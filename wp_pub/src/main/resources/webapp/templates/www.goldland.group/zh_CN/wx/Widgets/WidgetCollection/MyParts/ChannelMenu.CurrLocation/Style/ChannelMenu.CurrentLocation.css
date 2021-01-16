@@ -1,0 +1,21 @@
+﻿
+/*************************************************************
+ * Command:Start
+ * Control:ChannelMenu.CurrentLocation
+ * Style:ChannelMenu_CurrentLocation
+ * Desc:目前没有
+ * Quot:cdsuitc2016
+*************************************************************/
+.ChannelMenu_CurrentLocation { height:32px; line-height:32px; background:url(../images/icon.png) no-repeat; padding-left:20px;	margin-bottom:10px;	font-family:"microsoft yahei";}
+.ChannelMenu_CurrentLocation span { font-family:"宋体"; margin:0 8px;}
+.ChannelMenu_CurrentLocation em { padding:0px 5px; font-style: normal;}
+.ChannelMenu_CurrentLocation a { color:#333;}
+.ChannelMenu_CurrentLocation a:hove{ color:#cc0000;}
+
+/*************************************************************
+ * Command:End
+ * Control:ChannelMenu.CurrentLocation
+ * Style:ChannelMenu_CurrentLocation
+ * Desc:目前没有
+ * Quot:cdsuitc2016
+*************************************************************/

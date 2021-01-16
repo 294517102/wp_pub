@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <base href="${domainBase}"/>
+    <#include "${includePath}/data.html" >
+		<#include "${includePath}/searchKeyword.html" >
+    <title>${webSet.title!}-${zhuanjia.title!}</title>
+    <link rel="stylesheet" href="res/default/css/reset.css">
+    <link rel="stylesheet" href="res/default/css/video-js.css">
+    <link rel="stylesheet" href="res/default/css/style.css">
+    <link rel="icon" href="res/default/image/ico.png">
+    <script src="res/js/videojs-ie8.min.js"></script>
+</head>
+<body>
+<div class="tips clearfix">
+    <#include "${includePath}/top.html" >
+</div>
+<div class="nav">
+    <div class="nav_box">
+        <ul class="clearfix">
+            <li class="nav_list "><a href="${base}/index.htm">网站首页</a><span>|</span></li>
+             <#list About_Us.children?sort_by("id") as a>
+            <li class="nav_list ">
+                <a href="${base}/obtain_page_list.htm?url=about_us&keyword=${a.keyword!}&size=15">医院概况</a><span>|</span>
+                <#break>
+                </#list>
+                
+                <div class="nav_list_second">
+                <#list About_Us.children?sort_by("id") as a>
+                <#if a_index=0>
+                    <a href="${base}/obtain_page_list.htm?url=about_us&keyword=${a.keyword!}&size=15">${a.title!}</a>
+                    <#elseif a_index=1>
+                    <a href="${base}/obtain_page_list.htm?url=about_lead&keyword=${a.keyword!}&size=15">领导团队</a>
+                    <#elseif a_index=2>
+                    <a href="${base}/to_target.htm?url=about_zhuzhi">组织架构</a>
+                    <#elseif a_index=3>
+                    <a href="${base}/obtain_page_list.htm?url=about_honor&keyword=${a.keyword!}&size=9">医院荣誉</a>
+                    <#elseif a_index=4>
+                    <a href="${base}/to_target.htm?url=about_yuanz">院长寄语</a>
+                    <#elseif a_index=5>
+                    <a href="${base}/obtain_page_list.htm?url=about_history&keyword=${a.keyword!}&size=5">医院文化</a>
+                    <#elseif a_index=6>
+                    <a href="${base}/obtain_page_list.htm?url=about_shebei&keyword=${a.keyword!}&size=9">先进设备</a>
+                    <#elseif a_index=7>
+                    <a href="${base}/obtain_page_list.htm?url=about_huanj&keyword=${a.keyword!}&size=9">医院环境</a>
+                    </#if>
+                    </#list>
+                </div>
+                
+            </li>
+            
+            
+            <li class="nav_list "><a href="${base}/query_like_article.htm?url=guide">就医指南</a><span>|</span>
+           
+            <div class="nav_list_second">
+            <#list guide.children?sort_by("id") as d>
+            <#if d_index=0>
+           
+                   
+                    <a href="${base}/query_like_article.htm?url=guide">门诊时间</a>
+                   
+              <#elseif d_index=4>
+                    <a href="${base}/to_target.htm?url=guide_louceng">楼层导航</a>
+              <#elseif d_index=5>
+                    <a href="${base}/to_target.htm?url=guide_jiaot">交通指示</a>
+              <#elseif d_index=6>
+               <a href="${base}/to_ques_list.htm?url=guide_jiaoliu&id=${d.id?c!}">医患交流</a>
+               <#elseif d_index=7>
+               <a href="${base}/to_target.htm?url=guide_message">意见反馈</a>
+               <#elseif d_index=8>
+               <a href="${base}/obtain_page_list.htm?url=guide_churu&keyword=${d.keyword!}&size=9">出/入院流程</a>
+               <#elseif d_index==9>
+               <a href="${base}/obtain_page_list.htm?url=xi_sheng_men_zhen_biao&keyword=${d.keyword!}&size=9">${d.title!}</a>
+               <#else>
+               <a href="${base}/obtain_page_list.htm?url=guide_xuzhi&keyword=${d.keyword!}&size=9">${d.title!}</a>
+               </#if>
+               </#list>
+                </div></li>
+            <li class="nav_list"><a href="${base}/obtain_by_first_letter.htm?url=departments">科室导航</a><span>|</span></li>
+            
+                   
+            <li class="nav_list active"><a href="${base}/query_like_article.htm?url=zhuanjia">专家介绍</a><span>|</span></li>
+           
+            
+           
+           <#list News.children! as n>
+            <li class="nav_list"><a href="${base}/obtain_page_list.htm?url=news&keyword=${n.keyword!}&size=9">护理天地</a><span>|</span>
+            <#break>
+            </#list>
+            <div class="nav_list_second">
+            <#list News.children?sort_by("id") as n>
+            <#if n_index=0>
+                    <a href="${base}/obtain_page_list.htm?url=news&keyword=${n.keyword!}&size=9">${n.title!}</a>
+                    <#elseif n_index=5>
+                    <a href="${base}/obtain_page_list.htm?url=news_last&keyword=${n.keyword!}&size=9">${n.title!}</a>
+                    <#else>
+                    <a href="${base}/obtain_page_list.htm?url=news_other&keyword=${n.keyword!}&size=9">${n.title!}</a>
+                    
+                    </#if>
+                    </#list>
+                </div></li>
+            <#list medical.children?sort_by("id") as n>
+            <li class="nav_list"><a href="${base}/obtain_page_list.htm?url=medical&keyword=${n.keyword!}&size=9">医学教育</a><span>|</span>
+            <#break>
+            </#list>
+            <div class="nav_list_second">
+            <#list medical.children?sort_by("id") as h>
+            <a href="${base}/obtain_page_list.htm?url=medical&keyword=${h.keyword!}&size=9">${h.title!}</a>
+            </#list>
+            </div>
+            </li>
+            <#list work.children?sort_by("id") as n>
+            <li class="nav_list"><a href="${base}/obtain_page_list.htm?url=work&keyword=${n.keyword!}&size=9">党群工作</a><span>|</span>
+            <#break>
+            </#list>
+            <div class="nav_list_second">
+            <#list work.children?sort_by("id") as h>
+            <a href="${base}/obtain_page_list.htm?url=work&keyword=${h.keyword!}&size=9">${h.title!}</a>
+            </#list>
+            </div>
+            </li>
+            
+            <#list xinwen.children?sort_by("id") as h>
+            <li class="nav_list"><a href="${base}/obtain_page_list.htm?url=home1&keyword=${h.keyword!}&size=9">新闻公告</a>
+            <#break>
+            </#list>
+            <div class="nav_list_second">
+            <#list xinwen.children?sort_by("id") as h>
+            <#if h_index=3>
+            <a href="${base}/obtain_page_list.htm?url=home&keyword=${h.keyword!}&size=9">${h.title!}</a>
+            <#else>
+            <a href="${base}/obtain_page_list.htm?url=home1&keyword=${h.keyword!}&size=9">${h.title!}</a>
+            </#if>
+            </#list>
+            </div>
+            </li>
+        </ul>
+    </div>
+
+</div>
+<div class="work_main" style="margin-top:0;">
+    <div class="work_main_box">
+        <div class="nursing_content">
+            <div class="expert_choose">
+                <div class="expert_choose_first clearfix">
+                    <div class="expert_choose_first_left">所在科室：</div>
+                    <div class="expert_choose_first_right">
+                        <ul class="expert_choose_first_right_box">
+                        <#list departments.children! as d>
+                        <#if column.id=d.id>
+                            <li class="expert_choose_first_right_list active">
+                                ${d.title!}
+                            </li>
+                            <#else>
+                            <li class="expert_choose_first_right_list">${d.title!}</li>
+                           
+                           </#if>
+                           </#list>
+                        </ul>
+                        <div class="expert_choose_first_right_con">
+
+                            <ul class="expert_choose_first_right_con_box active">
+                           <#list departments.children as d>
+                            <#if d_index==0>
+                            <#list d.children! as dc>
+                                <li class="expert_choose_first_right_con_list"
+                                onclick="query(1,${dc.id?c});" >${dc.title!}</li>
+                                </#list>
+                                </#if>
+                                </#list>
+
+                            </ul>
+                            <ul class="expert_choose_first_right_con_box">
+                            <#list departments.children?sort_by("id") as d>
+                            <#if d_index=1>
+                            <#list d.children! as dc>
+                                <li class="expert_choose_first_right_con_list" onclick="query(1,${dc.id?c});">${dc.title!}</li>
+                               </#list>
+                               </#if>
+                               </#list>
+                               
+                            </ul>
+                            <ul class="expert_choose_first_right_con_box">
+                                 <#list departments.children?sort_by("id") as d>
+                            <#if d_index=2>
+                            <#list d.children! as dc>
+                                <li class="expert_choose_first_right_con_list" onclick="query(1,${dc.id?c});">${dc.title!}</li>
+                               </#list>
+                               </#if>
+                               </#list>
+
+                            </ul>
+                            <ul class="expert_choose_first_right_con_box">
+                                 <#list departments.children?sort_by("id") as d>
+                            <#if d_index=3>
+                            <#list d.children! as dc>
+                                <li class="expert_choose_first_right_con_list" onclick="query(1,${dc.id?c});">${dc.title!}</li>
+                               </#list>
+                               </#if>
+                               </#list>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="expert_choose_second clearfix">
+                    <div class="expert_choose_first_left second_left">职称：</div>
+                    <div class="expert_choose_second_right">
+                    <#if positionList ??>
+                    		<#list positionList as position>
+                        <span onclick="query(4,${position.id?c});">${position.name!}</span>
+                       </#list>
+                       </#if>
+                       
+                    </div>
+                </div>
+            </div>
+
+            <div class="expert_content">
+                <div class="expert_content_title  clearfix">
+                    <div class="expert_content_title_left" style="width:500px;">
+                        <span>您已经选择：</span>
+                        <#if division ?? >
+                        <span class="expert_content_title_left_name">
+                        <input type="hidden" id="divisions" value="${division.id!}">${division.title!}
+                        </span>
+                        </#if>
+                        <#if position ?? >
+                        <span class="expert_content_title_left_name">
+                        	<input type="hidden" id="positions" value="${position.id!}">${position.name!}
+                        </span>
+                        </#if>
+                        <a href="${base}/query_like_article.htm?url=guide"><span class="expert_content_title_left_delate">全部删除</span></a>
+                        
+                        <span>共${artilcelist?size}名医生</span>
+                    </div>
+                    <div class="expert_content_title_right">
+                        <input class="expert_content_title_right_inp" type="text" placeholder="输入医生姓名" id="keywords">
+                        <a class="expert_content_title_right_search" onclick="nquery()">搜索</a>
+                    </div>
+                </div>
+                <div class="expert_content_del">
+                    <ul class="expert_content_box clearfix">
+                    <#if resultList?? && (resultList?size gt 0 )>
+                <#list resultList! as r>
+                        <li class="expert_content_list clearfix">
+                        <a href="${base}/singleSearch_${r.id?c!}.htm?url=zhuanjia_detail&ctype=article">
+                            <div class="expert_content_list_left">
+                                <img src="${(r.thumbnail.url!)}" alt="">
+                            </div>
+                            <div class="expert_content_list_right">
+                                <h5 class="expert_content_list_right_name">${r.title!}</h5>
+                                <div class="expert_content_list_right_inf">门诊科室：${column.title!}</div>
+                                <div class="expert_content_list_right_inf">职称：${r.position.name}</div>
+                                <div class="expert_content_list_right_dis">个人简介：${r.describes!}</div>
+                            </div>
+                            </a>
+                        </li>
+                    </#list>
+                   
+                    <#else>
+                    暂无搜索结果。。。
+                    </#if>
+                        
+                    </ul>
+                     <div class="page center" >
+				${pageHtml}
+			</div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
+<div class="main_fifth">
+    <div class="main_fifth_box">
+        <div class="main_fifth_title">友情链接</div>
+        <#include "${includePath}/link.html" >
+    </div>
+
+</div>
+<div class="footer">
+    <#include "${includePath}/foot.html" >
+</div>
+<script src="res/js/jquery.min.js"></script>
+<script src="res/js/html5shiv.js"></script>
+<script src="res/js/jquery.SuperSlide.2.1.1.js"></script>
+<script src="res/js/video.min.js"></script>
+
+<script>
+    $(".expert_choose_first_right_list").click(function(){
+        $(this).addClass("active").siblings().removeClass("active");
+        var index= $(this).index();
+        $(".expert_choose_first_right_con_box").eq(index).addClass("active").siblings().removeClass("active")
+    })
+    $(".expert_choose_first_right_con_list").click(function(){
+        $(this).addClass("active").siblings().removeClass("active");
+    })
+
+    $(".expert_choose_second_right span").click(function(){
+        $(this).addClass("active").siblings().removeClass("active");
+    })
+
+
+    lastNoMargin($('.main_fifth_content_list'),5);
+
+    lastNoMargin($('.equipment_list'),3);
+
+    lastNoMargin($('.expert_content_list'),3);
+
+
+    $(".nav_title_list").click(function(){
+        $(this).addClass("active").siblings().removeClass("active");
+    })
+    $(".nav_list").click(function(){
+        $(this).addClass("active").siblings().removeClass("active");
+    })
+
+    
+    function query(index,id){
+		var div=$("#divisions").val();
+		var wek=$("#weeks").val();
+		var tim=$("#times").val();
+		var pos=$("#positions").val();
+		var pam="";
+		if(index==1){
+			if(wek!=null||wek!=undefined){
+				pam="&week="+wek
+			}
+			if(tim!=null||tim!=undefined){
+				pam+="&time="+tim
+			}
+			if(pos!=null||pos!=undefined){
+				pam+="&position="+pos
+			}
+		}
+		if(index==2){
+			if(div!=null||div!=undefined){
+				pam="&division="+div
+			}
+			if(tim!=null||tim!=undefined){
+				pam+="&time="+tim
+			}
+			if(pos!=null||pos!=undefined){
+				pam+="&position="+pos
+			}
+		}
+		if(index==3){
+			if(div!=null||div!=undefined){
+				pam="&division="+div
+			}
+			if(wek!=null||wek!=undefined){
+				pam+="&week="+wek
+			}
+			if(pos!=null||pos!=undefined){
+				pam+="&position="+pos
+			}
+		}
+		if(index==4){
+			if(div!=null||div!=undefined){
+				pam="&division="+div
+			}
+			if(wek!=null||wek!=undefined){
+				pam+="&week="+wek
+			}
+			if(tim!=null||tim!=undefined){
+				pam+="&time="+tim
+			}
+		}
+		
+		if(index==1){
+			if(pam!=null){
+				window.location.href="${base}/query_like_article.htm?url=zhuanjia&division="+id+pam;
+			}else{
+				window.location.href="${base}/query_like_article.htm?url=zhuanjia&division="+id;
+			}
+		}
+		if(index==2){
+			if(pam!=null){
+				window.location.href="${base}/query_like_article.htm?url=guide&week="+id+pam;
+			}else{
+				window.location.href="${base}/query_like_article.htm?url=guide&week="+id;
+			}
+		}
+		if(index==3){
+			if(pam!=null){
+				window.location.href="${base}/query_like_article.htm?url=guide&time="+id+pam;
+			}else{
+				window.location.href="${base}/query_like_article.htm?url=guide&time="+id;
+			}
+		}
+		if(index==4){
+			if(pam!=null){
+				window.location.href="${base}/query_like_article.htm?url=zhuanjia&position="+id+pam;
+			}else{
+				window.location.href="${base}/query_like_article.htm?url=zhuanjia&position="+id;
+			}
+		}
+	}
+
+    function nquery(){
+		var key=$("#keywords").val();
+		
+		window.location.href="${base}/query_like_article.htm?url=zhuanjia&keyword="+key;
+	}
+
+
+</script>
+</body>
+</html>

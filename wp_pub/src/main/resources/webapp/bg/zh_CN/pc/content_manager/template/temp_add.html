@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>新增栏目</title> 
+<#include "/include/bg/in_head_res.html">
+</head>
+<body class="inner-body clear">
+	<div class="layui-container bg_white" style="width: 100%;padding:10px">
+	<form class="layui-form layui-form-pane " action="" id="column_form"
+		onsubmit="return false">
+			 <div class="layui-form-item ">
+			 <div class="layui-col-md6">
+				<label class="layui-form-label"><span style="color: red">*</span>模板名称</label>
+				<div class="layui-input-inline">
+					<input type="text" name="name" lay-verify="required" placeholder="请输入模板名称" autocomplete="off" class="layui-input" />
+				</div>
+			</div>
+			
+			<div class="layui-col-md6">
+				<label class="layui-form-label"><span style="color: red">*</span>模板预览url</label>
+				<div class="layui-input-inline">
+					<input type="tel" name="url" placeholder="请输入栏目url"
+						autocomplete="off" class="layui-input" lay-verify="required">
+				</div>
+			</div>
+			</div>
+			
+			 <div class="layui-form-item">
+    		<label class="layui-form-label">请求表数据</label>
+    		<div class="layui-input-block">
+     		 <input type="radio" name="from_tbl" value="article" title="栏目表" lay-verify="required">
+     		 <input type="radio" name="from_tbl" value="column" title="文章表" checked lay-verify="required">
+   			 </div>
+  			</div>
+			 <div class="layui-form-item ">
+				<label class="layui-form-label"><span style="color: red">*</span>参数设置</label>
+				<div class="layui-input-inline">
+				<input type="checkbox" name="" title="id" lay-skin="primary" checked style="float: left;"/>
+				<input type="text" name="p_id" placeholder="参数名称" 	autocomplete="off" class="layui-input" >
+				
+				<input type="checkbox" name="" title="关键字" lay-skin="primary">
+				<input type="text" name="p_key" placeholder="参数名称" 	autocomplete="off" class="layui-input" >
+				</div>
+			</div>
+			 <div class="layui-form-item ">
+				<label class="layui-form-label"><span style="color: red">*</span>跳转页面路径</label>
+				<div class="layui-input-inline">
+				<input type="text" name="p_url" placeholder="请设置参数" 	autocomplete="off" class="layui-input" lay-verify="required">
+				</div>
+			</div>
+		<div style="text-align: center; vertical-align: bottom;">
+			<button class="layui-btn" lay-submit lay-filter="form_column">保存</button>
+			<button type="reset" class="layui-btn layui-btn-danger cancel">取消</button>
+		</div>
+	</form>
+	</div>
+	<#include "/include/bg/in_bottom_res.html">
+	<script type="text/javascript">
+
+$(function(){
+    //注意进度条依赖 element 模块，否则无法进行正常渲染和功能性操作
+    var form = layui.form,laydate = layui.laydate;
+  
+    //监听提交
+    form.on('submit(form_column)', function(data){
+    	var params = $("#column_form").serializeObject();
+    	$.postJSON("admin/add_article_tmeplate$ajax.htm",params,function(data){
+        	layer.msg(data.resultMsg,{time:1000},function(){
+        		if(data.result){
+        			$(".cancel").click();
+//         			location.reload();
+        			window.location.reload();
+            	}
+        	});
+    	}); 
+    	
+        return false;
+    });
+    
+    $(".cancel").click(function(){
+     	closeWindow();
+     });
+})
+</script>
+
+
+</body>
+</html>

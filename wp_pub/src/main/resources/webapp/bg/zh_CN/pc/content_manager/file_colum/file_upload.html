@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>文件上传</title>
+   <#include "/include/bg/in_head_res.html">
+   </style> 
+</head>
+<body class="inner-body clear">
+
+<form class="layui-form layui-form-pane" action="" id="file_from" onsubmit="return false">
+  <div class="layui-form-item">
+  
+   <div class="layui-col-md7">
+    <label class="layui-form-label"><span style="color: red">*</span>文件标题</label>
+    <div class="layui-input-block">
+      <input type="text" name="title" lay-verify="required" placeholder="请输入文件标题" autocomplete="off" class="layui-input" >
+    </div>
+    </div>
+    
+  </div>
+
+  <div class="layui-form-item">
+	<div class="layui-col-md12">
+	  <input type="hidden" name="file_list" id="pic_list">
+  <input type="hidden" name="colunm_id" value="${RequestParameters.column_id!!}">
+	<button type="button" class="layui-btn layui-btn-normal"   id="testList"><i class="layui-icon"></i>只允许压缩文件</button>
+  <div class="layui-upload-list">
+    <table class="layui-table">
+      <thead>
+        <tr><th>文件名</th>
+        <th>大小</th>
+        <th>状态</th>
+        <th>操作</th>
+      </tr></thead>
+      <tbody id="demoList"></tbody>
+    </table>
+  </div>
+  <button type="button" class="layui-btn" id="testListAction">开始上传</button>
+    
+    </div>
+  </div>  
+
+  
+  
+    <div class="layui-form-item" style="margin-bottom: 50px;">
+   <div style="text-align: center;vertical-align:bottom;">
+       <button class="layui-btn" lay-submit lay-filter="form_column">保存</button>
+       <button class="layui-btn site-demo-active layui-btn-danger" lay-submit data-type="tabDelete" >取消</button>
+   </div>
+  </div>
+
+</form>
+		<#include "/include/bg/in_bottom_res.html">	
+		
+	<script>
+	var piclist_str="";
+layui.use('upload', function(){
+  var $ = layui.jquery
+  form = layui.form,upload = layui.upload;	
+		 //多文件列表示例
+  var demoListView = $('#demoList')
+  ,uploadListIns = upload.render({
+    elem: '#testList'
+    ,url: '${base}/upload/uploadImgByWebAccessory.htm'
+    ,accept: 'file'
+    ,exts: 'zip|rar|7z' //只允许上传压缩文件
+    ,multiple: false
+    ,auto: false
+    ,bindAction: '#testListAction'
+    ,choose: function(obj){   
+      var files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
+      //读取本地文件
+      obj.preview(function(index, file, result){
+        var tr = $(['<tr id="upload-'+ index +'">'
+          ,'<td>'+ file.name +'</td>'
+          ,'<td>'+ (file.size/1014).toFixed(1) +'kb</td>'
+          ,'<td>等待上传</td>'
+          ,'<td>'
+            ,'<button class="layui-btn layui-btn-mini demo-reload layui-hide">重传</button>'
+            ,'<button class="layui-btn layui-btn-mini layui-btn-danger demo-delete">删除</button>'
+          ,'</td>'
+        ,'</tr>'].join(''));
+        
+        //单个重传
+        tr.find('.demo-reload').on('click', function(){
+          obj.upload(index, file);
+        });
+        
+        //删除
+        tr.find('.demo-delete').on('click', function(){
+          delete files[index]; //删除对应的文件
+          tr.remove();
+          uploadListIns.config.elem.next()[0].value = ''; //清空 input file 值，以免删除后出现同名文件不可选
+        });
+        
+        demoListView.append(tr);
+      });
+    }
+    ,done: function(res, index, upload){
+        //上传完毕
+      	if(res.result){
+    		    var files = res.data;
+    		    for(var i=0;i<files.length;i++){
+    		    	var name = files[i].name;
+    		    	var url = files[i].url;
+    		    	var id = files[i].acyId;
+    		    
+    		     piclist_str+=","+id
+    		    }
+    		    console.log(piclist_str);
+      		$("#pic_list").val(piclist_str);
+          return layer.msg(res.resultMsg);
+      	}else{
+          return layer.msg('上传失败');
+      		
+      	}
+      if(res.code == 0){ //上传成功
+        var tr = demoListView.find('tr#upload-'+ index)
+        ,tds = tr.children();
+        tds.eq(2).html('<span style="color: #5FB878;">上传成功</span>');
+        tds.eq(3).html(''); //清空操作
+        return delete this.files[index]; //删除文件队列已经上传成功的文件
+      }
+      this.error(index, upload);
+    }
+    ,error: function(index, upload){
+      var tr = demoListView.find('tr#upload-'+ index)
+      ,tds = tr.children();
+      tds.eq(2).html('<span style="color: #FF5722;">上传失败</span>');
+      tds.eq(3).find('.demo-reload').removeClass('layui-hide'); //显示重传
+    }
+  });
+	
+		 
+  //监听提交
+  form.on('submit(form_column)', function(data){
+  	var params = $("#file_from").serializeObject();
+  	console.log(JSON.stringify(params));
+//   	return ;
+  	$.postJSON("${base}/admin/save_file$ajax.htm",params,function(data){
+      	layer.msg(data.msg,{time:1000},function(){
+      		if(data.result){
+//       			$(".layui-btn-danger").click();
+//       			location.reload();
+          	}
+      	});
+  /*   		layer.msg(data.msg);
+  		if(data.result==true){
+  			window.location.reload();
+  			
+//   			$(".layui-btn-danger").click();
+  		} */
+  	}); 
+  	
+      return false;
+  });		 
+		 
+});
+
+$("#testListAction").click(function(){
+	$(this).html("文件上传中");
+	$(this).addClass("layui-disabled");
+})
+
+</script>
+		</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <#include "/${rp}/metalink.html">
+</head>
+<body>
+<div class="page">
+    <#assign ck=cl.bk(c)>
+    <header class="bar bar-nav">
+        <a class="icon icon-left pull-left back"></a>
+        <a href="${cm.cp}" class="icon icon-home pull-right" external></a>
+        <h1 class="title">${ck.title}</h1>
+    </header>
+    <div class="content">
+        <div class="pic_list erjibox">
+            <#list at.bc(ck) as a>
+            <div class="content-swiper">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <#list a.pic as p>
+                        <a class="swiper-slide">
+                            <img src="${p.ourl}" alt="">
+                        </a>
+                        </#list>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+            
+            <div class="huli_content">
+                ${a.ext.content}
+            </div>
+            </#list>
+        </div>
+        <#include "/${rp}/footer.html">
+    </div>
+</div>
+
+<#include "/${rp}/jslink.html">
+<script>
+    var swiper2 = new Swiper('.content-swiper .swiper-container', {
+        pagination: '.content-swiper .swiper-pagination',
+        paginationClickable: true,
+        autoplayDisableOnInteraction : false,
+        speed:500,
+        loop:true,
+        autoplay:3000,
+    });
+</script>
+</body>
+</html>

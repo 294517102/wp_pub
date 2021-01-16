@@ -1,0 +1,17 @@
+<div class="huadong  ">
+<#assign ggtz = cl.bk('gong_gao_tong_zhi')>
+    <h3>公告通知</h3>
+    <div class="notice_active">
+            <#if !pageIndex??><#assign pageIndex="1"></#if>
+            <#assign zlist = at.bc(ggtz,"1",8)>
+                <#if zlist.list?? && zlist.list?size gt 0>
+        <ul>
+	                <#list zlist.list as z>
+		
+<li><span>${z.issueTime?string('yyyy-MM-dd')}</span><a target="_blank" href = "/go.htm?url=detail&id=${z.id!}" >${z.title!''}</a></li>
+	                </#list>
+        </ul> 
+                </#if>
+            
+    </div>
+   

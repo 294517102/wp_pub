@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>招生列表</title>
+
+<#include "/include/bg/in_head_res.html">
+
+</head>
+<body class="inner-body clear">
+	<div class="layui-container bc-color" style="width:100%">
+		<form class="layui-form layui-form-pane" id="form_1" action="${base}/admin/search/student.htm">	
+		<div class="layui-form-item"  style="background-color: white;padding:15px 10px;">		
+			<div class="layui-col-md3">
+				<label class="layui-form-label">学生姓名</label>
+				<div class="layui-input-block">
+					<input type="text" name="name"
+						autocomplete="off"  value="${RequestParameters.name!}"  placeholder="请输入学生姓名关键字" class="layui-input">
+				</div>
+			</div>
+			<div class="fl" style="margin-left:50px">
+				<button class="layui-btn fl search" lay-submit > <i class="layui-icon">&#xe615;</i> 搜索</button>
+				<button class="layui-btn layui-btn-warm  fl refresh" type="reset"><i class="layui-icon">&#x1002;</i> 刷新</button>
+			</div>
+		</div>
+		</form>
+		<div class="content_main">
+			<div class="layui-row layui-form">
+				<table class="layui-table">
+					<thead>
+							<th>学生姓名</th>
+				            <th>性别</th>
+				            <th>报名年级</th>
+				            <th>先就读学校</th>
+				            <th>推荐老师</th>
+				            <th>报名时间</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<#if resultList.list??&& resultList.list?size lte 0 >
+						<tr>
+							<td colspan="7">无数据</td>
+						</tr>
+						<#else> <#list resultList.list! as s>
+						<tr>
+							<td>${s.name!}</td>
+            				<td><#if s.sex==1>
+	            					男
+	            				<#else>
+	            					女
+	            				</#if>
+            				</td>					
+							<td>${s.grade!}</td>
+							<td>${s.nowSchool!}</td>
+							<td>${s.teacher!}</td>
+							<td>${s.insertTime?string("yyyy-MM-dd HH:mm:ss")!}</td>
+							<td>
+							<button class="layui-btn layui-btn-warm layui-btn-small detail" id="${s.id}">
+								<i class="layui-icon">&#xe63c;</i>详情
+							</button>
+								<button class="layui-btn layui-btn-danger layui-btn-small delete"  id="${s.id}">
+									<i class="layui-icon">&#xe640;</i> 删除
+								</button></td>
+						</tr>
+						</#list> </#if>
+					</tbody>
+				</table>
+				<div class="pageBotton">${pageHtml}</div>
+			</div>			
+		</div>
+	</div>
+	
+<#include "/include/bg/in_bottom_res.html">	
+	<script type="text/javascript">
+	
+	
+	//删除留言信息 
+    $(".delete").click(function(){
+    	var id = $(this).attr("id");
+    	layer.confirm("确认删除？",{btn: ['确认','取消'],icon:3 },function(){
+    		 $.postJSON("${base}/delete/student.htm",{"id":id},function(data){              
+          	     if(data.result){
+          	    	layer.msg("删除成功");     
+          	    	window.location.reload();
+          	     }
+            }); 
+    	});
+    });
+    
+    $(".refresh").click(function(){
+    	window.location.reload();
+    });
+    
+    $(".detail").click(function(){
+    	layer.open({
+            type: 2,
+            title: '留言回复',
+          //  btn: ['确定', '取消'],
+            shadeClose: true,
+            shade: 0.8,
+            area: ['65%', '500px'],
+            content:'${base}/student/obtain?id='+$(this).attr("id") //iframe的url
+        });
+    });
+
+
+
+</script>
+
+</body>
+</html>

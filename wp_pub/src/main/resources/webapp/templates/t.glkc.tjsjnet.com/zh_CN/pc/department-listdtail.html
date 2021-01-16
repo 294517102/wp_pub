@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<#include "/${rp}/metalink.html">
+	<title>${webSet.title}</title>
+	<style>
+		.dq_active1{
+			display: inline-block;
+			height: 55px;
+			width: 56px;
+			color: #46c3f2;
+			font-size: 14px;
+			border-bottom: 2px solid #46c3f2;
+		}
+		#h4{
+			color: #46c3f2;
+			border-bottom: 2px solid #46c3f2;
+		}
+		#text{
+			position: absolute;
+			top:0;
+			left: 50px;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<#include "/${rp}/header.html">	
+	</header>
+	<div class="dangquangongzuo">
+		<div  class="dangquangongzuo_img">
+		    <#assign ib= at.bi(id)>
+			<div class="dangquangongzuo_img_pos">
+				<span>${ib.column.title}</span>
+			</div>	
+		</div>
+		<div class="df_lb">
+				<div class="keshi_detai_text">
+					<h2>${ib.title}</h2>
+					<p>发布时间：${ib.issueTime?string('YYYY-MM-dd HH:mm:ss')}   本文出处： ${ib.source}</p>
+					<div class="fenx2">
+						<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+					</div>
+					<a class="goback">返回上一级</a>
+				</div>
+				<div class="keshi_detai_text_dea">
+					${ib.ext.content}
+				</div>
+		</div>
+	</div>
+	<footer>
+		<#include "/${rp}/footer.html">
+	</footer>
+	<script src="res/js/jquery-1.12.3.js"></script>
+    <script>
+		$('.goback').on('click',function(){
+		    window.history.go(-1);
+		})
+    </script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<#if data??>
+	${data}
+<#elseif msg??>
+	${msg}
+<#else>
+<script type="text/javascript">
+	$(function(){
+		window.location.href="error/404.htm?msg='missing view'";
+	});
+</script> 
+</#if>

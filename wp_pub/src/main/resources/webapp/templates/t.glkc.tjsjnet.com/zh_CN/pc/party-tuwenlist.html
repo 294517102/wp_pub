@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<#include "/${rp}/metalink.html">
+	<title>${webSet.title}</title>
+	<style type="text/css">
+	    .df_lb_nav a{
+	        cursor: pointer;
+	    }
+	     .df_lb_nav a.a_a{
+	         font-weight: 600;
+	     }
+	     .p_read{
+	         display: none;
+	     }
+	</style>
+</head>
+<body>
+	<header>
+		<#include "/${rp}/header.html">
+	</header>
+	<div class="dangquangongzuo">
+		<div class="dqgz_content_nav">
+			<ul class="dangqun_li">
+			    <#assign ck=cl.bk(c)>
+			    <#list ck.parent.children as cc>
+				<li><a href="${cm.cp}${cc.url}" style="display:block;width:100%;height:100%" <#if cc.id==ck.id>class="dq_active"</#if>>${cc.title}</a></li>
+				</#list>
+				
+			</ul>
+		</div>
+		<div  class="dangquangongzuo_img"  style="height: 257px">
+			<img src="res/default/images/banner-lianzhen.png" alt="">
+		</div>
+		<div class="df_lb">
+			<div class="df_lb_title">
+				<h4 style="height: 64px">${ck.title}</h4>
+			</div>
+			<div class="df_lb_nav">
+				<a class="a_a">时间排序</a>
+				<a >阅读排序</a>
+			</div>
+			<div class="alsbox">
+			    <div class="p_time p_p">
+			        <#if !pageIndex?? >  <#assign  pageIndex="1" > </#if>
+                    <#assign pageList= at.bc(ck,pageIndex,8)> 
+                    <#if pageList.list?size gt 0>
+                    <#list pageList.list?sort_by('issueTime')?reverse as a>
+			        <div class="df_lb_tab_zx">
+        				<div class="df_lb_tab_top">
+        					<h4>${a.title}</h4>
+        					<span>发布时间：${a.issueTime?string('YYYY-MM-dd')}  来自：${a.source}</span>
+            				<div class="df_lb_tab_bottom">
+            					<dl >
+            						<dt> <img src="<#if a.th.url??>${a.th.url}<#else>res/default/images/default_pic.png</#if>" alt=""></dt>
+            						<dd><div class="text_el">${a.desc}</div>
+            							<a href="${cm.cp}go.htm?url=party-detail&id=${a.id}">阅读</a>
+            						</dd>
+            					</dl>
+            				</div>
+        			    </div>
+        		    </div>
+        		    </#list>
+        		    <div class="fenpage">
+                    ${cm.page(req,pageIndex,pageList)}
+                    </div>
+                     <#else>
+                    <div class="nodata">
+                        <img src="res/default/images/nodata.png" alt="暂无数据" />
+                        <p>暂无数据</p>
+                    </div>
+                    </#if>
+			    </div>
+			    <div class="p_read p_p">
+			        <#if !pageIndex?? >  <#assign  pageIndex="1" > </#if>
+                    <#assign pageList= at.bc(ck,pageIndex,8)> 
+                    <#if pageList.list?size gt 0>
+                    <#list pageList.list?sort_by('viewTimes')?reverse as a>
+			        <div class="df_lb_tab_zx">
+        				<div class="df_lb_tab_top">
+        					<h4>${a.title}</h4>
+        					<span>发布时间：${a.issueTime?string('YYYY-MM-dd')}  来自：${a.source}</span>
+            				<div class="df_lb_tab_bottom">
+            					<dl >
+            						<dt> <img src="<#if a.th.url??>${a.th.url}<#else>res/default/images/default_pic.png</#if>" alt=""></dt>
+            						<dd><div class="text_el">${a.desc}</div>
+            							<a href="${cm.cp}go.htm?url=party-detail&id=${a.id}">阅读</a>
+            						</dd>
+            					</dl>
+            				</div>
+        			    </div>
+        		    </div>
+        		    </#list>
+        		    <div class="fenpage">
+                    ${cm.page(req,pageIndex,pageList)}
+                    </div>
+                     <#else>
+                    <div class="nodata">
+                        <img src="res/default/image/nodata.png" alt="暂无数据" />
+                        <p>暂无数据</p>
+                    </div>
+                    </#if>
+			    </div>
+			</div>
+			
+			
+	</div>
+</div>
+<footer>
+    <#include "/${rp}/footer.html">
+</footer>
+</body>
+<script src="res/js/jquery-1.12.3.js"></script>
+<script src="res/js/xdlines.jquery.js"></script>
+<script>
+	$('.text_el').xdlines({
+		max:4
+	});
+
+    $('.df_lb_nav a').on('click',function(){
+        var _this=this;
+        var i=$(_this).index();
+        $(_this).addClass('a_a').siblings('a').removeClass('a_a');
+        $('.p_p').eq(i).show().siblings('.p_p').hide();
+    })
+</script>
+</html>

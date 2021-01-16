@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<#include "/${rp}/metalink.html">
+	<title>${webSet.title}</title>
+</head>
+<style>
+	 .swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+    }
+    .dq_active1{
+			display: inline-block;
+			height: 55px;
+			width: 56px;
+			color: #46c3f2;
+			font-size: 14px;
+			border-bottom: 2px solid #46c3f2;
+		}
+</style>
+<body>
+	<header>
+		<#include "/${rp}/header.html">
+	</header>
+	<div class="dangquangongzuo">
+		<div class="dqgz_content_nav">
+			<#assign ck = cl.bk(c)>
+			<ul class="dangqun_li">
+			    <#list ck.parent.children as cc>
+			         <#if cc.keyword != "yi_yuan_rong_yu"&&cc.keyword != "ling_dao_tuan_dui">
+				<li><a href="${cm.cp}${cc.url}" <#if cc.id==ck.id>class="dq_active1"</#if>>${cc.title}</a></li>
+				</#if>
+				</#list>
+			</ul>
+		</div>
+		<div class="df_lb">
+			<div class="hu_lb_title">
+				<h4 style="height:64px">${ck.title}</h4>
+			</div>
+			<div class="yyjj">
+			    <#list at.bc(ck) as a>
+				<div class="yyjj_lunbo">
+					<div class="swiper-container">
+					    <div class="swiper-wrapper">
+					      <#list a.pic as p>
+					      <div class="swiper-slide">
+					      	<img src="${p.ourl}" alt="" style="width:auto;">
+					      </div>
+					      </#list>
+					      
+					    </div>
+					    <!-- Add Pagination -->
+					   <div class="swiper-pagination"></div>
+					</div>
+				</div>
+				<div class="yyjj_text">
+					${a.ext.content}	
+				</div>
+				</#list>
+			</div>
+			<#assign yygg=cl.bk('yi_yuan_gong_gao')>
+			<div class="yiyan_gonggao">
+				<div class="hu_lb_title">
+				<h4 style="height: 64px">${yygg.title}</h4>
+				<a href="${cm.cp}${yygg.url}">MORE+</a>
+			</div>
+				<ul class="gonggao_lib">
+				    <#list at.bc(yygg) as a>
+				    <#if a_index lt 6>
+					<li><a href="${cm.cp}go.htm?url=news_detail&id=${a.id}">${a.title}</a><span>${a.issueTime?string('MM-dd')} </span></li>
+					</#if>
+					</#list>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<#include "/${rp}/footer.html">
+	</footer>
+</body>
+<script src="res/js/jquery-1.12.3.js"></script>
+<script src="res/js/jquery.SuperSlide.2.1.1.js"></script>
+<script src="res/js/swiper-4.1.6.min.js"></script>
+<script>
+	 var swiper = new Swiper('.swiper-container', {
+      spaceBetween: 30,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      loop: true,
+        autoplay: {
+        	delay: 3000,
+       }
+    });
+</script>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<title></title>
+   <#include "/include/bg/in_head_res.html">
+</head>
+<body class="inner-body clear">
+	<div class="layui-container bg_white center" style="width: 100%;padding:10px">
+	<form action="" name="userForm" id="userForm" class="layui-form layui-form-pane" method="post">
+		<div style="width: 60%;margin:5px auto">
+				<div class="layui-form-item" >
+					<label class="layui-form-label"><span style="color:red">*</span>appId:</label>
+					<div class="layui-input-block">
+						<input type="text" class="inputxt layui-input"  name="app_id"id="app_id" value=""placeholder="这里输入appId"title="appId" style="width: 98%;" />
+					</div>
+				</div>
+				<div class="layui-form-item" >
+					<label class="layui-form-label"><span style="color:red">*</span>rsa私钥:</label>
+					<div class="layui-input-block">
+						<input class="layui-input" type="text" name="rsa_private" id="rsa_private" placeholder="输入rsa私钥" title="rsa私钥"style="width: 98%;" />
+					</div>
+				</div>
+				<div class="layui-form-item" >
+					<label class="layui-form-label"><span style="color:red">*</span>rsa2私钥:</label>
+					<div class="layui-input-block">
+						<input class="layui-input" type="text" name="rsa2_private" id="rsa2_private" placeholder="输入rsa2私钥" title="rsa2私钥"style="width: 98%;" />
+					</div>
+				</div>
+				<div class="layui-form-item" >
+					<label class="layui-form-label"><span style="color:red">*</span>异步通知接口:</label>
+					<div class="layui-input-block">
+						<input type="text" class="layui-input" name="notify_url" id="notify_url" placeholder="异步通知接口" title="异步通知接口"style="width: 98%;" />
+					</div>
+				</div>
+				<div class="layui-form-item" >
+					<label class="layui-form-label"><span style="color:red">*</span>签约账号2088开头:</label>
+					<div class="layui-input-block">
+						<input type="text" class="layui-input" name="partner" id="partner" placeholder="签约账号2088开头" title="签约账号2088开头"style="width: 98%;" />
+					</div>
+				</div>
+				<div class="layui-form-item" >
+					<label class="layui-form-label"><span style="color:red">*</span>MD5密钥:</label>
+					<div class="layui-input-block">
+						<input type="text" class="layui-input" name="public_key" id="public_key"	placeholder="MD5密钥" title="MD5密钥"style="width: 98%;" />
+					</div>
+					<td class="box_check"><div class="alidform_checktip"></div></td>
+				</div>
+				<div class="layui-form-item" >
+					<label class="layui-form-label"><span style="color:red">*</span>公钥MD5加密:</label>
+					<div class="layui-input-block">
+						<input type="text" class="layui-input" name="public_key_md5" id="public_key_md5" placeholder="公钥MD5加密" title="公钥MD5加密"style="width: 98%;" />
+					</div>
+				</div>
+				<div class="layui-form-item" >
+					<label class="layui-form-label"><span style="color:red">*</span>失效时间:</label>
+					<div class="layui-input-block">
+					<input type="text" name="deadTime" id="test5" required lay-verify="required" placeholder="失效日期"
+					 autocomplete="off" class=" time layui-input" onclick="laydate()"
+						style="width: 98%;">
+					</div>
+				</div>
+				<tr style="height:15px"></tr>
+				<tr>
+					<td style="text-align: center;" colspan="9">
+					<a class="layui-btn " onclick="save();">保存</a> 
+					<a class="layui-btn layui-btn-danger layui-btn-normal" onclick="close_iframe();">取消</a></td>
+				</tr>
+		</div>
+	</form>
+	</div>
+</body>
+<#include "/include/bg/in_bottom_res.html">
+<script type="text/javascript">
+	var form = layui.form,laydate = layui.laydate;
+		$(function(){
+			   laydate.render({
+		            elem: '#test5' //指定元素
+		            ,type: 'datetime'
+		        });
+		})		
+	
+	$("#uppicture").click(function(){
+		ajaxUploadFile('upload/uploadImgByAccessory.htm?type=client',
+				{"file":{"object":$("#theFile")[0].files[0]}},
+				function(data){
+					var response = eval("("+data+")");  
+					if(response.result==true){
+						 var files = eval("("+response.resultData+")");
+			    		    for(var i=0;i<files.length;i++){
+			    		    	var creator = files[i].acyId;
+			    		    	var url = files[i].url;
+								/* $("#urlsaa").val(url); */
+			    		    	$("#thumbnail").val(creator);
+			    		    	$("#theFilePath").text(url);
+			    		    	$("#success").text("上传成功!");
+								console.log(creator);
+			    		    	break;
+			    		    }
+		    		   
+		    		 }else{
+		    			
+		    		 }
+				});
+	});
+	//保存
+	function save() {
+		var partner=$("#partner").val();
+		 if(/^([2][0][8][8])/.test(partner)){
+			} else {
+			 		layer.msg("请输入正确签约账号！");
+			 	    return;
+			 	}
+		var params = $("#userForm").serializeObject();
+		/* console.log(params.thumbnail); */
+		$.postJSON("admin/saveAlipayConfig$ajax.htm",params, function(data) {
+			if (data.result == true) {
+				layer.msg(data.msg,{icon:1},function(){
+					var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+					parent.layer.close(index);
+				});
+			} else if (data.result == false) {
+				layer.msg(data.msg,{icon:1},function(){
+					var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+					parent.layer.close(index);
+				});
+			}
+		});
+	}
+	function close_iframe(){
+		var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+		parent.layer.close(index);
+	}
+</script>
+</html>
+

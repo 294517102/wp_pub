@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <#include "/${rp}/include/link.html">
+    <script type="text/javascript" src="res/js/ScrollHolder.js"></script>
+</head>
+<body>
+<!--<div class="video">-->
+<!--    <#assign sCol = cl.bk(k)>-->
+<!--    <#if !pageIndex?? >  <#assign  pageIndex="1" > </#if>-->
+<!--    <#assign pageList= at.bc(sCol,pageIndex,9)> -->
+<!--    <#if pageList.list?size gt 0>-->
+<!--    <#list pageList.list?sort_by('issueTime')?reverse as a>-->
+<!--    <video controls="controls" src="${a.url!}" class="mp">您的浏览器不支持 video 标签。</video>-->
+<!--    </#list>-->
+<!--    <#else>-->
+<!--     <div class="nodeta">-->
+<!--        <img src="../res/default/images/nodate.png" alt="" />-->
+<!--    </div>-->
+<!--     </#if>-->
+<!--</div>-->
+<!--<div class="shibox" style="display:none;"></div>-->
+<#include "/${rp}/include/header.html">
+<content>
+    <div class="ny">
+        <div class="ny_local bb">
+            <div class="width1200 ny_locala">
+                <a href="/index.html"><img class="home" src="../res/default/images/home.png" alt=""></a>
+                <img class="dbx" src="../res/default/images/dbx.png" alt="">
+                <a href="${pCol.children[0].url!}">${pCol.title!}</a>
+                <img class="dbx" src="../res/default/images/dbx.png" alt="">
+                <a >${sCol.title!}</a>
+            </div>
+        </div>
+        <div class="ny_con width1200">
+            <div class="ny_left fl">
+                <#include "/${rp}/include/ny_left.html">
+            </div>
+            <div class="ny_right fr">
+                
+                <div class="minheight ">
+                    <#if !pageIndex?? >  <#assign  pageIndex="1" > </#if>
+                <#assign pageList= at.bc(sCol,pageIndex,9)> 
+                <#if pageList.list?size gt 0>
+                <#list pageList.list?sort_by('issueTime')?reverse as a>
+                    <div class="ry_list">
+                        <div class="video_img">
+                            <img class="video_fm" src="${a.th.url!'../res/default/images/video_fm.png'}" alt="">
+                            <a target="_blank" href="${a.url!}"><img class="insp_bf" src="res/default/images/insp_bf.png" alt=""></a>
+                        </div>
+                        <div class="ry_t">${a.title!}</div>
+                    </div>
+                    </#list>
+                <#else>
+                 <div class="nodeta">
+                    <img src="../res/default/images/nodate.png" alt="" />
+                </div>
+                 </#if>
+                </div>
+                
+                <div style="clear: both"></div>
+                 <#if pageList.list?? && pageList.list?size gt 0>
+                <div class="sx_fenye">${cm.page(req,pageIndex,pageList)}</div>
+                </#if>
+            </div>
+            <div style="clear: both"></div>
+        </div>
+    </div>
+</content>
+<#include "/${rp}/include/footer.html">
+<#include "/${rp}/include/script.html">
+<script>
+    // 视频播放
+    $('.video_bf1').click(function(){
+        stop();
+        $('.shibox,.video').fadeIn(500)
+    })
+    $('.shibox').on('click',function(){
+        allow();
+        $(this).fadeOut(500);
+        $('.video').fadeOut(500)
+    });
+    function allow(){
+        $("boby").css({"height":"auto", "overflow-y":"scroll","overflow-x":"hidden"});
+        $("html").css({ "height":"auto", "overflow-y":"scroll"})
+    }
+
+    function stop(){
+        $("boby").css({"height":"100%", "overflow":"hidden"});
+        $("html").css({"height":"100%", "overflow":"hidden"})
+    }
+</script>
+</body>
+</html>

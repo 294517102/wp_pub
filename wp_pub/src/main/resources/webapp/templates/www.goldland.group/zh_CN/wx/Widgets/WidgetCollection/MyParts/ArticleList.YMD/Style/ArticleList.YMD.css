@@ -1,0 +1,144 @@
+﻿/*************************************************************
+ * Command:Start
+ * Control:ArticleList.YMD
+ * Style:ArticleListAuto
+ * Desc:目前没有
+ * Quot:site.welcome
+*************************************************************/
+.ArticleListAuto { width:100%; overflow:hidden;}
+.ArticleListAuto h3 { margin:0px auto; height:40px;}
+.ArticleListAuto h3 em {  font:normal 14px/40px "microsoft yahei"; width:100px; text-align: center; display: block; color:#fff;}
+.ArticleListAuto h3 i{ font:normal 14px/40px "Times New Roman"; color:#999; font-style:italic;}
+.ArticleListAuto h3 span { float:right; text-align:right; font:normal 12px/40px 宋体; padding-right:10px; }
+.ArticleListAuto h3 span a { color:#333;}
+.ArticleListAuto h3 span a:hover { color:#c30; }
+
+.ArticleListAuto ul { padding:5px 10px; border:1px solid #e8e8ea; border-top:none; min-height:180px;}
+.ArticleListAuto ul li { height:35px; font: 12px/35px "microsoft yahei"; border-bottom:1px dashed #ddd; display: block;}
+.ArticleListAuto ul li a { background:url("../images/icon02a.gif") no-repeat left center; padding-left:10px; height: 35px;}
+.ArticleListAuto ul li a:hover { background:url("../images/icon02b.gif") no-repeat left center;  }
+.ArticleListAuto ul li span { float:right; text-align:right; color:#aaa; font:italic 12px/35px arial; }
+
+.ArticleListAuto ul li.hotnews a { color:#000; display:block; background:url("../images/icon02a.gif") no-repeat left center; padding-left:10px; }
+.ArticleListAuto li.hotnews a:hover { color:#c00;}
+
+
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:ArticleList.YMD
+ * Style:ArticleListAuto
+ * Desc:目前没有
+ * Quot:site.welcome
+*************************************************************/
+
+/*************************************************************
+ * Command:Start
+ * Control:ArticleList.YMD
+ * Style:ArticleListFrame
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+.ArticleListFrame { width:100%;  overflow:hidden;}
+.ArticleListFrame h3 { color:#fff; height:40px ;}
+.ArticleListFrame h3 em { font:normal 14px/40px "microsoft yahei"; padding-left:0px; width:110px; text-align: center; display: block;}
+.ArticleListFrame h3 i{ font:normal 14px/40px "Times New Roman"; color:#999; font-style:italic;}
+.ArticleListFrame h3 span { float:right; text-align:right; font:normal 10px/40px Tahoma, Geneva, sans-serif; padding-right:10px;}
+.ArticleListFrame h3 span a { color:#9c9c9c;}
+.ArticleListFrame h3 span a:hover { color:#333; text-decoration: underline;}
+
+.ArticleListFrame ul {  min-height: 180px; border:1px solid #cfdced; border-top:none; background: url("../images/listbg.png") repeat-x bottom; padding:5px 10px; }
+.ArticleListFrame ul li { height:35px; font:12px/35px "microsoft yahei"; border-bottom:1px dashed #ddd;}
+.ArticleListFrame ul li a { display:block; background:url("../images/icon02a.gif") no-repeat left center; padding-left:10px; }
+.ArticleListFrame ul li a:hover { background:url("../images/icon02b.gif") no-repeat left center;  }
+.ArticleListFrame ul li span { float:right; text-align:right; color:#aaa; font:italic 12px/32px arial; }
+
+.ArticleListFrame ul li.hotnews a { color:#000; display:block; background:url("../images/icon02a.gif") no-repeat left center; padding-left:10px; }
+.ArticleListFrame li.hotnews a:hover { color:#c00;}
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:ArticleList.YMD
+ * Style:ArticleListFrame
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+/*************************************************************
+ * Command:Start
+ * Control:ArticleList.YMD
+ * Style:ArticleRight
+ * Desc:目前没有
+ * Quot:xwx2016b
+*************************************************************/
+.ArticleRight { width:100%; overflow:hidden;}
+.ArticleRight h3 { color:#fff; height:40px ; background: url("/_skins/School/images/header_tit01.png") no-repeat; }
+.ArticleRight h3 em {  float: left;  font:normal 14px/40px "microsoft yahei"; padding-left:0px; width:110px; text-align: center; display: block; }
+.ArticleRight h3 i{ display:none;}
+.ArticleRight h3 span { float:right; text-align:right; font:normal 10px/40px Tahoma, Geneva, sans-serif; padding-right:10px;}
+.ArticleRight h3 span a { color:#9c9c9c;}
+.ArticleRight h3 span a:hover { color:#333;}
+
+.ArticleRight ul { min-height: 180px;  border:1px solid #cfdced; border-top:none;/*background: url("../images/listbg.png") repeat-x bottom;*/ padding:5px 10px;}
+.ArticleRight ul li { height:35px; font:12px/35px "microsoft yahei"; border-bottom:1px dashed #ddd;}
+.ArticleRight ul li a { display:block; background:url("../images/icon02a.gif") no-repeat left center; padding-left:10px; }
+.ArticleRight ul li a:hover { background:url("../images/icon02b.gif") no-repeat left center;  }
+.ArticleRight ul li span { display:none;}
+
+.ArticleRight ul li.hotnews a { color:#000; display:block; background:url("../images/icon02a.gif") no-repeat left center; padding-left:10px; }
+.ArticleRight li.hotnews a:hover { color:#c00;}
+
+
+
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:ArticleList.YMD
+ * Style:ArticleRight
+ * Desc:目前没有
+ * Quot:xwx2016b
+*************************************************************/
+
+/*************************************************************
+ * Command:Start
+ * Control:ArticleList.YMD
+ * Style:NoHeaderList
+ * Desc:目前没有
+ * Quot:lamoo201604
+*************************************************************/
+.NoHeaderList { width:100%; overflow:hidden;}
+.NoHeaderList h3 { overflow:hidden; display:none}
+.NoHeaderList ul { width:100%; padding:5px 0; }
+.NoHeaderList ul li { float:left; width:100%; height:34px; font:12px/34px "microsoft yahei"; border-bottom:1px dashed #ddd;}
+.NoHeaderList ul li a { display:block; background:url("../images/icon_dot01.png") no-repeat left center; padding-left:15px; }
+.NoHeaderList ul li a:hover { background:url("../images/icon_dot02.png") no-repeat left center;  }
+.NoHeaderList ul li span {float:right; text-align:right; font-size:12px; color:#999;}
+
+.NoHeaderList ul li.hotnews a { color:#333; display:block; background:url("../images/icon_dot02.png") no-repeat left center; padding-left:10px; }
+.NoHeaderList li.hotnews a:hover { color:#cc0000; background:url("../images/icon_dot02.png") no-repeat left center;}
+
+
+
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:ArticleList.YMD
+ * Style:NoHeaderList
+ * Desc:目前没有
+ * Quot:lamoo201604
+*************************************************************/

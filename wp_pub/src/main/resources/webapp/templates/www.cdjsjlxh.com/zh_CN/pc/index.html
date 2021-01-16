@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <#include "/${rp}/include/link.html">
+    <link rel="stylesheet" href="res/default/css/animate.min.css">
+    <link rel="stylesheet" href="res/default/css/swiper.min.css">
+    
+</head>
+<body>
+<!--<div class="video">-->
+<!--    <#assign video = cl.bk("zai_xian_shi_pin")>-->
+<!--    <#assign gsxwarts=at.bc(video,"1",1)>-->
+<!--    <#if gsxwarts.list??&&gsxwarts.list?size gt 0>-->
+<!--    <#list gsxwarts.list?sort_by('issueTime')?reverse as art>-->
+<!--    <a target="_blank" href="${art.url!}"></a>-->
+<!--    </#list>-->
+<!--    <#else>-->
+<!--        <div class="nodeta">-->
+<!--            <img src="res/default/images/nodate.png" alt="" />-->
+<!--         </div>-->
+<!--    </#if>-->
+<!--</div>-->
+<!--<div class="shibox" style="display:none;">-->
+<!--</div>-->
+
+<!--重要通知-->
+<#assign zy = cl.bk("zhong_yao_tong_zhi")>
+<#if zy.state==1>
+<div class="zytz">
+    <div class="txtMarquee-left width1200">
+    	<div class="bd">
+    		<ul class="infoList">
+    		    <#assign tzggList=at.bc(zy)>
+    		    <#if tzggList??&&tzggList?size gt 0>
+                <#list tzggList?sort_by('issueTime')?reverse as art>
+                <#if art_index lt 9999>
+    			<li class="zytz_li"><a href="javascript:;">·${art.title!}</a></li>
+    			</#if>
+                </#list>
+                </#if>
+    		</ul>
+    	</div>
+    </div>
+</div>
+</#if>
+<header>
+    <div class="header">
+        <div class="header_row1">
+            <div class="header_top width1200">
+                <div class="ht_l fl">欢迎光临成都建设监理协会官方网站</div>
+                <div class="ht_r fr"><iframe name="weather_inc" style="margin-top: 4px" src="http://i.tianqi.com/index.php?c=code&id=5" width="200" height="30" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" ></iframe></div>
+            </div>
+        </div>
+        <div class="header_row2">
+            <div class="header_center width1200">
+                <a class="hr_l fl"><img src="res/default/images/logo.png" alt=""></a>
+                <div class="hr_c fl">
+                    <input type="text">
+                    <span class="hrc_ss"  onclick="searchmess(this)">搜索</span>
+                </div>
+                <div class="hr_r fr">
+                    <div class="hrr_l fl"><img src="res/default/images/indh.png" alt=""></div>
+                    <div class="hrr_c fl"></div>
+                    <div class="hrr_r fl">
+                        <#assign sclist=sc.bks("dian_hua")>
+                        <#list sclist as a>
+                        <div>${a.desc!}</div>
+                        </#list>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="header_row3 width1200">
+            <ul class="hrader_ul">
+                <#assign top=cl.top()>
+                <#if top?? && top?size gt 0>
+                <#list top as a>
+                <li class="header_li">
+                    <a href="<#if a.children??&& a.children?size gt 0 && a.keyword!='shou_ye'> ${a.children[0].url!} <#else>  ${a.url!}  </#if>" class="header_a">${a.title!} <#if a_index==0><span class="nav_h"></span></#if> <span class="nav_h1"></span></a>
+                    <div class="sub_nav">
+                        <#if a.children??&& a.children?size gt 0>
+                        <#list a.children as b>
+                        <#if b.keyword!="tu_pian_xin_wen" && b.keyword!="zhong_yao_tong_zhi">
+                        <a href="${b.url!}">${b.title!}</a>
+                        </#if>
+                        </#list>
+                        </#if>
+                    </div>
+                    </li>
+                </#list>
+                </#if>
+            </ul>
+        </div>
+        <div class="banner">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <#list webSet.homeSlides as homeSlide>
+                    <div class="swiper-slide banner_list">
+                        <img src="${homeSlide.accessory.ourl!}" alt="">
+                        <div class="banner_box">
+                            <div class="baner_c">
+                                <img class="c_l fl ani" swiper-animate-effect="bounceIn" swiper-animate-duration="1s" swiper-animate-delay="0.3s" src="res/default/images/c.png" alt="">
+                                <div class="c_r fr">
+                                    <div class="cr_t">
+                                        <span class="ani" swiper-animate-effect="zoomIn" swiper-animate-duration="1s" swiper-animate-delay="0.5s"> 都 </span>
+                                        <span class="ani" swiper-animate-effect="zoomIn" swiper-animate-duration="1s" swiper-animate-delay="0.7s"> 建 </span>
+                                        <span class="ani" swiper-animate-effect="zoomIn" swiper-animate-duration="1s" swiper-animate-delay="0.9s"> 设 </span>
+                                        <span class="ani" swiper-animate-effect="zoomIn" swiper-animate-duration="1s" swiper-animate-delay="1.1s"> 监 </span>
+                                        <span class="ani" swiper-animate-effect="zoomIn" swiper-animate-duration="1s" swiper-animate-delay="1.3s"> 理 </span>
+                                        <span class="ani" swiper-animate-effect="zoomIn" swiper-animate-duration="1s" swiper-animate-delay="1.5s"> 协 </span>
+                                        <span class="ani" swiper-animate-effect="zoomIn" swiper-animate-duration="1s" swiper-animate-delay="1.8s"> 会 </span>
+                                    </div>
+                                    <div class="cr_t cr_t1">
+
+                                        <span class="ani" swiper-animate-effect="zoomIn" swiper-animate-duration="1s" swiper-animate-delay="0.6s">Ch</span>
+                                        <span class="ani" swiper-animate-effect="zoomIn" swiper-animate-duration="1s" swiper-animate-delay="0.8s">eng</span>
+                                        <span class="ani" swiper-animate-effect="zoomIn" swiper-animate-duration="1s" swiper-animate-delay="0.9s">du </span>
+                                        <span class="ani" style="margin-left: 10px" swiper-animate-effect="zoomIn" swiper-animate-duration="1s" swiper-animate-delay="1s">Ass</span>
+                                        <span class="ani"  swiper-animate-effect="zoomIn" swiper-animate-duration="1.1s" swiper-animate-delay="1.3s">oci</span>
+                                        <span class="ani" swiper-animate-effect="zoomIn" swiper-animate-duration="1s" swiper-animate-delay="1.2s">tion</span>
+                                        <span class="ani" style="margin-left: 10px" swiper-animate-effect="bounceIn" swiper-animate-duration="1.4s" swiper-animate-delay="1.3s">of</span>
+                                        <span class="ani" style="margin-left: 10px" swiper-animate-effect="zoomIn" swiper-animate-duration="1s" swiper-animate-delay="1.5s">Engin</span>
+                                        <span class="ani" swiper-animate-effect="zoomIn" swiper-animate-duration="1s" swiper-animate-delay="1.7s">eering</span>
+                                        <span class="ani" style="margin-left: 10px" swiper-animate-effect="zoomIn" swiper-animate-duration="1s" swiper-animate-delay="1.8s">Consu</span>
+                                        <span class="ani" swiper-animate-effect="zoomIn" swiper-animate-duration="1s" swiper-animate-delay="1.8s">ltants</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    </#list>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </div>
+</header>
+<div  id="imgfloat" style="position: absolute;z-index: 999;"><div id="imgclose">x</div><img src="${sc.bk('shou_ye_piao_fu_guang_gao').acc.url!}"/></div>
+<content>
+    <div style="position: relative">
+        <div class="width1200">
+        <div class="content width1200">
+            <div class="c_row1">
+                <div class="cr1_l fl">
+                    <#assign tp = cl.bk("tu_pian_xin_wen")>
+                    <div class="in_bar bb">
+                        <img class="bar_bg" src="res/default/images/bar_bg.png" alt="">
+                        <span class="inbar_t">${tp.title!}</span>
+                        <span class="inbar_d">/${tp.describes!}</span>
+                        <a href="${tp.url!}" class="inbar_more fr">MORE<span class="inbar_icon iconfont icon-arrow-right-copy"></span></a>
+                    </div>
+                    <div class="intpxw">
+                        <div id="slideBox" class="slideBox">
+                            <div class="hd">
+                                <ul>
+                                    <#assign tzggList=at.bc(tp)>
+                                    <#if tzggList??&&tzggList?size gt 0>
+                                    <#list tzggList?sort_by('issueTime')?reverse as art>
+                                    <#if art_index lt 4>
+                                    <li></li>
+                                    </#if>
+                                    </#list>
+                                    </#if>
+                                 </ul>
+                            </div>
+                            <div class="bd">
+                                <ul>
+                                    <#assign tzggList=at.bc(tp)>
+                                    <#if tzggList??&&tzggList?size gt 0>
+                                    <#list tzggList?sort_by('issueTime')?reverse as art>
+                                    <#if art_index lt 4>
+                                    <li class="tpxw_li">
+                                        <a href="/go.htm?url=detail&k=${tp.keyword}&id=${art.id}"  class="tpxw_a">
+                                            <img src="${art.th.url!}" />
+                                            <div class="intp_t"><span class="intp_tt textover">${art.title!}</span></div>
+                                        </a>
+                                    </li>
+                                </#if>
+                                </#list>
+                                <#else>
+                                <div class="nodeta" style="margin: 40px 0;">
+                                    <img style="width:140px;" src="res/default/images/nodate.png" alt="" />
+                                 </div>
+                                </#if>
+                                </ul>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="cr1_r fr">
+                    <#assign fydt = cl.bk("xie_hui_dong_tai")>
+                    <div class="in_bar bb">
+                        <img class="bar_bg" src="res/default/images/bar_bg.png" alt="">
+                        <span class="inbar_t">${fydt.title}</span>
+                        <span class="inbar_d">/${fydt.describes!}</span>
+                        <a href="${fydt.url!}" class="inbar_more fr">MORE<span class="inbar_icon iconfont icon-arrow-right-copy"></span></a>
+                    </div>
+                    <ul class="crr_con">
+                        <#assign tzggList=at.bc(fydt)>
+                        <#if tzggList??&&tzggList?size gt 0>
+                        <#list tzggList?sort_by('issueTime')?reverse as art>
+                        <#if art_index lt 7>
+                        <#assign dqsj = .now?long/1000>
+                        <#assign fbsj = art.issueTime?long/1000>
+                        <#assign cha =  (dqsj-fbsj)/86400>
+                        <li class="crr_li">
+                            <a href="/go.htm?url=detail&k=${fydt.keyword}&id=${art.id}" class="crr_a">
+                                <div class="in_yuan fl"></div>
+                                <div class="xhdt_title fl textover"><#if cha lt 3 && cha gt 0> <span class="in_xin">新</span></#if>${art.title!}</div>
+                                <div class="shdt_time fr">${art.issueTime?string("yyyy-MM-dd")}</div>
+                            </a>
+                        </li>
+                        </#if>
+                        </#list>
+                        <#else>
+                        <div class="nodeta" style=";margin: 40px 0;">
+                            <img style="width:140px;" src="res/default/images/nodate.png" alt="" />
+                         </div>
+                        </#if>
+                    </ul>
+                </div>
+                <div style="clear: both"></div>
+            </div>
+            <div class="c_row2">
+                <div class="cr2_r fl">
+                    <#assign tz = cl.bk("tong_zhi_gong_gao")>
+                    <div class="in_bar bb">
+                        <img class="bar_bg" src="res/default/images/bar_bg.png" alt="">
+                        <span class="inbar_t">${tz.title!}</span>
+                        <span class="inbar_d">/${tz.describes!}</span>
+                        <a href="${tz.url!}" class="inbar_more fr">MORE<span class="inbar_icon iconfont icon-arrow-right-copy"></span></a>
+                    </div>
+                    <ul class="crr_con">
+                        <#assign tzggList=at.bc(tz)>
+                        <#if tzggList??&&tzggList?size gt 0>
+                        <#list tzggList?sort_by('issueTime')?reverse as art>
+                        <#if art_index lt 7>
+                        <#assign dqsj = .now?long/1000>
+                        <#assign fbsj = art.issueTime?long/1000>
+                        <#assign cha =  (dqsj-fbsj)/86400>
+                        <li class="crr_li">
+                            <a <#if art.url??> target="_blank" href="${art.url}" <#else>   href="/go.htm?url=detail&k=${tz.keyword}&id=${art.id}" </#if>  class="crr_a">
+                                <div class="in_yuan fl"></div>
+                                <div class="xhdt_title fl textover"><#if cha lt 3 && cha gt 0> <span class="in_xin">新</span></#if>${art.title!}</div>
+                                <div class="shdt_time fr">${art.issueTime?string("yyyy-MM-dd")}</div>
+                            </a>
+                        </li>
+                        </#if>
+                        </#list>
+                        <#else>
+                        <div class="nodeta" style="margin: 40px 0;">
+                            <img style="width:140px;" src="res/default/images/nodate.png" alt="" />
+                         </div>
+                        </#if>
+                    </ul>
+                </div>
+                <div class="cr2_r fr">
+                    <#assign dt = cl.bk("hui_yuan_dong_tai")>
+                    <div class="in_bar bb">
+                        <img class="bar_bg" src="res/default/images/bar_bg.png" alt="">
+                        <span class="inbar_t">${dt.title!}</span>
+                        <span class="inbar_d">/${dt.describes!}</span>
+                        <a href="${dt.url!}" class="inbar_more fr">MORE<span class="inbar_icon iconfont icon-arrow-right-copy"></span></a>
+                    </div>
+                    <ul class="crr_con">
+                        <#assign tzggList=at.bc(dt)>
+                        <#if tzggList??&&tzggList?size gt 0>
+                        <#list tzggList?sort_by('issueTime')?reverse as art>
+                        <#if art_index lt 7>
+                        <#assign dqsj = .now?long/1000>
+                        <#assign fbsj = art.issueTime?long/1000>
+                        <#assign cha =  (dqsj-fbsj)/86400>
+                        <li class="crr_li">
+                            <a href="/go.htm?url=detail&k=${dt.keyword}&id=${art.id}" class="crr_a">
+                                <div class="in_yuan fl"></div>
+                                <div class="xhdt_title fl textover"><#if cha lt 3 && cha gt 0> <span class="in_xin">新</span></#if>${art.title!}</div>
+                                <div class="shdt_time fr">${art.issueTime?string("yyyy-MM-dd")}</div>
+                            </a>
+                        </li>
+                        </#if>
+                        </#list>
+                        <#else>
+                        <div class="nodeta" style="margin: 40px 0;">
+                            <img style="width:140px;" src="res/default/images/nodate.png" alt="" />
+                         </div>
+                        </#if>
+                    </ul>
+                </div>
+                <div style="clear: both"></div>
+            </div>
+            <div class="c_row3" style="background: url('${sc.bk('shou_ye_guang_gao_wei').acc.url!}') no-repeat center/cover;height: 105px;line-height: 105px">
+                <!--<a  class="in_ggw">-->
+                <!--    ${sc.bk("shou_ye_guang_gao_wei").desc!}-->
+                    
+                <!--</a>-->
+            </div>
+            <div class="c_row4">
+                <div class="cr4_l fl">
+                    <#assign ib = cl.bk("zheng_ce_fa_gui")>
+                    <div class="in_bar bb">
+                        <img class="bar_bg" src="res/default/images/bar_bg.png" alt="">
+                        <span class="inbar_t">${ib.title!}</span>
+                        <span class="inbar_d">/${ib.describes!}</span>
+                        <a href="${ib.url!}" class="inbar_more fr">MORE<span class="inbar_icon iconfont icon-arrow-right-copy"></span></a>
+                    </div>
+                    <ul class="crr_con">
+                        <#assign tzggList=at.bc(ib)>
+                        <#if tzggList??&&tzggList?size gt 0>
+                        <#list tzggList?sort_by('issueTime')?reverse as art>
+                        <#if art_index lt 7>
+                        <#assign dqsj = .now?long/1000>
+                        <#assign fbsj = art.issueTime?long/1000>
+                        <#assign cha =  (dqsj-fbsj)/86400>
+                        <li class="crr_li">
+                            <a href="/go.htm?url=detail&k=${ib.keyword}&id=${art.id}" class="crr_a">
+                                <div class="in_yuan fl"></div>
+                                <div class="xhdt_title fl textover"><#if cha lt 3 && cha gt 0> <span class="in_xin">新</span></#if>${art.title!}</div>
+                                <div class="shdt_time fr">${art.issueTime?string("yyyy-MM-dd")}</div>
+                            </a>
+                        </li>
+                        </#if>
+                        </#list>
+                        <#else>
+                        <div class="nodeta" style="margin: 40px 0;">
+                            <img style="width:140px;" src="res/default/images/nodate.png" alt="" />
+                         </div>
+                        </#if>
+                    </ul>
+                </div>
+                <div class="cr4_r fr">
+                    <#assign lbb = cl.bk("hui_yuan_lie_biao")>
+                    <div class="in_bar bb">
+                        <img class="bar_bg" src="res/default/images/bar_bg.png" alt="">
+                        <span class="inbar_t">${lbb.title!}</span>
+                        <span class="inbar_d">/${lbb.describes!}</span>
+                        <a href="${lbb.url!}" class="inbar_more fr">MORE<span class="inbar_icon iconfont icon-arrow-right-copy"></span></a>
+                    </div>
+                    <div class="cr4_con">
+                        <div class="txtMarquee-top">
+                            <div class="bd">
+                                <ul class="infoList">
+                                    <#assign tzggList=at.bc(lbb)>
+                                    <#if tzggList??&&tzggList?size gt 0>
+                                    <#list tzggList?sort_by('issueTime')?reverse as art>
+                                    <#if art_index lt 999>
+                                    <li class="crr_li"><a href="/go.htm?url=detail&k=${lbb.keyword}&id=${art.id}" class="crr_a cr4_t textover"><span class="span_yuan"></span>${art.title}</a></li>
+                                    </#if>
+                                    </#list>
+                                    <#else>
+                                    <div class="nodeta" style="margin: 40px 0;">
+                                        <img style="width:140px;" src="res/default/images/nodate.png" alt="" />
+                                     </div>
+                                    </#if>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div style="clear: both"></div>
+            </div>
+            <div class="c_row5">
+                <div class="cr5_l fl">
+                    <#assign qyzt = cl.bk("qi_ye_zhan_tai")>
+                     <#assign yz = cl.bk("you_zhi_gong_cheng")>
+                    <div class="in_bar bb">
+                        <img class="bar_bg" src="res/default/images/bar_bg.png" alt="">
+                        <span class="inbar_t">${qyzt.title!}</span>
+                        <span class="inbar_d">/${qyzt.describes!}</span>
+                        <a href="${yz.url!}" class="inbar_more fr">MORE<span class="inbar_icon iconfont icon-arrow-right-copy"></span></a>
+                    </div>
+                    <div class="cr5_con">
+                        <div class="picMarquee-left">
+                            <div class="bd">
+                                <ul class="picList">
+                                   
+                                    <#assign fpgj = cl.bk("fu_pin_gong_jian")>
+                                    <#assign tzggList=at.bc(fpgj)>
+                                    <#if tzggList??&&tzggList?size gt 0>
+                                    <#list tzggList?sort_by('issueTime')?reverse as art>
+                                    <#if art_index lt 6>
+                                    <li class="cr5_li">
+                                        <a href="/go.htm?url=detail&k=${yz.keyword}&id=${art.id}" class="cr5_a">
+                                            <div class="pic"><img src="${art.th.url!}" /></div>
+                                            <div class="title textover">${art.title!}</div>
+                                        </a>
+                                    </li>
+                                    </#if>
+                                    </#list>
+                                    <#else>
+                                    <div class="nodeta" style="margin: 20px 0;">
+                                        <img style="width:100px;" src="res/default/images/nodate.png" alt="" />
+                                     </div>
+                                    </#if>
+                                   
+                                    <#assign yz = cl.bk("you_zhi_gong_cheng")>
+                                    <#assign tzggList=at.bc(yz)>
+                                    <#if tzggList??&&tzggList?size gt 0>
+                                    <#list tzggList?sort_by('issueTime')?reverse as art>
+                                    <#if art_index lt 6>
+                                    <li class="cr5_li">
+                                        <a href="/go.htm?url=detail&k=${yz.keyword}&id=${art.id}" class="cr5_a">
+                                            <div class="pic"><img src="${art.th.url!}" /></div>
+                                            <div class="title textover">${art.title!}</div>
+                                        </a>
+                                    </li>
+                                    </#if>
+                                    </#list>
+                                    <#else>
+                                    <div class="nodeta" style="margin: 20px 0;">
+                                        <img style="width:100px;" src="res/default/images/nodate.png" alt="" />
+                                     </div>
+                                    </#if>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="cr5_r fr">
+                    <#assign sp = cl.bk("zai_xian_shi_pin")>
+                    <div class="in_bar bb">
+                        <img class="bar_bg" src="res/default/images/bar_bg.png" alt="">
+                        <span class="inbar_t">${sp.title!}</span>
+                        <span class="inbar_d">/${sp.describes!}</span>
+                        <a href="${sp.url!}" class="inbar_more fr">MORE<span class="inbar_icon iconfont icon-arrow-right-copy"></span></a>
+                    </div>
+                    <div class="cr5r_con">
+                        <#assign tzggList=at.bc(sp)>
+                        <#if tzggList??&&tzggList?size gt 0>
+                        <#list tzggList?sort_by('issueTime')?reverse as art>
+                        <#if art_index lt 1>
+                        <div class="cr5r_video">
+                            <img class="insp_img" src="${art.th.url!'res/default/images/insp_img.png'}" alt="">
+                            <a target="_blank" href="${art.url!}"><img class="insp_bf" src="res/default/images/insp_bf.png" alt=""></a>
+                            
+                        </div>
+                        </#if>
+                        </#list>
+                        <#else>
+                        <div class="nodeta" style="margin: 20px 0;">
+                            <img style="width:100px;" src="res/default/images/nodate.png" alt="" />
+                         </div>
+                        </#if>
+                    </div>
+                </div>
+                <div style="clear: both"></div>
+            </div>
+            <div class="c_row6">
+                <div class="in_bar bb">
+                    <img class="bar_bg" src="res/default/images/bar_bg.png" alt="">
+                    <span class="inbar_t">友情链接</span>
+                    <span class="inbar_d">/FRIENDLY LINK</span>
+                    
+                </div>
+                <div class="cr6_con">
+                    <div class="picMarquee-left">
+            			<div class="bd">
+            				<ul class="picList">
+            				    <#assign findlink = fl.bs(99)>
+                                <#list findlink as aaa>
+            					<li class="qilj_li">
+            						<div class="pic"><a href="${aaa.url!}" target="_blank"><img src="${aaa.logo.url!}" /></a></div>
+            					</li>
+            					</#list>
+            				</ul>
+            			</div>
+            		</div>
+                </div>
+            </div>
+        </div>
+            <div class="in_right">
+                <div class="in_zp">
+                    <img src="res/default/images/inzpxx.png" alt="">
+                    <div class="inzp_t">协会微信</div>
+                    <img class="inzp_ewm" src="${sc.bk('er_wei_ma').acc.url!}" alt="">
+                    <a href="/go.htm?k=dan_wei_zhao_pin&url=zpxx/dwzp" class="inzprk">人才交流</a>
+                </div>
+                <div class="in_qt">
+                    <#assign sclist=sc.bks("shou_ye_ce_bian_guang_gao")>
+                    <#list sclist as cb>
+                    <a target="_blank" href="${cb.url!}">
+                        <img style="width:160px;height:auto;" src="${cb.acc.url!}"/>
+                    </a>
+                    
+                    </#list>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</content>
+<#include "/${rp}/include/footer.html">
+<#include "/${rp}/include/script.html">
+<script type="text/javascript" src="res/js/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="res/js/swiper.animate1.0.3.min.js"></script>
+<script type="text/javascript" src="res/js/swiper.min.js"></script>
+<script>
+        jQuery(".slideBox").slide({mainCell:".bd ul",effect:"left",autoPlay:true});
+        jQuery(".txtMarquee-top").slide({mainCell:".bd ul",autoPlay:true,effect:"topMarquee",vis:7,interTime:50});
+        jQuery(".picMarquee-left").slide({mainCell:".bd ul",autoPlay:true,effect:"leftMarquee",vis:4,interTime:60});
+        jQuery(".txtMarquee-left").slide({mainCell:".bd ul",autoPlay:true,effect:"leftMarquee",vis:4,interTime:50});
+        // 搜索
+         function searchmess(ele){
+             if(jQuery(ele).prev().val().replace(/(^\s*)|(\s*$)/g, '')==""){
+               alert('请输入你想搜索的关键字');
+               return ;
+             }
+                window.location.href="/go.htm?url=search&key="+jQuery(ele).prev().val().replace(/(^\s*)|(\s*$)/g, '');;
+         }
+        
+        // banner轮播
+        var mySwiper = new Swiper ('.swiper-container', {
+            autoplay: {
+                delay: 4000,//1秒切换一次
+            },
+            pagination: {
+                el: '.swiper-pagination',
+            },
+            on:{
+                init: function(){
+                    swiperAnimateCache(this); //隐藏动画元素
+                    swiperAnimate(this); //初始化完成开始动画
+                },
+                slideChangeTransitionEnd: function(){
+                    swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+                    //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
+                }
+            }
+        })
+
+
+
+        // 广告漂浮
+        window.onload = move;
+        //图片移动方法
+        //声明全局变量 
+        var x =0;
+        var y =$(".header").height()+40;    //移动的值
+        //声明变量 三目运算时使用
+        var xflag = true;
+        var yflag = true;
+        var timer = null;
+        function move(){
+            var L=0;
+            var T=0;        //图片初始位置
+            var img = document.getElementById("imgfloat")
+            //clientWidth  可视化区域的宽   offsetWidth 宽度包含(边框,边距)
+            //图片向左或右移动的距离
+            var R =(document.documentElement.clientWidth) - (img.offsetWidth);
+            //图片向下或上移动的距离
+            var B = (document.documentElement.clientHeight) - (img.offsetHeight);
+            /*移动的值*/
+            img.style.left=(x+document.documentElement.scrollLeft)+"px";
+            img.style.top=(y+document.documentElement.scrollTop)+"px";
+            //左右移动一次的值    
+            x = x +(xflag?1:-1);
+            if(x<L){
+                xflag=true;
+                x=L;
+            }
+            if(x>=R){
+                xflag=false;
+                x=R;
+            }
+            //上下移动一次的值    
+            y = y +(yflag?1:-1);
+            if(y<T){
+                yflag=true;
+                y=T;
+            }
+            if(y>=B){
+                yflag=false;
+                y=B;
+            }
+            //定时器  一秒移动一次
+            timer= setTimeout(move,50);
+        }
+        //DOM2  绑定事件
+        //获取漂浮广告的div  鼠标移动上去图片停止浮动
+        document.getElementById("imgfloat").addEventListener("mousemove",function(){
+            clearTimeout(timer);
+        })
+        document.getElementById("imgfloat").addEventListener("mouseout",function(){
+            timer= setTimeout(move,100);
+        })
+        //点击小叉 隐藏广告
+        document.getElementById("imgclose").addEventListener("click",function(){
+            document.getElementById("imgfloat").style.display="none"
+        })
+
+
+
+
+        // 视频播放
+        $('.insp_bf').click(function(){
+            stop();
+            $('.shibox,.video').fadeIn(500)
+        })
+        $('.shibox').on('click',function(){
+            var playpause = document.getElementById("video")
+            allow();
+            $(this).fadeOut(500);
+            $('.video').fadeOut(500)
+            playpause.pause()
+        });
+        function allow(){
+            $("boby").css({"height":"auto", "overflow-y":"scroll","overflow-x":"hidden"});
+            $("html").css({ "height":"auto", "overflow-y":"scroll"})
+        }
+
+        function stop(){
+            $("boby").css({"height":"100%", "overflow":"hidden"});
+            $("html").css({"height":"100%", "overflow":"hidden"})
+        }
+
+
+        // 侧边广告
+        var topBegin=$(".header").offset().top; 
+ 　　     　　$(window).scroll(function(){
+　　　　　　var win_top=$(this).scrollTop(); 
+　　　　　　var _top=$(".header").height(); 
+　　　　　　if(win_top>=_top){
+　　　　　　　$(".in_right").addClass("infixed"); 
+　　　　　　}
+　　　　　　if(win_top<=_top){ 
+　　　　　　　$(".in_right").removeClass("infixed");
+　　　　　　}
+ 　　　　})
+
+    
+</script>
+</body>
+</html>

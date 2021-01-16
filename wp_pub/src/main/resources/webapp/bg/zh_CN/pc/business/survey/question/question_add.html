@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>问卷调查新增</title>
+    <#include "/include/bg/in_head_res.html">
+	<style type="text/css">
+	.ico{
+	cursor: pointer;
+    right: -37px;
+    position: absolute;
+    top: 8px;
+    font-size: 23px;
+	}
+	</style>
+</head>
+<body class="body clear">
+<div class="layui-container" style="width:100%">
+    <form action="" class="layui-form layui-form-pane from_q" onsubmit="return false;">
+        <div class="layui-form-item ">
+            <label class="layui-form-label">问题名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="content" lay-verify="required" value=""  class="layui-input">
+            </div>
+        </div>  
+           <div class="layui-form-item ">
+             <label class="layui-form-label">问题类型</label>
+            <div class="layui-input-block">
+               <select name="type">
+               		<option value="1">单选题</option>
+               		<option value="2">多选题</option>
+               		<option value="3">填空题</option>
+               </select>
+            </div>
+        </div>
+        <div >
+        <div class="layui-form-item two-colum-left" >
+            <label class="layui-form-label">问题选项</label>
+            <div class="layui-input-block">
+                <input type="text" name="" value=""  class="layui-input rad">
+            </div>
+        </div>
+        <div style="margin-left: 10px;" class="addres">
+         	<button    class="layui-btn addtr"  ><i class="layui-icon">&#xe654; </i>新增选项</button>
+        </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">备注</label>
+            <div class="layui-input-block ">
+                <input type="text" name="remark" value=""   class="layui-input">
+            </div>
+        </div>
+			<input type="hidden" class="rad_val" value="" name="readios">
+           <div class="layui-form-item center">
+                  <button  lay-submit  class="layui-btn " lay-filter="form_1">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-danger cancel">取消</button>
+        </div>
+    </form>
+</div>
+<#include "/include/bg/in_bottom_res.html">
+<script type="text/javascript">
+$(function(){
+	var form = layui.form,laydate = layui.laydate;
+	form.on('submit(form_1)', function(data){
+		var rad = $('.rad');
+		var rad_val = '';
+		for(var i = 0; i<rad.length;i++){
+			rad_val += rad.eq(i).val() +",";
+		}
+		$('.rad_val').val(rad_val);
+		var params = $(".from_q").serializeObject();
+		
+		$.postJSON("/add_survey_question$ajax.htm",params,function(data){
+						layer.msg(data.msg);
+							if(data){
+								parent.location.reload();
+								closeWindow();
+							}
+					});
+	});
+	//删除新增选项
+	$('.layui-form').on('click','.ico',function(){
+		$(this).parent().remove();
+		})
+		//新增选项 
+		var aid=1;
+	$(".addtr").click(function(){
+		$(".addres").parent().append('<div class="layui-form-item two-colum-left" style="position:relative;" ><i class="layui-icon ico">&#x1007;</i> '
+				+'  <label class="layui-form-label">问题选项 '+aid+'</label>'
+				+' 	<div class="layui-input-block">'
+				+'  <input type="text"  value=""  class="layui-input rad">'
+				+'</div>'
+				+'</div>');
+		aid+=1;
+	});
+})
+//关闭窗口
+ $(".cancel").click(function(){
+ 	closeWindow();
+ });
+</script>
+</body>
+</html>

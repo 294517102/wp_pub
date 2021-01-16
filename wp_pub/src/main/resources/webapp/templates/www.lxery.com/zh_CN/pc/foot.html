@@ -1,0 +1,29 @@
+<div class="footer_box">
+        <ul class="footer_content clearfix">
+            <li class="footer_list"><a href="${base}/to_target.htm?url=guide_jiaot">网站地图</a><span>|</span></li>
+            <#list guide.children?sort_by("id") as d>
+           <#if d_index=6>
+            <li class="footer_list"><a href="${base}/to_ques_list.htm?url=guide_jiaoliu&id=${d.id?c!}">医患交流</a><span>|</span></li>
+            </#if>
+            </#list>
+            <li class="footer_list"><a href="${base}/query_like_article.htm?url=guide">门诊时间</a><span>|</span></li>
+            <#list xinwen.children?sort_by("id") as h>
+            <li class="footer_list"><a href="${base}/obtain_page_list.htm?url=home&keyword=${h.keyword!}&size=9">新闻公告</a><span>|</span></li>
+            <#break>
+            </#list>
+        </ul>
+        <div>
+        	<span><a href="${base}/admin/obtain_login.htm" target="_blank">管理员入口</a></spana0>|
+        	<span><a href="http://office.189.cn" target="_blank">综合办公系统</spana>
+        </div>
+        <p class="footer_dis">四川省泸县第二人民医院版权所有</p>
+        <p class="footer_dis">备案序号：<a href="http://beian.miit.gov.cn/" target="_blank">蜀ICP备17029627号</a></p>
+        <p class="beian"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51052102510584 
+" target="_blank"><img src="res/default/image/jingbei.png">川公网安备 51052102510584号</a></p>
+<p><a href="http://www.sctjsj.com/" target="_blank">技术支持：天健世纪</a></p>
+        <div  class="footer_weixin" >
+            <img src="res/default/image/weixin.jpg" alt="">
+            <div class="footer_weixin_dis" >官方微信</div>
+        </div>
+        <a href="http://bszs.conac.cn/sitename?method=show&id=5E642BBC5EAC620BE053022E1AAC2C6D"><img class="footer_shiye" src="res/default/image/23.png" alt=""></a>
+    </div>

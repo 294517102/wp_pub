@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <base href="${domainBase}"/>
+    <#include "${includePath}/data.html" >
+		<#include "${includePath}/searchKeyword.html" >
+    <title>${webSet.title!}-${yyjj.title!}</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <link rel="stylesheet" href="res/default/css/resets.css">
+    <link rel="stylesheet" href="res/default/css/style.css">
+</head>
+<body>
+    <div class="survey_img">
+        <img src="res/default/image/10.png" alt="">
+    </div>
+    <#if resultList?? && (resultList?size gt 0 )>
+                <#list resultList! as r>
+    <div class="survey_content">
+        <h4 class="survey_content_title">${r.title!}</h4>
+        <#list r.articleExt! as at>
+        <div class="survey_content_dis">
+            ${at.content!}
+        </div>
+        </#list>
+    </div>
+    </#list>
+    <#else>
+    暂无信息。。。
+    </#if>
+    
+
+<script src="res/js/jquery.min.js"></script>
+<script src="res/js/style.js"></script>
+</body>
+</html>

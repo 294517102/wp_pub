@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>服务列表</title>
+
+<#include "/include/bg/in_head_res.html">
+     <style type="text/css">
+ 	.uploadeyu>p:nth-of-type(1){
+ 		line-height:90px;
+ 		font-size:40px
+ 	}
+ 	.uploadeyu{
+ 		display:inline-block;
+ 		width:90px;
+ 		height:90px;
+ 		overflow:hidden;
+ 		background-color:#eee;
+ 		text-align:center;
+ 		cursor: pointer;
+ 	}
+ 	.uploadeyu>img{
+ 		min-width:100%;
+ 		height:100%;
+ 	}
+ 	.img-lable{
+ 		height:100px !important;
+ 		line-height:85px !important;
+ 	}
+ 	.img-hint{
+ 		font-size:12px;
+ 		color: red
+ 	}
+ 	.layui-form-item{
+ 		margin-bottom:8px;		
+ 	}
+ 
+ 	.layui-upload-list img{
+ 	vertical-align: initial!important;
+ 	}
+/*  	预览图片的box */
+ 	.pic_box{
+ 		float:left;
+ 		position:relative;
+ 		max-width:100px;
+ 		max-height:100px;
+ 		margin-right: 12px;
+ 		overflow: hidden;
+ 	}
+ 	.pic_box img{
+ 	display:block;
+ 	width:100%;
+ 	}
+/*  	图片删除的小图标 */
+ 	.del_pic{
+ 	    position: absolute;
+	    top: 0px;
+	    right: 0px;
+	    width: 20px;
+	    height: 20px;
+	    z-index: 999;
+   		cursor: pointer;
+    }
+    .down_list li{
+    	border: 1px solid #d2d2d2;
+    	  
+    }
+    .down_list li:hover{
+      background-color: #5FB878;
+      color:white;
+    }
+ </style>
+</head>
+<body class="inner-body clear">
+	<div class="layui-container bg-color" style="width:100%">
+
+		<div class="content_main">
+			<div class="layui-row">
+		<button type="button" class="layui-btn layui-bg-blue" id="upload_1" ><i class="layui-icon">&#xe681;</i>上传文件</button>
+		<button type="button" class="layui-btn layui-bg-blue layui-btn-radius show_page" ><i class="layui-icon">&#xe681;</i>预览</button>
+			</div>
+			
+			
+			<div class="layui-row layui-form">
+			
+<!-- 		<div class="layui-upload">
+  <button type="button" class="layui-btn" id="test1">上传图片</button>
+  <div class="layui-upload-list">
+    <img class="layui-upload-img" id="demo1">
+    <p id="demoText"></p>
+  </div>
+</div> -->
+<div class="hot_area" id = "areaContent">
+     <!-- 1.图片url显示部分：-->
+     <input id="" type="text"class="" readonly="readonly" value="">
+
+    <!-- 2.图片展示部分：-->
+     <div class="" name="imageMap" id="image_map">
+       <img src=""  ref="imageMap" id="photo"/>
+     </div>
+
+    <!--3.添加热区对应编辑链接列表渲染部分，目前需两者选一：
+     1)tablebody样式：-->
+     <table><tbody id="areaItems"> </tbody></table>
+
+    <!-- 2)ul样式：
+     <ul id="areaItems"></ul>-->
+
+    <!-- 4.添加热区按钮部分：-->
+     <p><a id="add_hot_area" href="JavaScript:;" class="">添加热区</a> &nbsp; <a id="" href="JavaScript:viewMap();" class="">查看热区</a></p>
+	 <p></p>
+
+    <!-- 5.热区数据存储（隐藏）：-->
+     <input type="hidden" class=""  name="hotAreas" id="hotAreas"  value=''>
+     
+     <div id="my_data">
+     <input type="hidden"  class="page_json"  value=''>
+     
+     </div>
+
+    <!-- 6.可添加热区数量与还可添加热区数量实时显示（可选）：-->
+     <p><span class="">已添加已添加<b class="added_amount">0</b>个热区， 还可添加<b class="remain_amount">X</b>个热区</span></p>
+</div>
+
+			<div style="margin-top: 10px;" id="test1">
+     		<label for="upload" class="uploadeyu">
+	    	<p>+</p>
+			</label>
+			</div>
+
+
+			</div>			
+		</div>
+	</div>
+	
+<#include "/include/bg/in_bottom_res.html">	
+
+<script type="text/javascript" language="javascript" src="${basePath}/res/default/bg/js/image-maps/jquery.image-maps5.0.js"></script>
+<link rel="stylesheet" type="text/css" href="${basePath}/res/default/bg/js/image-maps/imageHotAreaStyle.css">
+<script type="text/javascript">
+
+$(document).ready(function() {
+	//$(function(){
+		var setting = {
+			maxAmount:20,
+			tag:'tr',
+			params:{
+				//'areaLink':'添加热区时的默认值',
+				//'areaType':'添加热区时的默认值'
+			},
+			//proportion:"0.5",
+			domCallBack:function(params){
+				//console.log(params);
+				return "<td>链接：<input type='text' class='inhref' value='http://baidu.com'/></td>"
+			}
+		}
+
+		//初始化加载
+		var areas = "[{'areaTitle':'选区1','areaLink':'','areaMapInfo':'0,0,200,100'}]";
+		$("#hotAreas").val(areas);  
+
+		//$('#hotAreas').val('');     //清空热区数据
+		//$('#image_map').imageMaps(setting);
+		//imageMaps.originalManual("./size.jpg",setting,true);
+// 		imageMaps.proportionNoSameManual("./bg.png",setting,1,1,true);
+imageMaps.proportionNoSameManual("/res/default/bg/timg.jpg",setting,1,1,true);
+		
+		//"hotAreas" : "[{'areaTitle':'热区1','areaLink':'','areaMapInfo':'0,0,90,30'},{'areaTitle':'热区 2','areaLink':'','areaMapInfo':'260,13,353,112'}]"
+	});
+
+	function viewMap(){
+		alert($('#areaItems').html());
+		//$('#image_map').getAreaMapInfo(item);
+	}
+
+//注意进度条依赖 element 模块，否则无法进行正常渲染和功能性操作
+var form = layui.form;
+
+var piclist_str="";
+layui.use('upload', function(){
+var $ = layui.jquery
+,upload = layui.upload;
+initValue();
+form.render();
+//普通图片上传
+var uploadInst = upload.render({
+elem: '#test1'
+,url: '${base}/upload/uploadImgByWebAccessory.htm?type=client'
+,auto: false
+	,size: 6144
+	,accept: "file"
+	,bindAction: '#upload_1'
+	,choose: function(obj){
+    	 obj.preview(function(index, file, result){
+    		   $("#test1").html("<img src='" + result + "'/>");
+          });
+    }
+,before: function(obj){
+  //预读本地文件示例，不支持ie8
+  obj.preview(function(index, file, result){
+	  $("#test1").html("<img src='" + result + "'/>");
+  });
+}
+,done: function(res){
+	if(res.result){
+	    var files = res.data;
+	    for(var i=0;i<files.length;i++){
+	    	var name = files[i].name;
+	    	var url = files[i].url;
+	    	var id = files[i].acyId;
+	    	$("#pic_id").val(id);
+	    }
+    return layer.msg(res.resultMsg);
+	}else{
+    return layer.msg('上传失败');
+		
+	}
+  //如果上传失败
+  if(res.code > 0){
+    return layer.msg('上传失败');
+  }
+}
+,error: function(){
+  //演示失败状态，并实现重传
+  var demoText = $('#demoText');
+  demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
+  demoText.find('.demo-reload').on('click', function(){
+    uploadInst.upload();
+  });
+}
+});
+
+
+
+});
+
+    $(".show_page").click(function(){
+//     	获取各个热区数据
+var jsonarry=[]
+$(".area_item").each(function(){
+	var sdata=$(this).attr("data");
+	var inhref=$(this).find(".inhref").val();
+	var ref=$(this).attr("ref");
+	var obj = eval('(' + sdata + ')');
+	obj.inhref=inhref;
+	obj.ref=ref;
+	jsonarry.push(obj);
+	})
+console.log(JSON.stringify(jsonarry));
+
+
+window.open("/admin/savePicArticle.htm?pojson="+encodeURI(JSON.stringify(jsonarry)));
+return;
+    	
+//     var obj = JSON.parse(str); //由JSON字符串转换为JSON对象
+    var obj = eval('(' + str + ')');
+    
+     
+//         var obj = str.parseJSON(); //由JSON字符串转换为JSON对象
+    console.log(obj.x);
+    console.log(obj.x);
+//     return;
+    	window.open("/go.htm?url=news_maps&w="+obj.with+"&h="+obj.height+"&x="+obj.x+"&y="+obj.y);  	
+    	
+    })
+</script>
+
+</body>
+</html>

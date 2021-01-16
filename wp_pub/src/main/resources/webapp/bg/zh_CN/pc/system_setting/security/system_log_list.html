@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>服务列表</title>
+
+<#include "/include/bg/in_head_res.html">
+
+</head>
+<body class="inner-body clear">
+	<div class="layui-container bc_color" style="width:100%">
+		<form class="layui-form layui-form-pane" id="form_1" method="post" action="general_service_25gLUIg5TXgjBgThcQC.htm?_url=system_setting/security/system_log_list&_ttype=2">
+		<div class="layui-form-item layui-col-space10"  style="background-color: white;padding:15px 10px;">
+			<div class="layui-col-md2" style="width: auto;">
+				<label class="layui-form-label">操作人：</label>
+				<div class="layui-input-block">
+					<input type="text" name="oPerator.username"   
+						autocomplete="off" placeholder="请输操作人" class="layui-input" value="${RequestParameters["oPerator.username"]!}">
+				</div>
+			</div>
+			<div class="layui-col-md2" style="width: auto;">
+				<label class="layui-form-label">表名：</label>
+				<div class="layui-input-block">
+					<input type="text" name="tableName"
+						autocomplete="off" placeholder="请输入表名" class="layui-input" value="${RequestParameters.tableName!}">
+				</div>
+			</div>
+			<div class="layui-col-md2" style="width: auto;">
+				<label class="layui-form-label">类别：</label>
+				<div class="layui-input-block">
+					<select id="type" name="type" lay-filter="aihao" initValue="${RequestParameters.type!}">
+						<option value="">请选择</option>
+						<option value="1">修改</option>
+						<option value="2">新增</option>
+						<option value="3">删除</option>
+					</select>
+				</div>
+			</div>
+			<div class="fl clear">
+				<button class="layui-btn fl search" lay-submit lay-filter="form_1"> <i class="layui-icon">&#xe615;</i> 搜索</button>
+				<button class="layui-btn layui-btn-warm  fl refresh" type="reset"><i class="layui-icon">&#x1002;</i> 刷新</button>
+			</div>
+		</div>			
+		</form>
+		<div class="content_main">
+	
+			<div class="layui-form">
+				<table class="layui-table" lay-even >
+					<thead>
+						<tr>
+							<th width="10%">序号</th>
+							<th>操作内容</th>
+							<th width="20%">操作表</th>
+							<th width="15%">类别</th>
+							<th width="15%">操作人</th>
+							<th width="15%">时间</th>
+						</tr>
+					</thead>
+					<tbody>
+						<#if resultList_sysLog?size <=0 >
+						<tr>
+							<td colspan="5">无记录</td>
+						</tr>
+						<#else> <#list resultList_sysLog as r>
+						<tr>
+							<td>${r.id!}</td>
+							<td>${r.remark!}</td>							
+							<td>${r.tableName!}</td>
+								<td>${ds.getCodeDesc("cm_sys_log_tbl","type",r.type)}</td>
+							<td>${r.oPerator.username!"未知"}</td>
+							<td>${r.insertTime}</td>
+						</tr>
+						</#list> </#if>
+					</tbody>
+				</table>
+				<div class="pageBotton">${pageHtml_sysLog}</div>
+			</div>
+		</div>
+	</div>
+</body>
+<#include "/include/bg/in_bottom_res.html">
+<script type="text/javascript">
+    //注意进度条依赖 element 模块，否则无法进行正常渲染和功能性操作
+
+    $(".refresh").click(function(){
+    	window.location.reload();
+    });
+         var form = layui.form;
+
+        //全选
+        form.on('checkbox(allChoose)', function(data){
+            var child = $(data.elem).parents('table').find('tbody input[type="checkbox"]');
+            child.each(function(index, item){
+                item.checked = data.elem.checked;
+            });
+             form.render('checkbox');
+        }); 
+    
+      
+        
+	/*改变下拉选项默认值*/
+	
+	initValue();
+	form.render();
+</script>
+</html>

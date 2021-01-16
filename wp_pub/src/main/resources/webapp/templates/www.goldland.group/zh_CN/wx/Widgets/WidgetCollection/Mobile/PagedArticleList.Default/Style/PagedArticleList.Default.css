@@ -1,0 +1,32 @@
+﻿/*************************************************************
+ * Command:Start
+ * Control:PagedArticleList.Default
+ * Style:PagedArticleList_Default
+ * Desc::
+ * Quot:
+*************************************************************/
+.PagedArticleList_Default { /*width:100%; overflow:hidden;min-height:500px;*/}
+
+/* 标题 */
+.PagedArticleList_Default h3 { height:40px;}
+.PagedArticleList_Default h3 em {   font:normal 16px/40px "microsoft yahei"; padding-left:10px; display: block; color:#fff;}
+
+
+.PagedArticleList_Default .clear{ clear: both;}
+.PagedArticleList_Default .clear:after{ content: "."; display: block; height:0; clear:both; visibility: hidden;}
+.PagedArticleList_Default .page_css, .class_page { text-align:center; padding:10px 0;}
+.PagedArticleList_Default .page_css a, .class_page a { display: inline-block; border:1px solid #999; padding:2px 6px; color:#999; line-height:100%; border-radius: 3px;}
+.PagedArticleList_Default .page_css a:hover, .class_page a:hover{ color: #333; border: 1px solid #999; background: #999;}
+.PagedArticleList_Default .page_css b a, .class_page b a { color: #333; border:1px solid #999; background: #999;}
+.PagedArticleList_Default .page_line { }
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:PagedArticleList.Default
+ * Style:PagedArticleList_Default
+ * Desc::
+ * Quot:
+*************************************************************/

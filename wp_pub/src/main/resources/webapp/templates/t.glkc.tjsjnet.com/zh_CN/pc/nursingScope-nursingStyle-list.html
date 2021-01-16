@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<#include "/${rp}/metalink.html">
+	<title>${webSet.title}</title>
+</head>
+<style>
+		.dq_active1{
+			display: inline-block;
+			height: 55px;
+			width: 56px;
+			color: #46c3f2;
+			font-size: 14px;
+			border-bottom: 2px solid #46c3f2;
+		}
+</style>
+<body>
+	<header>
+		<#include "/${rp}/header.html">	
+	</header>
+	<div class="dangquangongzuo">
+		<div class="dqgz_content_nav">
+			<ul class="dangqun_li">
+			    <#assign ck=cl.bk(c)>
+			    <#assign ckid=cl.bi(ck.id)>
+			    <#list ck.parent.children as cc>
+			    <#if cc.keyword=="hu_li_feng_cai"||cc.keyword=="hu_li_dong_tai">
+				<li><a href="${cm.cp}${cc.url}" <#if cc.id==ck.id>class="dq_active"</#if>>${cc.title}</a></li>
+				</#if>
+				</#list>
+			</ul>
+		</div>
+		<div class="df_lb">
+			<div class="hu_lb_title">
+				<h4 style="height:64px">${ck.title}</h4>
+			</div>
+			<div class="zt_tu_lib">
+				<!--<ul ${ckid.children?size}>-->
+				<!--    <#list ckid.children as aa>-->
+				<!--    <#if aa_index==0>-->
+				<!--    <#assign kj = at.bc(aa)>-->
+				<!--    <#list kj as lkm>-->
+				<!--	<li><a href="${cm.cp}go.htm?url=nursingScope-nursingStyle-detail&c=${lkm.column.keyword}&i=${lkm.id}"><img src="<#if aa.thumbnail.ourl??>${aa.thumbnail.ourl}<#else>res/default/images/default_pic.png</#if>" alt="图片无法加载">-->
+				<!--		<div>${lkm.title}</div></a></li>-->
+				<!--		</#list>-->
+				<!--	</#if>-->
+				<!--	</#list>-->
+				<!--</ul>-->
+				<div class="swiper-container">
+				    <div class="swiper-wrapper">
+				        <#list ckid.children as aa>
+				    <#if aa_index==0>
+				    <#assign kj = at.bc(aa)>
+				    <#list kj as lkm>
+				        <#list lkm.pic as kml>
+        				        <div class="swiper-slide">
+        				            <img src="${kml.url}" style="width:100%;">
+        				        </div>
+        				        </#list>
+        				   	</#list>
+					    </#if>
+					</#list>
+				    </div>
+				</div>
+			</div>
+			
+			
+			<#assign yygg=cl.bk('yi_yuan_gong_gao')>
+			<div class="yiyan_gonggao">
+				<div class="hu_lb_title">
+				<h4 style="height: 66px">${yygg.title}</h4>
+				<a href="${cm.cp}${yygg.url}">MORE+</a>
+			</div>
+				<ul class="gonggao_lib">
+					<#list at.bc(yygg) as a>
+    			    <#if a_index lt 6>
+    				<li><a href="${cm.cp}go.htm?url=news_detail&id=${a.id}">${a.title}</a><span>${a.issueTime?string('MM-dd')} </span></li>
+    				</#if>
+    				</#list>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<#include "/${rp}/footer.html">
+	</footer>
+	<script src="res/js/swiper-4.1.6.min.js"></script>
+	<script>
+	    
+	    var mySwiper_p = new Swiper('.zt_tu_lib .swiper-container', {
+        // loop: true,
+        autoplay:{
+        	delay: 4000,
+        },
+        slidesPerView : 3,
+spaceBetween : 20,
+    });
+	</script>
+</body>
+</html>

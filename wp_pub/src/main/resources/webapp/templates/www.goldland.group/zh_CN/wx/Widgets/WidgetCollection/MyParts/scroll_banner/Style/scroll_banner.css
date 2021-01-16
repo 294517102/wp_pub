@@ -1,0 +1,29 @@
+﻿/*************************************************************
+ * Command:Start
+ * Control:scroll_banner
+ * Style:allscroll
+ * Desc:目前没有
+ * Quot:we7
+*************************************************************/
+
+.allscroll { clear:both;}
+.allscroll .banner_show{ width:100%; text-align:center; height:350px; overflow:hidden; position:relative; min-width:1000px; }
+.allscroll .bannger_inbox{ position:absolute; left:50%; top:0;}
+
+/*翻页*/
+.allscroll .banner_pre_next{ position:relative; z-index:105;top:140px;width:1000px;left:50%; height:37px;margin-left:-500px;*left:240px;}
+.allscroll .banner_pre_next a{ width:37px; height:37px; text-indent:-999em;}
+
+.allscroll .banner_pre_next .banner_btn_left{ position:absolute;left:-37px; background-position:0px 0px; background:url("../images/btn.png") no-repeat; }
+.allscroll .banner_pre_next a.banner_btn_left:hover{ position:absolute;left:-37px; background-position:0px 0px; background:url("../images/btn_over.png") no-repeat; }
+.allscroll .banner_pre_next .banner_btn_right{ position:absolute;right:-37px; background:url("../images/btn.png") no-repeat -37px 0px; }
+.allscroll .banner_pre_next .banner_btn_right:hover{ position:absolute;right:-37px; background:url("../images/btn_over.png") no-repeat -37px 0px; }
+
+
+/*************************************************************
+ * Command:End
+ * Control:scroll_banner
+ * Style:allscroll
+ * Desc:目前没有
+ * Quot:we7
+*************************************************************/

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+ 	<title>IP地址拦截</title>
+   	<#include "/include/bg/in_head_res.html">
+</head>
+<body>
+<body class="inner-body clear">
+
+<div class="layui-container bg_white" style="width: 100%;padding:20px">
+	<form  name="userForm" id="userForm" class="layui-form layui-form-pane" onsubmit="return false"  method="post">
+		<div class="layui-form-item">
+        		<label class="layui-form-label"><span style="color:red">* </span>IP地址</label>
+        		<div class="layui-input-block">
+					<input type="text" name="url" lay-verify="required" class="layui-input" placeholder="请输入IP">
+					<input type="hidden" name="webSet.id" value="${webSet.id!}">
+					<input type="hidden" name="state" value="9">
+					<input type="hidden" name="isDelete" value="1">
+				</div>
+        </div>
+        <div class="layui-form-item">
+        		<label class="layui-form-label"><span style="color:red">* </span>拦截类型</label>
+        		<div class="layui-input-block">
+					     <select name="type" id="type" lay-verify="required" >
+	               		 		<option value="0">请选择拦截类型</option>
+	               		 		<option value="1">黑名单</option>
+	               		 		<option value="2">白名单</option>
+                </select>
+				</div>
+        </div>
+          <div class="layui-form-item center" style="margin-top:50px">
+                  <button  lay-submit  class="layui-btn" lay-filter="form_1">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-danger" onclick="closeWindow();">取消</button>
+        </div>
+	</form>
+</div>
+</body>
+
+<#include "/include/bg/in_bottom_res.html">
+
+<script type="text/javascript">
+	
+	var form = layui.form;
+	
+	 function validateIP(str){
+		 var reg = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/
+		 		console.log(reg.test(str));
+			    return reg.test(str);
+	    }
+	//保存
+	form.on("submit(form_1)",function(data){
+		console.log(data.field.type == 0);
+ 		if(data.field.type == 0){
+			layer.alert("请选择类型",{icon:1});
+			return false;
+		} 
+		 if(validateIP(data.field.url)==true){
+	 		$.postJSON("general_service_XkdSxOJJLI0lwRjYs67$ajax.htm?_sign=${MD5.md5(user.username+user.id)}&_sObject=WEB_SET&_sKey=webSet",data.field, function(data) {
+				layer.msg(data.msg,function(){
+					if(data.result){
+						parent.location.reload();
+						closeWindow();
+					}
+				});		
+			});
+	    } else {
+	    	layer.msg("非法ip地址",{icon:1});
+	    	return;
+	    }  
+	    return false;
+	});
+</script>
+</html>
+

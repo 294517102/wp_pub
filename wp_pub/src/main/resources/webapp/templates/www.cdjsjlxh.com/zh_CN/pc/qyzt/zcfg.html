@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <#include "/${rp}/include/link.html">
+</head>
+<body>
+<#include "/${rp}/include/header.html">
+<content>
+    <div class="ny">
+        <div class="ny_local bb">
+            <div class="width1200 ny_locala">
+                <a href="/index.html"><img class="home" src="../res/default/images/home.png" alt=""></a>
+                <#if pCol.children??>
+                <img class="dbx" src="../res/default/images/dbx.png" alt="">
+                <a href="${pCol.children[0].url!}">${pCol.title!}</a>
+                </#if>
+                <img class="dbx" src="../res/default/images/dbx.png" alt="">
+                <a >${sCol.title!}</a>
+            </div>
+        </div>
+        <div class="ny_con width1200">
+            <div class="ny_left fl">
+                <#include "/${rp}/include/ny_left.html">
+            </div>
+            <div class="ny_right fr">
+                <div class="minheight">
+                    <#if !pageIndex?? >  <#assign  pageIndex="1" > </#if>
+                    <#assign pageList= at.bc(sCol,pageIndex,9)> 
+                    <#if pageList.list?size gt 0>
+                    <#list pageList.list?sort_by('issueTime')?reverse as a>
+                    <#assign dqsj = .now?long/1000>
+                    <#assign fbsj = a.issueTime?long/1000>
+                    <#assign cha =  (dqsj-fbsj)/86400>
+                    <a href="${cm.cp}go.htm?url=detail&k=${k}&id=${a.id}" class="hy_list bb hvr-underline-from-left">
+                        <span class="hy_yuan"></span>
+                        <span class="hy_t textover"> <#if cha lt 3 && cha gt 0> <span class="in_xin">新</span></#if>  ${a.title!}</span>
+                        <span class="hy_time fr">${a.issueTime?string("yyyy-MM-dd")}</span>
+                    </a>
+                    </#list>
+                    <#else>
+                     <div class="nodeta">
+                        <img src="../res/default/images/nodate.png" alt="" />
+                    </div>
+                     </#if>
+                </div>
+                <div style="clear: both"></div>
+                 <#if pageList.list?? && pageList.list?size gt 0>
+                <div class="sx_fenye">${cm.page(req,pageIndex,pageList)}</div>
+                </#if>
+            </div>
+            <div style="clear: both"></div>
+        </div>
+    </div>
+</content>
+<#include "/${rp}/include/footer.html">
+<#include "/${rp}/include/script.html">
+</body>
+</html>

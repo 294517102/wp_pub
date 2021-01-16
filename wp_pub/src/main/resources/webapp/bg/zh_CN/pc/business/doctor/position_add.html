@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<base href="${base}/" />
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>新增职称</title>
+    <#include "/include/bg/in_head_res.html">
+    <style>
+        .layui-upload-button{
+            background: #34a8ff;
+            color: #fff;
+            cursor: pointer!important;  
+        }
+        .layui-upload-button:hover .layui-upload-icon{
+            color: #eee;
+        }
+        .layui-upload-icon .layui-icon{
+            color: #fff;
+            cursor: pointer;
+        }
+        div.layui-unselect.layui-form-select{
+        	 display: inline-block !important;
+        }
+    </style>
+</head>
+<body class="body clear">
+
+<div class="mac">
+    <section>
+            <form class="layui-form layui-form-pane" action='' id="userForm">
+            	<input type="hidden" value="${doctor.id?c}" name="doctorid">
+                <#if doctor.dutys??&&doctor.dutys?size gt 0>
+                	<#list doctor.dutys as ad>
+                		<#if ad.day==1>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">星期一</label>
+                    	<div class="layui-input-block">
+                    	<span style="display:inline-block;width:45%;">上午：
+                        <select name="oneam" id="column_id" style="display: inline-block;width: 50px;display:none;">
+                        	<option <#if !ad.typeAm ??> selected="selected" </#if> ></option>
+                        	<option value="1" <#if ad.typeAm ==1> selected="selected" </#if>>特</option>
+                        	<option value="2" <#if ad.typeAm ==2> selected="selected" </#if>>专</option>
+                        	<option value="3" <#if ad.typeAm ==3> selected="selected" </#if>>普</option>
+                        	<option value="4" <#if ad.typeAm ==4> selected="selected" </#if>>停</option>
+                        </select>
+                        	</span>
+                        	<span style="display:inline-block;width:45%;" >下午：
+                        <select name="onepm" id="column_id" style="display: inline-block;width: 50px;display:none;">
+                        	<option <#if !ad.typePm??> selected="selected" </#if> ></option>
+                        	<option value="1" <#if ad.typePm==1> selected="selected" </#if> >特</option>
+                        	<option value="2" <#if ad.typePm==2> selected="selected" </#if> >专</option>
+                        	<option value="3" <#if ad.typePm==3> selected="selected" </#if> >普</option>
+                        	<option value="4" <#if ad.typePm==4> selected="selected" </#if> >停</option>
+                        </select>
+                        	</span>
+                        </div>
+                </div>
+                	<#elseif ad.day==2>
+                   <div class="layui-form-item">
+                    <label class="layui-form-label">星期二</label>
+                    	<div class="layui-input-block">
+                    	<span style="display:inline-block;width:45%;">上午：
+                        <select name="twoam" id="column_id" style="display: inline-block;width: 50px;display:none;">
+                        	<option <#if !ad.typeAm ??> selected="selected" </#if> ></option>
+                        	<option value="1" <#if ad.typeAm ==1> selected="selected" </#if>>特</option>
+                        	<option value="2" <#if ad.typeAm ==2> selected="selected" </#if>>专</option>
+                        	<option value="3" <#if ad.typeAm ==3> selected="selected" </#if>>普</option>
+                        	<option value="4" <#if ad.typeAm ==4> selected="selected" </#if>>停</option>
+                        </select>
+                        	</span>
+                        	<span style="display:inline-block;width:45%;" >下午：
+                        <select name="twopm" id="column_id" style="display: inline-block;width: 50px;display:none;">
+                        	<option <#if !ad.typePm??> selected="selected" </#if> ></option>
+                        	<option value="1" <#if ad.typePm==1> selected="selected" </#if> >特</option>
+                        	<option value="2" <#if ad.typePm==2> selected="selected" </#if> >专</option>
+                        	<option value="3" <#if ad.typePm==3> selected="selected" </#if> >普</option>
+                        	<option value="4" <#if ad.typePm==4> selected="selected" </#if> >停</option>
+                        </select>
+                        	</span>
+                        </div>
+                </div>
+                <#elseif ad.day==3>
+                     <div class="layui-form-item">
+                    <label class="layui-form-label">星期三</label>
+                    	<div class="layui-input-block">
+                    	<span style="display:inline-block;width:45%;">上午：
+                        <select name="threeam" id="column_id" style="display: inline-block;width: 50px;display:none;">
+                        	<option <#if !ad.typeAm ??> selected="selected" </#if> ></option>
+                        	<option value="1" <#if ad.typeAm ==1> selected="selected" </#if>>特</option>
+                        	<option value="2" <#if ad.typeAm ==2> selected="selected" </#if>>专</option>
+                        	<option value="3" <#if ad.typeAm ==3> selected="selected" </#if>>普</option>
+                        	<option value="4" <#if ad.typeAm ==4> selected="selected" </#if>>停</option>
+                        </select>
+                        	</span>
+                        	<span style="display:inline-block;width:45%;" >下午：
+                        <select name="threepm" id="column_id" style="display: inline-block;width: 50px;display:none;">
+                        	<option <#if !ad.typePm??> selected="selected" </#if> ></option>
+                        	<option value="1" <#if ad.typePm==1> selected="selected" </#if> >特</option>
+                        	<option value="2" <#if ad.typePm==2> selected="selected" </#if> >专</option>
+                        	<option value="3" <#if ad.typePm==3> selected="selected" </#if> >普</option>
+                        	<option value="4" <#if ad.typePm==4> selected="selected" </#if> >停</option>
+                        </select>
+                        	</span>
+                        </div>
+                </div>
+                	<#elseif ad.day==4>
+				      <div class="layui-form-item">
+                    <label class="layui-form-label">星期四</label>
+                    	<div class="layui-input-block">
+                    	<span style="margin-left: 0;display:inline-block;width:45%;">上午：
+                        <select name="fouram" id="column_id" style="display: inline-block;width: 50px;display:none;">
+                        	<option <#if !ad.typeAm ??> selected="selected" </#if> ></option>
+                        	<option value="1" <#if ad.typeAm ==1> selected="selected" </#if>>特</option>
+                        	<option value="2" <#if ad.typeAm ==2> selected="selected" </#if>>专</option>
+                        	<option value="3" <#if ad.typeAm ==3> selected="selected" </#if>>普</option>
+                        	<option value="4" <#if ad.typeAm ==4> selected="selected" </#if>>停</option>
+                        </select>
+                        	</span>
+                        	<span style="display:inline-block;width:45%;" >下午：
+                        <select name="fourpm" id="column_id" style="display: inline-block;width: 50px;display:none;">
+                        	<option <#if !ad.typePm??> selected="selected" </#if> ></option>
+                        	<option value="1" <#if ad.typePm==1> selected="selected" </#if> >特</option>
+                        	<option value="2" <#if ad.typePm==2> selected="selected" </#if> >专</option>
+                        	<option value="3" <#if ad.typePm==3> selected="selected" </#if> >普</option>
+                        	<option value="4" <#if ad.typePm==4> selected="selected" </#if> >停</option>
+                        </select>
+                        	</span>
+                        </div>
+                </div>
+                <#elseif ad.day==5>
+                      <div class="layui-form-item">
+                    <label class="layui-form-label">星期五</label>
+                    	<div class="layui-input-block">
+                    	<span style="margin-left: 0;display:inline-block;width:45%;">上午：
+                        <select name="fiveam" id="column_id" style="display: inline-block;width: 50px;display:none;">
+                        	<option <#if !ad.typeAm ??> selected="selected" </#if> ></option>
+                        	<option value="1" <#if ad.typeAm ==1> selected="selected" </#if>>特</option>
+                        	<option value="2" <#if ad.typeAm ==2> selected="selected" </#if>>专</option>
+                        	<option value="3" <#if ad.typeAm ==3> selected="selected" </#if>>普</option>
+                        	<option value="4" <#if ad.typeAm ==4> selected="selected" </#if>>停</option>
+                        </select>
+                        	</span>
+                        	<span style="display:inline-block;width:45%;" >下午：
+                        <select name="fivepm" id="column_id" style="display: inline-block;width: 50px;display:none;">
+                        	<option <#if !ad.typePm??> selected="selected" </#if> ></option>
+                        	<option value="1" <#if ad.typePm==1> selected="selected" </#if> >特</option>
+                        	<option value="2" <#if ad.typePm==2> selected="selected" </#if> >专</option>
+                        	<option value="3" <#if ad.typePm==3> selected="selected" </#if> >普</option>
+                        	<option value="4" <#if ad.typePm==4> selected="selected" </#if> >停</option>
+                        </select>
+                        	</span>
+                        </div>
+                </div>
+                <#elseif ad.day==6>
+                     <div class="layui-form-item">
+                    <label class="layui-form-label">星期六</label>
+                    	<div class="layui-input-block">
+                    	<span style="margin-left: 0;display:inline-block;width:45%;">上午：
+                        <select name="sixam" id="column_id" style="display: inline-block;width: 50px;display:none;">
+                        	<option <#if !ad.typeAm ??> selected="selected" </#if> ></option>
+                        	<option value="1" <#if ad.typeAm ==1> selected="selected" </#if>>特</option>
+                        	<option value="2" <#if ad.typeAm ==2> selected="selected" </#if>>专</option>
+                        	<option value="3" <#if ad.typeAm ==3> selected="selected" </#if>>普</option>
+                        	<option value="4" <#if ad.typeAm ==4> selected="selected" </#if>>停</option>
+                        </select>
+                        	</span>
+                        	<span style="display:inline-block;width:45%;" >下午：
+                        <select name="sixpm" id="column_id" style="display: inline-block;width: 50px;display:none;">
+                        	<option <#if !ad.typePm??> selected="selected" </#if> ></option>
+                        	<option value="1" <#if ad.typePm==1> selected="selected" </#if> >特</option>
+                        	<option value="2" <#if ad.typePm==2> selected="selected" </#if> >专</option>
+                        	<option value="3" <#if ad.typePm==3> selected="selected" </#if> >普</option>
+                        	<option value="4" <#if ad.typePm==4> selected="selected" </#if> >停</option>
+                        </select>
+                        	</span>
+                        </div>
+                </div>
+                <#elseif ad.day==7>
+				     <div class="layui-form-item">
+                    <label class="layui-form-label">星期天</label>
+                    	<div class="layui-input-block">
+                    	<span style="margin-left: 0;display:inline-block;width:45%;">上午：
+                        <select name="sevenam" id="column_id" style="display: inline-block;width: 50px;display:none;">
+                       		<option <#if !ad.typeAm ??> selected="selected" </#if> ></option>
+                        	<option value="1" <#if ad.typeAm ==1> selected="selected" </#if>>特</option>
+                        	<option value="2" <#if ad.typeAm ==2> selected="selected" </#if>>专</option>
+                        	<option value="3" <#if ad.typeAm ==3> selected="selected" </#if>>普</option>
+                        	<option value="4" <#if ad.typeAm ==4> selected="selected" </#if>>停</option>
+                        </select>
+                        	</span>
+                        	<span style="display:inline-block;width:45%;" >下午：
+                        <select name="sevenpm" id="column_id" style="display: inline-block;width: 50px;display:none;">
+                        	<option <#if !ad.typePm??> selected="selected" </#if> ></option>
+                        	<option value="1" <#if ad.typePm==1> selected="selected" </#if> >特</option>
+                        	<option value="2" <#if ad.typePm==2> selected="selected" </#if> >专</option>
+                        	<option value="3" <#if ad.typePm==3> selected="selected" </#if> >普</option>
+                        	<option value="4" <#if ad.typePm==4> selected="selected" </#if> >停</option>
+                        </select>
+                        	</span>
+                        </div>
+                </div>
+                </#if>
+                </#list>
+                <#else>
+                	<div class="layui-form-item">
+                    <label class="layui-form-label">星期一</label>
+                    	<div class="layui-input-block">
+                    	<span style="display:inline-block;width:45%;">上午：
+                        <select name="oneam" id="column_id" style="display: inline-block;width: 50px;display:none;">
+                        	<option></option>
+                        	<option value="1">特</option>
+                        	<option value="2">专</option>
+                        	<option value="3">普</option>
+                        	<option value="4">停</option>
+                        </select>
+                        	</span>
+                        	<span style="display:inline-block;width:45%;" >下午：
+                        <select name="onepm" id="column_id" style="display: inline-block;width: 50px;display:none;">
+                        	<option></option>
+                        	<option value="1">特</option>
+                        	<option value="2">专</option>
+                        	<option value="3">普</option>
+                        	<option value="4">停</option>
+                        </select>
+                        	</span>
+                        </div>
+                </div>
+                
+                     <div class="layui-form-item">
+                    <label class="layui-form-label">星期二</label>
+                    	<div class="layui-input-block">
+                    	<span style="display:inline-block;width:45%;">上午：
+                        <select name="twoam" id="column_id" style="display: inline-block;width: 50px;display:none;">
+                        	<option></option>
+                        	<option value="1">特</option>
+                        	<option value="2">专</option>
+                        	<option value="3">普</option>
+                        	<option value="4">停</option>
+                        </select>
+                        	</span>
+                        	<span style="display:inline-block;width:45%;" >下午：
+                        <select name="twopm" id="column_id" style="display: inline-block;width: 50px;display:none;">
+                        	<option></option>
+                        	<option value="1">特</option>
+                        	<option value="2">专</option>
+                        	<option value="3">普</option>
+                        	<option value="4">停</option>
+                        </select>
+                        	</span>
+                        </div>
+                </div>
+                     <div class="layui-form-item">
+                    <label class="layui-form-label">星期三</label>
+                    	<div class="layui-input-block">
+                    	<span style="display:inline-block;width:45%;">上午：
+                        <select name="threeam" id="column_id" style="display: inline-block;width: 50px;display:none;">
+                        	<option></option>
+                        	<option value="1">特</option>
+                        	<option value="2">专</option>
+                        	<option value="3">普</option>
+                        	<option value="4">停</option>
+                        </select>
+                        	</span>
+                        	<span style="display:inline-block;width:45%;" >下午：
+                        <select name="threepm" id="column_id" style="display: inline-block;width: 50px;display:none;">
+                        	<option></option>
+                        	<option value="1">特</option>
+                        	<option value="2">专</option>
+                        	<option value="3">普</option>
+                        	<option value="4">停</option>
+                        </select>
+                        	</span>
+                        </div>
+                </div>
+				      <div class="layui-form-item">
+                    <label class="layui-form-label">星期四</label>
+                    	<div class="layui-input-block">
+                    	<span style="margin-left: 0;display:inline-block;width:45%;">上午：
+                        <select name="fouram" id="column_id" style="display: inline-block;width: 50px;display:none;">
+                        	<option></option>
+                        	<option value="1">特</option>
+                        	<option value="2">专</option>
+                        	<option value="3">普</option>
+                        	<option value="4">停</option>
+                        </select>
+                        	</span>
+                        	<span style="display:inline-block;width:45%;" >下午：
+                        <select name="fourpm" id="column_id" style="display: inline-block;width: 50px;display:none;">
+                        	<option></option>
+                        	<option value="1">特</option>
+                        	<option value="2">专</option>
+                        	<option value="3">普</option>
+                        	<option value="4">停</option>
+                        </select>
+                        	</span>
+                        </div>
+                </div>
+                      <div class="layui-form-item">
+                    <label class="layui-form-label">星期五</label>
+                    	<div class="layui-input-block">
+                    	<span style="margin-left: 0;display:inline-block;width:45%;">上午：
+                        <select name="fiveam" id="column_id" style="display: inline-block;width: 50px;display:none;">
+                        	<option></option>
+                        	<option value="1">特</option>
+                        	<option value="2">专</option>
+                        	<option value="3">普</option>
+                        	<option value="4">停</option>
+                        </select>
+                        	</span>
+                        	<span style="display:inline-block;width:45%;" >下午：
+                        <select name="fivepm" id="column_id" style="display: inline-block;width: 50px;display:none;">
+                        	<option></option>
+                        	<option value="1">特</option>
+                        	<option value="2">专</option>
+                        	<option value="3">普</option>
+                        	<option value="4">停</option>
+                        </select>
+                        	</span>
+                        </div>
+                </div>
+                     <div class="layui-form-item">
+                    <label class="layui-form-label">星期六</label>
+                    	<div class="layui-input-block">
+                    	<span style="margin-left: 0;display:inline-block;width:45%;">上午：
+                        <select name="sixam" id="column_id" style="display: inline-block;width: 50px;display:none;">
+                        	<option></option>
+                        	<option value="1">特</option>
+                        	<option value="2">专</option>
+                        	<option value="3">普</option>
+                        	<option value="4">停</option>
+                        </select>
+                        	</span>
+                        	<span style="display:inline-block;width:45%;" >下午
+                        <select name="sixpm" id="column_id" style="display: inline-block;width: 50px;display:none;">
+                        	<option></option>
+                        	<option value="1">特</option>
+                        	<option value="2">专</option>
+                        	<option value="3">普</option>
+                        	<option value="4">停</option>
+                        </select>
+                        	</span>
+                        </div>
+                </div>
+				     <div class="layui-form-item">
+                    <label class="layui-form-label">星期天</label>
+                    	<div class="layui-input-block">
+                    	<span style="margin-left: 0;display:inline-block;width:45%;">上午：
+                        <select name="sevenam" id="column_id" style="display: inline-block;width: 50px;display:none;">
+                        <option></option>
+                        	<option value="1">特</option>
+                        	<option value="2">专</option>
+                        	<option value="3">普</option>
+                        	<option value="4">停</option>
+                        </select>
+                        	</span>
+                        	<span style="display:inline-block;width:45%;" >下午：
+                        <select name="sevenpm" id="column_id" style="display: inline-block;width: 50px;display:none;">
+                        	<option></option>
+                        	<option value="1">特</option>
+                        	<option value="2">专</option>
+                        	<option value="3">普</option>
+                        	<option value="4">停</option>
+                        </select>
+                        	</span>
+                        </div>
+                </div>
+                </#if>
+                
+                
+            </form>
+            <div class="layui-form-item" style="text-align: center;">
+                <div class="layui-input-block">
+                    <button class="layui-btn " lay-submit="" lay-filter="demo1" onclick="save()">保存</button>
+                    <button type="reset" class="layui-btn layui-btn-primary" onclick="to_back()">取消</button>
+                </div>
+            </div>
+<!--         </div> -->
+        
+    </section>
+</div>
+<#include "/include/bg/in_bottom_res.html">	
+<script type="text/javascript">
+
+layui.use(['form', 'layedit', 'laydate'], function(){
+	  var form = layui.form
+	  ,layer = layui.layer
+	  ,layedit = layui.layedit
+	  ,laydate = layui.laydate;
+	  
+	  //日期
+	  laydate.render({
+	    elem: '#date'
+	  });
+	  laydate.render({
+	    elem: '#date1'
+	  }); 
+});
+    //上传图片
+    
+    function save(){ 
+		var params = $("#userForm").serializeObject();
+		console.log(params); 
+		$.postJSON("admin/add_position.htm",params,function(data){
+			layer.msg(data.resultMsg);
+			if(data.result==true){
+	            var index = parent.layer.getFrameIndex(window.name);
+	            parent.layer.close(index);
+			}else if(data.result==false){
+				layer.msg(data.resultMsg,{icon:1});
+			}
+		});
+	}
+    function to_back(){
+    	var index = parent.layer.getFrameIndex(window.name);
+        parent.layer.close(index);
+    }
+  
+    
+</script>
+</body>
+</html>

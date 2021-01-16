@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>服务编辑弹窗</title>
+    <#include "/include/bg/in_head_res.html">
+
+</head>
+<body class="body clear">
+<div class="layui-container" style="width:100%">
+    <form action="" class="layui-form layui-form-pane">
+        <div class="layui-form-item two-colum-left">
+            <label class="layui-form-label"><span class="red">*</span>名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="name" lay-verify="required" value="${data.name}" autocomplete="off" placeholder="请输入标题" class="layui-input">
+            </div>
+        </div>  
+        <input style="display:none" name="id" value="${data.id}"> 
+           <div class="layui-form-item two-colum-right">
+             <label class="layui-form-label">创建人：</label>
+            <div class="layui-input-block">
+                <input type="text" name="title" value="${(data.user.username)!user.username}" disabled="true"  autocomplete="off" placeholder="请输入标题" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item two-colum-left" >
+            <label class="layui-form-label"><span style="color:red">* </span>操作类别</label>
+            <div class="layui-input-block">
+                <select name="otype" lay-verify="required" initValue="${data.otype}">
+                     <option value="1">查询</option>
+               		 <option value="2">操作</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item two-colum-right">
+            <label class="layui-form-label">返回值：</label>
+            <div class="layui-input-block ">
+                <input type="text" name="resultName" value="${data.resultName}"  autocomplete="off" placeholder="未输入，默认生成" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item two-colum-left" >
+            <label class="layui-form-label"><span style="color:red">*</span>脚本类型</label>
+           <div class="layui-input-block ">
+                <input type="radio" class="stype fl" name="stype" lay-filter="stype" value="1" title="原生SQL" checked initValue="${data.stype}">
+                <input type="radio" class="stype fl" name="stype" lay-filter="stype" value="2" title="实体" initValue="${data.stype}">
+            </div>
+
+        </div>
+        
+         <div class="layui-form-item type_box1">
+         	<label class="layui-form-label" style="height:100px;line-height: 87px"><span style="color:red">* </span>脚本：</label>
+            <div class="layui-input-block">
+                 <textarea placeholder="请输入内容" name="sql" class="layui-textarea">${data.sql}</textarea>
+             </div>
+         </div>         
+		<div class="type_box2"  style="display: none">
+				
+       			<div class="layui-form-item two-colum-right" >
+       				<div class="layui-text">查询方式:1-精确-AND;2-模糊-AND;3-精确-OR;4-模糊-OR</div>
+       			</div>
+                <div class="layui-form-item two-colum-left">
+                    <label class="layui-form-label" ><span style="color:red">* </span>实体名称：</label>
+                    <div class="layui-input-block ">
+                        <select name="entityName" lay-verify="required" initValue="${data.entityName}"> 
+                           <#list ds.classType?keys as key>
+                            <option value="${key}">${key}</option>
+                         </#list>                                         
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item two-colum-right" >
+                    <label class="layui-form-label" >级联(jf)：</label>
+                    <div class="layui-input-block">
+                         <input type="text" name="cascade" value="${data.cascade}" autocomplete="off" placeholder="级联库表，多个用'|'隔开" class="layui-input">
+                    </div>
+                </div>
+		</div>
+            <div class="layui-form-item">
+            	 <label class="layui-form-label" style="height:100px;line-height: 87px">参数：</span></label>
+                 <div class="layui-input-block">
+                     <textarea placeholder="输入参数(按name非position)" name="parameter" class="layui-textarea">${data.parameter}</textarea>
+                 </div>
+             </div> 
+            <div style="text-align: center;margin-top:20px">
+                 <button class="layui-btn" lay-submit lay-filter="form_1">保存</button>
+                 <button  type="reset" class="layui-btn layui-btn-danger cancel" >取消</button>
+        </div>
+    </form>
+</div>
+<#include "/include/bg/in_bottom_res.html">
+<script type="text/javascript">
+
+var lock = false;
+
+ $(function () {
+	 
+	 var form = layui.form;
+       
+	 initValue();
+     form.render();
+
+    	if(${(data.stype)!-1} == 2){
+            $(".type_box2").css("display","block");
+            $(".type_box1").css("display","none");
+        }
+    	
+            //监听提交
+            form.on('submit(form_1)', function(data){
+				if( $(".type_box1").css("display")=="block" ){
+					if($("textarea[name='sql']").val()==""){
+		            	   showVMsg($("textarea[name='sql']"),"脚本不能为空");
+		            	   return false;
+		               }
+				}
+				//原生sql
+
+				if($("input[name='stype']:checked").val()==1&&$("textarea[name='parameter']").val()==""){
+					 showVMsg($("textarea[name='parameter']"),"参数不能为空");
+					 return false;
+				}
+				var elem = data.elem;
+				$(elem).text("提交中");
+				if(lock){return false;}
+				lock = true;
+                $.postJSON("${base}/admin/save_pi_service.htm",data.field,function(data){
+                   $(elem).text("保存");
+               	   lock = false;
+            	   layer.msg(data.resultMsg,{icon:data.iCode,time:2000},function(){
+            		   if(data.result){
+            			   parent.location.reload();
+                		   parent.layer.close(index);
+                	   }
+            	   });           	   
+            	 
+               }); 
+               
+                return false;
+            }); 
+            
+           form.on("radio(stype)",function(data){
+
+        	    if($(data.elem).hasClass("stype")){       		 
+        		   if($(data.elem).val()==1){
+        	         	//原生sql    	         
+     	                 $(".type_box1").css("display","block");
+     	                 $(".type_box2").css("display","none");       	             
+        	       }
+        		   if($(data.elem).val()==2){
+        			 //实体sql   	         
+        			   $(".type_box2").css("display","block");
+                       $(".type_box1").css("display","none");    	             
+       	         }
+        	   } 
+           });
+    }); 
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,647 @@
+.layui-nav .layui-nav-item {
+	line-height: 58px;
+}
+
+.nav_li {
+	/*background: url(img/nav_unchoose_bg.png) no-repeat ;*/
+}
+
+.layui-layout-admin .layui-body {
+	top: 58px;
+	bottom: 44px;
+}
+
+.layui-layout-admin .layui-side {
+	top: 58px;
+	width: 250px;
+	overflow-x: hidden;
+	background: #4877A8;
+}
+
+.layui-nav-tree .layui-nav-item a {
+	line-height: 45px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.layui-nav-tree .layui-nav-item .layui-nav-itemed {
+	border-bottom: 1px solid white
+}
+
+.layui-layout-admin .layui-body {
+	top: 58px;
+	bottom: 0;
+}
+
+.index-main {
+	width: 250px;
+	height: 111px;
+	text-align: center;
+	float: left;
+}
+
+.my-header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 58px;
+	z-index: 2;
+	
+}
+
+.layui-nav {
+	background-color: transparent;
+}
+
+.main-admin {
+	position: relative;
+	z-index: -1;
+}
+
+
+.my-header-user-nav img {
+	margin-right: 13px;
+}
+
+.main-head {
+	padding: 0;
+}
+
+.main-head li {
+	width: 140px;
+	padding: 0;
+	position: relative;
+	text-align: center;
+}
+
+.main-head .layui-nav-bar {
+	display: none;
+}
+
+.layui-nav-tree li {
+	height: 50px;
+	line-height: 50px;
+	border-bottom: 1px solid white;
+}
+
+.layui-nav-tree .layui-nav-item a {
+	height: 100%;
+	line-height: 50px;
+}
+
+.layui-nav-tree .layui-nav-child dd.layui-this,
+.layui-nav-tree .layui-this,
+.layui-nav-tree .layui-this>a,
+.layui-nav-tree .layui-this>a:hover {
+	background-color: #ab0007;
+	color: #fff;
+}
+
+.layui-nav-tree li {
+	height: auto;
+}
+
+.layui-side-scroll .layui-nav-child {
+	padding-left: 20px;
+}
+
+.layui-side-scroll .layui-nav-child a {
+	border-bottom: 1px solid white;
+	padding-left: 20px;
+	color:white;
+}
+
+.my-header .my-header-user-nav .layui-nav-itemed a {
+	color: white !important;
+}
+
+.layui-tab-title {
+	background-color: #e6e6e6!important;
+	padding-top: 11px;
+	height: 49px !important;
+}
+
+.layui-tab-card {
+	border: 0;
+}
+
+.layui-tab {
+	/*padding: 0 20px!important;*/
+	background-color: #e6e6e6;
+}
+
+.layui-tab-title li {
+	/*border-top-left-radius: 15px;*/
+	margin: 0 6px 0 0!important;
+	background-color: #b3b3b3;
+	color: #1f1f1f;
+	position: relative;
+	bottom: -11px;
+	border-radius: 10px 10px 0px 0px;
+	background: #BCCFE0;
+	color: white;
+}
+
+.layui-tab-card>.layui-tab-title .layui-this {
+	color: white !important;
+}
+
+.layui-tab-card>.layui-tab-title {
+	padding: 0 40px!important;
+}
+
+.layui-tab-title li .layui-tab-close:hover {
+	background-color: #ab0007;
+}
+
+.hl-left {
+	width: 48%;
+	padding: 1%;
+	float: left;
+}
+
+.hl-bottom {
+	width: 98%;
+	padding: 1%;
+	float: left;
+}
+
+.hl-left section {
+	background-color: #FFF;
+	border-radius: 5px;
+	margin-bottom: 30px;
+}
+
+.panel-heading {
+	padding: 10px 15px;
+	line-height: 26px;
+	background-color: #f6f6f6;
+	text-indent: 20px;
+	position: relative;
+	font-size: 16px;
+}
+
+.panel-heading::after {
+	content: '';
+	position: absolute;
+	top: 10px;
+	height: 26px;
+	width: 5px;
+	left: 15px;
+	background-color: #e60012;
+}
+
+.panel-heading .layui-table {
+	margin: 0;
+}
+
+
+/*登录*/
+
+.login {
+	width: 100%;
+	overflow: hidden;
+}
+
+.login-left,
+.login-right {
+	float: left;
+}
+
+.login-left {
+	width: 58%;
+	height: 100%;
+	background: url("../image/Login_bg.png")no-repeat center;
+	background-size: 100% 100%;
+	position: relative;
+}
+
+.login-left p {
+	position: absolute;
+	top: 48%;
+	left: 0;
+	color: #FFF;
+	font-size: 40px;
+	letter-spacing: 20px;
+	text-align: center;
+	width: 100%;
+	height: 80px;
+	line-height: 80px;
+}
+
+.login-right {
+	width: 42%;
+}
+
+.login-padding {
+	padding: 80px 80px;
+	text-align: center;
+}
+
+.login-right-img {
+	width: 100%;
+	text-align: center;
+	height: 90px;
+}
+
+.login-right-img img {
+	height: 100%;
+	display: inline-block;
+}
+
+.login-right-name {
+	width: 100%;
+	line-height: 60px;
+	height: 60px;
+	font-size: 22px;
+	text-align: center;
+	font-weight: 600;
+}
+
+.login-right-hr {
+	padding: 0;
+	margin: 0;
+	border-color: #efefef;
+}
+
+.login-padding label {
+	width: 448px;
+	height: 50px;
+	line-height: 50px;
+	border-radius: 4px;
+	border: 1px solid #cccccc;
+	display: inline-block;
+	margin-top: 20px;
+	overflow: hidden;
+}
+
+.login-padding label input {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	text-indent: 50px;
+	font-size: 16px;
+	color: #929292;
+}
+
+.login-padding label.yzm {
+	width: 301px;
+	float: left;
+}
+
+.login-yzm {
+	width: 450px;
+	display: inline-block;
+}
+
+.yam-img {
+	width: 138px;
+	float: right;
+	margin-top: 20px;
+	cursor: pointer;
+}
+
+.chk_1+label {
+	background-color: #FFF;
+	border: 1px solid #C1CACA;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0 -15px 10px -12px rgba(0, 0, 0, 0.05);
+	padding: 9px;
+	border-radius: 5px;
+	display: inline-block;
+	position: relative;
+	margin-right: 30px;
+}
+
+.chk_1+label:active {
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.chk_1:checked+label {
+	background-color: #ECF2F7;
+	border: 1px solid #92A1AC;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0 -15px 10px -12px rgba(0, 0, 0, 0.05), inset 15px 10px -12px rgba(255, 255, 255, 0.1);
+	color: #243441;
+}
+
+.chk_1:checked+label:after {
+	content: '\2714';
+	position: absolute;
+	top: 0;
+	left: 0;
+	color: #758794;
+	width: 100%;
+	height: 100%;
+	line-height: 20px;
+	text-align: center;
+	font-size: 15px;
+	padding: 1px 0 0 0;
+	vertical-align: text-top;
+}
+
+.chk_1 {
+	display: none;
+}
+
+.wrap {
+	width: 450px;
+	margin-top: 0;
+	display: inline-block;
+}
+
+.wrap label {
+	width: 20px;
+	height: 20px;
+	padding: 0;
+	float: left;
+	margin: 15px 0;
+}
+
+.checkbox-name {
+	float: left;
+	line-height: 52px;
+	margin: 0 5px;
+	padding-left: 8px;
+	font-size: 14px;
+}
+
+.checkbox-right {
+	float: right;
+	line-height: 52px;
+	margin: 0 5px;
+	padding-left: 8px;
+	font-size: 14px;
+	cursor: pointer;
+	color: #379bbf;
+}
+
+.login-btn {
+	width: 450px;
+	display: inline-block;
+	background: url("../image/button.png")no-repeat center center;
+	background-size: 100% 100%;
+	height: 50px;
+	line-height: 50px;
+	color: #FFF;
+	font-size: 24px;
+	letter-spacing: 15px;
+	cursor: pointer;
+}
+
+.login-bottom {
+	width: 100%;
+	margin-top: 20px;
+	font-size: 12px;
+	color: #b3b3b3;
+	display: inline-block;
+}
+
+.login-yzm .yzm,
+.login-name,
+.login-pass {
+	position: relative;
+}
+
+.login-name::after {
+	position: absolute;
+	content: '';
+	width: 21px;
+	height: 25px;
+	top: 12.5px;
+	left: 14.5px;
+	background: url("../image/user.png")no-repeat center;
+	background-size: 100% 100%;
+}
+
+.login-pass::after {
+	position: absolute;
+	content: '';
+	width: 21px;
+	height: 25px;
+	top: 12.5px;
+	left: 14.5px;
+	background: url("../image/key.png")no-repeat center;
+	background-size: 100% 100%;
+}
+
+.login-yzm .yzm::after {
+	position: absolute;
+	content: '';
+	width: 27px;
+	height: 25px;
+	top: 12.5px;
+	left: 11.5px;
+	background: url("../image/123.png")no-repeat center;
+	background-size: 100% 100%;
+}
+
+@media screen and (max-width: 1600px) {
+	.login-padding {
+		padding: 90px 40px;
+	}
+	.login-padding label {
+		width: 348px;
+	}
+	.login-padding label.yzm {
+		width: 193px;
+	}
+	.login-yzm {
+		width: 350px;
+	}
+	.yam-img {
+		width: 148px;
+		height: 50px;
+	}
+	.wrap {
+		width: 350px;
+	}
+	.login-btn {
+		width: 350px;
+	}
+	.wrap label {
+		width: 20px;
+	}
+}
+
+
+/*登录END*/
+
+.layui-tab-bar {
+	top: 7px;
+}
+
+.mac {
+	background-color: #FFF;
+	padding: 20px;
+}
+
+.panel-table .layui-form-item {
+	margin-top: 20px;
+}
+
+.navigation {
+	height: 60px;
+	color: #eee;
+	padding-left: 50px;
+	width: 100%;
+	line-height: 60px;
+	font-size: 16px;
+	background: url("../image/gongnengdaohang.png") no-repeat 20px 20px;
+	background-size: 20px 20px;
+}
+
+.layui-nav .layui-nav-item a i {
+	width: 30px;
+	height: 30px;
+	line-height: 50px;
+	display: inline-block;
+	background: url("../image/permission.png") no-repeat 0 8px;
+	background-size: 20px 22px;
+	margin-right: 0;
+}
+
+.my-side ul.layui-nav li a i {
+	margin-right: 0;
+}
+
+.layui-nav .layui-nav-item>a {
+	padding-left: 20px;
+	color:white;
+}
+
+.fast {
+	padding-top: 30px;
+}
+
+.fast p {
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+}
+
+.juzhong {
+	width: 400px;
+	margin: 0 auto;
+	margin-top: 30px;
+}
+
+.my-header-user-nav img {
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	border: none;
+	border-radius: 100%;
+}
+
+.pageBotton a.curr {
+	border-color: #009688;
+	color: #009688;
+}
+
+
+/*修改*/
+
+
+.layui-nav-tree .layui-nav-child a:hover {
+	background: 0 0;
+}
+
+
+
+.layui-nav-child img {
+	width: 17px;
+	height: 17px;
+}
+
+.side_botlogo {
+	position: absolute;
+    bottom: 0px;
+    width: 100%;
+    z-index: -1;
+    transition: 3s;
+    opacity: 0;
+}
+
+.layui-nav-child>dd:last-child a {
+	border: none !important;
+}
+
+.main-head li:hover .h_color {
+	color: white !important;
+}
+
+
+/*默认晚间样式*/
+/*头部*/
+.logo{
+	display:inline-block;
+	padding:15px;
+	width:220px;
+	height:35px;
+}
+.logo_w{
+	text-align: center;
+    display: inline-block;
+    width: 250px;
+    height: 58px;
+    box-sizing: border-box;
+    line-height: 58px;
+}
+.logo_img{
+	max-width:250px;
+	max-height:58px;
+}
+.main-head li::after {
+	position: absolute;
+	content: '';
+	top: 0;
+	left: 0;
+	background: url(image/nav_unchoose_bg.png)no-repeat center;
+	background-size: 100% 100%;
+	height: 100%;
+	width: 100%;
+	cursor: pointer;
+	display: block;
+	transition: all .3s;
+	z-index: -1;
+}
+
+.main-head li:hover::after {
+	position: absolute;
+	content: '';
+	top: 0;
+	left: 0;
+	background: url(image/nav_choose_bg.png) no-repeat center;
+	background-size: 100% 100%;
+	width: 100%;
+	height: 100%;
+	color: #BCCFE0;
+}
+
+.main-head .layui-this:after {
+	position: absolute;
+	content: '';
+	top: 0;
+	left: 0;
+	background: url(image/nav_choose_bg.png)no-repeat center;
+	background-size: 100% 100%;
+	height: 100%;
+}
+.my-header{
+	background: #E8DCF4;
+}
+/*side*/
+.layui-layout-admin .layui-side{
+	background: #552185;
+}
+.layui-nav-tree .layui-nav-child a:hover{
+	background: #4E5465;
+}
+/*iframe*/
+.layui-tab-card>.layui-tab-title .layui-this{
+	background: #552185;
+}

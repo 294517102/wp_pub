@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <#include "/${rp}/include/link.html">
+    <script type="text/javascript" src="res/js/ScrollHolder.js"></script>
+</head>
+<body>
+<#include "/${rp}/include/header.html">
+<content>
+    <div class="ny">
+        <div class="ny_local bb">
+            <div class="width1200 ny_locala">
+                <a href="/index.html"><img class="home" src="../res/default/images/home.png" alt=""></a>
+                <img class="dbx" src="../res/default/images/dbx.png" alt="">
+                <a href="${pCol.children[0].url!}">${pCol.title!}</a>
+                <img class="dbx" src="../res/default/images/dbx.png" alt="">
+                <a >${sCol.title!}</a>
+            </div>
+        </div>
+        <div class="ny_con width1200">
+            <div class="ny_left fl">
+                <#include "/${rp}/include/ny_left.html">
+            </div>
+            <div class="ny_right fr">
+                <div class="nyr_l fl">
+                    <div class="nyr_row">
+                        电话：
+                        <#assign sclist=sc.bks("dian_hua")>
+                        <#list sclist as a>
+                        <span>${a.desc!}</span>
+                        </#list>
+                    </div>
+                    <div class="nyr_row">
+                        地址：${webSet.comAddress!}
+                    </div>
+                    <div class="nyr_row">
+                        微信公众号：${sc.bk("wei_xin_gong_zhong_hao").desc}
+                    </div>
+                    <div class="nyr_row">
+                        <img class="ewm" src="${sc.bk('er_wei_ma').acc.url!}" alt="">
+                    </div>
+                </div>
+                <div class="nyr_r fl">
+                    <div class="nyr_row">
+                        邮编：${sc.bk("you_bian").desc}
+                    </div>
+                    <div class="nyr_row">
+                        邮箱：${webSet.comEmail}
+                    </div>
+                </div>
+            </div>
+            <div style="clear: both"></div>
+        </div>
+    </div>
+</content>
+<#include "/${rp}/include/footer.html">
+<#include "/${rp}/include/script.html">
+</body>
+</html>

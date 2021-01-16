@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<#include "/${rp}/metalink.html">
+	<title>${webSet.title}</title>
+	<style>
+		.swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+ /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+    }
+    .swiper-container-v {
+      background: #eee;
+    }
+	</style>
+</head>
+<body>
+	<header>
+		<#include "/${rp}/header.html">	
+	</header>
+	<div class="dangquangongzuo">
+		<div class="dqgz_content_nav">
+			<ul class="dangqun_li">
+			    <#assign ck=cl.bk(c)>
+			    <#list ck.parent.children as cc>
+				<li><a href="${cm.cp}${cc.url}" <#if cc.id==ck.id>class="dq_active"</#if>>${cc.title}</a></li>
+				</#list>
+			</ul>
+		</div>
+		<div class="hulizixun">
+			<div class="hulizixun_left"> 
+				<div class="hulizixun_left_title">
+					<h5>${ck.title}</h5>
+				</div>
+				<ul>
+				    <#if !pageIndex?? >  <#assign  pageIndex="1" > </#if>
+                    <#assign pageList= at.bc(ck,pageIndex,8)> 
+                    <#if pageList.list?size gt 0>
+                    <#list pageList.list?sort_by('issueTime')?reverse as a>
+					<li>
+						<p><a href="${cm.cp}go.htm?url=nursingScope-detail&id=${a.id}">${a.title}</a></p>
+						<span>发布时间：${a.issueTime?string('YYYY-MM-dd')} 来自：${a.source}</span>
+					</li>
+					</#list>
+				</ul>
+				<div class="fenpage">
+                ${cm.page(req,pageIndex,pageList)}
+                </div>
+                 <#else>
+                <div class="nodata">
+                    <img src="res/default/images/nodata.png" alt="暂无数据" />
+                    <p>暂无数据</p>
+                </div>
+                </#if>
+			</div>
+			<div class="hulizixun_right">
+				<div class="hulizixun_right_title">
+					<h5>护理咨询</h5>
+				</div>
+				<div class="hulizixun_right_lunbo">
+			  <div class="swiper-container">
+				    <div class="swiper-wrapper">
+				      <div class="swiper-slide">
+				        <#list cl.bi(713).children as aa>
+				      	<ul class="swiper-slide_lunbo">
+				      		<li>
+				      			<a href="${cm.cp}go.htm?url=nursingScope-nursingStyle-detail&c=${aa.keyword}"><img src="<#if aa.thumbnail.url??>${aa.thumbnail.url}<#else>res/default/images/default_pic.png</#if>" alt=""></a>
+				      			<span><a href="${cm.cp}go.htm?url=nursingScope-nursingStyle-detail&c=${aa.keyword}">${aa.title}</a></span>
+				      		</li>
+				      	</ul>
+				      	</#list>
+				      </div>
+				    </div>
+				    <!-- Add Pagination -->
+				    <div class="swiper-pagination"></div>
+				  </div>
+				</div>
+			</div>
+		</div>
+		<#assign yygg=cl.bk('yi_yuan_gong_gao')>
+		<div class="hulizixun_yigg">
+			<div class="hulizixun_right_title">
+					<h5>${yygg.title}</h5>
+					<a href="${cm.cp}${yygg.url}">MOER+</a>
+				</div>
+				<ul class="gonggao_lib">
+					<#list at.bc(yygg) as a>
+    			    <#if a_index lt 6>
+    				<li><a href="${cm.cp}go.htm?url=news_detail&id=${a.id}">${a.title}</a><span>${a.issueTime?string('MM-dd')} </span></li>
+    				</#if>
+    				</#list>
+				</ul>
+			</div>
+		</div>
+
+	</div>
+	<footer>
+		<#include "/${rp}/footer.html">
+	</footer>
+</body>
+<script src="res/js/jquery-1.12.3.js"></script>
+<script src="res/js/jquery.SuperSlide.2.1.1.js"></script>
+<script src="res/js/swiper-4.1.6.min.js"></script>
+<script>
+	 var swiper = new Swiper('.swiper-container', {
+	   loop: true,
+        autoplay: {
+        	delay: 1000,
+        },
+      spaceBetween: 30,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+</script>	
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <#include "/${rp}/metalink.html">
+</head>
+<body>
+<div class="page">
+    <#assign ck=cl.bk(c)>
+    <header class="bar bar-nav">
+        <a class="icon icon-left pull-left back"></a>
+        <a href="${cm.cp}" class="icon icon-home pull-right" external></a>
+        <h1 class="title">${ck.title}</h1>
+    </header>
+    <div class="content">
+        <div class="huli_header">
+            <ul>
+                <#list ck.parent.children as a>
+                <li <#if a.id==ck.id> class="active"</#if>><a href="${cm.cp}${a.url}" external>${a.title}</a></li>
+                </#list>
+            </ul>
+        </div>
+
+        <div class="inner_box1 erjibox" style="margin-top: 0">
+            <ul class="wenlist">
+                <#if !pageIndex?? >  <#assign  pageIndex="1" > </#if>
+                <#assign pageList= at.bc(ck,pageIndex,20)> 
+                <#if pageList.list?size gt 0>
+                <#list pageList.list?sort_by('issueTime')?reverse as a>
+                <li>
+                    <a href="${cm.cp}go.htm?url=nursingScope-detail&id=${a.id}" external>
+                        <p class="wenlist_title">${a.title}</p>
+                        <span class="wenlist_span">${a.issueTime?string('MM-dd')}</span>
+                    </a>
+                </li>
+                </#list>
+            </ul>
+            <div class="fenpage">
+            ${cm.page(req,pageIndex,pageList)}
+            </div>
+             <#else>
+            <div class="nodata">
+                <img src="res/default/image/nodata.png" alt="暂无数据" />
+                <p>暂无数据</p>
+            </div>
+            </#if>
+        </div>
+
+        <#include "/${rp}/footer.html">
+    </div>
+</div>
+
+<#include "/${rp}/jslink.html">
+<script>
+    var swiper2 = new Swiper('.content-swiper .swiper-container', {
+        pagination: '.content-swiper .swiper-pagination',
+        paginationClickable: true,
+        autoplayDisableOnInteraction : false,
+        speed:500,
+        loop:true,
+        autoplay:3000,
+    });
+    $(".fenpage").find('a').addClass('external')
+</script>
+</body>
+</html>

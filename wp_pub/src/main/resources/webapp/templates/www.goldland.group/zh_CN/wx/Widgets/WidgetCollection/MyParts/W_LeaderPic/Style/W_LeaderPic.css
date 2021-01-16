@@ -1,0 +1,50 @@
+﻿/*************************************************************
+ * Command:Start
+ * Control:W_LeaderPic
+ * Style:W_LeaderPic
+ * Desc::
+ * Quot:
+*************************************************************/
+.W_LeaderPic { min-height:500px; padding-left:20px; overflow:hidden;}
+.W_LeaderPic a {  }
+.W_LeaderPic a:hover { }
+
+.W_LeaderPic h1{ height:40px; line-height:40px; /* border-bottom:1px solid #bababa; */ }
+.W_LeaderPic h1 em {font:normal 16px/40px "microsoft yahei"; color:#fff; padding-left:40px;}
+.W_LeaderPic .W_LeaderPic_Box { margin:20px auto;}
+
+.W_LeaderPic h2 { font:normal 14px/30px "微软雅黑","宋体"; height:30px; background:url("../images/icon01.gif") no-repeat left; border-bottom:1px solid #ddd; margin-bottom:10px; padding-left:15px; color:#000;}
+.W_LeaderPic h2 span { font:normal 14px/30px "微软雅黑","宋体"; color:#333; margin-left: 10px;}
+
+.W_LeaderPic dl { float:left; width:340px; margin:0px 17px; overflow:hidden; display:inline; min-height:180px;}
+.W_LeaderPic dl dt { float:left; width:110px;}
+.W_LeaderPic dl dt img { width:100px; height:130px; border-radius: 8px;}
+.W_LeaderPic dl dd { float:right; width:230px;}
+.W_LeaderPic dl dd p { font:normal 12px/20px "microsoft yahei"; color:#666; min-height: 66px; border-bottom:1px solid #ddd; }
+
+.W_LeaderPic .more { display: block; float: right; margin-top:5px; }
+.W_LeaderPic a.more  { text-decoration:none; font:normal 12px/14px "微软雅黑";}
+
+.W_LeaderPic .clear{ clear: both;}
+.W_LeaderPic .clear:after{ content: "."; display: block; height:0; clear:both; visibility: hidden;}
+.W_LeaderPic .page_css, .class_page { text-align:center; padding:10px 0;}
+.W_LeaderPic .page_css a, .class_page a { display: inline-block; border:1px solid #999999; padding:8px 10px; color:#666666; line-height:100%;}
+.W_LeaderPic .page_css a:hover, .class_page a:hover{ color: #fff; border: 1px solid #666; background: #666;}
+.W_LeaderPic .page_css b a, .class_page b a { color: #fff; border:1px solid #666; background:#666;}
+.W_LeaderPic .page_line { }
+
+
+
+
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:W_LeaderPic
+ * Style:W_LeaderPic
+ * Desc::
+ * Quot:
+*************************************************************/

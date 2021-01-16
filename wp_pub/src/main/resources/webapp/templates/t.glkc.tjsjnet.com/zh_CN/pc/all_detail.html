@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<#include "/${rp}/metalink.html">
+	<title>${webSet.title}</title>
+	<style>
+		.dq_active1{
+			display: inline-block;
+			height: 55px;
+			width: 56px;
+			color: #46c3f2;
+			font-size: 14px;
+			border-bottom: 2px solid #46c3f2;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<#include "/${rp}/header.html">
+	</header>
+	<div class="dangquangongzuo">
+	    <#assign ib = at.bi(id)>
+		<div class="weizhi">
+					你的位置：<a href="${cm.cp}" >四川省人民医院</a>>
+					<a href="${cm.cp}${ib.column.url}">${ib.column.title}</a>>
+					<a class="w_active">${ib.title}</a>
+				</div>
+	</div>
+	<div class="jx_gz_xx">
+					<div class="jx_gz_xx_title">
+						<h2>${ib.title}</h2>
+						<p>发布时间：<span>${ib.issueTime?string('YYYY-MM-dd')}</span> 本文出处： ${ib.source}
+						 <a class="goback">返回上一级</a></p>
+						
+						<div class="fx">
+							<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div>
+                                    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+						</div>
+					</div>
+				<div class="jx_gz_xx_con">
+						${ib.ext.content}
+		
+				</div>
+	 </div>
+	<footer>
+		<#include "/${rp}/footer.html">
+	</footer>
+</body>
+<script src="res/js/jquery-1.12.3.js"></script>
+<script src="res/js/jquery.SuperSlide.2.1.1.js"></script>
+<script src="res/js/swiper-4.1.6.min.js"></script>
+<script>
+	 var swiper = new Swiper('.swiper-container', {
+	   loop: true,
+        autoplay: {
+        	delay: 1000,
+        },
+      spaceBetween: 30,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+    $('.goback').on('click',function(){
+        window.history.go(-1);
+    })
+</script>	
+</html>

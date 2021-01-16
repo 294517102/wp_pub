@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<#include "/${rp}/metalink.html">
+	<title>${webSet.title}</title>
+	<style>
+		.dq_active1{
+			display: inline-block;
+			height: 55px;
+			width: 56px;
+			color: #46c3f2;
+			font-size: 14px;
+			border-bottom: 2px solid #46c3f2;
+		}
+		#h4{
+			color: #46c3f2;
+			border-bottom: 2px solid #46c3f2;
+		}
+		#text{
+			position: absolute;
+			top:0;
+			left: 50px;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<#include "/${rp}/header.html">	
+	</header>
+	<div class="dangquangongzuo">
+		<div  class="dangquangongzuo_img">
+			<img src="res/default/images/banner.png" alt="">
+			<!--<span>医生详情</span>-->
+		</div>
+		
+		<div class="df_lb">
+			<div class="df_lb_title">
+				<h4 style="height: 64px" id="h4">医生介绍</h4>
+				<a class="goback" style="color:#23A2E5 ">返回上一级</a>
+			</div>
+				<div class="yishen_deatil">
+					<dl>
+						<dt><img width="114" height="144" src="${doctor.accessory.ourl}" alt=""></dt>
+						<dd style="width: 1050px">
+						
+							<div class="xingming">
+								<h5>${doctor.name}</h5>
+							</div>
+								<div class="fenx3">
+									<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+								</div>
+								<!--<span>分享至：</span>-->
+							<div class="keshi">科室：${doctor.column.title}</div>
+							<div class="jibie">级别：${doctor.level}</div>
+							<div class="shanchang">擅长：${doctor.speciality}</div>
+						</dd>
+					</dl>
+				</div>
+			<div class="df_lb_title" style="position: relative;">
+				<h4 style="height: 64px" id="h4">个人概况</h4>
+			</div>
+			<div class="grgk">
+				${doctor.describes}
+			</div>
+
+			<div class="df_lb_title" style="position: relative;">
+				<h4 style="height: 64px" id="h4">坐诊时间</h4>
+			</div>
+			<div class="zuozhen_time">
+					<ul class="bgcolor">
+						<li></li>
+						<li>一</li>
+						<li>二</li>
+						<li>三</li>
+						<li>四</li>
+						<li>五</li>
+						<li>六</li>
+						<li>天</li>
+					</ul>
+					<ul>
+						<li>上午工作日</li>
+						<#if doctor.dutys??&&doctor.dutys?size gt 0>
+                        <#list doctor.dutys as d>
+                        <#if d.typeAm ??>
+						    <#if d.typeAm==1><li>特</li>
+						    <#elseif d.typeAm==2><li>专</li>
+						    <#elseif d.typeAm==3><li>普</li>
+						    <#elseif d.typeAm==4><li>停</li>
+						    </#if>
+						<#else>
+						<li></li>
+						</#if>
+                        </#list>
+                        </#if>
+					</ul>
+					<ul>
+						<li>下午工作日</li>
+						<#if doctor.dutys??&&doctor.dutys?size gt 0>
+                        <#list doctor.dutys as d>
+                        <#if d.typePm ??>
+						    <#if d.typePm==1><li>特</li>
+						    <#elseif d.typePm==2><li>专</li>
+						    <#elseif d.typePm==3><li>普</li>
+						    <#elseif d.typePm==4><li>停</li>
+						    </#if>
+						<#else>
+						<li></li>
+						</#if>
+                        </#list>
+                        </#if>
+					</ul>
+				</div>
+	</div>
+</div>
+	<footer>
+		<#include "/${rp}/footer.html">
+	</footer>
+</body>
+</html>

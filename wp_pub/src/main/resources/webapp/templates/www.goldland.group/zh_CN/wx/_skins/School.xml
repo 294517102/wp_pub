@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TempateGroup name="School" description="学校站群" created="2016/11/2 09:30:16" ver="V3.0">
+  <Item name="站点欢迎页" template="site.welcome.ascx" location="welcome" c_model="" layout="" tag="" type="site" description="网站首页" created="2016/11/4 10:39:01" updated="2016/11/4 12:39:01" isSub="False" c_modelText="" locationText="站点欢迎页" />
+  <Item name="通用栏目页" template="channel.index.ascx" location="index" c_model="" layout="" tag="" type="channel" description="" created="2016/11/4 10:37:36" updated="2016/11/4 12:37:36" isSub="False" c_modelText="" locationText="通用栏目页" />
+  <Item name="通用内容页" template="channel.detail.ascx" location="detail" c_model="" layout="" tag="" type="channel" description="" created="2016/11/4 10:17:47" updated="2016/11/4 12:17:47" isSub="False" c_modelText="" locationText="通用内容页" />
+  <Item name="通用搜索页" template="channel.search.ascx" location="search" c_model="" layout="" tag="" type="channel" description="" created="2016/11/4 10:28:32" updated="2016/11/4 12:28:32" isSub="False" c_modelText="" locationText="通用搜索页" />
+  <Item name="站点注册页" template="site.register.ascx" location="register" c_model="" layout="" tag="" type="site" description="" created="2017/5/6 20:51:25" updated="2017/5/6 20:51:25" isSub="False" c_modelText="" locationText="站点注册页" />
+</TempateGroup>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<#include "/${rp}/metalink.html">
+	<title>${webSet.title}</title>
+	<style>
+		.dq_active1{
+			display: inline-block;
+			height: 55px;
+			width: 56px;
+			color: #46c3f2;
+			font-size: 14px;
+			border-bottom: 2px solid #46c3f2;
+		}
+		#h4{
+			color: #46c3f2;
+			border-bottom: 2px solid #46c3f2;
+		}
+		#shuom{
+			font-size: 12px;
+			line-height: 20px
+		}
+		#color{
+			color: #999999
+		}
+		 #color:hover{
+			color:#23A2E5 
+					}
+	</style>
+</head>
+<body>
+	<header>
+		<#include "/${rp}/header.html">	
+	</header>
+	<div class="dangquangongzuo">
+	    <#assign ck=cl.bk(c)>
+	    <#assign cks=cl.bk("ke_shi_dao_hang")>
+			<div  class="dangquangongzuo_img" style="background:url(${cks.thumbnail.ourl}); background-size:100% 100%;">
+				<!--<div class="dangquangongzuo_img_pos">-->
+					<!--<span>${ck.title}</span>-->
+				<!--</div>	-->
+		</div>
+		<div class="df_lb">
+			<div class="df_lb_title">
+				<h4 style="height: 64px" id="h4">${ck.title}</h4>
+				<a class="goback" style="color:#23A2E5 ">返回上一级</a>
+			</div>
+				<div class="ks_deatil" >
+					<div class="ks_deatil_top">
+					    <#assign kix = at.bc(ck)>
+						<dl>
+						    <a href="${cm.cp}go.htm?url=departmentDetail&c=${ck.keyword}" id="color">
+							<dt><img src="${ck.thumbnail.ourl!}" alt=""></dt>
+							<dd>
+								<h2>${ck.title}</h2>
+								<p>
+								    楼层：${ck.floor}  科室：${ck.remark}
+								</p>
+							
+								<div id="shuom">
+							       ${ck.describes}
+								</div>
+									
+							</dd>
+							</a>
+						</dl>
+					</div>
+					<div class="ks_deatil_bottom">
+						<div class="lf">
+							<div class="df_lb_title">
+								<h4 style="height: 64px" id="h4">科室动态</h4>
+								<a href="${cm.cp}go.htm?url=department-list&c=${ck.keyword}" style="color:#23A2E5 ">MORE+</a>
+							</div>
+							<ul style="width:100%">
+							    <#list at.bc(ck) as a>
+							    <#if a_index gt 0>
+							    <#if a_index lt 7>
+								<li>
+									<a href="${cm.cp}go.htm?url=department-listdtail&id=${a.id}">${a.title}</a>
+									<span>${a.issueTime?string('YYYY-MM-dd')} </span>
+								</li>
+								</#if>
+								</#if>
+								</#list>
+							</ul>
+						</div>
+						<div class="rg">
+							<div class="df_lb_title">
+								<h4 style="height: 64px" id="h4">医生介绍</h4>
+								<a href="${cm.cp}go.htm?url=department-doctor&c=${c}" style="color:#23A2E5">MORE+</a>
+							</div>
+							<#list ck.doctors as d>
+							<#if d_index lt 3>
+							<div class="rg_img x_rg_img" style="background:url(${d.accessory.ourl});">
+							    <a href="${cm.cp}general_service_t3ncXUfMQv8itS1rnjr.htm?_url=doctor_detail&id=${d.id}">
+    								<!--<img src="" alt="">-->
+    								<span>${d.name}</span>
+								</a>
+							</div>
+							</#if>
+						    </#list>
+						</div>
+
+					</div>
+					</div>
+
+		</div>
+	</div>
+	<footer>
+		<#include "/${rp}/footer.html">
+	</footer>
+</body>
+<script src="res/js/jquery-1.12.3.js"></script>
+<script src="res/js/xdlines.jquery.js"></script>
+<script>
+		$('#shuom').xdlines({
+			max:4
+		});
+		$('.goback').on('click',function(){
+		    window.history.go(-1);
+		})
+</script>
+</html>

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TempateGroup name="TEMP02" description="金土地模板02" created="2017/6/9 16:31:14" ver="V3.0">
+  <Item name="站点欢迎页" template="site.welcome.ascx" location="welcome" c_model="" layout="" tag="" type="site" description="网站首页" created="2017/6/9 16:33:11" updated="2017/6/9 16:33:11" isSub="False" c_modelText="" locationText="站点欢迎页" />
+  <Item name="通用栏目页" template="channel.index.ascx" location="index" c_model="" layout="" tag="" type="channel" description="" created="2017/6/19 12:38:19" updated="2017/6/19 12:38:19" isSub="False" c_modelText="" locationText="通用栏目页" />
+  <Item name="通用内容页" template="channel.detail.ascx" location="detail" c_model="" layout="" tag="" type="channel" description="" created="2017/6/19 12:38:26" updated="2017/6/19 12:38:26" isSub="False" c_modelText="" locationText="通用内容页" />
+</TempateGroup>

@@ -1,0 +1,135 @@
+<script src="res/js/jquery-1.12.3.js"></script>
+<div class="headerConent">
+	<div class="logo">
+				<a href="${cm.cp}"><img src="res/default/images/logo2.png" alt="金牛医院logo">
+				<!--<h4 class="jinniutitle" style="font-family: 'KaiTi'">四川省人民医院金牛医院</h4>-->
+				<!--<span class="jinniuEnglish">成都市金牛区人民医院</span>-->
+				</a>
+			</div>
+			<div class="seach">
+				<div class="seach_left">
+					<form action="" id="form">
+						<input type="text" id="text" class="psearchtext" placeholder="请输入关键字">
+						<a id="btn1"></a>
+						<input type="button" value="搜索" id="btn2" class="psearchbtn">
+					</form>
+				</div>
+				<div class="seach_right">
+					<img src="res/default/images/电话(1).png" alt="电话" id="phone_head"  style="margin:0">
+		
+				</div>					
+			</div>
+	</div>
+
+<div class="nav">
+	<ul class="nav_head">
+		<li><a href="${cm.cp}">网站首页</a></li>
+		<#assign hyyjs = cl.bk('yi_yuan_jie_shao')>
+		<li>
+		    <a href="${cm.cp}go.htm?url=hospital-info&c=yi_yuan_jian_jie">${hyyjs.title}</a>
+			<ul class="yiyan">
+    			<#list hyyjs.children as cc>
+    			<#if cc.keyword != "yi_yuan_rong_yu"&&cc.keyword != "ling_dao_tuan_dui">
+    			<li><a href="${cm.cp}${cc.url}">${cc.title}</a></li>
+    			</#if>
+    			</#list>
+			</ul>
+		</li>
+        <#assign hxwzx = cl.bk('xin_wen_zhong_xin')>
+		<li>
+		    <a href="${cm.cp}go.htm?url=news_wenlist&c=yi_yuan_gong_gao">${hxwzx.title}</a>
+			<ul class="xinwen">	
+				<#list hxwzx.children as cc>
+				<#if cc_index gte 0&&cc.keyword !="mei_ti_ju_jiao">
+				<#if cc_index lt 7>
+    			<li><a href="${cm.cp}${cc.url}">${cc.title}</a></li>
+    			</#if>
+    			</#if>
+    			</#list>
+			</ul>
+		</li>
+		<#assign hdqgz = cl.bk('dang_qun_gong_zuo')>
+		<li><a href="${cm.cp}go.htm?url=party-wenlist&c=dang_qun_zi_xun">${hdqgz.title}</a>
+	    	<ul class="dangqun">	
+				<#list hdqgz.children as cc>
+				<#if cc_index != 3&&cc.keyword != "sheng_yin"&&cc.keyword != "hui_yin_bi">
+					<#if cc_index != 4>
+    			<li><a href="${cm.cp}${cc.url}">${cc.title}</a></li>
+    			</#if>
+    			</#if>
+    			</#list>
+			</ul>
+		</li>
+		<#assign ksdh=cl.bk('ke_shi_dao_hang')>
+		<li><a href="${cm.cp}${ksdh.url}">${ksdh.title}</a></li>
+		<#assign zjjs=cl.bk('zhuan_jia_jie_shao')>
+		<li><a href="${cm.cp}${zjjs.url}">${zjjs.title}</a>	<ul class="jiuyi">	
+				<#list zjjs.children as cc>
+    			<li><a href="${cm.cp}${cc.url}">${cc.title}</a></li>
+    			</#list>
+			</ul>
+		</li>
+		
+		<#assign hjyfw = cl.bk('jiu_yi_fu_wu')>
+		<li><a href="${cm.cp}go.htm?url=medicalServic-health&c=jian_kang_ti_jian">${hjyfw.title}</a>
+		    <ul class="jiuyi">	
+				<#list hjyfw.children as cc>
+					<#if cc_index != 5&&cc.keyword != "zhu_yuan_zhi_nan">
+    			<li><a href="${cm.cp}${cc.url}">${cc.title}</a></li>
+    			</#if>
+    			</#list>
+			</ul>
+		</li>
+		<#assign hhlyd = cl.bk('hu_li_yuan_di')>
+		<li><a href="${cm.cp}go.htm?url=nursingScope-nursingStyle-list&c=hu_li_feng_cai">${hhlyd.title}</a>
+			<ul class="huli">	
+				<#list hhlyd.children as cc>
+				<#if cc.keyword == "hu_li_feng_cai"||cc.keyword == "hu_li_dong_tai">
+    			<li><a href="${cm.cp}${cc.url}">${cc.title}</a></li>
+    			</#if>
+    			</#list>
+			</ul>
+		</li>
+		<#assign jkkp = cl.bk('jian_kang_ke_pu')>
+		<li><a href="${cm.cp}go.htm?url=news-recruitment&c=ren_cai_zhao_pin">${jkkp.title}</a>
+			<ul class="huli">	
+				<#list jkkp.children as cc>
+    			<li><a href="${cm.cp}${cc.url}">${cc.title}</a></li>
+    			</#list>
+			</ul>
+		</li>
+		<!--<#assign hjxky = cl.bk('jiao_xue_ke_yan')>-->
+		<!--<li><a href="${cm.cp}go.htm?url=teflResearch-wenlist&c=gong_zuo_dong_tai">${hjxky.title}</a>-->
+		<!--<ul class="jiaoxue">	-->
+		<!--	<#list hjxky.children as cc>-->
+  <!--  			<li><a href="${cm.cp}${cc.url}">${cc.title}</a></li>-->
+  <!--  		</#list>-->
+		<!--	</ul>-->
+		<!--</li>-->
+	</ul>
+</div>
+<script>
+    $('.psearchbtn').on('click',function(){
+        var text=$('.psearchtext').val().trim();
+        // console.log(text)
+        if(text.length<1){
+            alert('请输入检索信息')
+        }else{
+            
+             window.open('${cm.cp}go.htm?url=sousuo&k='+text)
+        }
+    })
+    $(".psearchtext").keydown(function(event){ 
+          if (event.keyCode === 13){ 
+            var text=$('.psearchtext').val().trim();
+            // console.log(text)
+            if(text.length<1){
+                alert('请输入检索信息')
+            }else{
+                
+                 window.open('${cm.cp}go.htm?url=sousuo&k='+text)
+            }
+          } 
+        // console.log(event.keyCode); 
+    }); 
+</script>

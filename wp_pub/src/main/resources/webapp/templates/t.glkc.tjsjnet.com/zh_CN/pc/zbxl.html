@@ -1,0 +1,58 @@
+	<div class="df_lb">
+			<div class="df_lb_title">
+				<h4 style="height: 64px" id="h4">门诊排班</h4>
+			</div>
+			<div class="mzpb">
+				<div class="mzpb_lib">
+					<h6>门诊科室:</h6>
+					<ul>
+					  <#assign col = cl.bk('ke_shi_dao_hang')>
+					    <li ><a class="ks_chose all xz_color_active" v_id=''>所有</a></li>
+					    <#list col.children as t>
+						<li ><a class="ks_chose" v_id='${t.id}'>${t.title}</a></li>
+					    </#list>
+					</ul>
+				</div>
+				<div class="mzpb_lib">
+					<h6>坐诊星期:</h6>
+					<ul class="week">
+					    <li class='al'><a class="wk_chose xz_color_active" v_id=''>所有</a></li>
+					    <li ><a class="wk_chose" v_id='1'>星期一</a></li>
+					    <li ><a class="wk_chose" v_id='2'>星期二</a></li>
+				        <li ><a class="wk_chose" v_id='3'>星期三</a></li>
+					    <li ><a class="wk_chose" v_id='4'>星期四</a></li>
+				        <li ><a class="wk_chose" v_id='5'>星期五</a></li>
+					    <li ><a class="wk_chose" v_id='6'>星期六</a></li>
+					    <li ><a class="wk_chose" v_id='7'>星期日</a></li>
+					</ul>
+				</div>
+				<div class="mzpb_lib zcxz">
+					<h6>职&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称:</h6>
+					<ul class="week">
+					</ul>
+				</div>
+				<div class="mzpb_lib">
+					<h6>专家级别:</h6>
+					<ul class="week">
+					 <li class="al"><a class="xz_color_active jb_chose" v_val=''>所有</a></li>
+					    <#list sc.bks('zhuan_jia_ji_bie') as t>
+					    	<li><a class="jb_chose" v_val='${t.describes}'>${t.describes}</a></li>
+						</#list>
+					</ul>
+				</div>
+			</div>
+			<div class="df_lb_title" style="position: relative;">
+				<h4 style="height: 64px" id="h4">坐诊医生</h4>
+				<div class="seach_left" style="float: right;">
+					<form action="" id="form">
+						<input type="text" class="ys_searchval" id="text" placeholder="请输入医生姓名" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\u4E00-\u9FA5]/g,''))" style="position:absolute">
+						<a href="#" id="btn1"></a>
+						<input type="button" class="ys_searchval_btn" value="搜索" id="btn2">
+					</form>
+				</div>
+			</div>
+		
+			<div class="loading">数据加载中。。。</div>
+            <div class="ysxx"></div>	
+            <div class="fenpage"></div>
+		</div>

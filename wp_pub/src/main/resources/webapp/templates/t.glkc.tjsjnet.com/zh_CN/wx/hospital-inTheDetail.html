@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <#include "/${rp}/metalink.html">
+</head>
+<body>
+<div class="page">
+    <#assign ib=at.bi(id)>
+    <header class="bar bar-nav">
+        <a class="icon icon-left pull-left back"></a>
+        <a href="${cm.cp}" class="icon icon-home pull-right" external></a>
+        <h1 class="title">${ib.column.title}</h1>
+    </header>
+    <div class="content">
+
+        <div class="pic_list erjibox">
+            <ul>
+                <#list ib.pic as p>
+                <li>
+                    <a>
+                        <img src="${p.url}" alt="">
+                        <!--<p>护理一部</p>-->
+                    </a>
+                </li>
+                </#list>
+            </ul>
+        </div>
+        <#include "/${rp}/footer.html">
+    </div>
+</div>
+
+<#include "/${rp}/jslink.html">
+<script>
+
+</script>
+</body>
+</html>

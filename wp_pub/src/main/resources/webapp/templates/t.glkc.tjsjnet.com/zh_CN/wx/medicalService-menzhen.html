@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <#include "/${rp}/metalink.html">
+    <style type="text/css">
+        .getmore_box{
+            padding: 10px 0 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <#assign ck=cl.bk(c)>
+    <header class="bar bar-nav">
+        <a class="icon icon-left pull-left back"></a>
+        <a href="${cm.cp}" class="icon icon-home pull-right" external></a>
+        <h1 class="title">${ck.title}</h1>
+    </header>
+    <div class="content">
+        <div class="search_box">
+            <div class="search_input_box">
+                <input type="text" class="search_input" id="search_input" name="search_input" placeholder="输入主治医师的名字">
+                <button id="search_btn">搜索</button>
+            </div>
+            <ul>
+                <li class="search-item clearfix">
+                    <#assign ksdh = cl.bk('ke_shi_dao_hang')>
+                    <p class="fl">科室选择</p>
+                    <select dir="rtl" name="ksselect" id="ksselect">
+                        <option value="">请选择科室</option>
+                        <#list ksdh.children as a>
+                        <option value="${a.id}">${a.title}</option>
+                        </#list>
+                    </select>
+                </li>
+                <li class="search-item clearfix">
+                    <p class="fl">职称选择</p>
+                    <select  dir="rtl" name="zcxzbox" id="zcxzbox">
+                        <option value="">选择职称</option>
+                        
+                    </select>
+                </li>
+                <li class="search-item clearfix">
+                    <p class="fl">专家级别</p>
+                    <select dir="rtl" name="zztime" id="zztime">
+                        <option value="">请选择专家级别</option>
+                        <#list sc.bks('zhuan_jia_ji_bie') as a>
+                        <option value="${a.desc}">${a.desc}</option>
+                        </#list>
+                    </select>
+                </li>
+                <li class="search-item clearfix">
+                    <p class="fl">星期</p>
+                    <select dir="rtl" name="zztime" id="weekbox">
+                        <option value="">请选择星期几</option>
+                        <option value="1">星期一</option>
+                        <option value="2">星期二</option>
+                        <option value="3">星期三</option>
+                        <option value="4">星期四</option>
+                        <option value="5">星期五</option>
+                        <option value="6">星期六</option>
+                        <option value="7">星期日</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+        <div class="search-jieguo">
+            <p>坐诊专家</p>
+            <div class="infinite-scroll" data-distance="100">
+                <div class="list-block">
+                    <ul class="doctor_box list-container" style="padding: 0 10px;">
+                       
+                    </ul>
+                </div>
+                <div class="getmore_box">
+                    <p>加载更多。。。</p>
+                </div>
+            </div>
+        </div>
+        <#include "/${rp}/footer.html">
+    </div>
+</div>
+<#include "/${rp}/jslink.html">
+<script>
+    $.ajax({
+        type:'post',
+        url:'/query_like_doctor$ajax.htm',
+        data:{
+            size:9999,
+            isMavin:2
+        },
+        dataType:'JSON',
+        success:function(data){
+            $('.list-container').html("")
+            var list1='';
+            var doctorlist='';
+            /*获取职称*/
+            for(var g=0,j=data.positionList.length;g<j;g++){
+               list1 = '<option value="'+data.positionList[g].name+'">'+data.positionList[g].name+'</option>';
+               $('#zcxzbox').append(list1);
+            }
+            var loading = false;
+            var maxItems = data.resultList.length;
+            var itemsPerLoad =25;
+            function addItems(number, lastIndex) {
+                    var oldhtml=$('.list-container').html();
+                    // console.log(oldhtml)
+                    var html = '';
+                    for (var i = lastIndex; i <= lastIndex + number; i++) {
+                        console.log(maxItems);
+                        console.log(i)
+                        if(maxItems>i){
+                            var zhuan;
+                            if(data.resultList[i].position==null){
+                                zhuan='暂无'
+                            }else{
+                                zhuan=data.resultList[i].position.name
+                            }
+                            html += '<li>'+
+                                        '<a href="${cm.cp}general_service_t3ncXUfMQv8itS1rnjr.htm?_url=doctor_detail&id='+data.resultList[i].id+'">'+
+                                            '<div class="doctor_item_pic">'+
+                                                '<img src="'+data.resultList[i].accessory.originalUrl+'" alt="">'+
+                                            '</div>'+
+                                            '<div class="doctor_item_picinfo">'+
+                                                '<h3>'+data.resultList[i].name+'</h3>'+
+                                                '<p>'+zhuan+'</p>'+
+                                                '<div>'+data.resultList[i].describes+'</div>'+
+                                            '</div>'+
+                                        '</a>'+
+                                    '</li>';
+                            $('.list-container').html(oldhtml+html);
+                        }else{
+                            $('.getmore_box').html('<p>数据加载完毕了^v^ </p>');
+                            $('.getmore_box').off('click','p')
+                        }
+                        
+                        }
+                    }
+            addItems(itemsPerLoad, 0);
+            var lastIndex;
+            $('.getmore_box').on('click','p',function() {
+                
+                lastIndex = $('.list-container').children().length;
+                
+                 addItems(itemsPerLoad, lastIndex);
+            });
+        }
+    })
+    
+    function aj(data){
+        console.log(data)
+        $.ajax({
+            type:'post',
+            url:'/query_like_doctor$ajax.htm',
+            data:data,
+            dataType:"JSON",
+            success:function(data){
+                // console.log(data);
+                    $('.list-container').html("");
+                    var loading = false;
+                    var maxItems = data.resultList.length;
+                    var itemsPerLoad =25;
+                    if(data.resultList.length<1){
+                        var sj='<div class="nodata">'+
+                            '<img src="res/default/image/nodata.png" alt="暂无数据" />'+
+                            '<p>查无数据</p>'+
+                        '</div>'
+                        $('.list-container').html(sj)
+                    }
+                    function addItems(number, lastIndex) {
+                        var oldhtml=$('.list-container').html();
+                        // console.log(oldhtml)
+                        var html = '';
+                        for (var i = lastIndex; i <= lastIndex + number; i++) {
+                            if(maxItems>i){
+                                 var zhuan;
+                                if(data.resultList[i].position==null){
+                                    zhuan='暂无'
+                                }else{
+                                    zhuan=data.resultList[i].position.name
+                                }
+                                html += '<li>'+
+                                            '<a href="${cm.cp}general_service_t3ncXUfMQv8itS1rnjr.htm?_url=doctor_detail&id='+data.resultList[i].id+'">'+
+                                                '<div class="doctor_item_pic">'+
+                                                    '<img src="'+data.resultList[i].accessory.originalUrl+'" alt="">'+
+                                                '</div>'+
+                                                '<div class="doctor_item_picinfo">'+
+                                                    '<h3>'+data.resultList[i].name+'</h3>'+
+                                                    '<p>'+zhuan+'</p>'+
+                                                    '<div>'+data.resultList[i].describes+'</div>'+
+                                                '</div>'+
+                                            '</a>'+
+                                        '</li>';
+                                $('.list-container').html(oldhtml+html);
+                            }else{
+                                $('.getmore_box').html('<p>数据加载完毕了^v^ </p>');
+                                // $('.getmore_box').off('click','p')
+                            }
+                            
+                            }
+                        }
+                    addItems(itemsPerLoad, 0);
+                    var lastIndex;
+                    $('.getmore_box').on('click','p',function() {
+                        lastIndex = $('.list-container').children().length;
+                         addItems(itemsPerLoad, lastIndex);
+                    });
+            }
+        })
+    }
+    $('#ksselect').on('change',function(){
+        var ksid=$('#ksselect').val();
+        var zcitem=$('#zcxzbox').val();
+        var zzlevel=$('#zztime').val();
+        var week=$('#weekbox').val();
+        var data={
+            size:9999,
+            columnid:ksid,
+            position:zcitem,
+            level:zzlevel,
+            week:week,
+            isMavin:2
+        };
+        aj(data);
+    })
+    $('#zcxzbox').on('change',function(){
+        var ksid=$('#ksselect').val();
+        var zcitem=$('#zcxzbox').val();
+        var zzlevel=$('#zztime').val();
+        var week=$('#weekbox').val();
+        var data={
+            size:9999,
+            columnid:ksid,
+            position:zcitem,
+            level:zzlevel,
+            week:week,
+            isMavin:2
+        };
+        aj(data);
+    })
+    $('#zztime').on('change',function(){
+        var ksid=$('#ksselect').val();
+        var zcitem=$('#zcxzbox').val();
+        var zzlevel=$('#zztime').val();
+        var week=$('#weekbox').val();
+        var data={
+            size:9999,
+            columnid:ksid,
+            position:zcitem,
+            level:zzlevel,
+            week:week,
+            isMavin:2
+        };
+        aj(data);
+    })
+    $('#weekbox').on('change',function(){
+        var ksid=$('#ksselect').val();
+        var zcitem=$('#zcxzbox').val();
+        var zzlevel=$('#zztime').val();
+        var week=$('#weekbox').val();
+        var data={
+            size:9999,
+            columnid:ksid,
+            position:zcitem,
+            level:zzlevel,
+            week:week,
+            isMavin:2
+        };
+        aj(data);
+    })
+
+    $('#search_btn').on('click',function(){
+        var search_text=$('#search_input').val().trim();
+        if(search_text.length<1){
+            $.alert('请输入检索信息');
+            return;
+        }
+        var data={
+            size:9999,
+            keyword:search_text,
+            isMavin:2
+        };
+        aj(data);
+    });
+    $("#search_input").on('keypress',function(e) {  
+	var keycode = e.keyCode;
+	var search_text=$(this).val().trim();
+	if(keycode=='13') {
+		if(search_text.length<1){
+            $.alert('请输入检索信息');
+            return;
+        }
+        var data={
+            size:9999,
+            keyword:search_text,
+            isMavin:2
+        };
+        aj(data);
+	}         
+});
+</script>
+</body>
+</html>

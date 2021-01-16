@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<#include "/${rp}/metalink.html">
+	<title>${webSet.title}</title>
+	<style>
+		.dq_active1{
+			display: inline-block;height: 55px;
+			width: 56px;color: #46c3f2;
+			font-size: 14px;border-bottom: 2px solid #46c3f2;}
+		#h4{	color: #46c3f2;border-bottom: 2px solid #46c3f2;}
+		
+	</style>
+</head>
+<body>
+	<header>
+		<#include "/${rp}/header.html">	
+	</header>
+	<div class="dangquangongzuo">
+		<div class="dqgz_content_nav">
+			<ul class="dangqun_li">	
+					<#assign ck=cl.bk(c)>
+        			    <#list ck.parent.children as cc>
+        			    <#if cc.keyword != "zhu_yuan_zhi_nan">
+        				<li><a href="${cm.cp}${cc.url}" <#if cc.id==ck.id>class="dq_active"</#if>>${cc.title}</a></li>
+        				</#if>
+        				</#list>
+					</ul>
+		</div>
+		<#include "/${rp}/zbxl.html">
+	</div>
+	<footer>
+		<#include "/${rp}/footer.html">
+	</footer>
+	<script src="res/js/jquery-1.12.3.js"></script>
+	<script src="res/js/fen.js"></script>
+	<script type="text/javascript" charset="utf-8">
+	    $(function(){
+	        //职称遍历
+	        $.post('/query_like_doctor$ajax.htm',{size:999},function(res){
+        	    var _res =JSON.parse(res)
+        	    var len = _res.positionList.length;
+        	    var str = '<li class="al"><a class="xz_color_active zc_chose" v_val="">所有</a></li>';
+        	    for(var i = 0;i<len;i++){
+        	        str +="<li><a class='zc_chose' v_val='"+_res.positionList[i].name+"'>"+_res.positionList[i].name+"</a></li>"
+        	    }
+        	    $('.zcxz ul').html(str);
+        	})
+	         // 定义
+            	  var csh_ajax =  function(_data){
+            	      console.log(_data);
+                          $.ajax({ 
+                                type: "post", 
+                                url: "/query_like_doctor$ajax.htm",
+                                data:_data,
+                                beforeSend: function () {
+                                    $(".loading").show();
+                                },
+                                success: function (data) {
+                                    var _data = JSON.parse(data);
+                                    // console.log(_data);
+                                    var ys_len = _data.resultList.length;
+                                    var str1 = "";
+                                    var zhuan='';
+                                    if(_data.resultList.length > 0){
+                                        for(var i = 0; i< ys_len ; i++){
+                                            if(_data.resultList[i].position==null){
+                                                zhuan='暂无'
+                                            }else{
+                                                zhuan=_data.resultList[i].position.name;
+                                            }
+                                            var level=_data.resultList[i].level
+                                            if(level==null){
+                                                level='暂无'
+                                            }
+                                            str1 += '<div class="zuozhen_jieshao">'+
+                        				    '<div class="zuozhen_jieshao_lf">'+
+                            					'<dl>'+
+                            					    '<a href="${cm.cp}general_service_t3ncXUfMQv8itS1rnjr.htm?_url=doctor_detail&id='+_data.resultList[i].id+'">'+
+                            						'<dt><img src="'+_data.resultList[i].accessory.originalUrl+'" alt="" style="width:118px"></dt>'+
+                            						'<dd>'+
+                            							'<div class="xingming">'+
+                            								'<h5>'+ _data.resultList[i].name+'</h5>'+
+                            								'<span>'+zhuan+'</span>'+
+                            							'</div>'+
+                            							'<div class="keshi">科室：'+_data.resultList[i].column.title+'</div>'+
+                            							'<div class="jibie">级别：'+level+'</div>'+
+                            							'<div class="shanchang">擅长:'+_data.resultList[i].speciality+'</div>'+
+                            						'</dd>'+
+                            						'</a>'+
+                            					'</dl>'+
+                            				'</div>'+
+                            				'<div class="zuozhen_jieshao_rg">'+
+                            					'<ul class="bgcolor">'+
+                            						'<li></li>'+
+                            						'<li>一</li>'+
+                            						'<li>二</li>'+
+                            						'<li>三</li>'+
+                            						'<li>四</li>'+
+                            						'<li>五</li>'+
+                            						'<li>六</li>'+
+                            						'<li>天</li>'+
+                            					'</ul>'+
+                            					'<ul class="shangwu'+i+'">'+
+                            					
+                            					'</ul>'+
+                            					'<ul class="xiawu'+i+'">'+'</ul>'+
+                            				'</div>'+
+                            			'</div>';
+                            		    $('.ysxx').html(str1);
+                            			
+                                    }
+                                        for(var j = 0 ; j<ys_len;j++){
+                                            var plen=_data.resultList[j].dutys.length;
+                            		    	var sli='<li>上午工作日</li>'
+                            		    	var xli='<li>下午工作日</li>'
+                            			    if(plen>1){
+                            			       for(var s=0;s<plen;s++){
+                                			    if(_data.resultList[j].dutys[s].typeAm!=null){
+                                			       if(_data.resultList[j].dutys[s].typeAm==1){
+                                			           sli += '<li>特</li>';
+                                			       }else if(_data.resultList[j].dutys[s].typeAm==2){
+                                			           sli += '<li>专</li>';
+                                			       }else if(_data.resultList[j].dutys[s].typeAm==3){
+                                			           sli += '<li>普</li>';
+                                			       }else if(_data.resultList[j].dutys[s].typeAm==4){
+                                			           sli += '<li>停</li>';
+                                			       }
+                                			       
+                                			    }else{
+                                			       sli += '<li></li>';
+                                			    }
+                                			    $('.shangwu'+j).html(sli);
+                                			   } 
+                                			   for(var s=0;s<plen;s++){
+                                			    if(_data.resultList[j].dutys[s].typePm!=null){
+                                			        if(_data.resultList[j].dutys[s].typePm==1){
+                                			           xli += '<li>特</li>';
+                                			       }else if(_data.resultList[j].dutys[s].typePm==2){
+                                			           xli += '<li>专</li>';
+                                			       }else if(_data.resultList[j].dutys[s].typePm==3){
+                                			           xli += '<li>普</li>';
+                                			       }else if(_data.resultList[j].dutys[s].typePm==4){
+                                			           xli += '<li>停</li>';
+                                			       }
+                                			       
+                                			    }else{
+                                			       xli += '<li></li>';
+                                			    }
+                                			    $('.shangwu'+j).html(sli);
+                                			    $('.xiawu'+j).html(xli);
+                                			   } 
+                            			    }else{
+                            			       $('.shangwu'+j).html('<li>上午工作日</li>');
+                            			       $('.xiawu'+j).html('<li>下午工作日</li>');
+                            			    }
+                                        }
+                                    
+                                    $('.fenpage').html(_data.pageHtml);
+                                    }else{
+                                        $('.fenpage').html('');
+                                         $('.ysxx').html("<div class='nodata'><img src='res/default/images/ys.png' alt='抱歉！没有筛选到相关医生' /><p>抱歉！没有筛选到相关医生</p></div>");
+                                    }
+                                },
+                                complete: function () {
+                                    $(".loading").hide();
+                                }
+                            });
+                        }
+                csh_ajax({size:9,isMavin:2});
+             // 	 筛选
+                $(document).on('click','.mzpb li',function(){
+                   $(this).find('a').addClass('xz_color_active');
+                   $(this).siblings().find("a").removeClass('xz_color_active');
+                        $('.xz_color_active').each(function(){
+                            var _this = $(this);
+                            if(_this.hasClass('ks_chose')){
+                                columnid = _this.attr('v_id') ;
+                            }else if(_this.hasClass('wk_chose')){
+                                 week = _this.attr('v_id');
+                            }else if(_this.hasClass('zc_chose')){
+                                 position = _this.attr('v_val');
+                            }else if(_this.hasClass('jb_chose')){
+                                 level = _this.attr('v_val');
+                            }
+                        })
+                        csh_ajax({size:9,columnid:columnid,week:week,position:position,level:level,isMavin:2});
+                    })
+              //搜索
+                var search_btn = $('.ys_searchval_btn');
+                var search =  function(){
+                    var search_text = $('.ys_searchval').val();
+                    csh_ajax({size:9,keyword:search_text,isMavin:2});
+               }
+                $('.ys_searchval').on('keydown',function(e){
+                    console.log(11)
+                    var oe = e || window.event;
+                    if(oe.keyCode == 13){
+                        search();
+                        return false;
+                    }
+                })
+                search_btn.on('click',search)       
+	        })
+	</script>
+</body>
+</html>

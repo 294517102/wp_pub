@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <base href="${domainBase}"/>
+    <#include "${includePath}/data.html" >
+		<#include "${includePath}/searchKeyword.html" >
+    <title>${webSet.title!}-${yhjl.title!}</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <link rel="stylesheet" href="res/default/css/resets.css">
+    <link rel="stylesheet" href="res/default/css/style.css">
+    <link rel="stylesheet" href="res/js/ydui.flexible.js">
+</head>
+<body>
+<h4 class="question_title">我要提问</h4>
+<div class="question_area">
+    <textarea name="" id="title" cols="30" placeholder="请在此输入您的问题" rows="10"></textarea>
+</div>
+<button class="question_btn" onclick="submit()">提交</button>
+
+
+<script src="res/js/jquery.min.js"></script>
+<script src="res/js/jquery.SuperSlide.2.1.1.js"></script>
+<script src="res/js/style.js"></script>
+<script>
+function submit(){
+	 var title=$("#title").val();
+if(!title){
+	 alert("请输入您的问题!");
+}else{
+	 var webSetId = ${webSet.id!};
+	
+	$.ajax({
+                cache: true,
+                type: "POST",
+                url:"${base}/ques.htm",
+                data:{
+	  				webset:webSetId,
+	  				
+	  				title:title
+					},
+                async: false,
+                error: function(request) {
+					if(request.resultMsg!=null)alert(request.resultMsg);
+                    	else alert("您的消息有错误喔！");
+                },
+                success: function(data) {
+				if(data.result==true){
+					if(data.resultMsg!=null)alert(data.resultMsg);
+                    else alert("您的数据已提交成功！");
+					location.reload();
+				$("#feedback").val("");
+				}else{
+					 alert(data.resultMsg);
+					location.reload();
+				}
+                }
+            });
+}
+
+}
+
+
+
+</script>
+</body>
+</html>

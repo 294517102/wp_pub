@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>新增文章</title>
+    <#include "/include/bg/in_head_res.html">
+     <style type="text/css">
+ 	.uploadeyu{
+ 		display:inline-block;
+ 		width:90px;
+ 		height:90px;
+ 		overflow:hidden;
+ 		background-color:#eee;
+ 		text-align:center;
+ 		cursor: pointer;
+ 	}
+ 	.uploadeyu>p:nth-of-type(1){
+ 		line-height:90px;
+ 		font-size:40px
+ 	}
+ 	.uploadeyu>img{
+ 		min-width:100%;
+ 		height:100%;
+ 	}
+ 	.img-lable{
+ 		height:100px !important;
+ 		line-height:85px !important;
+ 	}
+ 	.img-hint{
+ 		font-size:12px;
+ 		color: red
+ 	}
+ 	.layui-form-item{
+ 		margin-bottom:8px;		
+ 	}
+ 
+ 	.layui-upload-list img{
+ 	vertical-align: initial!important;
+ 	}
+/*  	预览图片的box */
+ 	.pic_box{
+ 		float:left;
+ 		position:relative;
+ 		max-width:100px;
+ 		max-height:100px;
+ 		margin-right: 12px;
+ 		overflow: hidden;
+ 	}
+ 	.pic_box img{
+ 	display:block;
+ 	width:100%;
+ 	}
+/*  	图片删除的小图标 */
+ 	.del_pic{
+ 	    position: absolute;
+	    top: 0px;
+	    right: 0px;
+	    width: 20px;
+	    height: 20px;
+	    z-index: 999;
+   		cursor: pointer;
+    }
+    .down_list li{
+    	border: 1px solid #d2d2d2;
+    	  
+    }
+    .down_list li:hover{
+      background-color: #5FB878;
+      color:white;
+    }
+ </style>
+</head>
+<body class="body clear">
+
+<form class="layui-form layui-form-pane" action="" id="article_form" onsubmit="return false">
+  <input type="hidden" name="id" value="${picweb.id}">
+  <div class="layui-form-item">
+   <div class="layui-col-md7">
+    <label class="layui-form-label"><span style="color: red">*</span>网页标题</label>
+    <div class="layui-input-block">
+      <input type="text" name="name" lay-verify="required" value="${picweb.name}" placeholder="请输入网页标题" autocomplete="off" class="layui-input" >
+    </div>
+    </div>
+  </div>
+  
+  <div class="layui-form-item">
+  <label class="layui-form-label" >图片上传</label>
+  <input type="hidden" name="pic_id" id="pic_id">
+     <div class="layui-input-block" style="padding-left:12px">
+     	<label for="upload" class="uploadeyu"  id="test1">
+     	<#if picweb.pic.url?? >
+     	<img  src="${picweb.pic.url}">
+     	<#else>
+	    <p>+</p>
+     	</#if >
+		</label>
+	<p class=".img-hint">点击图片修改</p>
+	<button type="button" class="layui-btn layui-bg-blue" id="upload_1" style="position: absolute;left: 123px;top: 0px;"><i class="layui-icon">&#xe681;</i>上传文件</button>
+	</div>
+  
+  </div>
+  
+  
+  
+  
+    <div class="layui-form-item" style="margin-bottom: 50px;">
+   <div style="text-align: center;vertical-align:bottom;">
+       <button class="layui-btn" lay-submit lay-filter="form_column">保存</button>
+       <button type="reset" class="layui-btn layui-btn-danger cancel">取消</button>
+   </div>
+  </div>
+
+</form>
+<#include "/include/bg/in_bottom_res.html">	
+<script type="text/javascript">
+$(function(){
+    //注意进度条依赖 element 模块，否则无法进行正常渲染和功能性操作
+    var form = layui.form;
+    
+var piclist_str="";
+layui.use('upload', function(){
+  var $ = layui.jquery
+  ,upload = layui.upload;
+  initValue();
+  form.render();
+  //普通图片上传
+  var uploadInst = upload.render({
+    elem: '#test1'
+    ,url: '${base}/upload/uploadImgByWebAccessory.htm?type=client'
+    ,auto: false
+ 	,size: 6144
+ 	,accept: "file"
+ 	,bindAction: '#upload_1'
+ 	,choose: function(obj){
+	    	 obj.preview(function(index, file, result){
+	    		   $("#test1").html("<img src='" + result + "'/>");
+	          });
+	    }
+    ,before: function(obj){
+      //预读本地文件示例，不支持ie8
+      obj.preview(function(index, file, result){
+    	  $("#test1").html("<img src='" + result + "'/>");
+      });
+    }
+    ,done: function(res){
+    	if(res.result){
+		    var files = res.data;
+		    for(var i=0;i<files.length;i++){
+		    	var name = files[i].name;
+		    	var url = files[i].url;
+		    	var id = files[i].acyId;
+		    	$("#pic_id").val(id);
+		    }
+        return layer.msg(res.resultMsg);
+    	}else{
+        return layer.msg('上传失败');
+    		
+    	}
+      //如果上传失败
+      if(res.code > 0){
+        return layer.msg('上传失败');
+      }
+    }
+    ,error: function(){
+      //演示失败状态，并实现重传
+      var demoText = $('#demoText');
+      demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
+      demoText.find('.demo-reload').on('click', function(){
+        uploadInst.upload();
+      });
+    }
+  });
+  
+
+  
+});
+    //监听提交
+    form.on('submit(form_column)', function(data){
+    	var oby=$("#pic_id").val();
+    	<#if !picweb.pic.url?? >
+    	if(oby==null||oby==""){//判断排序是否填值 
+    		layer.msg("请上传图片")
+    		return;
+    	}
+    	</#if>
+    	
+    	var params = $("#article_form").serializeObject();
+    	console.log(JSON.stringify(params));
+    	$.postJSON("${base}/admin/savepicweb$ajax.htm",params,function(data){
+        	layer.msg(data.msg,{time:1000},function(){
+        		if(data.result){
+        			if(data.result){
+            			parent.location.reload();
+                		closeWindow();
+                	}
+            	}
+        	});
+    	}); 
+    	
+        return false;
+    });
+})
+ $(".cancel").click(function(){
+ 	closeWindow();
+ });
+</script>
+
+
+</body>
+</html>

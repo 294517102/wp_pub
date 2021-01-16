@@ -1,0 +1,53 @@
+﻿/*************************************************************
+ * Command:Start
+ * Control:PicList
+ * Style:PicListA
+ * Desc:目前没有
+ * Quot:mainsite
+*************************************************************/
+.PicListA { min-height:500px; }
+.PicListA a {  }
+.PicListA a:hover {  }
+
+.PicListA h3 { height:40px; line-height:40px; /* border-bottom:1px solid #bababa; */  }
+.PicListA h3 em { font:normal 16px/40px "microsoft yahei"; color:#fff; width:110px; text-align:center; display:block;}
+.PicListA .PicListA_Box { margin:20px auto;}
+
+.PicListA ul { width:750px; margin:20px auto; overflow:hidden;}
+.PicListA ul li { float:left; width:220px; margin:20px 15px; min-height: 150px; position:relative;}
+.PicListA ul li img { width:220px; height:132px; border-radius: 5px; text-align: center; position:absolute; left:0; top:0; cursor:pointer;}
+.PicListA ul li p { text-align: center; position:absolute; left:0; top:140px;}
+
+.PicListA .clear{ clear: both;}
+
+.PicListA .clear{ clear: both;}
+.PicListA .clear:after{ content: "."; display: block; height:0; clear:both; visibility: hidden;}
+.PicListA .page_css, .class_page { text-align:center; padding:10px 0;}
+.PicListA .page_css a, .class_page a { display: inline-block; border:1px solid #999999; padding:8px 10px; color:#666666; line-height:100%;}
+.PicListA .page_css a:hover, .class_page a:hover{ color: #fff; border: 1px solid #666; background: #666;}
+.PicListA .page_css b a, .class_page b a { color: #fff; border:1px solid #666; background:#666;}
+.PicListA .page_line { }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:PicList
+ * Style:PicListA
+ * Desc:目前没有
+ * Quot:mainsite
+*************************************************************/

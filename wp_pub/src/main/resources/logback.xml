@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration  scan="true" scanPeriod="30 seconds">
+	 <contextName>天健公司基礎平台</contextName>
+	<!-- 終端輸出 -->
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%n%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5p %c:%L - %m%n</pattern>
+		</encoder>
+	</appender>
+    <!-- 終端輸出文件 -->
+    <appender name="ConsoleInfo"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>logs/ConsoleInfo.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>logs/ConsoleInfo.log.%d{yyyy-MM-dd}</fileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%n%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5p %c:%L - %m%n</pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+	</appender>
+	<!-- 錯誤日志文件 -->
+	<appender name="ErrorInfo" class="ch.qos.logback.core.rolling.RollingFileAppender"  >
+			<file>logs/ErrorInfo.log</file>
+			<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+				<fileNamePattern>logs/ErrorInfo.log.%d{yyyy-MM-dd}</fileNamePattern>
+				<maxHistory>30</maxHistory>
+			</rollingPolicy>
+			<encoder>
+				<pattern>%n%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5p %c:%L - %m%n</pattern>
+				<charset>UTF-8</charset>
+			</encoder>
+			<filter class="ch.qos.logback.classic.filter.LevelFilter"> 
+	            <level>ERROR</level> 
+	            <onMatch>ACCEPT</onMatch> 
+	            <onMismatch>DENY</onMismatch> 
+	        </filter> 
+	</appender>
+	<!-- 基本信息日志 -->
+	<appender name="BaseInfo" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>logs/BaseInfo.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>logs/BaseInfo.log.%d{yyyy-MM-dd}</fileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%n%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5p %c:%L - %m%n</pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+	</appender>
+	<!-- 接口日志文件 -->
+	<appender name="IfaceInfo" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>logs/IfaceInfo.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>logs/IfaceInfo.log.%d{yyyy-MM-dd}</fileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%n%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5p %c:%L - %m%n</pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+	</appender>
+	
+	<root level="INFO">
+	   <!-- 这里输出数据量会比较大,可以酌情去掉 -->
+		 <appender-ref ref="console" /> 
+		<!-- 生产环境可以添加上,但是会生成巨大的log日志文件,不建议使用这种方式,可以用tomcat、jboss等
+		提供的日志文件搭配系统记录的日志文件来分析问题 -->
+		 <appender-ref ref="ConsoleInfo" /> 
+		 <appender-ref ref="ErrorInfo" /> 
+	</root>
+	<logger name="com.tjsj" level="INFO" >
+    	<appender-ref ref="BaseInfo" />
+	</logger>  
+	<logger name="com.tjsj.wp.mvc.controller.intf" level="INFO">
+		<appender-ref ref="IfaceInfo" />
+	</logger>
+	
+	
+    <!-- ebean 日志 -->
+    <logger name="org.avaje.ebean.SQL" level="TRACE" />
+    <logger name="org.avaje.ebean.TXN" level="TRACE"/>
+    <!-- Summary level details -->
+    <logger name="org.avaje.ebean.SUM" level="TRACE"/> 
+     <!-- L2 logging -->
+	<logger name="org.avaje.ebean.cache.QUERY" level="TRACE"/>
+	<logger name="org.avaje.ebean.cache.BEAN" level="TRACE"/>
+	<logger name="org.avaje.ebean.cache.COLL" level="TRACE"/>
+	<logger name="org.avaje.ebean.cache.NATKEY" level="TRACE"/>
+ 
+ </configuration>

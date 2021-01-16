@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <base href="${domainBase}"/>
+    <#include "${includePath}/data.html" >
+		<#include "${includePath}/searchKeyword.html" >
+    <title>${webSet.title!}-${lcdh.title!}</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <link rel="stylesheet" href="res/default/css/resets.css">
+    <link rel="stylesheet" href="res/default/css/style.css">
+    <link rel="stylesheet" href="res/js/ydui.flexible.js">
+</head>
+<body>
+<#if guide.children?? && guide.children?size gt 0>
+
+
+<#list guide.children?sort_by("id") as d>
+        <#if d_index=4>
+        <#if d.articles??>
+        <#list d.articles! as da>
+<img class="floor" src="${(da.thumbnail.url!)}" alt="">
+</#list>
+<#else>
+暂无信息。。。。
+</#if>
+</#if>
+</#list>
+<#else>
+暂无信息。。。。
+</#if>
+
+<script src="res/js/jquery.min.js"></script>
+<script src="res/js/style.js"></script>
+</body>
+</html>

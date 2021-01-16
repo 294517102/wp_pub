@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>角色权限管理</title>
+    <#include "/include/bg/in_head_res.html">
+</head>
+<body class="inner-body clear">
+<div class="layui-container bg-color center" style="width: 100%;padding:10px">
+        <form class="layui-form layui-form-pane" id="form_1" method="post" action="${base}/admin/role/obtain_role_list.htm">	
+		<div class="layui-form-item layui-col-space10"  style="background-color: white;padding:15px 10px;">		
+			<div class="layui-col-md3">
+				<label class="layui-form-label">角色名称</label>
+				<div class="layui-input-block">
+					<input type="text" name="name"
+						autocomplete="off"  value="${RequestParameters.name!!}"  class="layui-input">
+				</div>
+			</div>
+			<div class="layui-col-md3">
+				<label class="layui-form-label">描述</label>
+				<div class="layui-input-block">
+					<input type="text" name="keyword"
+						autocomplete="off"  value="${RequestParameters.keyword!!}"  class="layui-input">
+				</div>
+			</div>
+			 <div class="layui-col-md2">
+		        <label class="layui-form-label">状态</label>
+		        <div class="layui-input-block">	          
+		        	<select name="state" lay-filter="aihao" initValue="${RequestParameters.state!!}">
+		        		<option value="" >请选择</option>
+						<option value="1">启用</option>
+						<option value="9">禁用</option>
+					</select>
+		        </div>
+		    </div>
+			
+			<div class="fl" style="margin-left:50px">
+				<button class="layui-btn fl search" lay-submit > <i class="layui-icon">&#xe615;</i> 搜索</button>
+				<button class="layui-btn layui-btn-warm  fl " onclick="location.href=location.href;" type="reset"><i class="layui-icon">&#x1002;</i> 刷新</button>
+			</div>
+		</div>
+		</form>
+        
+       <div class="content_main">
+        <div class="layui-row">
+        	<button class="layui-btn fl " onclick="addRole()">
+				<i class="layui-icon">&#xe608;</i>&nbsp;添加角色
+			</button>
+			<button class="layui-btn layui-btn-danger  fl disableRule ">
+				<i class="layui-icon">&#x1006;</i>&nbsp;禁用
+			</button>		
+        </div>
+        <div class="layui-row layui-form">
+        	<table class="layui-table">
+        		<thead>
+						<tr>
+							<th><input type="checkbox" name="" lay-skin="primary"
+								lay-filter="allChoose"></th>
+							<th>序号</th>
+							<th>角色名称</th>
+							<th>描述</th>
+							<th>状态</th>
+							<th>创建时间</th>
+							<th width="20%">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<#if !(resultList??) ||  resultList?size <=0 >
+						<tr>
+							<td colspan="9">无数据</td>
+						</tr>
+						<#else> 
+							 <#list resultList as r>
+							 	<tr>
+								<td><input type="checkbox" name="check" lay-skin="primary" id="${r.id}"></td>
+								<td>${r.id}</td>
+								<td>${r.name}</td>							
+								<td>${r.keyword}</td>
+								<td>${ds.getCodeDesc("sm_role_tbl","state",r.state)}</td>
+								<td>${r.insertTime}</td>
+								<td>
+									<button class="layui-btn layui-btn-small" onclick="editRole('${r.id}')" ><i class="layui-icon">&#xe642;</i>&nbsp;编辑</button>
+									
+									<button class="layui-btn layui-btn-small layui-btn-danger " onclick="delRole('${r.id}',1)" ><i class="layui-icon">&#xe640;</i>&nbsp;删除</button>
+								</td>
+								</tr>
+							 </#list> 
+						</#if>
+					</tbody>
+        	</table>          
+             <div class="pageBotton">${pageHtml}</div>
+        </div>
+      </div>
+</div>
+<#include "/include/bg/in_bottom_res.html">
+<script type="text/javascript">
+
+	var laydate = layui.laydate, form = layui.form;
+
+	$(function(){
+		initValue();
+		form.render();
+	});
+	
+
+	
+	 //全选
+    form.on('checkbox(allChoose)', function(data){
+        var child = $(data.elem).parents('table').find('tbody input[name="check"]');
+        child.each(function(index, item){
+            item.checked = data.elem.checked;
+        });
+         form.render('checkbox');
+    });
+    
+    //角色增加
+	function addRole(){
+	    	layer.open({
+	            type: 2,
+	            title: '角色添加',
+	            area: ['55%', '80%'],
+	            shade: 0.8,
+	            closeBtn: 1,
+	            shadeClose: true,
+	            content:"${basePath}/admin/role/obtain_role_add.htm",
+	            end:function(){
+	            	location.reload();
+	            }
+	            
+	        });
+	    	
+	        return false;
+	    }
+		//角色信息权限修改
+	    function editRole(role_id){
+	    	layer.open({
+	            type: 2,
+	            title: '角色信息修改',
+	            area: ['55%', '80%'],
+	            shade: 0.8,
+	            closeBtn: 1,
+	            shadeClose: true,
+	            content:"${basePath}/admin/role/auth_role_go2.htm?role_id="+role_id/* ,
+	            end:function(){
+	            	location.reload();
+	            } */
+	        });
+	    	
+	        return false;
+	    }
+		//删除
+		function delRole(role_id,judge){
+			layer.confirm("删除后不可恢复，确认删除？", {btn: ['确认','取消']},function(){
+				var url = "admin/role/delete_role$ajax.htm?role_id="+role_id+"&judge="+judge; 
+				$.get(url,function(data){
+					var objdata=eval('(' + data + ')');
+					if(true==objdata.result){
+						
+						if(judge==1){
+							layer.msg(objdata.msg,{icon: 1},function(){
+								window.location.reload();
+							});
+						}else{
+							layer.msg(objdata.msg,{icon: 1});
+						}
+						
+					}else if(false==objdata.result){
+						layer.msg(objdata.msg,{icon: 2},function(){
+							window.location.reload();
+						});
+					}
+				})
+			},null);
+			
+		}	
+		
+		$(".disableRule").click(function(){ 
+			if($("input[name=check]:checked").length<=0){
+				layer.msg("请选择待禁用条目",{icon:2});
+				return;
+			}
+			layer.confirm("确认禁用？",{btn: ['确认','取消'],icon:3 },function(){
+				$("input[name=check]:checked").each(function(){
+		    		var id = $(this).attr("id");        
+		        	$.postJSON("${base}/admin/role/disable_role.htm",{"id":id},function(data){              
+		         	     if(!data.result){
+		         	     	layer.msg("禁用失败-"+id,{icon:2});
+		         	     }else{
+		         	    	layer.msg("操作完毕",function(){
+		    		       		window.location.reload();
+		    		       	});
+		         	     }
+		   			       	            	 
+		           }); 
+		    	});
+				
+			});
+		});
+
+</script>
+</body>
+</html>

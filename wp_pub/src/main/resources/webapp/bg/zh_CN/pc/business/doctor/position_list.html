@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>医生职称列表</title>
+<#include "/include/bg/in_head_res.html">
+   <style type="text/css">
+   .layui-table td, .layui-table th{
+       padding: 8px 8px !important;
+   }
+   </style> 
+</head>
+<body class="inner-body clear">
+	<div class="layui-container bc-color" style="width:100%">
+		<form class="layui-form layui-form-pane" id="form_1" method="post" action="general_service_bFQdrBa9WA8mDH5brIh.htm?_url=business/doctor/position_list&isDelete=-1&_ttype=2&_qtype=2">	
+		<div class="layui-form-item layui-col-space10"  style="background-color: white;padding:15px 10px;">		
+			
+			<div class="layui-col-md3" >
+				<label class="layui-form-label">名称</label>
+				<div class="layui-input-block">
+					<input type="text" name="name"
+						autocomplete="off"  value="${RequestParameters.name!!}"  placeholder="请输入职称名称" class="layui-input">
+				</div>
+			</div>
+			<div  class="fl" style="margin-left:20px">
+				<button class="layui-btn fl search" lay-submit > <i class="layui-icon">&#xe615;</i> 搜索</button>
+				<button class="layui-btn layui-btn-warm  fl " onclick="location.href=location.href"  type="reset" ><i class="layui-icon">&#x1002;</i> 刷新</button>
+			</div>
+		</div>
+		</form>
+		<div class="content_main">
+			<div class="layui-row">
+				<button class="layui-btn  add_doctor fl ">
+					<i class="layui-icon">&#xe61f;</i> 新增
+				</button>
+				<!-- <button class="layui-btn layui-btn-danger deleteAll fl ">
+					<i class="layui-icon">&#xe640;</i> 删除
+				</button> -->
+			</div>
+			<div class="layui-row layui-form">
+				<table class="layui-table" >
+					<thead>
+						<tr>
+							<th>序号</th>
+							<th >名称</th>
+							<th>创建时间</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<#if !resultList_position??|| resultList_position?size <=0 >
+						<tr>
+							<td colspan="4">无数据</td>
+						</tr>
+						<#else> <#list resultList_position as r>
+						<tr>
+							<td>${r.id}</td>
+							<td>${r.name}</td>
+							<td>${(r.insertTime?string('yyyy-MM-dd'))!}</td>
+							<td>
+							<button class="layui-btn layui-btn-small detail" id="${r.id}"><i class="layui-icon">&#xe63c;</i>编辑</button>
+							<button class="layui-btn layui-btn-danger layui-btn-small delete"  id="${r.id}">
+									<i class="layui-icon">&#xe640;</i> 删除
+								</button></td>
+						</tr>
+						</#list> </#if>
+					</tbody>
+				</table>
+				<div class="pageBotton">${pageHtml_position}</div>
+			</div>			
+		</div>		
+		
+		</div>
+		<#include "/include/bg/in_bottom_res.html">	
+<script type="text/javascript">
+var form = layui.form;
+// 职称编辑
+$(".detail").click(function(){
+	layer.open({
+        type: 2,
+        title: '职称编辑',
+      //  btn: ['确定', '取消'],
+        shadeClose: true,
+        shade: 0.8,
+        area: ['500px','300px'],
+        offset: '40px',
+        content:'${base}/general_service_bFQdrBa9WA8mDH5brIh.htm?_url=business/doctor/doctor_position_add&_ttype=2&id='+$(this).attr("id") //iframe的url
+    });
+});
+
+
+// 栏目删除
+$(".delete").click(function(){
+	var id = $(this).attr("id");
+	layer.confirm("确认删除？",{btn: ['确认','取消'],icon:3 },function(){
+		 $.postJSON("${base}/general_service_XX4lRGGKctEwQJCEps4$ajax.htm?_sign=${MD5.md5(user.username+user.id)}",{"id":id,"isDelete":1},function(data){              
+      	     if(data.result){
+      	    	layer.msg("删除成功");     
+      	    	window.location.reload();
+      	     }
+			       	            	 
+        }); 
+	});
+});
+
+
+
+$(function(){
+// 	栏目新增功能
+    $(".add_doctor").click(function () {
+        layer.open({
+            type: 2,
+            title: '新增职称',
+          //  btn: ['确定', '取消'],
+//             closeBtn: 1,
+            shadeClose: true,
+            shade: 0.8,
+            area: ['500px','300px'],
+            offset: '40px',
+            content:'${base}/doctor/to_doctor_add.htm?url=business/doctor/doctor_position_add' //iframe的url
+        });
+    });    
+})
+
+</script>
+		</body>
+</html>

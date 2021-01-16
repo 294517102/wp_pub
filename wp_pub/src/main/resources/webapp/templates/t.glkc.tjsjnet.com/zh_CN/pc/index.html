@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <#include "/${rp}/metalink.html">
+	<title>${webSet.title}</title>
+</head>
+<style>
+    .loucontent{
+        display: none;
+    }
+    .loucontent:nth-of-type(1){
+        display: block;
+    }
+	.swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+      position: relative;
+    }
+    #block2,#none{
+    	display: none;
+    }
+    .cont_left_img img{
+        width: 100%;
+    }
+    .cont_left_img .swiper-slide{
+        overflow: hidden;
+    }
+    .cont_left_img{
+        margin-top:50px;
+    }
+#cs_online {
+    width: 217px;
+    height: 324px;
+    position: fixed;
+    top: 150px;
+    right: -220px;
+   background:url(res/default/images/qq_bg.png);
+   
+    display: none;
+    filter: alpha(opacity:0);
+    /*opacity: 0;*/
+    z-index: 9999999;
+}
+.qq_context {
+    width: 185px;
+    height: 244px;
+    margin-top: 73px;
+    margin-left: 24px;
+    list-style: none;
+    padding: 0px;
+    z-index: 9999999;
+}
+.qq_context li {
+    width: 175px;
+    height: 25px;
+    margin-left: 5px;
+    margin-top: 20px;
+    float: left;
+    z-index: 9999999;
+}
+.span_t {
+    display: block;
+    float: left;
+    color: #333;
+    line-height: 25px;
+    font-size: 12px;
+    font-family: 'Arial';
+    z-index: 9999998;
+}
+#qq_icon {
+    width: 187px;
+    height: 193px;
+    background: url(res/default/images/qq_icon.png) no-repeat;
+    position: fixed;
+    right: -200px;
+    top: 150px;
+    cursor: pointer;
+    z-index: 9999999;
+}
+</style>
+<body>
+电脑
+ <#assign qyxw = cl.bk('qi_ye_xin_wen')>
+  <#assign id = 1925>
+ ${qyxw.id}
+<#assign plist = at.sr("公路",qyxw,"1",10)>
+
+${plist.list?size}
+</body>
+
+</html>

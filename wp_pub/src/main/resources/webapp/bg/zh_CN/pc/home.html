@@ -1,0 +1,406 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="${base}/" /> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>后台服务管理系统-天健世纪</title>
+    <link rel="stylesheet" href="res/default/bg/js/layui-v2.1.5/css/layui.css">
+    <link rel="stylesheet" href="res/default/bg/css/style_0914.css">
+    <link rel="stylesheet" href="res/default/bg/css/home.css">
+    <link rel="stylesheet" type="text/css" href="res/js/font-awesome-4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="res/default/bg/css/skin.css">
+    
+    <style>
+    
+    #sh_main{
+ 			transition: .9s;
+ 			cursor: pointer; position: absolute; top: 45%; left: -11px; z-index: 20; width: 22px; height: 22px; background-image: url(/res/default/bg/image/left.png) ; background-size: cover;
+ 		}
+ 		#sh_main:hover{
+ 			transition: .9s;
+ 			left: 3px;
+ 		}
+	    .layui-nav-child{
+ 	   		padding:0;
+  		  }
+  		
+    	.layui-nav-tree .layui-nav-more-nav {
+    		top: 20px;
+   		 	left: 20px;
+		}
+		.layui-nav .layui-nav-item a i{
+			background:none;
+		}
+
+    	.layui-nav-bar{
+    		display:none;
+    	}
+    	.layui-nav-item dl{
+    		display:none;
+    	}
+    	.change_info{
+    	text-align:center;
+    		background:url('res/default/bg/image/compile.png') no-repeat 15px center;
+    	}
+    	.exit_login{
+    	text-align:center; 
+    		background:url('res/default/bg/image/secede.png') no-repeat 15px center;
+    	}
+    	.right_top_box{
+    		left:-19px;
+    		min-width:129%;
+    	} 
+    	.layui-tab-title{
+    		height:36px;
+    	}
+	    .layui-tab-title li{
+    		line-height:43px;
+    	}
+    	.layui-tab-title li .layui-tab-close{
+    		color:white;
+    	}
+    	
+    </style>
+<body id="${Session.WEATHER}">
+
+<div class="layui-layout layui-layout-admin">
+    <!-- header -->
+    <div class="layui-header my-header " id="test">
+          <a class='logo_w' href="" target="_blank"> <img class="logo_img" src="res/default/bg/image/logo.png" alt=""></a>
+          <a href="admin/obtain_home_view_3.htm?language=zh_CN">中文</a><a  href="admin/obtain_home_view_3.htm?language=zh_US"> English</a>
+        <ul class="layui-nav my-header-user-nav main-admin" >
+            <li class="layui-nav-item">
+                  <a class="name" href="javascript:;">
+                <#if user.thumbnail??>
+               		<img src="${(Session[Const.SESSION_USER].thumbnail.url)!}" alt="logo">
+                <#else>
+               		<img src="res/default/bg/image/hd-user.png" alt="logo">
+                </#if>
+                ${user.username!}</a>
+                <dl class="layui-nav-child right_top_box layui-anim layui-anim-upbit">
+                    <dd><a class="change_info" style="background:url(&#39;res/default/bg/image/compile.png&#39;) no-repeat 20px center;" href="javascript:login_edit_user();">修改信息</a></dd>
+                    <dd><a class="change_info" style="background:url(&#39;res/default/bg/image/compile.png&#39;) no-repeat 20px center;" href="javascript:void(0);" onclick="clearl2cache()">清除缓存</a></dd>
+                    <dd><a class="exit_login" style="background:url(&#39;res/default/bg/image/secede.png&#39;) no-repeat 20px center;" href="${base}/admin/logout.htm">退出登录</a></dd>
+                </dl>
+            </li>
+        </ul>         
+        <ul class="layui-nav my-header-user-nav main-head">
+        
+        	<#list topModels as model>
+        		<#if model.id=selected_model>
+        			<li class="layui-nav-item layui-nav-itemed layui-this"><a href="admin/obtain_home_view_${model.id?c}.htm"><i class="fa fa-${(model.icon.name)!}"></i>${model.name!}</a></li>
+        		<#else>
+        			<li class="layui-nav-item "><a class="h_color" href="admin/obtain_home_view_${model.id?c}.htm"><i class="fa fa-${(model.icon.name)!}"></i>${model.name!}</a></li>
+        		</#if>
+            </#list>
+        </ul>
+    </div>
+    <!-- side -->
+    <div class="layui-side my-side" id="side">
+        <div class="layui-side-scroll" style="width: 260px;">
+            <ul class="layui-nav layui-nav-tree" lay-filter="side" style="width:250px">
+	              <#list models! as model>
+	                <li class="layui-nav-item">
+	                	<#if  modelTree?? && modelTree?size gt 0 && modelTree["${model.id?c}"]?? >
+	                		 <a href-url="${model.url!}" data-type="tabAdd"><i class="fa fa-${(model.icon.name)!}"></i>${model.name!}
+	                		 <span class="layui-nav-more"></span></a>
+	                		 
+	                		  <dl class="layui-nav-child">
+				            	<#list  model.children as m2>
+						        	<#if  modelTree["${m2.id?c}"]?? >	
+						            <dd><a class="second_nav_list_box"   href-url="${m2.url!}" data-type="tabAdd"><i class="fa fa-${m2.icon.name}"></i>${m2.name!}</a></dd>
+						            </#if>       
+				       			</#list>   
+	                	   	  </dl>
+	                	   	  <#if model.columns?? && (model.columns?size gt 0)>
+	                	   	  		<#list model.columns as c1>
+	                	   	  		<#if !c1.parent?? > 
+								        <a style=" padding-left: 52px;"  class="site-demo-active" href-url="admin/article/obtain_column_article_edit_${c1.id?c}.htm" data-type="tabAdd">${c1.title!}</a>
+								        <@list_nav column=c1 /> 
+								     </#if> 
+	                	   	  		</#list>
+	                	   	  </#if>
+	                	   	</#if>
+	                </li>
+	                </#list>	                
+	                <#list columns! as c1>	               
+	                	 <#if !c1.parent?? > 
+	                	  <li class="layui-nav-item">
+					        <a style=" padding-left: 52px;"  class="site-demo-active" href-url="admin/article/obtain_column_article_edit_${c1.id?c}.htm" data-type="tabAdd"><span class="layui-nav-more layui-nav-more-nav"></span>${c1.title!}</a>
+					        <@list_nav column=c1 /> 
+					        </li>
+					      </#if>  	               
+	                </#list>
+            </ul>
+             <#macro list_nav column>           	
+					<#if column.children?size gt 0>
+					<dl class="layui-nav-child hidden_nav" style="display:none">
+					<#list  column.children?sort_by("sequence")  as c2> 
+						<#list columns! as role_column>
+							<#if role_column.id=c2.id>
+								 <#if c2.children?size gt 0>
+								 <dd><a style=" padding-left: 52px;" href-url="admin/article/obtain_column_article_edit_${c2.id?c}.htm" data-type="tabAdd"><span class="layui-nav-more layui-nav-more-nav"></span>${c2.title!}</a> </dd>
+								 <@list_nav column=c2 /> 
+								 <#else>
+								 <dd><a style=" padding-left: 52px;" href-url="admin/article/obtain_column_article_edit_${c2.id?c}.htm" data-type="tabAdd"><span class="layui-nav-more layui-nav-more-nav"></span>${c2.title!}</a> </dd>
+								 </#if>  
+							 </#if>
+						 </#list>           
+					</#list> 
+					</dl>
+					</#if> 				
+            </#macro>
+        </div>
+    	<img class="side_botlogo"  src="res/default/bg/image/nav_down_pic.png" alt="" />
+    </div>
+    <!-- body -->
+    <div class="layui-body my-body">
+    		<div id="sh_main"></div>
+    	 <div class="layui-tab layui-tab-card my-tab" lay-filter="card" lay-allowClose="true">
+            <ul class="layui-tab-title" style="overflow: hidden;">
+                <li class="layui-this" lay-id="0"><span>欢迎页</span></li>
+            </ul>
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+                    <iframe id="iframe" src="admin/to_target.htm?url=hellow" frameborder="0"></iframe>
+                </div>
+            </div>
+        </div>
+    	
+    </div>
+</div>
+
+
+	<script src="${basePath}/res/default/bg/js/jquery.min.js"></script>
+	<script src="${basePath}/res/default/bg/js/home.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="${basePath}/res/default/bg/js/layui-v2.1.5/layui.all.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="${basePath}/res/js/layer-v3.1.0/layer.js"></script>
+<script type="text/javascript">
+
+$(function(){
+	$("#sh_main").click(function(){
+		$('.my-side').stop().toggle(900);
+		if($('.my-body').css('left')=='0px'){
+			$('.my-body').animate({left:"250px"},900);
+			$('#sh_main').css({'background':'url(/res/default/bg/image/left.png)','background-size': 'cover'});
+		}else{
+			$('.my-body').animate({left:"0px"},900);
+			$('#sh_main').css({'background':'url(/res/default/bg/image/right.png)','background-size': 'cover'});
+		}
+		
+	})
+	
+	
+	$('.layui-tab-title').on('click','.layui-unselect',function(){
+		$(this).siblings('li:gt(0)').remove();
+		$(this).remove();
+		$(".layui-tab-content .layui-tab-item:not(':first,:last')").remove(); 
+	}); 
+})
+
+function toLogin(){
+	location.href="${basePath}/admin/obtain_login.htm";
+}
+
+function release(){
+	$.get("${basePath}/admin/release.htm?_sign=${MD5.md5(user.username+user.id)}",function(res){
+		if(res.result){
+			layer.msg("发布成功",{icon:1});
+		}else{
+			layer.msg("发布失败",{icon:2});
+		}
+	});
+}
+
+window.addEventListener('message',function(e){
+						    var data=e.data;
+						    if(data.fname=="release"){
+						    	release();
+						   	 }
+						},false);
+
+$(function() {
+ 	$("#side .layui-nav-item ").on('mousedown', 'a', function() {
+		if($(this).hasClass('layui-nav-itemed')) {
+			$(this).removeClass("layui-nav-itemed");
+		} else {
+			$(this).addClass("layui-nav-itemed").parent().siblings().find('a').removeClass("layui-nav-itemed");
+		}
+	}); 
+	 $(".layui-nav-item a").mousedown(function() {
+		  if($(this).siblings("dl").css("display") == "none") {
+			$(this).siblings("dl").slideDown();
+			$(this).parent().siblings().find('dl').slideUp();
+		} else {
+			$(this).siblings("dl").slideUp();
+		}  
+	}); 
+	 $(".hidden_nav a").mousedown(function() {
+		  if($(this).siblings("dl").css("display") == "none") {
+			$(this).siblings("dl").slideDown();
+			$(this).parent().siblings().find('dl').slideUp();
+		} else {
+			$(this).siblings("dl").slideUp();
+		}  
+	}); 
+	
+});
+
+function login_edit_user() {
+	layer.open({
+		type: 2,
+		title: '修改资料',
+		shadeClose: true,
+		shade: 0.7,
+		area: ['700px', '580px'],
+		content: 'admin/user/obtain_user_update.htm' //iframe的url
+	});
+}
+
+function loadding(id) {
+	<!-- 等待提示框 -->
+	var iArea = $('#' + id).parent();
+	if($(iArea).find(".my-loading").length <= 0) {
+		$(iArea).css("position", "relative");
+		$(iArea).append($(".my-loading-block").html());
+	}
+
+	var oFrm = document.getElementById(id);
+	oFrm.onload = oFrm.onreadystatechange = function() {
+		if(this.readyState && this.readyState != 'complete') return;
+		else {
+			$('.my-loading:visible').css("display", "none");
+		}
+	}
+}
+
+
+		var element = layui.element,
+			layer = layui.layer,
+			util = layui.util; //导航的hover效果、二级菜单等功能，需要依赖element模块
+			var activetbl_id=0;
+		var side = $('.my-side');
+		var body = $('.my-body');
+		var footer = $('.my-footer');
+		
+		//监听导航(side)点击切换页面
+		element.on('nav(side)', function(elem) {
+			var card = 'card'; // 选项卡对象
+			var title = elem.text(); // 导航栏text
+			var src = elem.children('a').attr('href-url'); // 导航栏跳转URL
+			var id = new Date().getTime(); // ID
+			var flag = getTitleId(card, title); // 是否有该选项卡存在
+			// 大于0就是有该选项卡了
+			activetbl_id=id;
+			if(flag > 0) {
+				id = flag;
+			} else {
+				//新增
+				element.tabAdd(card, {
+					title: '<span>' + title + '</span>',
+					content: '<iframe src="' + src + '" frameborder="0" id="' + id + '"></iframe>',
+					id: id
+				});
+			}
+			// 切换相应的ID tab
+			element.tabChange(card, id);
+			var src=$(this).attr('href-url');
+			$('.layui-show').find('iframe').attr('src',src);
+			loadding(id);
+			// 关闭弹窗
+			elem.next('dl').attr({
+				style: "display:block"
+			})
+		});// 根据导航栏text获取lay-id
+		
+/**
+   * 得到当前激活的tbl-id
+ */
+function getactiveId() {
+	return activetbl_id;
+}
+function refreshactiveId() {
+	console.log("刷新页面"+activetbl_id);
+	 $('#'+activetbl_id).attr('src', $('#'+activetbl_id).attr('src'));
+}			
+function getTitleId(card, title) {
+	var id = -1;
+	$(document).find(".layui-tab[lay-filter=" + card + "] ul li").each(function() {
+		if(title === $(this).find('span').text()) {
+			id = $(this).attr('lay-id');
+		}
+	});
+	return id;
+   }
+// 返回文章编辑选项卡		
+function getLikeTitleId(card, title) {
+	var id = -1;
+	$(document).find(".layui-tab[lay-filter=" + card + "] ul li").each(function() {
+		if($(this).find('span').text().indexOf(title)>=0) {
+			id = $(this).attr('lay-id');
+		}
+	});
+	return id;
+   }
+	
+
+// 监听控制content高度
+function init() {
+	// 选项卡高度
+	cardTitleHeight = $(document).find(".layui-tab[lay-filter='card'] ul.layui-tab-title").height();
+	// 需要减去的高度
+	height = $(window).height() - $('.layui-header').height() - cardTitleHeight - $('.layui-footer').height();
+	// 设置高度
+	$(document).find(".layui-tab[lay-filter='card'] div.layui-tab-content").height(height - 2);
+	$(document).find(".layui-tab[lay-filter='card'] iframe").height(height - 2);
+}
+
+// 分辨率小于1024  使用内部工具组件
+if($(window).width() < 1024) {
+	util.fixbar({
+		bar1: '&#xe602;',
+		css: {
+			left: 10,
+			bottom: 54
+		},
+		click: function(type) {
+			if(type === 'bar1') {
+				//iframe层
+				layer.open({
+					type: 1, // 类型
+					title: false, // 标题
+					offset: 'l', // 定位 左边
+					closeBtn: 0, // 关闭按钮
+					anim: 0, // 动画
+					shadeClose: true, // 点击遮罩关闭
+					shade: 0.8, // 半透明
+					area: ['150px', '100%'], // 区域
+					skin: 'my-mobile', // 样式
+					content: $('body .my-side').html() // 内容
+				});
+			}
+			element.init();
+		}
+	});
+	localStorage.log = 0;
+}
+//清除缓存
+function clearl2cache(){
+	$.get("${basePath}/clearL2Cache$ajax.htm",function(res){
+			layer.msg(res.resultMsg);
+	});
+}
+</script>
+<!-- 等待提示框 -->
+<div class="my-loading-block" style="display: none">
+	<div class="my-loading">
+		<div class="layui-layer-shade" id="layui-layer-shade1" times="1" style="z-index:19891014; background-color:#000; opacity:0.3; filter:alpha(opacity=30);position:absolute"></div>
+		<div class="layui-layer layui-layer-loading  layer-anim" id="layui-layer1" type="loading" times="1" showtime="0" contype="string" style="z-index: 19891015; top: 50%; left: 50%;"><div id="" class="layui-layer-content layui-layer-loading1"></div><span class="layui-layer-setwin"></span></div>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>新增文章</title>
+    <#include "/include/bg/in_head_res.html">
+     <style type="text/css">
+ 	.uploadeyu{
+ 		display:inline-block;
+ 		width:90px;
+ 		height:90px;
+ 		overflow:hidden;
+ 		background-color:#eee;
+ 		text-align:center;
+ 		cursor: pointer;
+ 	}
+ 	.uploadeyu>p:nth-of-type(1){
+ 		line-height:90px;
+ 		font-size:40px
+ 	}
+ 	.uploadeyu>img{
+ 		min-width:100%;
+ 		height:100%;
+ 	}
+ 	.img-lable{
+ 		height:100px !important;
+ 		line-height:85px !important;
+ 	}
+ 	.img-hint{
+ 		font-size:12px;
+ 		color: red
+ 	}
+ 	.layui-form-item{
+ 		margin-bottom:8px;		
+ 	}
+ 
+ 	.layui-upload-list img{
+ 	vertical-align: initial!important;
+ 	}
+/*  	预览图片的box */
+ 	.pic_box{
+ 		padding-bottom: 30px;
+ 		float:left;
+ 		position:relative;
+ 		max-width:100px;
+ 		max-height:100px;
+ 		margin-right: 12px;
+ 	}
+ 	.pic_box img{
+ 	display:block;
+	width:100%;
+	max-height: 100px;
+ 	}
+ 	
+/*  	图片删除的小图标 */
+ 	.del_pic{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 20px;
+    height: 20px;
+    z-index: 999;
+    cursor: pointer;
+    background-color: white;
+    border-radius: 12px;
+    }
+    .down_list li{
+    	border: 1px solid #d2d2d2;
+    	  
+    }
+    .down_list li:hover{
+      background-color: #5FB878;
+      color:white;
+    }
+    
+    .iconNumber{
+        position: absolute;
+	    top: -15px;
+	    width: 20px;
+	    height: 20px;
+	    left: 50%;
+	    transform: translateX(-50%);
+	    padding-left: 0px;
+	    text-align: center;
+    }
+    
+/*    这里是修改调整顺序按钮的样式  */
+	/* 		盒子 */
+    .i_box{
+        position: absolute;
+	    bottom: 0;
+	    left: 0;
+	    width:100%;
+	    text-align:center;
+    }
+    
+     .i_box i{
+  	  	cursor: pointer;
+ 		margin: 0 5px;
+     }
+     .i_box i:hover{
+  	  	color:orange;
+     }
+ /*    这里是修改调整顺序按钮的样式 End */  
+ </style>
+</head>
+<body class="body clear">
+<blockquote class="layui-elem-quote layui-text">新增文章</blockquote>
+
+<form class="layui-form layui-form-pane" action="" id="article_form" onsubmit="return false">
+  <div class="layui-form-item">
+  <input type="hidden" name="isDelete" value="-1">
+  <input type="hidden" name="state" value="1">
+  <input type="hidden" name="isHome" value="1">
+  <input type="hidden" name="viewTimes" value="0">
+  
+   <div class="layui-col-md7">
+    <label class="layui-form-label"><span style="color: red">*</span>文章标题</label>
+    <div class="layui-input-block">
+      <input type="text" name="title" lay-verify="required" placeholder="请输入文章标题" autocomplete="off" class="layui-input" >
+    </div>
+    </div>
+    <div class="layui-col-md4 layui-col-md-offset1">
+    <label class="layui-form-label"><span style="color: red">*</span>所属栏目</label>
+    <div class="layui-input-inline">
+      <select name="column_id" lay-verify="required" initValue="${pcolumn.id!!}">
+		<option value="0" >请选择</option>
+      <#list column_list! as column>
+		<option value="${column.id}" >${column.title!}</option>
+	  </#list>
+      </select>
+    </div>
+    </div>
+    
+  </div>
+  
+  
+  <div class="layui-form-item">
+   
+
+	<div class="layui-col-md4">
+    <label class="layui-form-label">文章模板</label>
+    <div class="layui-input-inline">
+      <select name="temp_id" lay-verify="required" initValue="${(pcolumn.template.id)!''}">
+		<option value="0" >请选择</option>
+      <#list templist! as temp>
+		<option value="${temp.id}" >${temp.name!}</option>
+	  </#list>
+      </select>
+    </div>
+    </div>
+
+   <div class="layui-col-md4">
+    <label class="layui-form-label"><span style="color: red">*</span>发布时间</label>
+    <div class="layui-input-inline">
+    <input type="text" name="issue_time" lay-verify="required" class="layui-input" id="pub_time" placeholder="yyyy-MM-dd HH:mm:ss" autocomplete="off">
+    </div>
+    </div>
+    
+     <div class="layui-col-md4">
+    <label class="layui-form-label">备用所属</label>
+    <div class="layui-input-inline">
+    <input type='text' name ='parentid' class='v_id' style='display:none'>
+    <input type="text" name="" class="layui-input" id='byss'  placeholder="填写父级文章标题" autocomplete="off" >
+    <ul class="down_list">
+    
+    </ul>
+    </div>
+    </div>
+  
+  </div>
+  <div class="layui-form-item">
+  	   <div class="layui-col-md4">
+    <label class="layui-form-label">作者</label>
+    <div class="layui-input-inline">
+    <input type="text" name="author"  class="layui-input"  placeholder="请输入文章作者" >
+    </div>
+    </div>
+     <div class="layui-col-md4">
+    <label class="layui-form-label">来源</label>
+    <div class="layui-input-inline">
+    <input type="text" name="source" class="layui-input"  placeholder="请输入文章来源" >
+    </div>
+    </div>
+     <div class="layui-col-md4">
+      <label class="layui-form-label">排序</label>
+      <div class="layui-input-inline">
+        <input type="number" name="sequence"  value="1" placeholder="文章排序" autocomplete="off" class="layui-input oby">
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  <div class="layui-collapse" lay-filter="more_set">
+    <div class="layui-colla-item">
+    <h2 class="layui-colla-title">更多配置</h2>
+    <div class="layui-colla-content">
+    
+    
+      <div class="layui-form-item layui-col-space15">
+        <div class="layui-col-md6">
+      <label class="layui-form-label">外部跳转链接</label>
+      <div class="layui-input-block">
+        <input type="tel" name="url" placeholder="请输入文章url"  autocomplete="off" class="layui-input">
+      </div>
+    </div>
+        <div class="layui-col-md6">
+      <label class="layui-form-label">关键字</label>
+      <div class="layui-input-block">
+        <input type="tel" name="keyword" placeholder="请输入文章关键字"  autocomplete="off" class="layui-input">
+      </div>
+    </div>
+      </div>
+    
+   <div class="layui-form-item">
+  <div class="layui-row">
+    <label class="layui-form-label" style="height:117px;line-height: 87px">视频上传</label>
+    <div class="layui-input-block" >
+		<div class="layui-upload-drag" id="video_upload">
+			<i class="layui-icon"></i>
+			<p>点击上传，或将文件拖拽到此处</p>
+			<div class="layui-hide" id="uploadDemoView">
+			  <hr>
+			  <img class="video_cover" src="" alt="上传成功后渲染" style="max-width: 196px">
+			</div>
+		</div>
+		<div class="pic_box_button" style="position: absolute;right:10px;z-index:99;top:5px">
+			<button type="button" class="layui-btn layui-btn-sm layui-bg-blue" id="button-upload-video" >
+				<i class="layui-icon">&#xe681;</i>上传
+			</button>
+		</div>
+    </div>
+    </div>
+  </div>
+     
+  <div class="layui-form-item">
+  <div class="layui-row">
+    <label class="layui-form-label" style="height:100px;line-height: 87px">文章描述</label>
+    <div class="layui-input-block" >
+      <textarea placeholder="请输入文章描述" class="layui-textarea" name="describes"></textarea>
+    </div>
+    </div>
+  </div>
+    
+    
+    </div>
+    </div>
+  </div>
+  
+  <div class="layui-collapse" lay-filter="test">
+  <div class="layui-colla-item">
+    <h2 class="layui-colla-title">图片上传</h2>
+    <div class="layui-colla-content">
+    
+  <div class="layui-form-item">
+  <label class="layui-form-label" >封面图上传</label>
+  <input type="hidden" name="pic_id" id="pic_id">
+     <div class="layui-input-block" style="padding-left:12px">
+     	<label for="upload" class="uploadeyu"  id="test1">
+	    <p>+</p>
+		</label>
+	<p class=".img-hint">点击图片修改</p>
+	<button type="button" class="layui-btn layui-bg-blue" id="upload_1" style="position: absolute;left: 123px;top: 0px;"><i class="layui-icon">&#xe681;</i>上传文件</button>
+	</div>
+  
+<div class="layui-upload" style="display:none;">
+  <button type="button" class="layui-btn layui-bg-blue"  style="margin-left: 10px;">上传图片</button>
+  <div class="layui-upload-list">
+    <img class="layui-upload-img" id="demo1">
+    <p id="demoText"></p>
+  </div>
+</div>   
+  </div>
+  
+<!--   <div class="layui-form-item "> -->
+<!--   <label class="layui-form-label">多图上传</label> -->
+<!-- <div class="layui-upload"> -->
+<!-- <input type="hidden" name="pic_list" id="pic_list"> -->
+
+<!--   <button type="button" class="layui-btn layui-bg-blue" id="test2" style="margin-left: 10px;"><i class="layui-icon">&#xe681;</i>多图片上传</button>  -->
+<!--   <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;overflow: hidden;"> -->
+<!--     预览图： -->
+<!--     <div class="layui-upload-list" id="demo2" > -->
+<!--      <div  style="padding-left:12px;width: 100px;display: inline-block;float:left;"> -->
+<!--      	<label for="upload" class="uploadeyu"  id="article_multiple"> -->
+<!-- 	    <p>+</p> -->
+<!-- 		</label> -->
+<!-- 	<p class=".img-hint">点击图片添加</p> -->
+<!-- 	</div> -->
+<!--     </div> -->
+<!--  </blockquote> -->
+<!-- </div> -->
+<!-- </div> -->
+
+<div class="layui-form-item">
+			<label class="layui-form-label" style="height:162px;line-height:152px;vertical-align:middle;"><span style="color: red">*</span>商品相册</label>
+			<div class="layui-input-block" style="padding-left: 5px;">
+				<input type="hidden" name="" id="picIds">
+				<blockquote class="layui-elem-quote layui-quote-nm"
+					style="margin-top: 10px; overflow: hidden;">
+					<div class="layui-upload-list" id="img-add">
+						<div class="first-add" style="padding-left: 6px; display: inline-block; float: left;line-height:16px">
+							<div class="layui-upload-drag" id="test10" style="width:120px;margin-right:10px">
+								<i class="layui-icon"></i>
+								<p>点击选择，或将图片拖拽到此处</p>
+							</div>
+						</div>
+						<div class="pic_box_button" style="position: absolute;right:10px;z-index:99;top:5px">
+							<button type="button" class="layui-btn layui-btn-sm layui-bg-blue" id="button-upload" >
+								<i class="layui-icon">&#xe681;</i>上传
+							</button>
+						</div>
+					</div>
+				</blockquote>
+			</div>
+		</div>
+    
+    
+    </div>
+  </div>
+</div>
+  
+  
+
+    <div class="layui-form-item layui-form-text">
+   <label class="layui-form-label">文章内容</label>
+   <div class="layui-input-block" >
+    <script id="container" name="content" type="text/plain" style="width:100%;float:left;height: 500px;"></script>
+    </div>
+  </div>
+  
+  
+    <div class="layui-form-item" style="margin-bottom: 50px;">
+   <div style="text-align: center;vertical-align:bottom;">
+   
+       <button class="layui-btn layui-btn-normal" lay-submit lay-filter="form_column" state="5">保存草稿</button>
+       <button class="layui-btn" lay-submit lay-filter="form_column" state="1">保存</button>
+       <#if user.type==4 || user.type=5>
+       <button class="layui-btn" lay-submit lay-filter="form_column" state="12">提交审核</button>
+       </#if>   
+   
+       <button class="layui-btn site-demo-active layui-btn-danger" lay-submit data-type="tabDelete" >取消</button>
+   </div>
+  </div>
+
+</form>
+<#include "/include/bg/in_bottom_res.html">	
+<script type="text/javascript" src="${basePath}/res/default/bg/js/ueditor1_4_3_3/ueditor.config.js"></script>
+<script type="text/javascript" src="${basePath}/res/default/bg/js/ueditor1_4_3_3/ueditor.all.js"></script>
+<script type="text/javascript">
+var ue = UE.getEditor('container');
+
+ue.ready(function(){
+	 
+	ue.execCommand('fontfamily','宋体'); //字体
+	 
+	ue.execCommand('lineheight', 1.75); //行间距
+	 
+	ue.execCommand('fontsize', '14px'); //字号
+	 
+/* 	 ue.addListener( 'contentChange', function() {
+		 var editor=UE.getEditor('content');
+	     console.log('选区发生改变');
+	     editor.setContent('<p>new text</p>', true); 
+	     editor.execCommand('fontfamily','宋体'); //字体
+	 }); */
+	});
+var form = layui.form,laydate = layui.laydate;
+layui.use(['element','laydate','upload'], function(){
+	var $ = layui.jquery,laydate = layui.laydate,upload = layui.upload,element = parent.element;
+	  initValue();
+	  form.render();
+	  
+	  //触发事件
+	  var tab_id="article_add";
+	  var active = {
+	    tabDelete: function(othis){
+	        //删除指定Tab项
+	        element.tabDelete('card',15201362); //删除：“商品管理”
+	// 	        打开新窗口
+// 	        othis.addClass('layui-btn-disabled');
+	      }
+	  };
+	  
+	  $('.site-demo-active').on('click', function(){
+	    var othis = $(this), type = othis.data('type');
+	    active[type] ? active[type].call(this, othis) : '';
+	  });
+	  
+	  //Hash地址的定位
+	  var layid = location.hash.replace(/^#test=/, '');
+	  element.tabChange('test', layid);
+	  
+	  element.on('tab(test)', function(elem){
+	    location.hash = 'test='+ $(this).attr('lay-id');
+	  });
+		  
+
+
+    //创建监听函数
+    var xhrOnProgress=function(fun) {
+       xhrOnProgress.onprogress = fun; //绑定监听
+        //使用闭包实现监听绑
+       return function() {
+           //通过$.ajaxSettings.xhr();获得XMLHttpRequest对象
+           var xhr = $.ajaxSettings.xhr();
+            //判断监听函数是否为函数
+             if (typeof xhrOnProgress.onprogress !== 'function')
+                  return xhr;
+              //如果有监听函数并且xhr对象支持绑定时就把监听函数绑定上去
+               if (xhrOnProgress.onprogress && xhr.upload) {
+                     xhr.upload.onprogress = xhrOnProgress.onprogress;
+               		}
+               return xhr;
+        		}
+  			}    
+    	  //常规用法
+    	  laydate.render({
+    	    elem: '#pub_time',
+    	    type: 'datetime',
+    	    value: new Date()
+    	  });
+    
+var piclist_str="";
+  //普通图片上传
+  var uploadInst = upload.render({
+    elem: '#test1'
+    ,url: '${base}/upload/uploadImgByAccessory.htm?type=client'
+    ,auto: false
+ 	,size: 6144
+ 	,accept: "file"
+ 	,bindAction: '#upload_1'
+ 	,choose: function(obj){
+	    	 obj.preview(function(index, file, result){
+	    		   $("#test1").html("<img src='" + result + "'/>");
+	          });
+	    }
+    ,before: function(obj){
+      //预读本地文件示例，不支持ie8
+      obj.preview(function(index, file, result){
+    	  $("#test1").html("<img src='" + result + "'/>");
+      });
+    }
+    ,done: function(res){
+    	if(res.result){
+		    var files = res.data;
+		    for(var i=0;i<files.length;i++){
+		    	var name = files[i].name;
+		    	var url = files[i].url;
+		    	var id = files[i].acyId;
+		    	$("#pic_id").val(id);
+		    }
+        return layer.msg(res.resultMsg);
+    	}else{
+        return layer.msg('上传失败');
+    		
+    	}
+      //如果上传失败
+      if(res.code > 0){
+        return layer.msg('上传失败');
+      }
+    }
+    ,error: function(){
+      //演示失败状态，并实现重传
+      var demoText = $('#demoText');
+      demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
+      demoText.find('.demo-reload').on('click', function(){
+        uploadInst.upload();
+      });
+    }
+  });
+
+   //多图片上传
+ 	upload.render({
+ 	    elem: '#test10',
+ 	   	url: '${base}/upload/uploadImgByAccessory.htm?type=client',
+ 	    multiple: true,
+ 	    accept: 'file',
+ 	    auto: false,
+ 	 	size: 6144,
+ 	 	bindAction: '#button-upload',
+ 	 	choose: function(obj){
+ 	 		var files = obj.pushFile(); //将每次选择的文件追加到文件队列
+ 		    obj.preview(function(index, file, result){
+ 		    var yimg=$(["<div class='pic_box' id='upload_img_"+ index +"' ><div class='i_box'><i class='layui-icon pic_left'>&#xe65a;</i><i class='layui-icon pic_right'>&#xe65b;</i><em class='layui-icon success'>&#xe616;</em></div>  <img src='" + result + "'/><i class='del_pic demo-delete'><img style='display:block;width:100%' src='res/default/bg/image/X.png' /></i></div>"].join(''));
+ 		    //删除预览图
+ 		    yimg.find('.demo-delete').on('click', function(){
+ 		    	delete files[index]; //删除对应的文件
+ 		    	yimg.remove();
+ 		   	});	
+ 		   	$('#img-add .first-add').after(yimg);
+		    console.log(index)
+ 		    var ids = index.split("-");
+ 		    if(parseInt(ids[1])>4){
+ 		    	delete files[index]; //删除对应的文件
+ 		    	yimg.remove();
+ 		    }
+ 		    });
+ 		    console.log(files);	 
+ 		},
+ 	  	done: function(res, index, upload){
+ 	    //上传完毕
+ 	   // alert(JSON.stringify(res));
+ 	  	if(res.result){
+ 			var files =res.data;
+ 			for(var i=0;i<files.length;i++){
+ 			    var name = files[i].name;
+ 			    var url = files[i].url;
+ 			    var id = files[i].acyId;
+ 			    $("#upload_img_"+index).attr('val_pid',id);
+ 			    $("#upload_img_"+index).find('.success').css({'color':'red'});
+//  			$("#upload_img_"+index).find('.pic_left').css({'display':'block'});
+// 		        $("#upload_img_"+index).find('.pic_right').css({'display':'block'});   			   
+ 			}
+ 	  	layer.msg(res.resultMsg)
+ 	    return ;
+ 	  	}else{
+ 	  		layer.msg('上传失败')
+ 	     return ;	
+ 	  	}
+ 	    if(res.code == 0){ //上传成功
+ 	       	var tr = demoListView.find('div#upload_img_'+ index),
+ 	        tds = tr.children();
+ 	        tds.eq(2).html('<span style="color: #5FB878;">上传成功</span>');
+ 	        tds.eq(3).html(''); //清空操作
+ 	        delete files[index]; //删除文件队列已经上传成功的文件
+ 	        return;
+ 	      }
+ 	      this.error(index, upload);
+ 	    },error: function(index, upload){
+ 	      var tr = demoListView.find('div#upload_img_'+ index),
+ 	      tds = tr.children();
+ 	      tds.eq(2).html('<span style="color: #FF5722;">上传失败</span>');
+ 	      tds.eq(3).find('.demo-reload').removeClass('layui-hide'); //显示重传
+ 	    }
+ 	  });
+	 
+ 	  //视频上传
+ 	  var video_upload = upload.render({
+ 	    elem: '#video_upload'
+ 	    ,url: '${base}/upload/uploadImgByAccessory.htm?type=client'
+ 	    ,auto: false
+ 	 	,size: 1048576
+ 	 	,accept: "file"
+ 	    ,xhr:xhrOnProgress
+ 	 	,bindAction: '#button-upload-video'
+ 	 		,progress:function(value){//上传进度回调 value进度值
+ 	 			 console.log("=====");
+                element.progress('js_upload_progress', value+'%');//设置页面进度条
+            }
+/*  	   ,progress: function(e, percent){
+ 		   console.log("=====");
+//  		    element.progress('demo', percent); //可配合 layui 进度条元素使用
+ 		    
+ 		    //以下系 layui 2.5.6 新增
+ 		    console.log(percent); //得到当前触发的元素 DOM 对象。可通过该元素定义的属性值匹配到对应的进度条。
+ 		  } */
+ 	 	,choose: function(obj){
+	    	 obj.preview(function(index, file, result){
+	    		  $("#video_upload").html("<img style='height:55px'  src='res/default/bg/image/video_cover.png'><p>请点击上传按钮进行上传</p>");
+	          });
+ 		    }
+ 	    ,before: function(obj){
+ 	      //预读本地文件示例，不支持ie8
+ 	      obj.preview(function(index, file, result){
+	    		  $("#video_upload").html("<img style='height:55px'  src='res/default/bg/image/video_cover.png'><p>请点击上传按钮进行上传</p>");
+ 	      });
+ 	    }
+ 	    ,done: function(res){
+ 	    	if(res.result){
+ 			    var files = res.data;
+ 			    for(var i=0;i<files.length;i++){
+ 			    	var name = files[i].name;
+ 			    	var url = files[i].url;
+ 			    	var id = files[i].acyId;
+ 			    	$("input[name='url']").val(url);
+ 			    }
+ 	        return layer.msg(res.resultMsg);
+ 	    	}else{
+ 	        return layer.msg('上传失败');
+ 	    		
+ 	    	}
+ 	      //如果上传失败
+ 	      if(res.code > 0){
+ 	        return layer.msg('上传失败');
+ 	      }
+ 	    }
+ 	    ,error: function(){
+ 	      //演示失败状态，并实现重传
+ 	      var demoText = $('#demoText');
+ 	      demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
+ 	      demoText.find('.demo-reload').on('click', function(){
+ 	        uploadInst.upload();
+ 	      });
+ 	    }
+ 	  });   
+   
+   
+   
+ 	//图片移动
+ 	$('body').on('click','.pic_left',function(){
+ 		var index = parseInt($(this).parents(".pic_box").index(".pic_box"));
+ 		if(index==0){
+ 			return;
+ 		}
+ 		var one_li = $(".pic_box:eq("+index+")");    
+ 		var two_li = $(".pic_box:eq("+(index-1)+")");    
+ 		two_li.insertAfter(one_li);    //移动节点
+ 	})
+ 	$('body').on('click','.pic_right',function(){
+ 		var index = parseInt($(this).parents(".pic_box").index(".pic_box"));
+ 		var one_li = $(".pic_box:eq("+index+")");    
+ 		var two_li = $(".pic_box:eq("+(index+1)+")");    
+ 		two_li.insertBefore(one_li);    //移动节点
+ 	})
+
+  
+
+    //监听提交
+    form.on('submit(form_column)', function(data){
+    	var oby=$(".oby").val();
+    	if(oby==null||oby==""){//判断排序是否填值 
+    		$(".oby").val(1);
+    	}
+    	var picIds = "";
+    	$('.pic_box').each(function(){
+    		if($(this).attr('val_pid')!=undefined){
+    			picIds+=$(this).attr('val_pid')+",";
+    		}
+    	})
+    	
+   /*  	if($("textarea[name='describes']").val().length==0){
+        	$("textarea[name='describes']").val(ue.getContentTxt().substring(0,260));
+        	} */
+        	
+    	var params = $("#article_form").serializeObject();
+    	
+    	var state= $(this).attr("state");
+    	params.state=state;
+    	
+    	params.pic_list = picIds;
+    	console.log(JSON.stringify(params));
+    	var frameId = window.frameElement && window.frameElement.id || '';
+    	$.postJSON("${base}/admin/article/add_article$ajax.htm",params,function(data){
+        	layer.msg(data.msg,{time:1000},function(){
+        		if(data.result){
+        			parent.refreshactiveId();
+		       		element.tabDelete('card',frameId); //删除
+            	}
+        	});
+    	}); 
+    	
+        return false;
+    });
+})
+
+
+
+//父级文章查询选择列表	
+$('#byss').on('input',function(){
+	var res= '';
+	$('.down_list').empty();
+	$.post('general_service_c6Sw7Y6vOG4vjYW5Fje$ajax.htm?_qtype=2&isDelete=-1&_sObject=SESSION_WEB_SET&title='+$(this).val()+'',function(e){
+		var list= JSON.parse(e).resultList_article;
+	 for(var i =0;i<list.length;i++){
+		 res +=("<li  val="+list[i].id+">"+list[i].title+"</li>")
+	 }
+	 $('.down_list').append(res);
+	})
+	
+})
+$(document).on('mouseover','.down_list li',function(){
+		var s= $(this).text();
+		var v= $(this).attr('val')
+		$(this).parent().siblings('.v_id').attr('value',v);
+		$(this).parent().siblings('#byss').val(s);
+		console.log(s+'+ssdasd +'+v);
+})
+$(document).on('blur','#byss',function(){
+	$('.down_list li').css('display','none');
+})
+
+
+	 
+ 	
+
+</script>
+
+
+</body>
+</html>

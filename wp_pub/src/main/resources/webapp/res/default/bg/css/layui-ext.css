@@ -1,0 +1,54 @@
+@CHARSET "UTF-8";
+
+.body{
+	padding: 10px;
+    background-color:white;
+}
+
+.inner-body{   
+	padding: 10px;
+    background-color:#f2f2f2;
+}
+
+.bg-color{
+     background: #eee;
+ }
+
+/*自定义表单扩展*/
+.search-way-list{
+    width:18%;
+    float: left;
+    height:40px;
+    line-height:40px;
+}
+.noLeftMargin{
+    margin-left:0!important;
+}
+
+.two-colum-left{
+	width:48%;
+	float:left;
+	clear:none !important;
+	margin-right: 4%;
+}
+
+.two-colum-right{
+	width:48%;
+	float:left;
+	clear:none !important;
+}
+
+.layui-table td, .layui-table th{
+	padding:8px 12px !important;
+}
+
+/*清除报头必用，clearfix在header上面*/
+.clear:before, .clear:after { content: ""; display: table; }
+.clear:after { clear: both; }
+.clear { zoom: 1; }
+
+
+ .content_main{
+     background: #fff;
+     padding: 10px;
+ }

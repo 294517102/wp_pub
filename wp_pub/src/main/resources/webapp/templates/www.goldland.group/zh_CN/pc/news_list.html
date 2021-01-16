@@ -1,0 +1,165 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html>
+<head>
+<title>${webSet.title!}</title>
+ <#if !pageIndex?? ><#assign  pageIndex="1" ></#if>
+  <#assign dqlm = cl.bk(k)>
+<#include "${rp}/header.html">
+</head>
+<body style="background-color:#f5f1da;background-position:center top;background-repeat:no-repeat; background-attachment:scroll;">
+    <div id="pagecontainer" style="width:100%px;margin:0 auto">
+        
+    <#include "${rp}/include/top_header.html">
+
+
+
+<div id="we7layout_149615624552010" class="sf_cols">
+ <div style="float: none; width: 100%; margin: 0; ;" class="sf_colsOut"><div class="sf_colsIn ">
+ 
+<!--[if IE 6]>
+<script type="text/javascript">
+    DD_belatedPNG.fix('img,a,ul,li,div');
+</script>
+<![endif]-->
+<div class="ChannelMenuV_DropDown">
+    <ul id="dropdown_nav">
+         <#include '${rp}include/topc.html'>
+    </ul>
+    <script type="text/javascript">
+        $(".ChannelMenuV_DropDown .sub").hide();
+        function showSub(index) {
+            $(".ChannelMenuV_DropDown .top_" + index + " .sub").show().parent().addClass("dropon");
+        }
+        function hideSub(index) {
+            $(".ChannelMenuV_DropDown .top_" + index + " .sub").removeClass("dropon").hide().parent().removeClass("dropon");
+        }
+        $("#dropdown_nav>li").last().children("ul").addClass("lastul");
+    </script>
+</div> 
+<!--htmlWidgetStart-->
+<!--<script type="text/javascript" src="/_skins/201608A/js/jquery.js" ></script>--> 
+<!--<script type="text/javascript" src="/_skins/201608A/js/jquery.caroufredsel-6.0.4-packed.js" ></script>-->
+<script type="text/javascript" src="res/default/js/focus_widgets_wid_mypart.js" ></script>
+<div class="allscroll">
+<!--滚动图-->
+<div id="banner_show" class="banner_show">
+    <!--焦点图-->
+    <a class="bannger_inbox" href="/"><img width="1920" src="res/default/images/banner01.jpg" alt="" /></a>
+    <a class="bannger_inbox" href="/"><img width="1920" src="res/default/images/banner02.jpg" alt="" /></a>
+  <!--  <a class="bannger_inbox" href="#"><img width="1920" src="/_skins/temp02/images/banner03.jpg" alt="" /></a>-->
+    <!--焦点图-->
+    <!--左右箭头-->
+    <div class="banner_pre_next">
+      <a class="banner_btn_left" href="javascript:;">上一个</a>
+      <a class="banner_btn_right" href="javascript:;">下一个</a>
+    </div>
+    <!--左右箭头-->
+</div>
+<!--滚动图-->
+</div>   
+ <!--HtmlWidgetEnd-->
+ 
+    <#include "${rp}/include/search_nav.html">
+
+
+<div style= "clear:both;height:0;font-size:1px;"></div>
+</div></div></div>
+
+<div style= "clear:both;height:0;font-size:1px;"></div>
+</div></div></div>
+<div style= "clear:both;height:0;font-size:1px;"></div></div>
+<div id="we7layout_147814426381590" class="sf_cols">
+ <div style="float: none; width: 100%; margin: 0; ;" class="sf_colsOut"><div class="sf_colsIn ">
+ <div id="we7layout_147814488611465" class="sf_cols">
+ <div style="float: none; width: 100%; margin: 0; ;" class="sf_colsOut"><div class="sf_colsIn layout_content">
+ <div id="we7layout_147814491829580" class="sf_cols">
+ <div style="float: none; width: 100%; margin: 0; ;" class="sf_colsOut"><div class="sf_colsIn ">
+ 
+    <#include "${rp}/include/bread_nav.html">
+    
+<div id="we7layout_147913355435384" class="sf_cols">
+    
+    <#include "${rp}/include/left_menu.html">
+
+ <div style="float: left; width: 30px; margin: 0; ;" class="sf_colsOut"><div class="sf_colsIn ">
+ </div></div>
+
+  <div style="float: left; width: 780px; margin: 0; ;" class="sf_colsOut"><div class="sf_colsIn ">
+ <div id="we7layout_147913493714760" class="sf_cols">
+ <div style="float: none; width: 100%; margin: 0; ;" class="sf_colsOut"><div class="sf_colsIn ">
+ 
+
+<div class="PagedArticleList_Default">
+    <div class="TitleImage"><img src=""></div>
+    <h3 style="background:url(res/default/images/header_tit02.png) no-repeat;"><em>关于金土地</em></h3>
+    <div class="Description"></div>
+    <div class="article_list ">
+        
+    <#if dqlm.parent??>
+     <#assign plist = at.bc(dqlm,pageIndex,10)>
+    <#else>
+     <#assign plist = at.bcac(dqlm,pageIndex,10)>
+    </#if>
+        
+        <ul >
+                       
+                        <#if plist.list?? && plist.list?size gt 0>
+                        <#list plist.list as a>
+                        <li><a href="/go.htm?url=detail&id=${a.id!}">${a.title!''}</a><span>${a.issueTime?string('yyyy-MM-dd')}</span></li>
+                        </#list>
+                        <#else>
+                        暂无数据
+            </#if>       
+           <!-- <li><a target="_self" href="/go.htm?k=qi_ye_wen_hua&url=qiyewenhua">
+                企业文化</a><span>2018-12-06</span>
+            </li>
+            
+            <li><a target="_self" href="/go.htm?k=zu_zhi_ji_gou&url=zuzhijiagou">
+                组织机构</a><span>2017-05-10</span>
+            </li>
+            
+            <li><a target="_self" href="/go.htm?k=gong_si_gai_kuang&url=gongsigaikuang">
+                公司概况</a><span>2017-05-10</span>
+            </li>-->
+        
+        </ul>
+        <div class="clear"></div>
+        <!--### name="分页器" type="system" version="1.0" created="$CurrentDate" desc="分页器" author="We7 Group" ###-->
+<div class="page_css page_line">
+    <span class="pagecss">
+                    <#if plist.list?? && plist.list?size gt 0>
+                	共${plist.totalCount}条,${plist.pageIndex+1}/${plist.totalPageCount}页	${cm.page(req,pageIndex,plist)}
+                    </#if> 
+    </span>
+</div>
+
+    </div>
+</div>
+</div></div>
+<div style= "clear:both;height:0;font-size:1px;"></div></div></div></div>
+
+
+</div>
+
+
+
+
+<div style= "clear:both;height:0;font-size:1px;"></div></div></div>
+
+</div>
+<div style= "clear:both;height:0;font-size:1px;"></div></div></div></div>
+<div style= "clear:both;height:0;font-size:1px;"></div></div>
+
+<#include "${rp}/include/footer.html">
+
+</div></div>
+<div style= "clear:both;height:0;font-size:1px;"></div></div><div id="we7layout_149615623827028" class="sf_cols">
+ <div style="float: none; width: 100%; margin: 0; ;" class="sf_colsOut"><div class="sf_colsIn ">
+ </div></div>
+<div style= "clear:both;height:0;font-size:1px;"></div></div>
+    </div>
+</body>
+</html>

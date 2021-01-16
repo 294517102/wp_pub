@@ -1,0 +1,55 @@
+ <div id="we7layout_150470101249948" class="sf_cols">
+ <div style="float: none; width: 100%; margin: 0; background:#f9f9f9;" class="sf_colsOut"><div class="sf_colsIn ">
+ <div id="we7layout_150470103932064" class="sf_cols">
+ <div style="float: none; width: 100%; margin: 0; ;" class="sf_colsOut"><div class="sf_colsIn layout">
+ <div id="we7layout_150470105198668" class="sf_cols">
+ <div style="float: left; width: 700px; margin: 0; ;" class="sf_colsOut"><div class="sf_colsIn ">
+ 
+
+<!-- 滚动新闻JS -->
+    <script type="text/javascript" src="res/default/js/jquery.min_data_js.js"></script>
+    <script type="text/javascript">
+        function timer(opj){
+            $(opj).find('ul').animate({
+                marginTop : "-40px"  
+                },500,function(){  
+                $(this).css({marginTop : "0px"}).find("li:first").appendTo(this);  
+            })  
+        }
+        $(function(){ 
+            var num = $('.notice_active').find('li').length;
+            if(num > 1){
+               var time=setInterval('timer(".notice_active")',3500);
+                $('.gg_more a').mousemove(function(){
+                    clearInterval(time);
+                }).mouseout(function(){
+                    time = setInterval('timer(".notice_active")',3500);
+                }); 
+            }
+            
+        });
+    </script>
+ <!-- 滚动新闻JS -->
+   
+<#include '${rp}header_gg.html'>
+
+    <div class="gg_more">
+         <a target="_blank" href="/go.htm?k=gong_gao_tong_zhi&url=gonggaotongzhi">更多>></a>
+    </div>
+</div></div></div>
+  <div style="float: left; width: 400px; margin: 0; ;" class="sf_colsOut"><div class="sf_colsIn ">
+ 
+<div class="Search2015">
+    <div class="searchbox">
+<!--头部-->
+    <div class="full_model_search">
+        <input value="请输入要搜索的关键词" class="model_search" onblur="if(this.value==''){this.value=this.defaultValue;}" onfocus="if(this.value==this.defaultValue){this.value='';}" value="输入关键字" /><a href="#" title="搜索" class="model_search_click"></a>
+    </div>
+<!--头部-->
+        </div>
+
+</div>
+</div></div>
+
+<div style= "clear:both;height:0;font-size:1px;"></div></div></div></div>
+<div style= "clear:both;height:0;font-size:1px;"></div></div></div></div>

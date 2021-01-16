@@ -1,0 +1,182 @@
+	html,
+	input,
+	body {
+		font-family: "Microsoft YaHei";
+	}
+	
+	.logo>img {
+		margin: 3% 0 0 4%;
+	}
+	
+	.logo img,
+	p {
+		float: left;
+	}
+	
+	.logo p {
+		margin: 3% 0 0 2%;
+		font-size: 30px;
+	}
+	
+	#login {
+		background: white;
+		position: relative;
+		width: 47%;
+		border-radius: 19px;
+		overflow: hidden;
+		max-width: 750px;
+		box-shadow: 0px 0px 40px gray;
+		position: fixed;
+		top: 0px;
+		left: 0px;
+		right: 0px;
+		bottom: 0px;
+		margin: auto;
+	}
+	
+	.color {
+		background: #E7DBF3;
+	}
+	
+	.tit {
+		height: 13%;
+	}
+	
+	.tit>span {
+		float: right;
+		margin-top: 2.5%;
+		margin-right: 8%;
+	}
+	
+	#w_wrap {
+		border: none;
+		top: 0;
+		left: 0;
+		overflow: hidden;
+		color: white;
+		position: absolute;
+		min-height: 400px;
+	}
+	
+	.back_img {
+		width: 100%;
+		height: 100%;
+	}
+	
+	.top {
+		margin: 5% 0 0 8%;
+		border-bottom: 1px solid white;
+		width: 220px;
+		padding-bottom: 8px;
+	}
+	
+	.top div:nth-child(2) {
+		padding: 12% 0px 0 16%;
+	}
+	
+	.bottom {
+		margin: 45% 0 0 10%;
+	}
+	
+	.weather {
+		float: left;
+	}
+	
+	#nowdate {
+		margin-bottom: 10px;
+	}
+	
+	.size {
+		font-size: 60px;
+	}
+	/*登录表单*/
+	
+	.form {}
+	
+	.form-control {
+		width: 70%;
+		margin-top: 9%;
+		border-radius: 25px;
+		border: none;
+		display: block;
+		padding: 4% 0% 4% 20%;
+	}
+	
+	.v_code {
+		width: 30%;
+	
+	}
+	
+	.btn {
+		position: absolute;
+		bottom: 4%;
+		right: 21%;
+		cursor: pointer;
+		border: none;
+		background: #AB0008;
+		padding: 2% 6%;
+		color: white;
+		border-radius: 10px;
+	}
+	
+	@media screen and (min-width:1420px) {
+		.form-control {
+			margin-top: 7%;
+		}
+		.btn {
+			bottom: 5%;
+			right: 21%;
+			padding: 2% 6%;
+		}
+	}
+	/*补充*/
+	
+	.body {
+		width: 100%;
+		height: 100%;
+		background: url(/res/default/bg/image/bg.png) no-repeat fixed;
+		background-size:cover ;
+	}
+	
+	.info {
+		color: white;
+		position: fixed;
+		width: 100%;
+		bottom: 3%;
+		text-align: center;
+	}
+	
+	.info>a {
+		color: white;
+	}
+	
+	.info:before,
+	.info:after {
+		content: '';
+		/*CSS伪类用法*/
+		position: absolute;
+		/*定位背景横线的位置*/
+		top: 52%;
+		background: white;
+		/*宽和高做出来的背景横线*/
+		width: 35%;
+		height: 1px;
+	}
+	
+	.info:before {
+		left: 0%;
+		/*调整背景横线的左右距离*/
+	}
+	
+	.info:after {
+		right: 0%;
+	}
+	/*验证码*/
+	#codeimage{
+		padding:0;
+		margin-left:5%;
+		border:2px solid black;
+	}
+	.yzm{
+	float:left;
+	}

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <base href="${domainBase}"/>
+    <#include "${includePath}/data.html" >
+		<#include "${includePath}/searchKeyword.html" >
+    <title>${webSet.title!}-${zhuanjia.title!}</title>
+    <link rel="stylesheet" href="res/default/css/resets.css">
+    <link rel="stylesheet" href="res/default/css/style.css">
+
+</head>
+<body>
+<main>
+    <div class="main_team">
+        <div class="main_team_title">
+            <ul class="main_team_box">
+                <li class="main_team_list">
+                    <a class="main_team_first">科室</a>
+                    <ul class="main_team_second_box">
+                    <#list departments.children! as d>
+                        <li class="main_team_second_list">
+                            <a class="main_team_second_dic">${d.title!}</a>
+                            <ul class="main_team_third_box">
+                            <#list d.children! as dc>
+                                <li class="main_team_third_list">
+                                <a class="main_team_third_dic" onclick="query(1,${dc.id?c});">${dc.title!}</a>
+                                </li>      
+                                </#list>                          
+                            </ul>
+                        </li>
+                        </#list>
+                        
+                    </ul>
+                </li>
+                <li class="main_team_list">
+                    <a  class="main_team_first">职称</a>
+                    <ul class="main_team_second_box">
+                    <#if positionList ??>
+                    		<#list positionList as position>
+                        <li class="main_team_second_list">
+                            <a class="main_team_second_dic" onclick="query(4,${position.id?c});">${position.name!}</a>
+                            
+                        </li>
+                        </#list>
+                        <#else>
+							暂无信息。。
+							
+                        </#if>
+                    </ul>
+                </li>
+                <li class="main_team_list">
+                    <a  class="main_team_first">级别</a>
+                    <ul class="main_team_second_box">
+                    <#if positionList ??>
+                    		<#list positionList as p>
+                        <li class="main_team_second_list">
+                            <a class="main_team_second_dic" onclick="query(5,${p.id?c});">${p.title!}</a>
+                            
+                        </li>
+                         </#list>
+                        <#else>
+							暂无信息。。
+							
+                        </#if>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="main_team_int">
+            <div class="main_zoom3"></div>
+            <ul class="main_team_content">
+            <#list resultList! as r>
+                <li class="main_team_dic">
+                <a href="${base}/singleSearch_${r.id?c!}.htm?url=zhuanjia_detail&ctype=article">
+                    <span class="main_team_right"></span>
+                    <img class="main_team_pho" src="${(r.thumbnail.url!)}" alt="">
+                    <div class="main_team_inf">
+                        <span class="main_team_name">${r.title!}</span><span class="main_team_tec">${r.position.name!}</span>
+                        <p class="main_team_specific"><span class="main_team_department">科室：${r.column.title!}</span><span class="main_team_level">级别：${r.position.title!}</span></p>
+                        <p class="main_team_intro" >${r.describes!}</p>
+                    </div>
+                    </a>
+                </li>
+                </#list>
+            </ul>
+        </div>
+    </div>
+
+</main>
+<script src="res/js/jquery.min.js"></script>
+<script src="res/js/style.js"></script>
+<script>
+
+    //三级导航
+    $(".main_team_first").toggle(
+            function(){
+                $(".main_zoom3").css("display","block");
+                $(".main_team_second_box").css("display","none");
+                $(this).siblings(".main_team_second_box").slideDown();
+
+            },
+            function(){
+                $(this).siblings(".main_team_second_box").slideUp();
+                $(".main_team_third_box").slideUp();
+                $(".main_zoom3").css("display","none");
+            }
+    );
+    $(".main_team_second_dic").toggle(
+            function(){
+                $(".main_team_third_box").css("display","none");
+                $(this).siblings(".main_team_third_box").slideDown();
+            },
+            function(){
+                $(this).siblings(".main_team_third_box").slideUp();
+            }
+    );
+    
+    
+    function query(index,id){
+		var div=$("#divisions").val();
+		var wek=$("#weeks").val();
+		var tim=$("#times").val();
+		var pos=$("#positions").val();
+		var pam=null;
+		if(index==1){
+			if(wek!=null||wek!=undefined){
+				pam="&week="+wek
+			}
+			if(tim!=null||tim!=undefined){
+				pam+="&time="+time
+			}
+			if(pos!=null||pos!=undefined){
+				pam+="&position="+pos
+			}
+		}
+		if(index==2){
+			if(div!=null||div!=undefined){
+				pam="&division="+div
+			}
+			if(tim!=null||tim!=undefined){
+				pam+="&time="+time
+			}
+			if(pos!=null||pos!=undefined){
+				pam+="&position="+pos
+			}
+		}
+		if(index==3){
+			if(div!=null||div!=undefined){
+				pam="&division="+div
+			}
+			if(wek!=null||wek!=undefined){
+				pam+="&week="+wek
+			}
+			if(pos!=null||pos!=undefined){
+				pam+="&position="+pos
+			}
+		}
+		if(index==4){
+			if(div!=null||div!=undefined){
+				pam="&division="+div
+			}
+			if(wek!=null||wek!=undefined){
+				pam+="&week="+wek
+			}
+			if(tim!=null||tim!=undefined){
+				pam+="&time="+time
+			}
+		}
+		
+		if(index==1){
+			if(pam!=null){
+				window.location.href="${base}/query_like_article.htm?url=shijian&division="+id+pam;
+			}else{
+				window.location.href="${base}/query_like_article.htm?url=shijian&division="+id;
+			}
+		}
+		if(index==2){
+			if(pam!=null){
+				window.location.href="${base}/query_like_article.htm?url=guide&week="+id+pam;
+			}else{
+				window.location.href="${base}/query_like_article.htm?url=guide&week="+id;
+			}
+		}
+		if(index==3){
+			if(pam!=null){
+				window.location.href="${base}/query_like_article.htm?url=guide&time="+id+pam;
+			}else{
+				window.location.href="${base}/query_like_article.htm?url=guide&time="+id;
+			}
+		}
+		if(index==4){
+			if(pam!=null){
+				window.location.href="${base}/query_like_article.htm?url=shijian&position="+id+pam;
+			}else{
+				window.location.href="${base}/query_like_article.htm?url=shijian&position="+id;
+			}
+		}
+		if(index==5){
+			if(pam!=null){
+				window.location.href="${base}/query_like_article.htm?url=shijian&title="+id+pam;
+			}else{
+				window.location.href="${base}/query_like_article.htm?url=shijian&title="+id;
+			}
+		}
+	}
+
+</script>
+</body>
+</html>

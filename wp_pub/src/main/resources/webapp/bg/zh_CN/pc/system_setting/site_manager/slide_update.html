@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<base href="${base}/">
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>网站信息添加</title>
+    <#include "/include/bg/in_head_res.html">
+</head>
+<body class="body clear">
+	<div class="layui-container bg_white" style="width: 100%;padding:10px">
+	<div style="width: 70%;margin:5px auto">
+    <form id="form1"  class="layui-form layui-form-pane" onsubmit="return false">
+
+        <div class="layui-form-item ">
+            <label class="layui-form-label">图片名称:</label>
+            <div class="layui-input-block">
+            	<input type="hidden" value="${homeSlide.id?c!}" name="id">
+                <input type="text" name="name" lay-verify="required"  value="${homeSlide.name!}"  autocomplete="off" placeholder="请输入图片名称" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item ">
+            <label class="layui-form-label">文字说明:</label>
+            <div class="layui-input-block">
+                <input type="text" lay-verify="required" value="${homeSlide.remark!}" autocomplete="off" placeholder="请输入图片描述" class="layui-input">
+            </div>
+        </div>   
+         <div class="layui-form-item ">
+            <label class="layui-form-label">展示终端:</label>
+            <div class="layui-input-block">
+            	<select  name="type" lay-filter="opt_type" initValue="${homeSlide.type!}">
+				<option value="1">pc电脑</option> 
+				<option value="2">手机</option> 
+				</select>
+            </div>
+        </div>      
+        <div class="layui-form-item ">
+            <label class="layui-form-label"><span class="red">*</span>图片排序：</label>
+            <div class="layui-input-block ">
+                <input type="text" value="${homeSlide.sequence!}" name="sequence"  lay-verify="required" autocomplete="off"  class="layui-input">
+            </div>
+        </div>
+            <div class="layui-form-item ">
+            <label class="layui-form-label">外部链接：</label>
+            <div class="layui-input-block ">
+                <input type="text" value="${homeSlide.url}" name="url"  placeholder="如需跳转，请填写跳转链接"   class="layui-input">
+            </div>
+        </div>
+      <div class="layui-form-item">
+			<label class="layui-form-label"><span class="red">*</span>图片上传</label>
+			<div class="layui-upload">
+				<input type="hidden" name="pic_id" id="pic_id" value="${homeSlide.accessory.id}">
+				<button  type="button" class="layui-btn layui-bg-blue"  id="test1" style="margin-left: 10px;">上传图片</button>
+				<div class="layui-upload-list" >
+					<img class="layui-upload-img" id="demo1" style="height: 100px;width: 100px;" src="${homeSlide.accessory.url!}">
+					<p id="demoText"></p>
+				</div>
+			</div>
+	  </div>
+	  
+	  
+	  <div class="layui-form-item ">
+	        <div style="text-align: center; vertical-align: bottom; ">
+	                 <button class="layui-btn" id="save" lay-submit lay-filter="form_1">修改</button>
+	        </div>
+	  </div>
+    </form>
+	</div>
+</div>
+<#include "/include/bg/in_bottom_res.html">
+<script>
+$(function(){
+    //注意进度条依赖 element 模块，否则无法进行正常渲染和功能性操作
+    var form = layui.form,laydate = layui.laydate;
+layui.use('upload', function(){
+  var $ = layui.jquery
+  ,upload = layui.upload;
+  initValue();
+  form.render();
+  //普通图片上传
+  var uploadInst = upload.render({
+    elem: '#test1'
+    ,url: '${base}/upload/uploadImgByAccessory.htm?type=client'
+    ,before: function(obj){
+      //预读本地文件示例，不支持ie8
+      obj.preview(function(index, file, result){
+        $('#demo1').attr('src', result); //图片链接（base64）
+        $('#demo1').attr('width','100px');
+        $('#demo1').attr('height','100px');
+      });
+    }
+    ,done: function(res){
+    	if(res.result){
+		    var files =res.data;
+		    for(var i=0;i<files.length;i++){
+		    	var name = files[i].name;
+		    	var url = files[i].url;
+		    	var id = files[i].acyId;
+		    	$("#pic_id").val(id);
+		    	$("#url").val(url);
+		    }
+    		
+        return layer.msg(res.resultMsg);
+    	}else{
+        return layer.msg('上传失败');
+    	}
+      //如果上传失败
+      if(res.code > 0){
+        return layer.msg('上传失败');
+      }
+    }
+    ,error: function(){
+      //演示失败状态，并实现重传
+      var demoText = $('#demoText');
+      demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
+      demoText.find('.demo-reload').on('click', function(){
+        uploadInst.upload();
+      });
+    }
+  });
+  
+});
+    //监听提交
+     form.on('submit(form_1)', function(data){
+    	/*  layer.msg(JSON.stringify(data.field)); */
+        return false;
+    }); 
+})
+
+$("#save").click(function(){
+	 var params=$("#form1").serializeObject();
+	 if(params.pic_id == null || params.pic_id == ""){
+		 layer.msg("图片必传哦！");
+		 return ;
+	 }
+	 $.postJSON("${base}/admin/save_home_slide$ajax.htm",params,function(data){
+		 if(data.result==true){
+			 layer.alert(data.msg,{icon:1},function(){
+				var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+				parent.layer.close(index);
+				parent.location.reload();
+			 });
+		 }else{
+			 layer.alert(data.msg,{icon:2});
+		 }
+	 })
+})
+</script>
+</body>
+
+</html>

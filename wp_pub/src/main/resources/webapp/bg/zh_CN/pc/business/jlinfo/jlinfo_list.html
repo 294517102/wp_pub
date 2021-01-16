@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>监理协会信息列表</title>
+
+<#include "/include/bg/in_head_res.html">
+
+</head>
+<body class="inner-body clear">
+	<div class="layui-container bc-color" style="width:100%">
+		<form class="layui-form layui-form-pane"  id="form_1" action="${base}/admin/jllist.htm">	
+		<div class="layui-form-item"  style="background-color: white;padding:15px 10px;">		
+			<div class="layui-col-md3">
+				<label class="layui-form-label">身份证</label>
+				<div class="layui-input-block">
+					<input type="text" name="idCard" autocomplete="off"  value="${RequestParameters.idCard!}"  placeholder="请输入身份证" class="layui-input">
+					<input type="hidden" name="url"  value="business/jlinfo/jlinfo_list" >
+				</div>
+			</div>
+			<div class="layui-col-md3">
+				<label class="layui-form-label">任职公司</label>
+				<div class="layui-input-block">
+					<input type="text" name="currentJob" autocomplete="off"  value="${RequestParameters.currentJob!}"  placeholder="请输入任职单位" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-col-md3">
+				<label class="layui-form-label">原单位</label>
+				<div class="layui-input-block">
+					<input type="text" name="formerUnit" autocomplete="off"  value="${RequestParameters.formerUnit!}"  placeholder="请输入原单位" class="layui-input">
+				</div>
+			</div>
+			<div class="fl" style="margin-left:50px">
+				<button class="layui-btn fl search" lay-submit > <i class="layui-icon">&#xe615;</i> 搜索</button>
+				<button class="layui-btn layui-btn-warm  fl refresh" type="reset"><i class="layui-icon">&#x1002;</i> 刷新</button>
+			</div>
+		</div>
+		</form>
+		<div class="content_main">
+			<div class="layui-row">
+			 	<span class="layui-btn fl ">共${rowCount}条数据</span>
+			 	<button class="layui-btn fl export"><i class="layui-icon">&#xe601;</i>数据下载</button>
+				
+				<button class="layui-btn fl addinfo">新增</button>
+				
+				<button class="layui-btn fl add_excel_data" ><i class="layui-icon">&#xe681;</i>数据导入</button>
+				
+				<button class="layui-btn fl" ><i class="layui-icon">&#xe601;</i><a href="/admin/to_target.htm?url=business/jlinfo/model.xls" download="模板下载.xls">excel模板下载</a></button>
+				
+				<button class="layui-btn layui-btn-warm  fl refresh"  onclick="location.href=location.href" type="reset"><i class="layui-icon">&#x1002;</i> 刷新</button>
+			</div>
+			<div class="layui-row layui-form">
+				<table class="layui-table">
+					<thead>
+						<tr>
+							<th><input type="checkbox" name="" lay-skin="primary"
+								lay-filter="allChoose"></th>
+							<th>证书编号</th>
+				            <th>姓名</th>
+				            <th>性别</th>
+				            <th>身份证号</th>
+				            <th>学历</th>
+				            <th>专业</th>
+				            <th>培训时间</th>
+				            <th>有效期至</th>
+				            <th>现就职单位</th>
+				            <th>原就职单位</th>
+				            <th>变更时间</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<#if resultList??&& resultList?size lte 0 >
+						<tr>
+							<td colspan="13">无数据</td>
+						</tr>
+						<#else> <#list resultList! as r>
+						<tr>
+							<td><input type="checkbox" name="check" lay-skin="primary" id="${r.id}"></td>
+							<td>${r.number!}</td>
+            				<td>${r.name!}</td>					
+            				<td sex="${r.strSex!}">${r.strSex!}</td>					
+							<td>${r.idCard!}</td>
+							<td>${r.record!}</td>
+							<td>${r.major!}</td>
+							<td>${r.trainTime?string("yyyy-MM-dd")!}</td>
+							<td>${r.entTime?string("yyyy-MM-dd")!}</td>
+							<td>${r.currentJob!}</td>
+							<td>${r.formerUnit!}</td>
+							<td>${(r.updateTime?string("yyyy-MM-dd"))!}</td>
+							
+							<td>
+							<button class="layui-btn layui-btn-small detail" tid="${r.id}"><i class="layui-icon">&#xe63c;</i>编辑</button>
+							<button class="layui-btn layui-btn-danger layui-btn-small delete"  tid="${r.id}">
+									<i class="layui-icon">&#xe640;</i> 删除
+								</button>
+								</td>
+						</tr>
+						</#list> </#if>
+					</tbody>
+				</table>
+				<div class="pageBotton">${pageHtml}</div>
+			</div>			
+		</div>
+	</div>
+	
+<#include "/include/bg/in_bottom_res.html">	
+	<script type="text/javascript">
+	//回复 留言信息 
+	 $(".addinfo").click(function(){
+	    	layer.open({
+	            type: 2,
+	            title: '新增证书',
+	          //  btn: ['确定', '取消'],
+	            shadeClose: true,
+	            shade: 0.8,
+	            area: ['65%', '500px'],
+	            content:'${base}/admin/to_target.htm?url=business/jlinfo/jlinfo_add' //iframe的url
+	        });
+	    });
+	
+	 $(".detail").click(function(){
+			layer.open({
+		        type: 2,
+		        title: '编辑证书',
+		      //  btn: ['确定', '取消'],
+	            shadeClose: true,
+	            shade: 0.8,
+	            area: ['65%', '500px'],
+		        content:'${base}/admin/jldetail.htm?url=business/jlinfo/jlinfo_editor&id='+$(this).attr("tid") //iframe的url
+		    });
+		});
+		// 栏目删除
+		$(".delete").click(function(){
+			var id = $(this).attr("tid");
+			layer.confirm("确认删除？",{btn: ['确认','取消'],icon:3 },function(){
+				 $.postJSON("${base}/admin/jlinfo$ajax.htm",{"id":id,"isDelete":1},function(data){              
+		      	     if(data.result){
+		      	    	layer.msg("删除成功");     
+		      	    	window.location.reload();
+		      	     }
+					       	            	 
+		        }); 
+			});
+		});
+    
+    $(".refresh").click(function(){
+    	window.location.reload();
+    });
+    
+    $(".deleteAll").click(function(){
+    	if($("input:checked").length<=0){
+    		layer.msg("请选择待删除条目",{icon:2});
+    		return;
+    	}
+    	layer.confirm("确认删除？",{btn: ['确认','取消'],icon:3 },function(){
+    		$("input:checked").each(function(){
+        		var id = $(this).attr("id");        
+            	$.postJSON("${base}/updata_comment.htm",{"id":id,"isDelete":1},function(data){              
+             	     if(!data.result){
+             	     	layer.msg("删除失败-"+id,{icon:2});
+             	     }      			       	            	 
+               }); 
+        	});
+    		layer.msg("操作完毕",function(){
+           		window.location.reload();
+           	});
+    	});
+
+    });
+    
+        var form = layui.form;
+
+        //监听提交
+        form.on('submit(form_1)', function(data){
+            layer.alert(JSON.stringify(data.field), {
+                title: '最终的提交信息'
+            })
+            layer.load(1,{shade:true});
+            return false;
+        });
+
+	//更新留言状态
+        form.on("switch(state)",function(data){
+        	var state = 0;
+        	var obj = data.elem;
+        	if(data.elem.checked){
+        		state = -1;
+        	}else{
+        		state = 1;
+        	}
+        	$.postJSON("${base}/updata_comment.htm",{"id":$(obj).attr("id"),"state":state},function(data){ 
+        	     if(data.result==true){
+        	    	 window.location.reload();
+        	     }else{
+        	    	 layer.msg(data.resultMsg);
+        	     }      			       	            	 
+          }); 
+        });
+    	//更新审核状态 
+        form.on("switch(audit)",function(data){
+        	var state = 0;
+        	var obj = data.elem;
+        	if(data.elem.checked){
+        		audit = 2;
+        	}else{
+        		audit = 1;
+        	}
+        	$.postJSON("${base}/updata_comment.htm",{"id":$(obj).attr("id"),"audit":audit},function(data){ 
+        	     if(data.result==true){
+        	    	 window.location.reload();
+        	     }else{
+        	    	 layer.msg(data.resultMsg);
+        	     }      			       	            	 
+          }); 
+        });
+        //全选
+        form.on('checkbox(allChoose)', function(data){
+            var child = $(data.elem).parents('table').find('tbody input[name="check"]');
+            child.each(function(index, item){
+                item.checked = data.elem.checked;
+            });
+             form.render('checkbox');
+        });
+        $(".add_excel_data").click(function(){
+        	layer.open({
+                type: 2,
+                title: '导入数据',
+                shadeClose: true,
+                shade: 0.8,
+                area: ['880px', '400px'],
+                content:'${base}/admin/to_target.htm?url=business/jlinfo/jlinfo_excel_add' //iframe的url
+            });
+        })
+    $(".export").click(function(){
+    	var params = $("#form_1").serializeObject();
+    	console.log(jQuery.param(params));
+    	window.location.href="${base}/admin/jlinfo/all_excel_export.htm?"+jQuery.param(params)
+    })
+</script>
+
+</body>
+</html>

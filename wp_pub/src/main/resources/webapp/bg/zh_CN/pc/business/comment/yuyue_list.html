@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>模板列表</title>
+   <#include "/include/bg/in_head_res.html">
+      <style type="text/css">
+   .layui-table td, .layui-table th{
+       padding: 8px 8px !important;
+   }
+   </style> 
+</head>
+<body class="inner-body clear">
+	<div class="layui-container bc-color" style="width:100%">
+		<form style="display: none;" class="layui-form layui-form-pane" id="form_1" method="post" action="${base}/admin/article/obtain_column_article_edit_${column.id!}.htm">	
+		<div class="layui-form-item"  style="background-color: white;padding:15px 10px;">		
+			<div class="layui-inline" style="float: left;">
+				<label class="layui-form-label">文章标题</label>
+				<div class="layui-input-inline">
+					<input type="text" name="title"
+						autocomplete="off"  value="${RequestParameters.title!!}"  placeholder="请输入标题" class="layui-input">
+				</div>
+			</div>
+			 <div class="layui-inline"  style="float: left;display: none;">
+		        <label class="layui-form-label">所属栏目：</label>
+		        <div class="layui-input-block">
+		            <input type="text" name="c_title"   value="${RequestParameters.c_title!!}"  autocomplete="off" placeholder="请输栏目名称" class="layui-input">
+		        </div>
+		    </div>
+			
+			<div class="fl"   style="float: left;">
+				<button class="layui-btn fl search" lay-submit > <i class="layui-icon">&#xe615;</i> 搜索</button>
+				<button class="layui-btn layui-btn-warm  fl refresh"  onclick="location.href=location.href" type="reset"><i class="layui-icon">&#x1002;</i> 刷新</button>
+			</div>
+		</div>
+		</form>
+		<div class="content_main" >
+			<div class="layui-row" style="display: none;">
+				
+			</div>
+			<div class="layui-row layui-form">
+				<table class="layui-table">
+					<thead>
+						<tr>
+							<th ><input type="checkbox" name="" lay-skin="primary"
+								lay-filter="allChoose"></th>
+<!-- 							<th>序号</th> -->
+							
+							<th>会员名称</th>
+							<th >所属栏目</th>
+							<th >封面</th>
+							<th >站点</th>
+							<th >创建人</th>
+							<th >点击量</th>
+							<th >发布时间</th>
+							
+							<th style="width: 18%;">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<#if resultList?size <=0 >
+						<tr>
+							<td colspan="10">无数据</td>
+						</tr>
+						<#else> <#list resultList as r>
+						<tr>
+							<td><input type="checkbox" name="check" lay-skin="primary" id="${r.id}"></td>
+<!-- 							<td>${r.id}</td> -->
+							<td>${r.title}</td>							
+							<td>${r.column.title}</td>
+							<#if webSet.id==4>
+							<td class='img_click'><img layer-src="${cm.cp}QRCodeServlet.htm?size=500&key=${cm.cp}general_service_c6Sw7Y6vOG4vjYW5Fje.htm?id=${r.id}%26_url=index"  
+							src="${cm.cp}QRCodeServlet.htm?size=500&key=${cm.cp}general_service_c6Sw7Y6vOG4vjYW5Fje.htm?id=${r.id}%26_url=index" style="width: 100px;height: 50px;"></td>
+							<#else>
+							<td class='img_click'><img layer-src="${(r.thumbnail.url)!'res/default/bg/image/no.png'}"  src="${(r.thumbnail.url)!'res/default/bg/image/no.png'}" style="width: 100px;height: 50px;"></td>
+							</#if>
+							<td>${(r.webSet.domain)!"公共"}</td>
+							<td>${(r.creator.username)!"未知"}</td>
+							<td>${(r.viewTimes)!"未知"}</td>
+							<td>
+							<#if !RequestParameters.orderby?? >${(r.issueTime?string('yyyy-MM-dd'))!}<#else>
+							${(r.insertTime?string('yyyy-MM-dd'))!}</#if>
+							</td>
+		
+						
+							<td>
+							<a class="layui-btn layui-btn-small fl" href="/admin/yuyue/comment_all_excel_export.htm?article_id=${r.id}&title=预约信息">预约数据导出</a>
+							<button tid="${r.id!}" class="layui-btn layui-btn-small fl site-demo-active" data-type="tabAdd"><i class="layui-icon">&#xe61f;</i>预约信息</button>
+							</td>
+						</tr>
+						</#list> </#if>
+					</tbody>
+				</table>
+				<div class="pageBotton">${pageHtml}</div>
+			</div>			
+		</div>		
+		</div>
+		<#include "/include/bg/in_bottom_res.html">	
+<script type="text/javascript">
+var form = layui.form;
+
+
+//全选
+form.on('checkbox(allChoose)', function(data){
+    var child = $(data.elem).parents('table').find('tbody input[name="check"]');
+    child.each(function(index, item){
+        item.checked = data.elem.checked;
+    });
+     form.render('checkbox');
+});
+
+layui.use('element', function(){
+	  var $ = layui.jquery
+	  ,element = parent.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+	  
+	  //触发事件
+	  var tab_id=15201362;
+	  var active = {
+	    tabAdd: function(){
+	    	var tid=$(this).attr("tid")
+	      //新增一个Tab项
+			var flag =parent.getTitleId('card','新增文章'); // 是否有该选项卡存在
+			if(flag>0){	
+				 element.tabDelete('card', flag); //删除：“商品管理”
+			}
+	      element.tabAdd('card', {
+	        title: '<span>预约列表</span>'//用于
+	        ,content: '<iframe src="${base}/obtain_comment_list_like.htm?email='+tid+'&url=business/comment/yuyue_show_list" frameborder="0" id="'+tab_id+ '"></iframe>'
+	        ,id:tab_id  //实际使用一般是规定好的id，这里以时间戳模拟下
+	      })
+	       element.tabChange('card', tab_id); //切换到新tab
+	    },
+	    tabAddCopy: function(){
+		      //新增一个文章Tab项
+		      element.tabAdd('card', {
+		        title: '<span>复制文章</span>'//用于
+		        ,content: '<iframe src="${base}/admin/to_article_copy.htm" frameborder="0" id="' + new Date().getTime() + '"></iframe>'
+		        ,id:'article_copy'  //实际使用一般是规定好的id，这里以时间戳模拟下
+		      })
+		       element.tabChange('card', 'article_copy'); //切换到新tab
+		    },
+// 		    editor_article
+	    editorArticle: function(){
+		//编辑文章Tab项
+		var ed_id=$(this).attr('id');
+		var ed_title=$(this).attr('title').length>6?$(this).attr('title').substring(0,6)+"...":$(this).attr('title');
+		var flag =parent.getLikeTitleId('card','编辑-'); // 是否有该选项卡存在
+		if(flag>0){	
+			 element.tabDelete('card', flag); //删除：“商品管理”
+		}
+			
+		      element.tabAdd('card', {
+		        title: '<span>编辑-'+ed_title+'-文章</span>'//用于
+		        ,content: '<iframe src="${base}/admin/searchArticleById.htm?id='+ed_id+'" frameborder="0" id="' + ed_id + '"></iframe>'
+		        ,id:ed_id  //实际使用一般是规定好的id，这里以时间戳模拟下
+		      })
+		       element.tabChange('card', ed_id); //切换到新tab
+		    }
+	  };
+	  
+	  $('.site-demo-active').on('click', function(){
+	    var othis = $(this), type = othis.data('type');
+	    active[type] ? active[type].call(this, othis) : '';
+	  });
+	  $('.copy_article').on('click', function(){
+		    var othis = $(this), type = othis.data('type');
+		    active[type] ? active[type].call(this, othis) : '';
+		  });
+	  
+	  $('.detail').on('click', function(){
+		    var othis = $(this), type = othis.data('type');
+		    active[type] ? active[type].call(this, othis) : '';
+		  });
+	  
+
+	  
+	});
+
+// 文章删除
+$(".delete").click(function(){
+	var id = $(this).attr("id");
+	layer.confirm("确认删除？",{btn: ['确认','取消'],icon:3 },function(){
+		 $.postJSON("${base}/general_service_nL6xxHqRid56cMDc0VH$ajax.htm",{"id":id,"isDelete":1},function(data){              
+	        	layer.msg(data.msg,{time:1000},function(){
+	        		if(data.result){
+      	    	window.location.reload();
+	            	}
+	        	});
+			       	            	 
+        }); 
+	});
+});
+
+//     文章复制
+    $(".copy_article").click(function(){
+//     	得到选中的文章
+    	if($("input:checked").length<=0){
+    		layer.msg("请选复制的文章",{icon:2});
+    		return;
+    	}
+    	var articlelist="";
+    	$("input:checked").each(function(){
+    		if($(this).attr("id")!=undefined){
+    		articlelist+=$(this).attr("id")+",";
+    		}
+    	});
+    	layer.open({
+            type: 2,
+            title: '文章复制',
+            shadeClose: true,
+            shade: 0.8,
+            area: ['80%', '600px'],
+            content:'${base}/admin/to_article_copy.htm?column_id=${column.id}&articlelist='+articlelist //iframe的url
+        });
+    })
+//     文章置顶操作
+    function setTop(id){
+	var time=new Date().format('yyyy-MM-dd h:m:s');
+		 $.postJSON("${base}/general_service_nL6xxHqRid56cMDc0VH$ajax.htm",{"id":id,"updateTime": time},function(data){              
+	        	layer.msg(data.msg,{time:1000},function(){
+	        		if(data.result){
+   	    	window.location.reload();
+	            	}
+	        	});
+	});
+}
+// 设置文章问热点新闻
+    function setHot(id,isHome){
+		 $.postJSON("${base}/general_service_nL6xxHqRid56cMDc0VH$ajax.htm",{"id":id,"isHome":isHome},function(data){              
+	        	layer.msg(data.msg,{time:1000},function(){
+	        		if(data.result){
+   	    	window.location.reload();
+	            	}
+	        	});
+	});
+}
+
+        $(function() {
+		$('.img_click').on('click','img', function() {
+			layer.open({
+				type: 1,
+				title: false,
+				closeBtn: 0,
+				area: '',
+				skin: 'layui-layer-nobg', //没有背景色
+				shadeClose: true,
+				content: '<img src="' + $(this)[0].src + '" style="max-width:100%;max-height:430px;margin:0 auto;"/>'
+			});
+		});
+	})
+    </script>
+		</body>
+</html>

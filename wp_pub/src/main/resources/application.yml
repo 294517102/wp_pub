@@ -1,0 +1,90 @@
+
+#通用配置
+#domain: t.tcjs.tjsjnet.com
+domain: www.goldland.group
+
+editUser: tjsj
+editDir: /home/data/kod_data/User/tjsj/home/templates
+
+#中间件配置
+server:
+  #http端口
+  port: 80
+  servlet-path:
+  #项目contextPath，一般在正式发布版本中，我们不配置
+  #context-path:
+  #错误页，指定发生错误时，跳转的URL
+  #error.path: /error 
+  #该服务绑定IP地址，启动服务器时如本机不是该IP地址则抛出异常启动失败
+  address: 127.0.0.1
+  session:
+    #session最大超时时间(分钟,單位是秒)，默认为60
+    timeout: 7200
+    persistent: true
+  tomcat:
+     #tomcat最大线程数，默认为200
+     maxThreads: 800
+     #最大鏈接數
+     maxConnections: 50000
+     #tomcat的URI编码
+     uriEncoding: UTF-8
+
+  ssl:
+    #启动tomcat ssl配置
+    enabled: false
+    #别名
+    keyAlias:
+    #密码
+    keyPassword:
+    #位置
+    keyStore:   
+  
+
+#spring基础配置
+spring:
+  mvc:
+    view.prefix:
+    view.suffix:
+    static-path-pattern:
+  resources:
+    static-locations: 
+    cache-period: 120
+  devtools:
+    restart.enabled: true
+    restart.additional-exclude: webapp/**,logs/**,tomcat/**
+    
+    
+  freemarker:
+    template-loader-path: classpath:/webapp/
+    suffix: .html
+    request-context-attribute: request
+    allow-request-override: true
+    cache: false
+    check-template-location: true
+    charset: UTF-8
+    content-type: text/html
+    expose-request-attributes: true
+    expose-session-attributes: true
+    expose-spring-macro-helpers: true
+    allow-session-override: true
+    settings:
+        tag_syntax: auto_detect
+        template_update_delay: 1
+        default_encoding: UTF-8
+        output_encoding: UTF-8
+        locale: zh_CN
+        date_format: yyyy-MM-dd
+        time_format: HH:mm:ss
+        datetime_format: yyyy-MM-dd HH:mm:ss
+        auto_import: 
+        number_format: 0.##
+        classic_compatible: true
+        template_exception_handler: com.tjsj.fwk.mvc.interceptors.FreemarkerExceptionHandler
+    
+#shiro 配置
+shiro:
+    url:
+      loginUrl: /admin/obtain_login.htm
+      successUrl:  
+      unauthorizedUrl: 
+      logoutUrl: /admin/obtain_login.htm

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <base href="${domainBase}"/>
+    <#include "${includePath}/data.html" >
+		<#include "${includePath}/searchKeyword.html" >
+    <title>${webSet.title!}-${xwzx.title!}</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <link rel="stylesheet" href="res/default/css/resets.css">
+    <link rel="stylesheet" href="res/default/css/style.css">
+    <link rel="stylesheet" href="res/js/ydui.flexible.js">
+</head>
+<body>
+<div class="banner" style="height:8.4rem">
+    <div class="m-slider" style="height:8.4rem" id="J_Slider">
+        <div class="slider-wrapper" >
+        
+ <#if resultList?? && (resultList?size gt 0 )>
+    <#list resultList! as xwb>
+    <#if xwb_index lt 4>
+       <div class="slider-item ${xwb_index}" >
+                <a href="${base}/singleSearch_${xwb.id?c!}.htm?url=news_detail&ctype=article&column_id=${xwb.id?c!}">
+                    <img src="${(xwb.thumbnail.url!)}">
+                    <div class="banner_dis">${xwb.title!}</div>
+                </a>
+            </div>
+            </#if>
+    </#list>
+    <#else>
+    资料编辑中...
+    </#if>
+
+        </div>
+        <div class="slider-pagination" style="text-align: right;justify-content: flex-end;bottom: .5rem;"></div><!-- 分页标识 -->
+    </div>
+</div>
+<div class="notice_content">
+    <ul>
+    
+    <#if resultList?? && (resultList?size gt 0 )>
+    <#list resultList! as xw>
+        <li class="notice_list">
+            <a href="${base}/singleSearch_${xw.id?c!}.htm?url=xinwen_detail&ctype=article">
+                <div class="notice_list_dis">${xw.title!}</div>
+                <div class="notice_list_inf clear">
+                    <span class="notice_list_inf_right">${(xw.issueTime?string('yyyy-MM-dd'))!}</span>
+                    <span>${xw.column.title!}</span>
+                </div>
+            </a>
+        </li>
+    </#list>
+    <#else>
+    资料编辑中...
+    </#if>
+    </ul>
+</div>
+
+<script src="res/js/jquery.min.js"></script>
+<script src="res/js/style.js"></script>
+<script src="res/js/ydui.js"></script>
+<script>
+    $('#J_Slider').slider({
+        speed: 500,
+        autoplay: 3000,
+        lazyLoad: true
+    });
+    $(".slider-wrapper").css("transform","translate3d(0,0,0)");
+</script>
+</body>
+</html>

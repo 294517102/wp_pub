@@ -1,0 +1,2037 @@
+﻿/*************************************************************
+ * Command:Start
+ * Control:TopInfo
+ * Style:TopInfo
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+.TopInfo { width:100%; height: 30px; background: #333; }
+.TopInfo .TopContent { width:1100px; margin:0 auto; height:30px; color:#d6b082; font:12px/30px "arial";}
+.TopInfo .TopContent .topdate { float:left; }
+.TopInfo .TopContent .toplink { float:right;}
+.TopInfo .TopContent .toplink span { font:12px/30px "宋体"; margin:0 5px 0 10px;}
+.TopInfo .TopContent .toplink a { color:#d6b082;}
+.TopInfo .TopContent .toplink a:hover { color:#f5f2d9; text-decoration: underline;}
+
+/*微信*/
+.weixin{ width:100px; height:22px; position:relative; font-size:12px; text-align:center; float:left; right:20px; top:5px; z-index: 1000000;}
+.weixin a {width:100px; height:22px; display:block; position:absolute; left:0; top:0;background:url(/_skins/temp02/images/weixin.png) no-repeat center top; }
+
+.weixin .weixin_nr{ width:110px; height:140px; padding:8px; background:#fff; text-align:center; position:absolute; left:-5px; top:25px; display:none;}
+.weixin .weixin_nr img{ margin-bottom:5px;}
+.weixin .weixin_nr .arrow{ width:0; height:0; border-bottom:10px solid #fff; border-left:10px solid transparent;border-right:10px solid transparent; position:absolute; left:50px; top:-10px;}
+.weixin.on .weixin_nr{ display:block;}
+.weixin.on a{ background:url(/_skins/temp02/images/weixin.png) no-repeat left bottom;}
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:TopInfo
+ * Style:TopInfo
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:SiteHeader
+ * Style:SiteHeader
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+.SiteHeader { width:1100px; margin:0 auto; }
+.SiteHeader .logo{  background:url("/_skins/Temp02/images/logo.png") no-repeat left center; height:100px; width:600px; }
+
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:SiteHeader
+ * Style:SiteHeader
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:Search2015
+ * Style:Search2015
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+
+/*Header*/
+.Search2015 {  overflow:hidden; }
+.Search2015 .searchbox { width:400px; padding-top:6px; overflow: hidden ; }
+.Search2015 .full_model_search { float:right; height:28px; width:317px; text-align:left;}
+.Search2015 .full_model_search input.model_search { width: 270px; float:left; height:28px; line-height:28px; border:1px solid #c2c2c2; border-right:none; padding:0 8px; background:#fff; color: #666; font-family: "microsoft yahei";font-size:12px;}
+.Search2015 .full_model_search a.model_search_click{ width:28px; float:left; height:30px; background:url(/Widgets/WidgetCollection/MyParts/Search2015/Images/icon_search.png) no-repeat center center #06b206; color: #333; cursor:pointer;}
+.Search2015 .full_model_search a:hover{ background:url(/Widgets/WidgetCollection/MyParts/Search2015/Images/icon_search.png) no-repeat center center #dab176;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:Search2015
+ * Style:Search2015
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:ChannelMenuV.DropDown
+ * Style:ChannelMenuV_DropDown
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+.ChannelMenuV_DropDown { width:100%; height:58px;  background:url(/Widgets/WidgetCollection/MyParts/ChannelMenuV.DropDown/Images/menu_bg.png)repeat-x center; }
+
+.ChannelMenuV_DropDown #dropdown_nav { position:relative; width:1096px; margin:0 auto; list-style:none; z-index:10000;  }
+.ChannelMenuV_DropDown ul { position:absolute; z-index:9999; }
+    .ChannelMenuV_DropDown ul li { float:left; width:137px; text-align:center; font-weight:normal; font:normal 16px/58px "Microsoft YaHei"; background:url(/Widgets/WidgetCollection/MyParts/ChannelMenuV.DropDown/Images/menu_line.png) no-repeat left center;}
+    .ChannelMenuV_DropDown ul li a { color:#fff; /* background:url(/Widgets/WidgetCollection/MyParts/ChannelMenuV.DropDown/Images/menu_up.png) no-repeat left center; */ display:inherit; }
+    .ChannelMenuV_DropDown ul li a:hover{ color:#f5f2d9; background:url(/Widgets/WidgetCollection/MyParts/ChannelMenuV.DropDown/Images/menu_over2.png) repeat-x center center;  }
+
+.ChannelMenuV_DropDown .dropon { background:url(/Widgets/WidgetCollection/MyParts/ChannelMenuV.DropDown/Images/menu_over2.png) repeat-x center center;  }
+    .ChannelMenuV_DropDown .dropon a { color:#f5f2d9; clear: both; }
+    .ChannelMenuV_DropDown li ul { list-style-type:none; width:137px; position:absolute; top:58px; clear:both; z-index:9990;}
+    .ChannelMenuV_DropDown li ul li { width:137px; height:35px; margin-top: 0px; font:normal 13px/35px "Microsoft YaHei"; border-bottom: 1px solid #ddd;}
+    .ChannelMenuV_DropDown li ul li a { display:block; background:#00be05; height:35px; /* border-radius: 5px;filter:alpha(opacity=80); -moz-opacity:0.8; -khtml-opacity:0.8; opacity:0.8;*/ }
+    .ChannelMenuV_DropDown li ul li a:hover { text-decoration:none; background:#ebd454; color: #fff; /*filter:alpha(opacity=80); -moz-opacity:0.8; -khtml-opacity:0.8; opacity:0.8;*/}
+    .ChannelMenuV_DropDown li ul.lastul { right:0px; background:#ebd454;}
+
+.ChannelMenuV_DropDown li.sfhover ul{ left:auto;}
+.ChannelMenuV_DropDown:after {content: ".";display: block;clear: both;visibility: hidden;line-height: 0;height: 0;}
+
+.ChannelMenuV_DropDown ul li.first { background:none; }
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:ChannelMenuV.DropDown
+ * Style:ChannelMenuV_DropDown
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:ChannelMenu.CurrentLocation
+ * Style:ChannelMenu_CurrentLocation
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+.ChannelMenu_CurrentLocation { height:32px; line-height:32px; background:url(/Widgets/WidgetCollection/MyParts/ChannelMenu.CurrLocation/Images/icon.png) no-repeat; padding-left:20px;	margin-bottom:10px;	font-family:"microsoft yahei";}
+.ChannelMenu_CurrentLocation span { font-family:"宋体"; margin:0 8px;}
+.ChannelMenu_CurrentLocation em { padding:0px 5px; font-style: normal;}
+.ChannelMenu_CurrentLocation a { color:#333;}
+.ChannelMenu_CurrentLocation a:hove{ color:#cc0000;}
+
+
+/*************************************************************
+ * Command:End
+ * Control:ChannelMenu.CurrentLocation
+ * Style:ChannelMenu_CurrentLocation
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:Feedback_FeedbackQueryList
+ * Style:Feedback_FeedbackQueryList
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+
+.Feedback_FeedbackQueryList { width:100%;  overflow:hidden;}
+.Feedback_FeedbackQueryList h2 { color:#000; margin:0px auto; height:40px; background: url("/_skins/School/images/header_tit05.png") no-repeat; margin-bottom:10px; }
+.Feedback_FeedbackQueryList h2 em { font:normal 14px/40px "microsoft yahei"; padding-left:30px;}
+.Feedback_FeedbackQueryList table { width:100%; border-top:1px solid #ddd; border-left:1px solid #ddd; border-collapse:collapse;border-spacing:0; }
+.Feedback_FeedbackQueryList table th { border-bottom:1px solid #ddd; border-right:1px solid #ddd; background:#eee; font:14px/30px "microsoft yahei"; text-align:center;}
+.Feedback_FeedbackQueryList table td { border-bottom:1px solid #ddd; border-right:1px solid #ddd; padding:5px 10px; font-size:12px;}
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:Feedback_FeedbackQueryList
+ * Style:Feedback_FeedbackQueryList
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:Footer.Default
+ * Style:Footer_Default
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+/*******网站底部定义开始*******/
+.Footer_Default  { width:100%; background:url(/Widgets/WidgetCollection/MyParts/Footer.Default/Images/footerbg.png) repeat-x center top #fff ; font:12px/22px "微软雅黑","arial"; min-height:168px; overflow:hidden;  }
+    .Footer_Default a { color:#c4ad47;}
+    .Footer_Default a:hover { color:#adadad;}
+
+.footer_copyright { width:1100px; margin:0 auto; padding:25px 0 0px 0; overflow: hidden; }
+
+    .footer_logo { float:left; background:url(/Widgets/WidgetCollection/MyParts/Footer.Default/Images/logo.png) no-repeat left center; width:64px; height:102px; margin-right:36px; }
+
+    .footer_txt { float:left; width:730px; color:#999; }
+        .footer_txt p { line-height:27px; }
+        .footer_txt span { font-family:"宋体"; margin:0 5px;}
+        .footer_txt em { font-style:italic; }
+
+    .footer_jubao { float:left; width:150px; text-align:right; padding-top:80px; overflow:hidden;}
+    .footer_jubao img { border-radius: 5px;}
+
+
+    .footer_eweima { float:right; width:110px; text-align:right; background:url(/Widgets/WidgetCollection/MyParts/Footer.Default/Images/eweima.png) no-repeat right 22px; height:120px; overflow:hidden; color: #c4ad47; }
+        .footer_eweima p { display: block; }
+
+.footer_bottom { width:1100px; margin:0 auto; height: 37px; line-height: 37px; display: block; overflow: hidden; color:#666; padding-left:100px;}
+
+
+
+
+
+
+
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:Footer.Default
+ * Style:Footer_Default
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:PicFocusSlide
+ * Style:HomeJD
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+.HomeJD #wrapper { margin:0; padding:0;}
+.HomeJD .slideBox{ width:470px; height:250px;overflow:hidden; position:relative; font-size:12px; background:#757575; }
+.HomeJD .slideBox .hd{ height:15px; overflow:hidden; position:absolute; right:5px; bottom:8px; z-index:1;  }
+.HomeJD .slideBox .hd ul { float:left; overflow:hidden; zoom:1; }
+.HomeJD .slideBox .hd ul li { float:left; margin-right:5px; width:15px; height:15px; line-height:15px; text-align:center; background:#fff; cursor:pointer; border-radius:100%; -webkit-border-radius:100%; -moz-border-radius:100%; }
+.HomeJD .slideBox .hd ul li.on{ background:#ff6600; color:#fff; }
+
+.HomeJD .slideBox .bd{ position:relative; height:100%; z-index:0; }
+.HomeJD .slideBox .bd img { width:470px; height:220px; border:none; overflow:hidden;  }
+.HomeJD .slideBox .bd p { position:absolute; top:220px; left:0px; height:250px; color:#f3f3f3; background:none; display:block; overflow:hidden; width:100%; line-height:30px; padding-left:10px;}
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:PicFocusSlide
+ * Style:HomeJD
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:ArticleTopic
+ * Style:ArticleTopic
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+.ArticleTopic { width:100%; min-height:80px; border-bottom:1px dashed #ddd;  overflow:hidden;}
+.ArticleTopic h3 { height:40px; background:url(/Widgets/WidgetCollection/MyParts/ArticleTopic/Images/line.png) repeat-x bottom;}
+.ArticleTopic h3 em {float:left; font:normal 18px/40px "microsoft yahei"; color:#06b206; width:100px;text-align:center; display:block;}
+.ArticleTopic h3 i { float:left; font:normal 16px/35px "宋体"; color:#999; padding-top:5px; font-style:italic; margin-left:10px;}
+.ArticleTopic h3 span { float:right; text-align:right; font:normal 10px/35px Tahoma, Geneva, sans-serif; padding-right:10px;}
+.ArticleTopic h3 span a { color:#333;}
+.ArticleTopic h3 span a:hover { color:#999; text-decoration: underline;}
+
+.ArticleTopic h4 { height:20px; color:#000; font:normal 16px/20px "microsoft yahei"; margin-bottom:10px; margin-top:15px; text-align: center;}
+.ArticleTopic h4 a { }
+.ArticleTopic h4 a:hover { }
+.ArticleTopic p { background:url(/Widgets/WidgetCollection/MyParts/ArticleTopic/Images/icon_jy.png) no-repeat left 3px; line-height:22px; color:#666; text-indent:3em; padding-bottom:10px; /*height:30px;*/ font-size:12px; overflow:hidden;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:ArticleTopic
+ * Style:ArticleTopic
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:ArticleList.YMD
+ * Style:NoHeaderList
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+.NoHeaderList { width:100%; overflow:hidden;}
+.NoHeaderList h3 { overflow:hidden; display:none}
+.NoHeaderList ul { width:100%; padding:5px 0; }
+.NoHeaderList ul li { float:left; width:100%; height:34px; font:12px/34px "microsoft yahei"; border-bottom:1px dashed #ddd;}
+.NoHeaderList ul li a { display:block; background:url(/Widgets/WidgetCollection/MyParts/ArticleList.YMD/Images/icon_dot01.png) no-repeat left center; padding-left:15px; }
+.NoHeaderList ul li a:hover { background:url(/Widgets/WidgetCollection/MyParts/ArticleList.YMD/Images/icon_dot02.png) no-repeat left center;  }
+.NoHeaderList ul li span {float:right; text-align:right; font-size:12px; color:#999;}
+
+.NoHeaderList ul li.hotnews a { color:#333; display:block; background:url(/Widgets/WidgetCollection/MyParts/ArticleList.YMD/Images/icon_dot02.png) no-repeat left center; padding-left:10px; }
+.NoHeaderList li.hotnews a:hover { color:#cc0000; background:url(/Widgets/WidgetCollection/MyParts/ArticleList.YMD/Images/icon_dot02.png) no-repeat left center;}
+
+
+
+
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:ArticleList.YMD
+ * Style:NoHeaderList
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:ArticleList.YMD
+ * Style:ArticleListNoDate
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+/*************************************************************
+ * Command:End
+ * Control:ArticleList.YMD
+ * Style:ArticleListNoDate
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:ArticleList.YMD
+ * Style:ArticleListFrame
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+.ArticleListFrame { width:100%;  overflow:hidden;}
+.ArticleListFrame h3 { color:#fff; height:40px ;}
+.ArticleListFrame h3 em { font:normal 14px/40px "microsoft yahei"; padding-left:0px; width:110px; text-align: center; display: block;}
+.ArticleListFrame h3 i{ font:normal 14px/40px "Times New Roman"; color:#999; font-style:italic;}
+.ArticleListFrame h3 span { float:right; text-align:right; font:normal 10px/40px Tahoma, Geneva, sans-serif; padding-right:10px;}
+.ArticleListFrame h3 span a { color:#9c9c9c;}
+.ArticleListFrame h3 span a:hover { color:#333; text-decoration: underline;}
+
+.ArticleListFrame ul {  min-height: 180px; border:1px solid #cfdced; border-top:none; background:url(/Widgets/WidgetCollection/MyParts/ArticleList.YMD/Images/listbg.png) repeat-x bottom; padding:5px 10px; }
+.ArticleListFrame ul li { height:35px; font:12px/35px "microsoft yahei"; border-bottom:1px dashed #ddd;}
+.ArticleListFrame ul li a { display:block; background:url(/Widgets/WidgetCollection/MyParts/ArticleList.YMD/Images/icon02a.gif) no-repeat left center; padding-left:10px; }
+.ArticleListFrame ul li a:hover { background:url(/Widgets/WidgetCollection/MyParts/ArticleList.YMD/Images/icon02b.gif) no-repeat left center;  }
+.ArticleListFrame ul li span { float:right; text-align:right; color:#aaa; font:italic 12px/32px arial; }
+
+.ArticleListFrame ul li.hotnews a { color:#000; display:block; background:url(/Widgets/WidgetCollection/MyParts/ArticleList.YMD/Images/icon02a.gif) no-repeat left center; padding-left:10px; }
+.ArticleListFrame li.hotnews a:hover { color:#c00;}
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:ArticleList.YMD
+ * Style:ArticleListFrame
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:PicGroupScrool
+ * Style:PicGroupScroolFang
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+
+.PicGroupScroolFang{ width:100%; margin-top:10px; overflow: hidden;}
+.PicGroupScroolFang h2 { color:#fff; height:40px ;}
+.PicGroupScroolFang h2 em { float: left; font:normal 14px/40px "microsoft yahei"; padding-left:10px; width:110px; text-align: center; display: block; }
+.PicGroupScroolFang h2 i { font:normal 12px/40px "arial"; color:#999; font-style:italic;}
+.PicGroupScroolFang h2 span { float:right; text-align:right; font:normal 12px/40px "宋体"; padding-right: 10px; }
+.PicGroupScroolFang h2 span a { }
+.PicGroupScroolFang h2 span a:hover { }
+
+.PicGroupScroolFang ul.rollBox{ border:1px solid #cfdced; border-top:none; clear: both; width:1058px; min-height:100px; margin:0 auto; overflow:hidden; background:url(/Widgets/WidgetCollection/MyParts/PicGroupScrool/Images/listbg.png) repeat-x bottom; padding:30px 0; }
+
+/*ScrollPic*/
+.PicGroupScroolFang .rollBox .LeftBotton { cursor: pointer; display: inline; float: left; margin:45px 0 0 5px; overflow: hidden; }
+.PicGroupScroolFang .rollBox .LeftBotton a { height:28px; width:14px; background:url(/Widgets/WidgetCollection/MyParts/PicGroupScrool/Images/scroll_l01.png) no-repeat scroll 0 0 transparent; display:block;}
+.PicGroupScroolFang .rollBox .LeftBotton a:hover { background:url(/Widgets/WidgetCollection/MyParts/PicGroupScrool/Images/scroll_l02.png) no-repeat scroll 0 0 transparent ;}
+
+.PicGroupScroolFang .rollBox .RightBotton { cursor: pointer; display: inline; float: right; margin:45px 5px 0 0; overflow: hidden; text-align: right; }
+.PicGroupScroolFang .rollBox .RightBotton a { height:28px; width:14px; background:url(/Widgets/WidgetCollection/MyParts/PicGroupScrool/Images/scroll_r01.png) no-repeat scroll 0 0 transparent; display:block;}
+.PicGroupScroolFang .rollBox .RightBotton a:hover { background:url(/Widgets/WidgetCollection/MyParts/PicGroupScrool/Images/scroll_r02.png) no-repeat scroll 0 0 transparent ;}
+
+.PicGroupScroolFang .rollBox .Cont { float:left; width:960px; margin-left:30px; margin-right:30px; overflow:hidden;}
+.PicGroupScroolFang .rollBox .ScrCont { width:10000000px; overflow:hidden;}
+.PicGroupScroolFang .rollBox .Cont li { float:left; text-align:center; list-style:none; width:144px; padding:0 8px; display: block; }
+.PicGroupScroolFang .rollBox .Cont li img { width:144px; height:98px;  border-radius:5px;}
+.PicGroupScroolFang .rollBox #List1, .rollBox #List2 { float:left;}
+.PicGroupScroolFang .rollBox .Cont p { width:144px; text-align:center; font-size:12px; font-family: "microsoft yahei"; padding-top:5px; }
+
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:PicGroupScrool
+ * Style:PicGroupScroolFang
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:ArticleView.Default
+ * Style:ArticleView_Default
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+
+/**************文章正文开始*****************/
+.ArticleView_Default { width:750px; padding:20px 0; padding-left:30px; background:url("/_skins/temp02/images/header_tit04.png") no-repeat left top;}
+.ArticleView_Default h1 { color:#333; font: normal 26px/40px "微软雅黑"; padding-top:20px; width:650px; text-align:center;}
+.ArticleView_Default h2 { color:#666; font: italic 18px/40px "微软雅黑"; width:650px; border-bottom:1px solid #eee; padding-bottom:10px;  text-align:center;}
+.ArticleView_Default .article_info { height:30px; line-height:30px; color:#999; text-align:center;}
+
+.ArticleView_Default .article_content { line-height:180%; font-size:14px; font-family:微软雅黑,arial,宋体; color:#333; margin:30px 20px 10px 0px; text-align: justify; min-height:300px;/* word-wrap:break-word; word-break:normal; letter-spacing:1px; */}
+.ArticleView_Default .article_content p { line-height:26px; margin-bottom:26px; text-indent:2em; }
+
+.ArticleView_Default .article_content h3 { font:bold 18px/40px "微软雅黑"; color:#003399;}
+.ArticleView_Default .article_content ul { margin-left:45px;}
+.ArticleView_Default .article_content ul li { list-style:outside; margin:5px 0; font:normal 14px/26px "microsoft yahei";}
+.ArticleView_Default .article_content a { color:#ff0000;text-decoration:underline;}
+.ArticleView_Default .article_content a:hover { color:#0066cc;text-decoration:underline;}
+.ArticleView_Default .article_content img { max-width: 680px; display: block; margin:0 auto;}
+
+.ArticleView_Default table { border-top:1px solid #ddd; border-left:1px solid #ddd;}
+.ArticleView_Default table th { border-bottom:1px solid #ddd; border-right:1px solid #ddd; font:bold 14px/30px "microsoft yahei"; background:#f9f9f9;}
+.ArticleView_Default table td { border-bottom:1px solid #ddd; border-right:1px solid #ddd; padding:3px 5px;}
+
+/***********附件****************/
+.ArticleView_Default .articleAttachments { color:#000; margin-bottom:30px; padding:0 30px;}
+.ArticleView_Default .articleAttachments h3 { font:normal 16px/30px "microsoft yahei"; border-bottom:1px dotted #ddd;  }
+.ArticleView_Default .articleAttachments li { display:block; font-family:"宋体"; margin:10px 0;}
+.ArticleView_Default .articleAttachments li a { margin-left:15px; color:#ff0000; text-decoration:underline; font:14px/30px "microsoft yahei"; }
+.ArticleView_Default .articleAttachments li a:hover { color:#003399; text-decoration:none;}
+.ArticleView_Default .articleAttachments li span { float:right; margin-left:20px; }
+.ArticleView_Default .articleAttachments li span a { padding:5px 10px; background:#009900; color:#fff; border-radius:5px; -webkit-border-radius:5px; text-decoration:none;}
+.ArticleView_Default .articleAttachments li span a:hover{ background:#cc0000; color:#fff; }
+
+/***********分享****************/
+.ArticleView_Default .artilcle_share{ margin:20px 30px; overflow:hidden;}
+
+/***********字号大小/打印/关闭****************/
+.ArticleView_Default .artilcle_tool { height:26px; line-height:26px; text-align:right; background:#f2f2f2; padding-right:8px;}
+.ArticleView_Default .artilcle_tool a { color: #333;}
+.ArticleView_Default .artilcle_tool a:hover { color: #cc0000;}
+
+/***********上一篇/下一篇****************/
+.ArticleView_Default .article_page { height: 31px; line-height:31px; margin-top: 15px; overflow:hidden;}
+.ArticleView_Default .article_page li { float:left; width:490px; margin:0 15px; padding-left:10px; background:url(/Widgets/WidgetCollection/MyParts/ArticleView.Default/Images/icon5.gif) no-repeat left center;}
+.ArticleView_Default .article_page li.next { background:url(/Widgets/WidgetCollection/MyParts/ArticleView.Default/Images/icon7.gif) no-repeat left center;}
+.ArticleView_Default .article_page li span { color: #003399;}
+.ArticleView_Default .article_page li a { color: #333;}
+.ArticleView_Default .article_page li a:hover { color: #003399;}
+
+/***********相关信息****************/
+.ArticleView_Default .article_about  { margin-top:10px; overflow:hidden; border-top:3px solid #000;}
+.ArticleView_Default .article_about h3 { font:normal 16px/40px "microsoft yahei"; border-bottom:1px solid #ddd;}
+.ArticleView_Default .article_about ul { padding:10px 0; overflow:hidden;}
+.ArticleView_Default .article_about li { float:left; width:330px; margin:0 15px; padding-left:10px; height:30px; line-height:30px; background:url(/Widgets/WidgetCollection/MyParts/ArticleView.Default/Images/icon1.gif) no-repeat left center; font-size:14px;}
+.ArticleView_Default .article_about li a { color: #666;}
+.ArticleView_Default .article_about li a:hover { color: #003399;}
+.ArticleView_Default .article_about li span { font-size:12px; color:#666; margin-left:10px; float:right; text-align:right; font-style: italic;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:ArticleView.Default
+ * Style:ArticleView_Default
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:ArticleList.YMD
+ * Style:ArticleRight
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+.ArticleRight { width:100%; overflow:hidden;}
+.ArticleRight h3 { color:#fff; height:40px ; background: url("/_skins/School/images/header_tit01.png") no-repeat; }
+.ArticleRight h3 em {  float: left;  font:normal 14px/40px "microsoft yahei"; padding-left:0px; width:110px; text-align: center; display: block; }
+.ArticleRight h3 i{ display:none;}
+.ArticleRight h3 span { float:right; text-align:right; font:normal 10px/40px Tahoma, Geneva, sans-serif; padding-right:10px;}
+.ArticleRight h3 span a { color:#9c9c9c;}
+.ArticleRight h3 span a:hover { color:#333;}
+
+.ArticleRight ul { min-height: 180px;  border:1px solid #cfdced; border-top:none;/*background:url(/Widgets/WidgetCollection/MyParts/ArticleList.YMD/Images/listbg.png) repeat-x bottom;*/ padding:5px 10px;}
+.ArticleRight ul li { height:35px; font:12px/35px "microsoft yahei"; border-bottom:1px dashed #ddd;}
+.ArticleRight ul li a { display:block; background:url(/Widgets/WidgetCollection/MyParts/ArticleList.YMD/Images/icon02a.gif) no-repeat left center; padding-left:10px; }
+.ArticleRight ul li a:hover { background:url(/Widgets/WidgetCollection/MyParts/ArticleList.YMD/Images/icon02b.gif) no-repeat left center;  }
+.ArticleRight ul li span { display:none;}
+
+.ArticleRight ul li.hotnews a { color:#000; display:block; background:url(/Widgets/WidgetCollection/MyParts/ArticleList.YMD/Images/icon02a.gif) no-repeat left center; padding-left:10px; }
+.ArticleRight li.hotnews a:hover { color:#c00;}
+
+
+
+
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:ArticleList.YMD
+ * Style:ArticleRight
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:PagedArticleList.Default
+ * Style:PagedArticleList_Default
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+
+.PagedArticleList_Default { min-height:500px; }
+
+/*标题图*/
+.PagedArticleList_Default .TitleImage { display: none; }
+
+/* 标题 */
+.PagedArticleList_Default h3 { height:40px; line-height:40px; /* border-bottom:1px solid #bababa; */ padding-bottom:5px; overflow: hidden;}
+.PagedArticleList_Default h3 em { font:normal 16px/40px "microsoft yahei"; color:#fff; width:110px; text-align:center; display:block;}
+
+.PagedArticleList_Default .Description { display: none; }
+
+/* 列表 */
+.PagedArticleList_Default .article_list {  overflow: hidden; }
+.PagedArticleList_Default .article_list ul{ padding:10px 0px 10px 0px; }
+.PagedArticleList_Default .article_list ul li { height:35px; line-height:35px; font-size:14px; color:#000; border-bottom: 1px dashed #ddd; display: block; }
+.PagedArticleList_Default .article_list ul li a { height:35px; padding-left:20px; background:url(/Widgets/WidgetCollection/MyParts/PagedArticleList.Default/Images/icon4.gif) no-repeat left -25px;}
+.PagedArticleList_Default .article_list ul li a:hover { background:url(/Widgets/WidgetCollection/MyParts/PagedArticleList.Default/Images/icon4.gif) no-repeat scroll left 5px transparent; }
+.PagedArticleList_Default .article_list ul li span { float:right; padding-right:5px; font:12px/35px "arial"; color:#666;}
+.PagedArticleList_Default .article_list ul li em { color:#f00; margin:0 5px;}
+
+/* 翻页 */
+.PagedArticleList_Default .clear{ clear: both;}
+.PagedArticleList_Default .clear:after{ content: "."; display: block; height:0; clear:both; visibility: hidden;}
+.PagedArticleList_Default .page_css, .class_page { text-align:center; padding:10px 0;}
+.PagedArticleList_Default .page_css a, .class_page a { display: inline-block; border:1px solid #999999; padding:8px 10px; color:#666666; line-height:100%;}
+.PagedArticleList_Default .page_css a:hover, .class_page a:hover{ color: #fff; border: 1px solid #666; background: #666;}
+.PagedArticleList_Default .page_css b a, .class_page b a { color: #fff; border:1px solid #666; background: #666;}
+.PagedArticleList_Default .page_line { }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:PagedArticleList.Default
+ * Style:PagedArticleList_Default
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:Sidebar.ChannelNav
+ * Style:Sidebar_ChannelNav
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+
+/******栏目分类**********/
+.Sidebar_ChannelNav { width:100%; overflow: hidden; background:url(/Widgets/WidgetCollection/MyParts/Sidebar.ChannelNav/Images/header_bg.png) no-repeat top left;}
+.Sidebar_ChannelNav h2 { height:40px; }
+.Sidebar_ChannelNav h2 em { font:normal 14px/40px "microsoft yahei"; color:#fff; padding-left:35px;}
+.Sidebar_ChannelNav ul { border:1px solid #ddd; border-top:none; padding:10px 0; overflow:hidden;}
+.Sidebar_ChannelNav ul li { font:normal 14px/39px "microsoft yahei"; text-align: center; border-bottom:1px dashed #eee;}
+.Sidebar_ChannelNav ul li a { width:100%; height:39px ; line-height: 39px ; background:url(/Widgets/WidgetCollection/MyParts/Sidebar.ChannelNav/Images/navbg01.jpg) no-repeat center center; display:block;}
+.Sidebar_ChannelNav ul li a:hover, .subnav li.class_on a { background:url(/Widgets/WidgetCollection/MyParts/Sidebar.ChannelNav/Images/navbg02.jpg) no-repeat center center;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:Sidebar.ChannelNav
+ * Style:Sidebar_ChannelNav
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:TeacherList
+ * Style:TeacherList
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+.TeacherList { min-height:500px; padding-left:20px; overflow:hidden;}
+.TeacherList h3 { height:40px; line-height:40px; /* border-bottom:1px solid #bababa; */ }
+.TeacherList h3 em {font:normal 16px/40px "microsoft yahei"; color:#fff; padding-left:40px;}
+.TeacherList h3 i{ font:normal 14px/40px "Times New Roman"; color:#999; font-style:italic;}
+.TeacherList h3 span { display: none; }
+
+.TeacherList table { border-left:1px solid #ddd; border-top:1px solid #ddd; }
+.TeacherList table th { border-right:1px solid #ddd; border-bottom:1px solid #ddd; padding: 3px 5px; text-align: center; font:bold 16px/30px "microsoft yahei"}
+.TeacherList table td { border-right:1px solid #ddd; border-bottom:1px solid #ddd; padding: 3px 5px; text-align: center; font:normal 14px/30px "microsoft yahei"}
+
+
+
+
+
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:TeacherList
+ * Style:TeacherList
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:W_LeaderPic
+ * Style:W_LeaderPic
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+.W_LeaderPic { min-height:500px; padding-left:20px; overflow:hidden;}
+.W_LeaderPic a {  }
+.W_LeaderPic a:hover { }
+
+.W_LeaderPic h1{ height:40px; line-height:40px; /* border-bottom:1px solid #bababa; */ }
+.W_LeaderPic h1 em {font:normal 16px/40px "microsoft yahei"; color:#fff; padding-left:40px;}
+.W_LeaderPic .W_LeaderPic_Box { margin:20px auto;}
+
+.W_LeaderPic h2 { font:normal 14px/30px "微软雅黑","宋体"; height:30px; background:url(/Widgets/WidgetCollection/MyParts/W_LeaderPic/Images/icon01.gif) no-repeat left; border-bottom:1px solid #ddd; margin-bottom:10px; padding-left:15px; color:#000;}
+.W_LeaderPic h2 span { font:normal 14px/30px "微软雅黑","宋体"; color:#333; margin-left: 10px;}
+
+.W_LeaderPic dl { float:left; width:340px; margin:0px 17px; overflow:hidden; display:inline; min-height:180px;}
+.W_LeaderPic dl dt { float:left; width:110px;}
+.W_LeaderPic dl dt img { width:100px; height:130px; border-radius: 8px;}
+.W_LeaderPic dl dd { float:right; width:230px;}
+.W_LeaderPic dl dd p { font:normal 12px/20px "microsoft yahei"; color:#666; min-height: 66px; border-bottom:1px solid #ddd; }
+
+.W_LeaderPic .more { display: block; float: right; margin-top:5px; }
+.W_LeaderPic a.more  { text-decoration:none; font:normal 12px/14px "微软雅黑";}
+
+.W_LeaderPic .clear{ clear: both;}
+.W_LeaderPic .clear:after{ content: "."; display: block; height:0; clear:both; visibility: hidden;}
+.W_LeaderPic .page_css, .class_page { text-align:center; padding:10px 0;}
+.W_LeaderPic .page_css a, .class_page a { display: inline-block; border:1px solid #999999; padding:8px 10px; color:#666666; line-height:100%;}
+.W_LeaderPic .page_css a:hover, .class_page a:hover{ color: #fff; border: 1px solid #666; background: #666;}
+.W_LeaderPic .page_css b a, .class_page b a { color: #fff; border:1px solid #666; background:#666;}
+.W_LeaderPic .page_line { }
+
+
+
+
+
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:W_LeaderPic
+ * Style:W_LeaderPic
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:PicList
+ * Style:PicListA
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+.PicListA { min-height:500px; }
+.PicListA a {  }
+.PicListA a:hover {  }
+
+.PicListA h3 { height:40px; line-height:40px; /* border-bottom:1px solid #bababa; */  }
+.PicListA h3 em { font:normal 16px/40px "microsoft yahei"; color:#fff; width:110px; text-align:center; display:block;}
+.PicListA .PicListA_Box { margin:20px auto;}
+
+.PicListA ul { width:750px; margin:20px auto; overflow:hidden;}
+.PicListA ul li { float:left; width:220px; margin:20px 15px; min-height: 150px; position:relative;}
+.PicListA ul li img { width:220px; height:132px; border-radius: 5px; text-align: center; position:absolute; left:0; top:0; cursor:pointer;}
+.PicListA ul li p { text-align: center; position:absolute; left:0; top:140px;}
+
+.PicListA .clear{ clear: both;}
+
+.PicListA .clear{ clear: both;}
+.PicListA .clear:after{ content: "."; display: block; height:0; clear:both; visibility: hidden;}
+.PicListA .page_css, .class_page { text-align:center; padding:10px 0;}
+.PicListA .page_css a, .class_page a { display: inline-block; border:1px solid #999999; padding:8px 10px; color:#666666; line-height:100%;}
+.PicListA .page_css a:hover, .class_page a:hover{ color: #fff; border: 1px solid #666; background: #666;}
+.PicListA .page_css b a, .class_page b a { color: #fff; border:1px solid #666; background:#666;}
+.PicListA .page_line { }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:PicList
+ * Style:PicListA
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:ArticleView.Default
+ * Style:ArticleViewAll
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+
+/**************文章正文开始*****************/
+.ArticleViewAll { width:100%; padding:20px 0;}
+.ArticleViewAll h1 { color:#333; font: normal 30px/40px "华文中宋","microsoft yahei"; text-align: center; border-bottom:3px solid #ddd; padding-bottom:10px;}
+.ArticleViewAll .article_info { height:30px; line-height:30px; text-align:center;}
+
+.ArticleViewAll .article_content { line-height:180%; font-size:16px; font-family:microsoft yahei,arial,宋体; color:#212121; margin:30px 30px 10px 30px; word-wrap:break-word; word-break:normal; letter-spacing:1px;}
+.ArticleViewAll .article_content p { line-height:26px; margin-bottom:26px; /*text-indent:2em;*/ }
+.ArticleViewAll .article_content h3 { font:bold 18px/40px "microsoft yahei"; color:#003399;}
+.ArticleViewAll .article_content ul { margin-left:45px;}
+.ArticleViewAll .article_content ul li { list-style:none; margin:5px 0; font:normal 14px/26px "microsoft yahei";}
+.ArticleViewAll .article_content a { color:#ff0000;text-decoration:underline;}
+.ArticleViewAll .article_content a:hover { color:#0066cc;text-decoration:underline;}
+
+/***********附件****************/
+.ArticleViewAll .articleAttachments { color:#000; margin-bottom:30px; padding:0 30px;}
+.ArticleViewAll .articleAttachments h3 { font:normal 16px/30px "microsoft yahei"; border-bottom:1px dotted #ddd; display: none;  }
+.ArticleViewAll .articleAttachments li { display:block; font-family:"宋体"; margin:10px 0;}
+.ArticleViewAll .articleAttachments li a { margin-left:15px; color:#ff0000; text-decoration:underline; font:14px/30px "microsoft yahei"; }
+.ArticleViewAll .articleAttachments li a:hover { color:#003399; text-decoration:none;}
+.ArticleViewAll .articleAttachments li span { float:right; margin-left:20px; }
+.ArticleViewAll .articleAttachments li span a { padding:5px 10px; background:#009900; color:#fff; border-radius:5px; -webkit-border-radius:5px; text-decoration:none;}
+.ArticleViewAll .articleAttachments li span a:hover{ background:#cc0000; color:#fff; }
+
+/***********分享****************/
+.ArticleViewAll .artilcle_share{ margin:20px 30px; overflow:hidden;}
+
+/***********字号大小/打印/关闭****************/
+.ArticleViewAll .artilcle_tool { height:26px; line-height:26px; text-align:right; background:#f2f2f2; padding-right:8px;}
+.ArticleViewAll .artilcle_tool a { color: #333;}
+.ArticleViewAll .artilcle_tool a:hover { color: #cc0000;}
+
+/***********上一篇/下一篇****************/
+.ArticleViewAll .article_page { height: 31px; line-height:31px; margin-top: 15px; overflow:hidden;}
+.ArticleViewAll .article_page li { float:left; width:490px; margin:0 15px; padding-left:10px; background:url(/Widgets/WidgetCollection/MyParts/ArticleView.Default/Images/icon5.gif) no-repeat left center;}
+.ArticleViewAll .article_page li.next { background:url(/Widgets/WidgetCollection/MyParts/ArticleView.Default/Images/icon7.gif) no-repeat left center;}
+.ArticleViewAll .article_page li span { color: #003399;}
+.ArticleViewAll .article_page li a { color: #333;}
+.ArticleViewAll .article_page li a:hover { color: #003399;}
+
+/***********相关信息****************/
+.ArticleViewAll .article_about  { margin-top:10px; overflow:hidden; border-top:3px solid #000;}
+.ArticleViewAll .article_about h3 { font:normal 16px/40px "microsoft yahei"; border-bottom:1px solid #ddd;}
+.ArticleViewAll .article_about ul { padding:10px 0; overflow:hidden;}
+.ArticleViewAll .article_about li { float:left; width:490px; margin:0 15px; padding-left:10px; height:30px; line-height:30px; background:url(/Widgets/WidgetCollection/MyParts/ArticleView.Default/Images/icon1.gif) no-repeat left center; font-size:14px;}
+.ArticleViewAll .article_about li a { color: #666;}
+.ArticleViewAll .article_about li a:hover { color: #003399;}
+.ArticleViewAll .article_about li span { font-size:12px; color:#666; margin-left:10px; float:right; text-align:right;}
+
+/*************************************************************
+ * Command:End
+ * Control:ArticleView.Default
+ * Style:ArticleViewAll
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:PicNewsList
+ * Style:PicNewsList
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+.PicNewsList { min-height:500px; padding-left:20px; overflow:hidden; }
+
+.PicNewsList h1{ height:40px ; line-height:40px; }
+.PicNewsList h1 em { font:normal 16px/40px "microsoft yahei"; color:#fff; padding-left:40px;}
+.PicNewsList .PicNewsList_Box { margin:0px auto; overflow: hidden;}
+
+.PicNewsList .PicNewsList_Box h2 { font:normal 16px/40px "微软雅黑","宋体"; height:40px; background:url(/Widgets/WidgetCollection/MyParts/PicNewsList/Images/icon01.gif) no-repeat left; padding-left:20px; margin-bottom:10px; }
+.PicNewsList .PicNewsList_Box h2 span { float: right; text-align: right; font:normal 12px/40px "微软雅黑","宋体"; color:#666; }
+
+.PicNewsList .PicNewsList_Box dl { width:100%; margin:30px auto; overflow:hidden;}
+.PicNewsList .PicNewsList_Box dl dt { float:left; width:180px; padding-right:20px;}
+.PicNewsList .PicNewsList_Box dl dt img { width:180px; height:130px; border-radius: 8px;}
+.PicNewsList .PicNewsList_Box dl dd { float:left; width:540px; }
+.PicNewsList .PicNewsList_Box dl dd p { font:normal 12px/25px "microsoft yahei"; color:#666; min-height: 66px;  }
+
+.PicNewsList .clear{ clear: both;}
+.PicNewsList .clear:after{ content: "."; display: block; height:0; clear:both; visibility: hidden;}
+.PicNewsList .page_css, .class_page { text-align:center; padding:10px 0;}
+.PicNewsList .page_css a, .class_page a { display: inline-block; border:1px solid #999999; padding:8px 10px; color:#666666; line-height:100%;}
+.PicNewsList .page_css a:hover, .class_page a:hover{ color: #fff; border: 1px solid #666; background: #666;}
+.PicNewsList .page_css b a, .class_page b a { color: #fff; border:1px solid #666; background:#666;}
+.PicNewsList .page_line { }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:PicNewsList
+ * Style:PicNewsList
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:PagedArticleList.DefaultSearch
+ * Style:PagedArticleList_DefaultSearch
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+.PagedArticleList_DefaultSearch .article_list
+{
+}
+
+.PagedArticleList_DefaultSearch .article_list h3{
+    background:url(/Widgets/WidgetCollection/搜索类/Search.ResultUI/Images/back2.gif) no-repeat;
+    height: 40px;
+    line-height: 30px; color:#FFF; text-indent:20px;
+}
+.PagedArticleList_DefaultSearch .article_list h3 span
+{
+    background:url(/Widgets/WidgetCollection/搜索类/Search.ResultUI/Images/sidebar.gif) no-repeat left top;
+    display: inline-block;
+    padding-left: 37px;
+}
+.PagedArticleList_DefaultSearch .article_list h3 em
+{
+    background:url(/Widgets/WidgetCollection/搜索类/Search.ResultUI/Images/sidebar.gif) no-repeat right -33px;
+    padding-right: 37px;
+    font-size: 12px;
+    color: #fff;
+    display: inline-block;
+}
+.PagedArticleList_DefaultSearch .article_list h3 em a
+{
+    color: #ffff00;
+}
+.PagedArticleList_DefaultSearch .article_list h3 em a:hover
+{
+    color: #fff;
+}
+.PagedArticleList_DefaultSearch .article_list ul
+{
+    padding: 10px 10px 10px 10px;
+    border-left: 1px solid #DDDDDD;
+    border-right: 1px solid #DDDDDD;
+    border-bottom: 1px solid #DDDDDD;
+}
+.PagedArticleList_DefaultSearch .article_list li
+{
+    height: 35px;
+    line-height: 35px;
+    font-size: 14px;
+    color: #666;
+    background: url(../images/line.gif) repeat-x left bottom;
+}
+.PagedArticleList_DefaultSearch .article_list li span.datetime
+{
+    float: right;
+    padding-right: 5px;
+}
+.PagedArticleList_DefaultSearch .article_list li a
+{
+    color: #333;
+    padding-left: 20px;
+    background:url(/Widgets/WidgetCollection/搜索类/Search.ResultUI/Images/icon4.gif) no-repeat left -29px;
+}
+.PagedArticleList_DefaultSearch .article_list li a:hover {
+    background:url(/Widgets/WidgetCollection/搜索类/Search.ResultUI/Images/icon4.gif) no-repeat scroll left 1px transparent;
+    color: #AE541F;
+}
+.PagedArticleList_DefaultSearch .underline_left
+{
+    height: 7px;
+    line-height: 7px;
+    font-size: 0px;
+    background:url(/Widgets/WidgetCollection/搜索类/Search.ResultUI/Images/back.gif) no-repeat left -269px;
+}
+.PagedArticleList_DefaultSearch .clear
+{
+    clear: both;
+}
+.PagedArticleList_DefaultSearch .clear:after
+{
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.PagedArticleList_DefaultSearch .page_css, .class_page
+{
+    text-align: center;
+    padding: 5px 0;
+}
+.PagedArticleList_DefaultSearch .page_css a, .class_page a
+{
+    display: inline-block;
+    border: 1px solid #a8c1ce;
+    padding: 3px 8px;
+    color: #4a89a9;
+    line-height: 100%;
+}
+.PagedArticleList_DefaultSearch .page_css a:hover, .class_page a:hover
+{
+    color: #fff;
+    border: 1px solid #4081A1;
+    background: #62A1DF;
+}
+.PagedArticleList_DefaultSearch .page_css b a, .class_page b a
+{
+    color: #fff;
+    border: 1px solid #4081A1;
+    background: #62A1DF;
+}
+.PagedArticleList_DefaultSearch .page_line
+{
+    border-left: 1px solid #DDDDDD;
+    border-right: 1px solid #DDDDDD;
+}
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:PagedArticleList.DefaultSearch
+ * Style:PagedArticleList_DefaultSearch
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:Feedback_FeedbackList
+ * Style:Feedback_FeedbackList
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+.Feedback_FeedbackList { width:100%;  overflow:hidden;}
+.Feedback_FeedbackList h2 { margin:0px auto; height:40px; background: url("/_skins/School/images/header_tit05.png") no-repeat; margin-bottom:10px; }
+.Feedback_FeedbackList h2 em { font:normal 14px/40px "microsoft yahei"; padding-left:30px; color:#fff;}
+
+.Feedback_FeedbackList table { width:100%; border-top:1px solid #ddd; border-left:1px solid #ddd; border-collapse:collapse;border-spacing:0; }
+.Feedback_FeedbackList table th { border-bottom:1px solid #ddd; border-right:1px solid #ddd; background:#eee; font:14px/30px "microsoft yahei"; text-align:center;}
+.Feedback_FeedbackList table td { border-bottom:1px solid #ddd; border-right:1px solid #ddd; padding:5px 10px; font-size:12px;}
+input, textarea, select { font:normal 14px/35px "microsoft yahei"; padding:0px 5px;  }
+img {vertical-align: bottom;}
+
+/* 翻页 */
+.Feedback_FeedbackList .clear{ clear: both;}
+.Feedback_FeedbackList .clear:after{ content: "."; display: block; height:0; clear:both; visibility: hidden;}
+.page_css, .class_page { text-align:center; padding:10px 0;}
+.page_css a, .class_page a { display: inline-block; border:1px solid #999999; padding:8px 10px; color:#666666; line-height:100%;}
+.page_css a:hover, .class_page a:hover{ color: #fff; border: 1px solid #666; background: #666;}
+.page_css b a, .class_page b a { color: #fff; border:1px solid #666; background: #666;}
+.page_line { }
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:Feedback_FeedbackList
+ * Style:Feedback_FeedbackList
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:Vote.Default
+ * Style:Vote_Default
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+.Vote_Default { width:100%;  overflow:hidden;}
+.Vote_Default h3 { color:#0458b7; margin:0px auto; height:45px;}
+.Vote_Default h3 em { font:normal 14px/45px "microsoft yahei"; padding-left:20px;}
+
+.Vote_Default .vote_content li.vote_check { position: relative;}
+.Vote_Default .vote_content li.vote_check input { width: 66px; height: 22px; background:url(/Widgets/WidgetCollection/商城下载类/Vote.Default/Images/back.gif) no-repeat -72px 38px;    overflow: hidden; border: none; position: absolute; top: 7px; left: 20px; cursor: pointer;}
+.Vote_Default .vote_content li.vote_button_line { padding: 10px 20px;}
+.Vote_Default .vote_content .vote_button { width: 66px; height: 22px; background:url(/Widgets/WidgetCollection/商城下载类/Vote.Default/Images/back.gif) no-repeat -143px -38px;    overflow: hidden; border: none; cursor: pointer;}
+.Vote_Default .vote_content .voteshow_button { background:url(/Widgets/WidgetCollection/商城下载类/Vote.Default/Images/back.gif) no-repeat -215px -38px; width: 66px; height: 22px;overflow: hidden; border: none; cursor: pointer;}
+
+/************网站调查*************/
+.Vote_Default .vote_content, .statistics_content { border-left: 1px solid #dddddd; border-right: 1px solid #dddddd; border-bottom: 1px solid #dddddd;}
+.Vote_Default .vote_content h4 { font:normal 14px/25px "microsoft yahei"; color: #333; padding: 10px 10px 10px 30px; background:url(/Widgets/WidgetCollection/商城下载类/Vote.Default/Images/icon_vote.png) no-repeat 5px 12px; }
+.Vote_Default .vote_content ul { padding: 0 10px;}
+.Vote_Default .vote_content li { height: 25px; line-height: 25px; }
+.Vote_Default .vote_content li input { margin-right: 5px; vertical-align: middle; margin-top: -3px;}
+.Vote_Default .vote_content li.vote_check { height: 24px; line-height: 24px; text-align: center; padding-top: 10px;}
+.Vote_Default .vote_content li.vote_check input{ background:url(/Widgets/WidgetCollection/商城下载类/Vote.Default/Images/back.gif) no-repeat -143px -38px;}
+.Vote_Default .vote_content li.vote_check input#ShowVote{ left: 106px; background:url(/Widgets/WidgetCollection/商城下载类/Vote.Default/Images/back.gif) no-repeat -215px -38px;}
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:Vote.Default
+ * Style:Vote_Default
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:Feedback_FeedbackView
+ * Style:Feedback_FeedbackView
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+
+.Feedback_FeedbackView { width:100%;  overflow:hidden;}
+.Feedback_FeedbackView h2 { color:#fff; margin:0px auto; height:40px; background: url("/_skins/School/images/header_tit05.png") no-repeat; margin-bottom:10px; }
+.Feedback_FeedbackView h2 em { font:normal 16px/40px "microsoft yahei"; padding-left:40px;}
+
+.Feedback_FeedbackView table { width:100%; border-top:1px solid #ddd; border-left:1px solid #ddd; border-collapse:collapse;border-spacing:0; }
+.Feedback_FeedbackView table th { border-bottom:1px solid #ddd; border-right:1px solid #ddd; background:#eee; font:14px/30px "microsoft yahei"; text-align:center;}
+.Feedback_FeedbackView table td { border-bottom:1px solid #ddd; border-right:1px solid #ddd; padding:5px 10px; font-size:12px;}
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:Feedback_FeedbackView
+ * Style:Feedback_FeedbackView
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:PagedArticleList.Default
+ * Style:PagedArticleList_All
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+
+.PagedArticleList_All { min-height:500px; }
+
+/*标题图*/
+.PagedArticleList_All .TitleImage { width: 100%; margin-bottom:10px; overflow: hidden; }
+.PagedArticleList_All .TitleImage img { width:1060px; height: 180px; }
+
+/* 标题 */
+.PagedArticleList_All h3 { height:40px; line-height:40px; /* border-bottom:1px solid #bababa; border-right:1px solid #e7e7e7; */ }
+.PagedArticleList_All h3 em { font:normal 16px/40px "microsoft yahei"; color:#fff; padding-left:40px;}
+
+.PagedArticleList_All .Description { line-height:23px; font-size: 12px; color:#333; padding:10px 5px; }
+
+/* 列表 */
+.PagedArticleList_All .article_list {  }
+.PagedArticleList_All .article_list ul{ padding:10px 0px 10px 0px; }
+.PagedArticleList_All .article_list ul li { height:35px; line-height:35px; font-size:14px; color:#000; border-bottom: 1px dashed #ddd;}
+.PagedArticleList_All .article_list ul li a { padding-left:20px; background:url(/Widgets/WidgetCollection/MyParts/PagedArticleList.Default/Images/icon4.gif) no-repeat left -25px;}
+.PagedArticleList_All .article_list ul li a:hover { background:url(/Widgets/WidgetCollection/MyParts/PagedArticleList.Default/Images/icon4.gif) no-repeat scroll left 5px transparent; }
+.PagedArticleList_All .article_list ul li span { float:right; padding-right:5px; font:12px/35px "arial"; color:#666;}
+.PagedArticleList_All .article_list ul li em { color:#f00; margin:0 5px;}
+
+/* 翻页 */
+.PagedArticleList_All .clear{ clear: both;}
+.PagedArticleList_All .clear:after{ content: "."; display: block; height:0; clear:both; visibility: hidden;}
+.PagedArticleList_All .page_css, .class_page { text-align:center; padding:10px 0;}
+.PagedArticleList_All .page_css a, .class_page a { display: inline-block; border:1px solid #999999; padding:8px 10px; color:#666666; line-height:100%;}
+.PagedArticleList_All .page_css a:hover, .class_page a:hover{ color: #fff; border: 1px solid #666; background: #666;}
+.PagedArticleList_All .page_css b a, .class_page b a { color: #fff; border:1px solid #666; background: #666;}
+.PagedArticleList_All .page_line { }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:PagedArticleList.Default
+ * Style:PagedArticleList_All
+ * Desc:目前没有
+ * Quot:SchoolA
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:PicFocusSlide
+ * Style:PicScrollAuto
+ * Desc:目前没有
+ * Quot:SchoolB
+*************************************************************/
+
+
+.PicScrollAuto #wrapper { margin:0; padding:0;}
+.PicScrollAuto .slideBox{ width:100%; height:350px;overflow:hidden; position:relative; left:0; font-size:12px; font-family:"microsoft yahei";}
+.PicScrollAuto .slideBox .hd{ height:15px; overflow:hidden; position:absolute; right:0px; bottom:7px; z-index:1; line-height:15px;  }
+.PicScrollAuto .slideBox .hd ul { float:left; overflow:hidden; }
+.PicScrollAuto .slideBox .hd ul li { float:left; margin-right:5px; width:15px; height:15px; line-height:15px; text-align:center; background:#dab176; color:#333; cursor:pointer; }
+.PicScrollAuto .slideBox .hd ul li.on{  background:#06b206; color:#fff;}
+
+.PicScrollAuto .slideBox .bd{ position:absolute; height:100%; z-index:0; }
+.PicScrollAuto .slideBox .bd img { width:100%; /*height:320px;*/ border:none; overflow:hidden; }
+.PicScrollAuto .slideBox .bd p { position:absolute; top:320px; left:0px; height:30px; color:#dab176; background:#333; display:block; overflow:hidden; width:100%; line-height:30px; padding-left:10px;}
+
+
+/*************************************************************
+ * Command:End
+ * Control:PicFocusSlide
+ * Style:PicScrollAuto
+ * Desc:目前没有
+ * Quot:SchoolB
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:HeadMaster
+ * Style:HeadMaster
+ * Desc:目前没有
+ * Quot:SchoolB
+*************************************************************/
+
+
+.HeadMaster { width:100%; overflow:hidden;}
+.HeadMaster h3 { color:#fff; height:40px; background: url("/_skins/School/images/header_tit01.png") no-repeat; }
+.HeadMaster h3 em { float: left; font:normal 14px/40px "microsoft yahei"; padding-left:20px; width:90px; text-align: center; display: block;}
+.HeadMaster h3 i{ font:normal 14px/40px "Times New Roman"; color:#999; font-style:italic;}
+.HeadMaster h3 span { float:right; text-align:right; font:normal 10px/40px Tahoma, Geneva, sans-serif; padding-right:10px;}
+.HeadMaster h3 span a { }
+.HeadMaster h3 span a:hover { }
+
+.HeadMaster .xzjy { width:228px; min-height: 200px; border:1px solid #cfdced; border-top:none; background:url(/Widgets/WidgetCollection/My静态类/HeadMaster/Images/listbg.png) repeat-x bottom; padding:5px 10px;}
+.HeadMaster .xzjy img { width:95px; height: 115px; border-radius: 5px; margin: 0 auto; display: block;}
+.HeadMaster .xzjy h4 { font:normal 14px/35px "microsoft yahei"; text-align: center; }
+.HeadMaster .xzjy p { display: block; }
+.HeadMaster .xzjy span {  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:HeadMaster
+ * Style:HeadMaster
+ * Desc:目前没有
+ * Quot:SchoolB
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:SchoolIntro
+ * Style:SchoolIntro
+ * Desc:目前没有
+ * Quot:SchoolB
+*************************************************************/
+
+
+.SchoolIntro { width:100%;  overflow:hidden;}
+.SchoolIntro h3 {  color:#fff; height:40px ; background: url("/_skins/School/images/header_tit01.png") no-repeat; }
+.SchoolIntro h3 em { float: left;  font:normal 14px/40px "microsoft yahei"; padding-left:0px; width:110px; text-align: center; display: block;}
+.SchoolIntro h3 i{ font:normal 14px/40px "Times New Roman"; color:#999; font-style:italic;}
+.SchoolIntro h3 span { float:right; text-align:right; font:normal 10px/40px Tahoma, Geneva, sans-serif; padding-right:10px;}
+.SchoolIntro h3 span a { color:#000;}
+.SchoolIntro h3 span a:hover { color:#333; text-decoration: underline;}
+
+.SchoolIntro .xxjj { width:278px; min-height: 200px;  border:1px solid #cfdced; border-top:none; background:url(/Widgets/WidgetCollection/静态类/SchoolIntro/Images/listbg.png) repeat-x bottom; padding:5px 10px; }
+.SchoolIntro .xxjj h4 { font:normal 14px/35px "microsoft yahei"; text-align: center; }
+.SchoolIntro .xxjj p { display: block; font:normal 12px/20px "microsoft yahei"; }
+
+
+
+
+
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:SchoolIntro
+ * Style:SchoolIntro
+ * Desc:目前没有
+ * Quot:SchoolB
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:DepartmentList
+ * Style:DepartmentList
+ * Desc:目前没有
+ * Quot:SchoolB
+*************************************************************/
+
+.DepartmentList { width:100%; overflow:hidden;}
+.DepartmentList h3 { color:#fff; margin:0px auto; height:35px; border-right:1px solid #e7e7e7;}
+.DepartmentList h3 em { font:normal 18px/35px "microsoft yahei"; padding-left:20px;}
+.DepartmentList h3 i{ font:normal 14px/40px "Times New Roman"; color:#999; font-style:italic;}
+.DepartmentList h3 span { display: none; }
+
+.DepartmentList ul { width:100%; }
+.DepartmentList ul li { height:32px; font:12px/32px "microsoft yahei";}
+.DepartmentList ul li a { color:#333; display:block; background:url(/Widgets/WidgetCollection/MyParts/DepartmentList/Images/icon02a.gif) no-repeat left center; padding-left:10px; }
+.DepartmentList ul li a:hover { color:#00906f; background:url(/Widgets/WidgetCollection/MyParts/DepartmentList/Images/icon02b.gif) no-repeat left center;  }
+
+.DepartmentList ul li.hotnews a { color:#000; display:block; background:url(/Widgets/WidgetCollection/MyParts/DepartmentList/Images/icon02a.gif) no-repeat left center; padding-left:10px; }
+.DepartmentList li.hotnews a:hover { color:#00906f;}
+
+.DepartmentList table { border-left:1px solid #ddd; border-top:1px solid #ddd; }
+.DepartmentList table th { border-right:1px solid #ddd; border-bottom:1px solid #ddd; padding: 3px 5px; text-align: center; font-weight: bold; font:normal 16px/30px "microsoft yahei"}
+.DepartmentList table td { border-right:1px solid #ddd; border-bottom:1px solid #ddd; padding: 3px 5px; text-align: center; font:normal 14px/30px "microsoft yahei"}
+.DepartmentList table td a { color:#333;}
+.DepartmentList table td a:hover {  color:#cc0000; }
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:DepartmentList
+ * Style:DepartmentList
+ * Desc:目前没有
+ * Quot:SchoolB
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:PagedArticleList.FrameLoop
+ * Style:PagedArticleList_Default
+ * Desc:目前没有
+ * Quot:SchoolB
+*************************************************************/
+
+/*************************************************************
+ * Command:End
+ * Control:PagedArticleList.FrameLoop
+ * Style:PagedArticleList_Default
+ * Desc:目前没有
+ * Quot:SchoolB
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:PagedArticleList.FrameLoop
+ * Style:PagedArticleList_FrameLoop
+ * Desc:目前没有
+ * Quot:SchoolB
+*************************************************************/
+
+.PagedArticleList_FrameLoop { min-height:500px; padding-left:20px; overflow:hidden; }
+
+/* 标题 */
+.PagedArticleList_FrameLoop h3 { height:40px; line-height:40px; /* border-bottom:1px solid #bababa; border-right:1px solid #e7e7e7;*/ }
+.PagedArticleList_FrameLoop h3 em { font:normal 16px/40px "microsoft yahei"; color:#fff; padding-left:40px;}
+
+.PagedArticleList_FrameLoop .Description { display: none; }
+
+/* 列表 */
+.PagedArticleList_FrameLoop .article_list {  }
+.PagedArticleList_FrameLoop .article_list ul { padding:10px 0px 10px 0px; overflow: hidden;}
+.PagedArticleList_FrameLoop .article_list ul li { float: left; width:350px; margin:15px 12px; min-height: 170px; }
+.PagedArticleList_FrameLoop .article_list ul li h4 { font:normal 14px/35px "microsoft yahei"; color:#333; background:#f9f9f9; border-radius: 5px 5px 0px 0px; border-top:3px solid #999;  }
+.PagedArticleList_FrameLoop .article_list ul li i { font:normal 12px/35px "arial"; color:#666; font-style:italic;}
+.PagedArticleList_FrameLoop .article_list ul li h4 a { color: #000; padding-left:10px; }
+.PagedArticleList_FrameLoop .article_list ul li h4 a:hover { color: #333; text-decoration: underline;}
+.PagedArticleList_FrameLoop .article_list ul li span { float:right; padding-right:10px; font:10px/35px "arial"; }
+.PagedArticleList_FrameLoop .article_list ul li span a { color:#666;}
+.PagedArticleList_FrameLoop .article_list ul li span a:hover { color:#c30;  }
+
+.PagedArticleList_FrameLoop .article_list ul li p { font:normal 12px/23px "microsoft yahei"; color: #666; padding:5px 10px; border:1px solid #e7e7e7; border-top:none; border-radius: 0px 0px 5px 5px; border-bottom:3px solid #999;  }
+
+.PagedArticleList_FrameLoop .article_list ul li em { color:#f00; margin:0 5px;} /*搜索关键词*/
+
+/* 翻页 */
+.PagedArticleList_FrameLoop .clear{ clear: both;}
+.PagedArticleList_FrameLoop .clear:after{ content: "."; display: block; height:0; clear:both; visibility: hidden;}
+.PagedArticleList_FrameLoop .page_css, .class_page { text-align:center; padding:10px 0;}
+.PagedArticleList_FrameLoop .page_css a, .class_page a { display: inline-block; border:1px solid #999999; padding:8px 10px; color:#666666; line-height:100%;}
+.PagedArticleList_FrameLoop .page_css a:hover, .class_page a:hover{ color: #fff; border: 1px solid #666; background: #666;}
+.PagedArticleList_FrameLoop .page_css b a, .class_page b a { color: #fff; border:1px solid #666; background: #666;}
+.PagedArticleList_FrameLoop .page_line { }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:PagedArticleList.FrameLoop
+ * Style:PagedArticleList_FrameLoop
+ * Desc:目前没有
+ * Quot:SchoolB
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:ArticleList.YMD
+ * Style:ArticleListAuto
+ * Desc:目前没有
+ * Quot:SchoolB
+*************************************************************/
+
+.ArticleListAuto { width:100%; overflow:hidden;}
+.ArticleListAuto h3 { margin:0px auto; height:40px;}
+.ArticleListAuto h3 em {  font:normal 14px/40px "microsoft yahei"; width:100px; text-align: center; display: block; color:#fff;}
+.ArticleListAuto h3 i{ font:normal 14px/40px "Times New Roman"; color:#999; font-style:italic;}
+.ArticleListAuto h3 span { float:right; text-align:right; font:normal 12px/40px 宋体; padding-right:10px; }
+.ArticleListAuto h3 span a { color:#333;}
+.ArticleListAuto h3 span a:hover { color:#c30; }
+
+.ArticleListAuto ul { padding:5px 10px; border:1px solid #e8e8ea; border-top:none; min-height:180px;}
+.ArticleListAuto ul li { height:35px; font: 12px/35px "microsoft yahei"; border-bottom:1px dashed #ddd; display: block;}
+.ArticleListAuto ul li a { background:url(/Widgets/WidgetCollection/MyParts/ArticleList.YMD/Images/icon02a.gif) no-repeat left center; padding-left:10px; height: 35px;}
+.ArticleListAuto ul li a:hover { background:url(/Widgets/WidgetCollection/MyParts/ArticleList.YMD/Images/icon02b.gif) no-repeat left center;  }
+.ArticleListAuto ul li span { float:right; text-align:right; color:#aaa; font:italic 12px/35px arial; }
+
+.ArticleListAuto ul li.hotnews a { color:#000; display:block; background:url(/Widgets/WidgetCollection/MyParts/ArticleList.YMD/Images/icon02a.gif) no-repeat left center; padding-left:10px; }
+.ArticleListAuto li.hotnews a:hover { color:#c00;}
+
+
+
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:ArticleList.YMD
+ * Style:ArticleListAuto
+ * Desc:目前没有
+ * Quot:SchoolB
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:ArticleTopic
+ * Style:ArticleTopicNoHeader
+ * Desc:目前没有
+ * Quot:SchoolB
+*************************************************************/
+
+.ArticleTopicNoheader { width:100%; min-height:80px; margin-top:13px; overflow:hidden;}
+.ArticleTopicNoheader h3 { display: none;  }
+.ArticleTopicNoheader h3 em { display: none; }
+.ArticleTopicNoheader h3 i { display: none; }
+.ArticleTopicNoheader h3 span { float:right; text-align:right; font:normal 10px/35px Tahoma, Geneva, sans-serif; padding-right:10px;}
+.ArticleTopicNoheader h3 span a { color:#333;}
+.ArticleTopicNoheader h3 span a:hover { color:#999; text-decoration: underline;}
+
+.ArticleTopicNoheader h4 { height:20px; color:#000; font:normal 16px/20px "microsoft yahei"; margin:10px auto; text-align: center;}
+.ArticleTopicNoheader h4 a { }
+.ArticleTopicNoheader h4 a:hover { }
+.ArticleTopicNoheader p { background:url(/Widgets/WidgetCollection/MyParts/ArticleTopic/Images/icon_jy.png) no-repeat left 3px; line-height:22px; color:#666; text-indent:3em; padding-bottom:18px; height:30px; overflow:hidden; border-bottom:1px dashed #ddd;  }
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:ArticleTopic
+ * Style:ArticleTopicNoHeader
+ * Desc:目前没有
+ * Quot:SchoolB
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:scroll_banner
+ * Style:scroll_banner
+ * Desc:目前没有
+ * Quot:School
+*************************************************************/
+
+/*************************************************************
+ * Command:End
+ * Control:scroll_banner
+ * Style:scroll_banner
+ * Desc:目前没有
+ * Quot:School
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:scroll_banner
+ * Style:allscroll
+ * Desc:目前没有
+ * Quot:School
+*************************************************************/
+
+
+.allscroll { clear:both;}
+.allscroll .banner_show{ width:100%; text-align:center; height:350px; overflow:hidden; position:relative; min-width:1000px; }
+.allscroll .bannger_inbox{ position:absolute; left:50%; top:0;}
+
+/*翻页*/
+.allscroll .banner_pre_next{ position:relative; z-index:105;top:140px;width:1000px;left:50%; height:37px;margin-left:-500px;*left:240px;}
+.allscroll .banner_pre_next a{ width:37px; height:37px; text-indent:-999em;}
+
+.allscroll .banner_pre_next .banner_btn_left{ position:absolute;left:-37px; background-position:0px 0px; background:url(/Widgets/WidgetCollection/MyParts/scroll_banner/Images/btn.png) no-repeat; }
+.allscroll .banner_pre_next a.banner_btn_left:hover{ position:absolute;left:-37px; background-position:0px 0px; background:url(/Widgets/WidgetCollection/MyParts/scroll_banner/Images/btn_over.png) no-repeat; }
+.allscroll .banner_pre_next .banner_btn_right{ position:absolute;right:-37px; background:url(/Widgets/WidgetCollection/MyParts/scroll_banner/Images/btn.png) no-repeat -37px 0px; }
+.allscroll .banner_pre_next .banner_btn_right:hover{ position:absolute;right:-37px; background:url(/Widgets/WidgetCollection/MyParts/scroll_banner/Images/btn_over.png) no-repeat -37px 0px; }
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:scroll_banner
+ * Style:allscroll
+ * Desc:目前没有
+ * Quot:School
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:UserRegister.Simple
+ * Style:UserRegister_Simple
+ * Desc:目前没有
+ * Quot:School
+*************************************************************/
+
+.UserRegister_Simple .table_reg
+{
+	border-bottom: 1px solid #BFF1FF;
+	font-size: 14px;
+	font-weight: bold;
+	margin: 10px auto;
+	padding: 6px 30px;
+	text-align: left;
+	width: 98%;
+}
+.UserRegister_Simple th, .UserRegister_Simple td
+{
+	color: #333333;
+	font-family: "宋体" ,Arial,Helvetica,sans-serif;
+	font-size: 12px;
+}
+.UserRegister_Simple th
+{
+	font-weight: normal;
+	padding-right: 5px;
+	text-align: right;
+}
+.UserRegister_Simple .table_reg caption
+{
+	border-bottom: 1px solid #8DA7C4;
+	font-size: 14px;
+	font-weight: bold;
+	margin: 10px auto 0;
+	padding: 6px 30px;
+	text-align: left;
+}
+.UserRegister_Simple .input_focus,.UserRegister_Simple .input_blur
+{
+	border: 1px solid #DCDCDC;
+	height: 18px;
+	line-height: 18px;
+	padding-left: 2px;
+}
+.UserRegister_Simple input, .UserRegister_Simple textarea, .UserRegister_Simple select, .UserRegister_Simple button,.UserRegister_Simple file
+{
+	font-size: 12px;
+	padding-left: 2px;
+}
+.UserRegister_Simple input,.UserRegister_Simple select,.UserRegister_Simple textarea,.UserRegister_Simple .textarea_style
+{
+	border: 1px solid #DCDCDC;
+	font-family: "宋体";
+}
+.UserRegister_Simple input,.UserRegister_Simple textarea,.UserRegister_Simple select,.UserRegister_Simple button,.UserRegister_Simple file
+{
+	font-size: 12px;
+}
+.UserRegister_Simple .button_style
+{
+	border: 1px solid #9CC9E0;
+	color: #077AC7;
+	cursor: pointer;
+	height: 21px;
+	padding: 1px 4px;
+	text-align: center;
+}
+.UserRegister_Simple input,.UserRegister_Simple textarea,.UserRegister_Simple select,.UserRegister_Simple button,.UserRegister_Simple file
+{
+	font-size: 12px;
+	padding-left: 2px;
+}
+.UserRegister_Simple .table_reg td
+{
+	padding: 8px 5px;
+}
+.UserRegister_Simple td
+{
+	line-height: 200%;
+	text-align: left;
+}
+.UserRegister_Simple td,.UserRegister_Simple th
+{
+	font-size: 12px;
+}
+
+/*************************************************************
+ * Command:End
+ * Control:UserRegister.Simple
+ * Style:UserRegister_Simple
+ * Desc:目前没有
+ * Quot:School
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:MenuDropDown02
+ * Style:MenuDropDown02
+ * Desc:目前没有
+ * Quot:School
+*************************************************************/
+
+.MenuDropDown02 { width:100%; height:48px; background:url(/Widgets/WidgetCollection/MyParts/MenuDropDown02/Images/menu_bg.jpg) repeat-x center;position:relative; z-index: 10000;}
+
+.MenuDropDown02 #nav{ width:1080px; margin:0px auto; height:32px;  }
+.MenuDropDown02 #nav .jquery_out{float:left;line-height:32px;display:block;border-right:1px solid #fff;text-align:center;color:#fff;font:18px/32px "微软雅黑";background:#062723 url(../images/slide-panel_03.png) 0 0 repeat-x;}
+.MenuDropDown02 #nav .jquery_out .smile{padding-left:1em;}
+.MenuDropDown02 #nav .jquery_inner{margin-left:16px;}
+.MenuDropDown02 #nav .jquery{margin-right:1px;padding:0 2em;}
+
+.MenuDropDown02 #nav .mainlevel{ float: left; background: none; width:120px; text-align:center; font-size:16px; background:url(/Widgets/WidgetCollection/MyParts/MenuDropDown02/Images/menu_line.png) no-repeat left center; font-family:"Microsoft YaHei"; /*IE6 only*/}
+.MenuDropDown02 #nav .mainlevel a{color:#fff;text-decoration:none;line-height:45px;display:block; width:120px;}
+.MenuDropDown02 #nav .mainlevel a:hover,#nav .mainlevel a.cur{color:#ff0;text-decoration:none;background:none;}
+.MenuDropDown02 #nav .mainlevel ul{display:none;position:absolute; padding-top:3px;}
+.MenuDropDown02 #nav .mainlevel li {border-bottom:1px solid #fff;background:#ffe60c;width:120px; font-size:14px; /*IE6 only*/}
+.MenuDropDown02 #nav .mainlevel li a { color: #000; }
+.MenuDropDown02 #nav .mainlevel li a:hover { background: #062723; color:#fff; }
+
+.MenuDropDown02 ul li.first { float: left; background:none; font-family:"Microsoft YaHei"; font-size:16px; text-align:center; }
+.MenuDropDown02 ul li.first a {color:#fff;text-decoration:none;line-height:45px;display:block; width:120px;}
+.MenuDropDown02 ul li.first a:hover { color:#ff0;text-decoration:none;}
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:MenuDropDown02
+ * Style:MenuDropDown02
+ * Desc:目前没有
+ * Quot:School
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:PicGroupScrool
+ * Style:PicGroupScrool
+ * Desc:目前没有
+ * Quot:School
+*************************************************************/
+
+
+.PicGroupScrool{ width:100%; margin-top:20px; overflow: hidden;}
+.PicGroupScrool h2 { height:45px; border-right:1px solid #e7e7e7; }
+.PicGroupScrool h2 em { float:left;  font:normal 14px/45px "microsoft yahei"; color: #fff; width: 120px; text-align:center; }
+.PicGroupScrool h2 i { font:normal 12px/45px "arial"; color:#999; font-style:italic;}
+.PicGroupScrool h2 span { float:right; text-align:right; font:normal 12px/45px "宋体"; padding-right: 10px; }
+
+.PicGroupScrool ul.rollBox{  border:1px solid #ddd; border-top:none; clear: both; width:1058px; min-height:140px; margin:0 auto; overflow:hidden; background:url(/Widgets/WidgetCollection/MyParts/PicGroupScrool/Images/contentbg01.png) repeat-x bottom; padding:30px 0; }
+
+/*ScrollPic*/
+.PicGroupScrool .rollBox .LeftBotton { cursor: pointer; display: inline; float: left; margin:55px 0 0 5px; overflow: hidden; }
+.PicGroupScrool .rollBox .LeftBotton a { height:28px; width:14px; background:url(/Widgets/WidgetCollection/MyParts/PicGroupScrool/Images/scroll_l01.png) no-repeat scroll 0 0 transparent; display:block;}
+.PicGroupScrool .rollBox .LeftBotton a:hover { background:url(/Widgets/WidgetCollection/MyParts/PicGroupScrool/Images/scroll_l02.png) no-repeat scroll 0 0 transparent ;}
+
+.PicGroupScrool .rollBox .RightBotton { cursor: pointer; display: inline; float: right; margin:55px 5px 0 0; overflow: hidden; text-align: right; }
+.PicGroupScrool .rollBox .RightBotton a { height:28px; width:14px; background:url(/Widgets/WidgetCollection/MyParts/PicGroupScrool/Images/scroll_r01.png) no-repeat scroll 0 0 transparent; display:block;}
+.PicGroupScrool .rollBox .RightBotton a:hover { background:url(/Widgets/WidgetCollection/MyParts/PicGroupScrool/Images/scroll_r02.png) no-repeat scroll 0 0 transparent ;}
+
+.PicGroupScrool .rollBox .Cont { float:left; width:1000px; margin-left:10px; margin-right:10px; overflow:hidden;}
+.PicGroupScrool .rollBox .ScrCont { width:10000000px; overflow:hidden;}
+.PicGroupScrool .rollBox .Cont li { float:left; text-align:center; list-style:none; width:120px; padding:0 13px; display: block; }
+.PicGroupScrool .rollBox .Cont li img { width:120px; height:120px; border:1px solid #ddd; padding:3px;  border-radius:100%; }
+.PicGroupScrool .rollBox #List1, .rollBox #List2 { float:left;}
+.PicGroupScrool .rollBox .Cont p { width:120px; text-align:center; font-size:12px; font-family: "microsoft yahei"; }
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:PicGroupScrool
+ * Style:PicGroupScrool
+ * Desc:目前没有
+ * Quot:School
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:PicGroupScrool
+ * Style:GroupList
+ * Desc:目前没有
+ * Quot:School
+*************************************************************/
+
+
+.GroupList{ width:100%; margin-top:20px; overflow: hidden;}
+.GroupList h2 { color:#fff; height:40px ;}
+.GroupList h2 em { float:left; font:normal 18px/40px "微软雅黑"; color:#06b206;text-align:center; display:block; width:100px;}
+.GroupList h2 i { float:left; font:normal 16px/35px "宋体"; color:#999; padding-top:5px; font-style:italic; margin-left:10px;}
+.GroupList h2 span { float:right; text-align:right; font:normal 12px/40px "宋体"; padding-right: 10px; }
+.GroupList h2 span a { }
+.GroupList h2 span a:hover { }
+
+.GroupList ul.rollBox{ clear: both; width:1020px; min-height:180px; margin:0 auto; overflow:hidden; padding:15px 0; }
+
+/*ScrollPic*/
+.GroupList .rollBox .LeftBotton { cursor: pointer; display: inline; float: left; margin:65px 0 0 0px; overflow: hidden; }
+.GroupList .rollBox .LeftBotton a { height:28px; width:14px; background:url(/Widgets/WidgetCollection/MyParts/PicGroupScrool/Images/scroll_l01.png) no-repeat scroll 0 0 transparent; display:block;}
+.GroupList .rollBox .LeftBotton a:hover { background:url(/Widgets/WidgetCollection/MyParts/PicGroupScrool/Images/scroll_l02.png) no-repeat scroll 0 0 transparent ;}
+
+.GroupList .rollBox .RightBotton { cursor: pointer; display: inline; float: right; margin:65px 0px 0 0; overflow: hidden; text-align: right; }
+.GroupList .rollBox .RightBotton a { height:28px; width:14px; background:url(/Widgets/WidgetCollection/MyParts/PicGroupScrool/Images/scroll_r01.png) no-repeat scroll 0 0 transparent; display:block;}
+.GroupList .rollBox .RightBotton a:hover { background:url(/Widgets/WidgetCollection/MyParts/PicGroupScrool/Images/scroll_r02.png) no-repeat scroll 0 0 transparent ;}
+
+.GroupList .rollBox .Cont { float:left; width:992px; margin-left:0px; margin-right:0px; overflow:hidden;}
+.GroupList .rollBox .ScrCont { width:10000000px; overflow:hidden;}
+.GroupList .rollBox .Cont li { float:left; text-align:center; list-style:none; width:220px; margin:0 14px; display: block; }
+.GroupList .rollBox .Cont li img { width:220px; height:132px;  border-radius:3px; }
+.GroupList .rollBox #List1, .rollBox #List2 { float:left;}
+.GroupList .rollBox .Cont p { width:220px; text-align:center; font-size:13px; font-family: "微软雅黑"; padding-top:5px; }
+.GroupList .rollBox .Cont a { color:#999; }
+.GroupList .rollBox .Cont a:hover { color:#06b206; }
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:PicGroupScrool
+ * Style:GroupList
+ * Desc:目前没有
+ * Quot:School
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:LinkList.Default
+ * Style:LinkList_Default
+ * Desc:目前没有
+ * Quot:temp02
+*************************************************************/
+
+.LinkList_Default .friend_link {  }
+.LinkList_Default .friend_link h3
+{
+    height: 40px;
+    line-height: 40px;
+    background:url(/Widgets/WidgetCollection/友情链接/LinkList.Default/Images/back3.gif) no-repeat;
+    font-size: 14px;
+    color: #fff;
+    padding-left:30px;
+    position: relative;
+    font-weight:normal;
+}
+.LinkList_Default .friend_link h3 img
+{
+    position: absolute;
+    top: 15px;
+    right: 10px;
+}
+.LinkList_Default .friend_content
+{
+    border-left: 1px solid #e9e9e9;
+    border-right: 1px solid #e9e9e9;
+    border-bottom: 1px solid #e9e9e9;
+    background:url(/Widgets/WidgetCollection/友情链接/LinkList.Default/Images/area_back.gif) repeat-x left top;
+    padding: 25px 24px 0px 12px;
+}
+
+/******友情链接********/
+.LinkList_Default .friend_content
+{
+    padding: 15px 0px 0px 0px;
+    height: auto !important;
+    height: 65px;
+    min-height: 65px;
+}
+.LinkList_Default .friend_pic
+{
+    height: auto !important;
+    min-height: 40px;
+    height: 40px;
+    padding-bottom: 5px;
+}
+.LinkList_Default .friend_pic li
+{
+    float: left;
+    width: 96px;
+    height: 37px;
+    overflow: hidden;
+    margin: 0px 0px;
+    margin-left: 10px;
+    display: inline;
+}
+.LinkList_Default .friend_pic li img
+{
+    width: 88px;
+    height: 31px;
+    overflow: hidden;
+    padding: 2px;
+    border: 1px solid #f0f0f0;
+}
+
+.LinkList_Default .underline_picture
+{
+    height: 7px;
+    line-height: 7px;
+    background:url(/Widgets/WidgetCollection/友情链接/LinkList.Default/Images/back.gif) no-repeat left -182px;
+}
+
+.LinkList_Default .friend_text
+{
+    padding: 10px;
+}
+.LinkList_Default .friend_text li
+{
+    float: left;
+    margin:0 10px;
+    color: #666;
+    border-radius: 5px;
+    padding:5px 7px;
+    border:1px solid #ddd;
+}
+
+.LinkList_Default .friend_text li a
+{
+    color: #666;
+    display: block;
+}
+.LinkList_Default .friend_text li a:hover
+{
+    color: #cc0000;
+}
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:LinkList.Default
+ * Style:LinkList_Default
+ * Desc:目前没有
+ * Quot:temp02
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:ArticleList.Scroll
+ * Style:huadong
+ * Desc:目前没有
+ * Quot:temp02
+*************************************************************/
+
+
+.huadong { width: 700px; height:40px; }
+.huadong h3 { float:left; font:normal 14px/40px "微软雅黑"; background: url("/_data/images/icon_notice.png") no-repeat left center; padding-left:30px; }
+
+.huadong .notice_active { float: left; width: 530px; height: 40px; margin-left:15px; overflow: hidden;}
+.huadong .notice_active li { float: left; width:520px; color:#656972;font-size:12px; display: block; list-style-type:none; line-height: 40px; overflow: hidden;}
+.huadong .notice_active li span { float:right; text-align:right; color:#888;font-size:12px;}
+.huadong .notice_active li a { color:#333; background:url(/Widgets/WidgetCollection/MyParts/ArticleList.Scroll/Images/icon02a.gif) no-repeat left center;  padding-left:10px;}
+.huadong .notice_active li a:hover { color:#00be06; background:url(/Widgets/WidgetCollection/MyParts/ArticleList.Scroll/Images/icon02b.gif) no-repeat left center;}
+
+.huadong .gg_more { float: right; line-height: 40px;}
+.huadong .gg_more a { font-size: 12px; text-decoration:none; border-radius: 20px; border:1px solid #ddd; padding:3px 10px; color:#333;}
+.huadong .gg_more a:hover { color:#fff; background: #00be06; border:1px solid #00be06; }
+
+.huadong ul li.hotnews a { color:#000; display:block; background:url(/Widgets/WidgetCollection/MyParts/ArticleList.Scroll/Images/icon02a.gif) no-repeat left center; padding-left:10px; }
+.huadong li.hotnews a:hover { color:#c00;}
+
+
+
+
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:ArticleList.Scroll
+ * Style:huadong
+ * Desc:目前没有
+ * Quot:temp02
+*************************************************************/

@@ -1,0 +1,56 @@
+﻿/*************************************************************
+ * Command:Start
+ * Control:PicFocusSlide
+ * Style:PicScrollAuto
+ * Desc:目前没有
+ * Quot:we7
+*************************************************************/
+
+.PicScrollAuto #wrapper { margin:0; padding:0;}
+.PicScrollAuto .slideBox{ width:100%; height:350px;overflow:hidden; position:relative; left:0; font-size:12px; font-family:"microsoft yahei";}
+.PicScrollAuto .slideBox .hd{ height:15px; overflow:hidden; position:absolute; right:0px; bottom:7px; z-index:1; line-height:15px;  }
+.PicScrollAuto .slideBox .hd ul { float:left; overflow:hidden; }
+.PicScrollAuto .slideBox .hd ul li { float:left; margin-right:5px; width:15px; height:15px; line-height:15px; text-align:center; background:#dab176; color:#333; cursor:pointer; }
+.PicScrollAuto .slideBox .hd ul li.on{  background:#06b206; color:#fff;}
+
+.PicScrollAuto .slideBox .bd{ position:absolute; height:100%; z-index:0; }
+.PicScrollAuto .slideBox .bd img { width:100%; /*height:320px;*/ border:none; overflow:hidden; }
+.PicScrollAuto .slideBox .bd p { position:absolute; top:320px; left:0px; height:30px; color:#dab176; background:#333; display:block; overflow:hidden; width:100%; line-height:30px; padding-left:10px;}
+
+/*************************************************************
+ * Command:End
+ * Control:PicFocusSlide
+ * Style:PicScrollAuto
+ * Desc:目前没有
+ * Quot:we7
+*************************************************************/
+
+
+
+/*************************************************************
+ * Command:Start
+ * Control:PicFocusSlide
+ * Style:HomeJD
+ * Desc:目前没有
+ * Quot:we7
+*************************************************************/
+.HomeJD #wrapper { margin:0; padding:0;}
+.HomeJD .slideBox{ width:470px; height:250px;overflow:hidden; position:relative; font-size:12px; background:#757575; }
+.HomeJD .slideBox .hd{ height:15px; overflow:hidden; position:absolute; right:5px; bottom:8px; z-index:1;  }
+.HomeJD .slideBox .hd ul { float:left; overflow:hidden; zoom:1; }
+.HomeJD .slideBox .hd ul li { float:left; margin-right:5px; width:15px; height:15px; line-height:15px; text-align:center; background:#fff; cursor:pointer; border-radius:100%; -webkit-border-radius:100%; -moz-border-radius:100%; }
+.HomeJD .slideBox .hd ul li.on{ background:#ff6600; color:#fff; }
+
+.HomeJD .slideBox .bd{ position:relative; height:100%; z-index:0; }
+.HomeJD .slideBox .bd img { width:470px; height:220px; border:none; overflow:hidden;  }
+.HomeJD .slideBox .bd p { position:absolute; top:220px; left:0px; height:250px; color:#f3f3f3; background:none; display:block; overflow:hidden; width:100%; line-height:30px; padding-left:10px;}
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:PicFocusSlide
+ * Style:HomeJD
+ * Desc:目前没有
+ * Quot:we7
+*************************************************************/

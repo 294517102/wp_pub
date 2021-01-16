@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>服务列表</title>
+
+<#include "/include/bg/in_head_res.html">
+
+</head>
+<body class="inner-body clear">
+	<div class="layui-container bg-color" style="width:100%">
+		<form class="layui-form layui-form-pane" id="form_1"  action="${base}/admin/obtain_pi_service.htm">
+		 <div class="layui-form-item layui-col-space10" style="background-color: white;padding:15px 10px;">
+			<div class="layui-col-md2" style="width:auto;">
+				<label class="layui-form-label" style="">序号</label>
+				<div class="layui-input-block" >
+					<input type="text" name="id" style="width: auto;"autocomplete="off" placeholder="请输入序号" class="layui-input" >
+				</div>
+			</div>
+			<div class="layui-col-md2" style="width:auto;">
+				<label class="layui-form-label">服务名称</label>
+				<div class="layui-input-block">
+					<input type="text" name="name" style="width: auto;
+						autocomplete="off" placeholder="请输入服务名称" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-col-md2">
+				<span class="layui-form-label">类别</span>
+				<div class="layui-input-block ">
+					<select name="otype">
+						<option value="0">请选择</option>
+						<option value="1">查询</option>
+						<option value="2">操作</option>
+					</select>
+				</div>
+			</div>
+			<div class="fl" style="margin-left:50px">
+				<button class="layui-btn fl search" lay-submit > <i class="layui-icon">&#xe615;</i> 搜索</button>
+				<button class="layui-btn layui-btn-warm  fl refresh" type="reset"><i class="layui-icon">&#x1002;</i> 刷新</button>
+			</div>
+		</div>
+		</form>
+		<div class="content_main">
+			<div class="layui-row">
+				<button class="layui-btn  service-edit-add fl ">
+					<i class="layui-icon">&#xe61f;</i> 新增
+				</button>
+				<button class="layui-btn layui-btn-danger deleteAll fl ">
+					<i class="layui-icon">&#xe640;</i> 删除
+				</button>
+			</div>
+			<div class="layui-row layui-form">
+				<table class="layui-table" >
+					<thead>
+						<tr>
+							<th><input type="checkbox"  lay-filter="allChoose" lay-skin="primary"></th>
+							<th >序号</th>
+							<th>名称</th>
+							<th >SQL</th>
+							<th >参数</th>
+							<th>创建人</th>
+							<th >时间</th>
+							<th width="15%">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<#if resultList?size <=0 >
+						<tr>
+							<td colspan="8">无记录</td>
+						</tr>
+						<#else> <#list resultList as r>
+						<tr>
+							<td><input type="checkbox" lay-skin="primary" id="${r.id}"></td>
+							<td>${r.id}</td>
+							<td>${r.name}</td>							
+							<td><#if r.stype == 1> ${r.sql} <#else> ${r.entityName}
+								</#if></td>
+							<td><#if r.parameter?length gt 40> ${r.parameter?substring(0,40)}... <#else> ${r.parameter}</#if></td>
+							<td>${(r.user.username)!"未知"}</td>
+							<td>${r.insertTime}</td>
+							<td>
+							<button class="layui-btn layui-btn-small detail" id="${r.id}"><i class="layui-icon">&#xe63c;</i> 编辑</button>
+							<button class="layui-btn layui-btn-danger layui-btn-small delete"  id="${r.id}">
+									<i class="layui-icon">&#xe640;</i> 删除
+								</button></td>
+						</tr>
+						</#list> </#if>
+					</tbody>
+				</table>
+				<div class="pageBotton">${pageHtml}</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+<#include "/include/bg/in_bottom_res.html">
+<script type="text/javascript">
+    //注意进度条依赖 element 模块，否则无法进行正常渲染和功能性操作
+  
+    $(".detail").click(function(){
+    	layer.open({
+            type: 2,
+            title: '服务编辑',
+          //  btn: ['确定', '取消'],
+            shadeClose: true,
+            shade: 0.8,
+            area: ['65%', '520px'],
+            content:'${base}/admin/obtain_pi_service.htm?url=tools/interface/service_edit&id='+$(this).attr("id") //iframe的url
+        });
+    });
+
+    $(".delete").click(function(){
+    	var id = $(this).attr("id");
+    	layer.confirm("确认删除？",{btn: ['确认','取消'],icon:3 },function(){
+    		 $.postJSON("${base}/admin/save_pi_service.htm",{"id":id,"isDelete":1},function(data){              
+          	     if(data.result){
+          	    	layer.msg("删除成功");     
+          	    	window.location.reload();
+          	     }
+    			       	            	 
+            }); 
+    	});
+    });
+    
+    $(".refresh").click(function(){
+    	window.location.reload();
+    });
+    
+    $(".deleteAll").click(function(){
+    	if($("input:checked").length<=0){
+    		layer.msg("请选择待删除条目",{icon:2});
+    		return;
+    	}
+    	layer.confirm("确认删除？",{btn: ['确认','取消'],icon:3 },function(){
+    		$("input:checked").each(function(){
+        		var id = $(this).attr("id");        
+            	$.postJSON("${base}/admin/save_pi_service.htm",{"id":id,"isDelete":1},function(data){              
+             	     if(!data.result){
+             	     	layer.msg("删除失败-"+id,{icon:2});
+             	     }
+       			       	            	 
+               }); 
+        	});
+    		layer.msg("操作完毕",function(){
+           		window.location.reload();
+           	});
+    	});
+
+    });
+    
+         var form = layui.form;
+
+        //监听提交
+        form.on('submit(form_1)', function(data){
+            layer.alert(JSON.stringify(data.field), {
+                title: '最终的提交信息'
+            })
+            layer.load(1,{shade:true});
+            return false;
+        });
+
+        //全选
+        form.on('checkbox(allChoose)', function(data){
+            var child = $(data.elem).parents('table').find('tbody input[type="checkbox"]');
+            child.each(function(index, item){
+                item.checked = data.elem.checked;
+            });
+             form.render('checkbox');
+        }); 
+
+    $(function(){
+        $(".service-edit-add").click(function () {
+            layer.open({
+                type: 2,
+                title: '服务编辑',
+              //  btn: ['确定', '取消'],
+                shadeClose: true,
+                shade: 0.8,
+                area: ['65%','520px'],
+                content:'${base}/admin/to_target.htm?url=tools/interface/service_edit' //iframe的url
+            });
+        });     
+    })
+</script>
+</html>

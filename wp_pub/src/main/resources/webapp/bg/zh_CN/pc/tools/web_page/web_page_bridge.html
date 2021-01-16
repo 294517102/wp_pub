@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>项目列表桥梁页面</title>
+</head>
+<script type="text/javascript">
+<#assign level="0">
+<#if user.jobs?? && user.jobs?size gt 0>
+<#list user.jobs as job>
+<#if job.power.level gt 20>
+level=${job.power.level}
+</#if>
+</#list>
+</#if>
+
+
+// 所有权限
+<#if user.type==4>
+window.location.href = "${base}/general_service_K9iLp6Vfo75oVYmXuQa.htm?_ttype=2&_url=tools/web_page/picture_web_page_list&isDelete=-1";
+<#elseif level == 40>
+// 总监
+window.location.href = "${base}/general_service_K9iLp6Vfo75oVYmXuQa.htm?_ttype=2&_url=tools/web_page/picture_web_page_list&isDelete=-1";
+<#elseif level gt 20>
+// 经理
+window.location.href = "${base}/general_service_K9iLp6Vfo75oVYmXuQa.htm?_ttype=2&_url=tools/web_page/picture_web_page_list&isDelete=-1";
+<#else>
+// 普通员工
+window.location.href = "${base}/general_service_K9iLp6Vfo75oVYmXuQa.htm?_ttype=2&_url=tools/web_page/picture_web_page_list&isDelete=-1&user.id=${user.id}";
+</#if>
+
+</script>
+</html>

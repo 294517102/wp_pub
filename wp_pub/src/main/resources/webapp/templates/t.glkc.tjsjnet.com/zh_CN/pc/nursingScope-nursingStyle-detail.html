@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<#include "/${rp}/metalink.html">
+	<title>${webSet.title}</title>
+	 <style>
+    .swiper-container {
+      width: 100%;
+      height: 300px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .swiper-slide {
+      background-size: cover;
+      background-position: center;
+    }
+    .gallery-top {
+      height: 80%;
+      width: 100%;
+    }
+    .gallery-thumbs {
+      height: 20%;
+      box-sizing: border-box;
+      padding: 10px 0;
+    }
+    .gallery-thumbs .swiper-slide {
+      width: 25%;
+      height: 100%;
+      opacity: 0.4;
+    }
+    .gallery-thumbs .swiper-slide-active {
+      opacity: 1;
+    }
+    .dq_active1{
+			display: inline-block;
+			height: 55px;
+			width: 56px;
+			color: #46c3f2;
+			font-size: 14px;
+			border-bottom: 2px solid #46c3f2;
+		}
+
+  </style>
+
+</head>
+<body>
+	<header>
+		<#include "/${rp}/header.html">
+	</header>
+	<div class="dangquangongzuo">
+		<!--<div class="dqgz_content_nav">-->
+		    <#assign ck = cl.bk(c)>
+		    <#assign is = at.bi(i)>
+			<!--<ul class="dangqun_li">	-->
+			<!--<#list ck.parent.children as cc>-->
+			<!--	<li><a href="${cm.cp}${cc.url}" <#if ck.id==cc.id> class="dq_active1"</#if>>${cc.title}</a></li>-->
+			<!--</#list>	-->
+			<!--</ul>-->
+		<!--</div>-->
+		<div class="df_lb">
+			<div class="hu_lb_title">
+				<h4 style="height: 66px">${ck.title}</h4>
+				<a class="goback">返回上一级</a>
+			</div>
+				
+				<div class="huli_lunbo">
+					<div class="swiper-container gallery-top">
+					    <div class="swiper-wrapper">
+					            <#list is.pic as toi>
+					            <div class="swiper-slide" style="background-image:url(${toi.url})"></div>
+					            </#list>
+					            
+					            
+					    </div>
+					    <!-- Add Arrows -->
+					    <div class="swiper-button-next swiper-button-white"></div>
+					    <div class="swiper-button-prev swiper-button-white"></div>
+					  </div>
+					  <div class="swiper-container gallery-thumbs">
+					    <div class="swiper-wrapper">
+				        
+				            <#list is.pic as toi>
+					            <div class="swiper-slide" style="background-image:url(${toi.url})"></div>
+					            </#list>
+					            
+					    </div>
+					  </div>
+
+				</div>
+
+				<div class="hu_lb_title">
+			    <#assign inpic=cl.bk('yi_yuan_lu:e_ying')>
+				<h4 style="height: 66px">更多图集</h4>
+				<a href="${cm.cp}${inpic.url}">MORE+</a>
+				</div>
+				<div class="gdtu">
+				    <#list cl.bi(713).children as a>
+				    <#if a_index == 0>
+					<dl>
+						<dt><a href="${cm.cp}go.htm?url=nursingScope-nursingStyle-detail&c=${a.keyword}"><img  src="<#if a.thumbnail.url??>${a.thumbnail.url}<#else>res/default/images/default_pic.png</#if>" alt=""></a></dt>
+						<dd><a href="${cm.cp}go.htm?url=news_detail&id=${a.id}">${a.title}</a></dd>
+					</dl>
+					</#if>
+					</#list>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	<footer>
+	    <#include "/${rp}/footer.html">
+	</footer>
+</body>
+
+<script src="res/js/jquery-1.12.3.js"></script>
+<script src="res/js/jquery.SuperSlide.2.1.1.js"></script>
+<script src="res/js/swiper-4.1.6.min.js"></script>
+<#include "/${rp}/jslink.html">
+<script>
+	  var galleryTop = new Swiper('.gallery-top', {
+      spaceBetween: 10,
+      loop:true,
+       autoplay:{
+        	 delay: 2000,
+        },
+      loopedSlides: 5, //looped slides should be the same
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+	      },
+	    });
+	    var galleryThumbs = new Swiper('.gallery-thumbs', {
+	      spaceBetween: 10,
+	      slidesPerView: 4,
+	      touchRatio: 0.2,
+	      loop: true,
+	       // autoplay:{
+        // 	 delay: 2000,
+        // },
+	      loopedSlides: 5, //looped slides should be the same
+	      slideToClickedSlide: true,
+	    });
+	    galleryTop.controller.control = galleryThumbs;
+	    galleryThumbs.controller.control = galleryTop;
+
+    $('.goback').on('click',function(){
+    	window.history.go(-1); 
+    })
+</script>
+</html>

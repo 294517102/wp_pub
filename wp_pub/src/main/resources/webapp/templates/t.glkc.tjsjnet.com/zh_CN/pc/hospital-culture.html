@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<#include "/${rp}/metalink.html">
+	<title>${webSet.title}</title>
+</head>
+<style>
+		.dq_active1{
+			display: inline-block;
+			height: 55px;
+			width: 56px;
+			color: #46c3f2;
+			font-size: 14px;
+			border-bottom: 2px solid #46c3f2;
+		}
+		.yywh_txt{
+		    display: none;
+		}
+		.yywh_txt:nth-of-type(1){
+		    display: block;
+		}
+		.yywh li{
+		    cursor: pointer;
+		}
+</style>
+<body>
+	<header>
+		<#include "/${rp}/header.html">
+	</header>
+	<div class="dangquangongzuo">
+		<div class="dqgz_content_nav">
+			<#assign ck = cl.bk(c)>
+			<ul class="dangqun_li">
+			    <#list ck.parent.children as cc>
+			    <#if cc.keyword != "yi_yuan_rong_yu"&&cc.keyword != "ling_dao_tuan_dui">
+				<li><a href="${cm.cp}${cc.url}" <#if cc.id==ck.id>class="dq_active1"</#if>>${cc.title}</a></li>
+				</#if>
+				</#list>
+			</ul>
+		</div>
+		<div class="df_lb">
+			<div class="hu_lb_title">
+				<h4 style="height:64px">${ck.title}</h4>
+			</div>
+				<ul class="yywh">
+					<li class="yy_active"><a>院训</a></li>
+					<li><a>宗旨</a></li>
+					<li><a>愿景</a></li>
+				</ul>
+                <div class="all_box">
+                    <div class="yywh_txt">
+                        <#assign yx =cl.bk('yuan_xun')>
+					    <#if at.bc(yx)?size gt 0>
+					        <#list at.bc(yx) as a>
+					            ${a.ext.content}
+					        </#list>
+					    <#else>
+					    <div class="nodata">
+					        <img src="res/default/images/nodata.png" alt="" />
+					        <p>内容编辑中。。。</p>
+					    </div>
+					    </#if>
+				    </div>
+				    <div class="yywh_txt">
+					    <#assign yg =cl.bk('yuan_ge')>
+					    <#if at.bc(yg)?size gt 0>
+					        <#list at.bc(yg) as a>
+					            ${a.ext.content}
+					        </#list>
+					    <#else>
+					    <div class="nodata">
+					        <img src="res/default/images/nodata.png" alt="" />
+					        <p>内容编辑中。。。</p>
+					    </div>
+					    </#if>
+				    </div>
+				    <div class="yywh_txt">
+					    <#assign yh =cl.bk('yuan_hui')>
+					    <#if at.bc(yh)?size gt 0>
+					        <#list at.bc(yh) as a>
+					            ${a.ext.content}
+					        </#list>
+					    <#else>
+					    <div class="nodata">
+					        <img src="res/default/images/nodata.png" alt="" />
+					        <p>内容编辑中。。。</p>
+					    </div>
+					    </#if>
+				    </div>
+                </div>
+			
+			<#assign yygg=cl.bk('yi_yuan_gong_gao')>
+		<div class="yiyan_gonggao">
+			<div class="hu_lb_title">
+				<h4 style="height: 64px">${yygg.title}</h4>
+				<a href="${cm.cp}${yygg.url}">MORE+</a>
+		    </div>
+			<ul class="gonggao_lib">
+			    <#list at.bc(yygg) as a>
+			    <#if a_index lt 6>
+				<li><a href="${cm.cp}go.htm?url=news_detail&id=${a.id}">${a.title}</a><span>${a.issueTime?string('MM-dd')} </span></li>
+				</#if>
+				</#list>
+			</ul>
+		</div>	
+		</div>
+		
+	</div>
+	<footer>
+	<#include "/${rp}/footer.html">
+	</footer>
+</body>
+<script src="res/js/jquery-1.12.3.js"></script>
+<script type="text/javascript">
+    $('.yywh').on('click','li',function(){
+        var _this=this;
+        var i = $(_this).index();
+        $(_this).addClass('yy_active').siblings('li').removeClass('yy_active');
+        $('.yywh_txt').eq(i).show().siblings('.yywh_txt').hide();
+    })
+</script>
+</html>

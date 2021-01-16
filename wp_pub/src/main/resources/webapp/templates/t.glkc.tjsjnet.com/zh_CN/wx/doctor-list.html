@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <#include "/${rp}/metalink.html">
+</head>
+<body>
+<div class="page">
+    <#assign ck=cl.bk(c)>
+    <header class="bar bar-nav">
+        <a class="icon icon-left pull-left back"></a>
+         <a href="${cm.cp}" class="icon icon-home pull-right" external></a>
+        <h1 class="title">${ck.title}</h1>
+    </header>
+    <div class="content">
+        <div class="inner_box1">
+            <ul class="doctor_box">
+                <#list ck.doctors as d>
+                <li>
+                    <a href="${cm.cp}general_service_t3ncXUfMQv8itS1rnjr.htm?_url=doctor_detail&id=${d.id}">
+                        <div class="doctor_item_pic">
+                            <img src="${d.accessory.url}" alt="">
+                        </div>
+                        <div class="doctor_item_picinfo">
+                            <h3>${d.name}</h3>
+                            <p>${d.position.name}</p>
+                            <div>${d.describes}</div>
+                        </div>
+                    </a>
+                </li>
+                </#list>
+            </ul>
+        </div>
+        <#include "/${rp}/footer.html">
+    </div>
+</div>
+<#include "/${rp}/jslink.html">
+<script>
+
+</script>
+</body>
+</html>

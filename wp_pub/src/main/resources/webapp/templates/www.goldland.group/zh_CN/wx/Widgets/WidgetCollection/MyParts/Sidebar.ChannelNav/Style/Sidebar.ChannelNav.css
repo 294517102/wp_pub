@@ -1,0 +1,35 @@
+﻿/*************************************************************
+ * Command:Start
+ * Control:Sidebar.ChannelNav
+ * Style:Sidebar_ChannelNav
+ * Desc::
+ * Quot:
+*************************************************************/
+
+/******栏目分类**********/
+.Sidebar_ChannelNav { width:100%; overflow: hidden; background: url("../images/header_bg.png") no-repeat top left;}
+.Sidebar_ChannelNav h2 { height:40px; }
+.Sidebar_ChannelNav h2 em { font:normal 14px/40px "microsoft yahei"; color:#fff; padding-left:35px;}
+.Sidebar_ChannelNav ul { border:1px solid #ddd; border-top:none; padding:10px 0; overflow:hidden;}
+.Sidebar_ChannelNav ul li { font:normal 14px/39px "microsoft yahei"; text-align: center; border-bottom:1px dashed #eee;}
+.Sidebar_ChannelNav ul li a { width:100%; height:39px ; line-height: 39px ; background: url(../images/navbg01.jpg) no-repeat center center; display:block;}
+.Sidebar_ChannelNav ul li a:hover, .subnav li.class_on a { background:url(../images/navbg02.jpg) no-repeat center center;}
+
+
+
+
+
+
+
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:Sidebar.ChannelNav
+ * Style:Sidebar_ChannelNav
+ * Desc::
+ * Quot:
+*************************************************************/

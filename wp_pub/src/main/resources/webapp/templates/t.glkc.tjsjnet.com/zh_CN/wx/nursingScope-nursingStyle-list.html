@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <#include "/${rp}/metalink.html">
+    <style type="text/css">
+        .sdd{
+            -moz-column-count:2; 	/* Firefox */
+            -webkit-column-count:2;
+            column-count: 2;
+	        column-gap: 10px;
+        }
+        .sdd li{
+            width: auto !important;
+            margin: 0;
+            display: inherit !important;
+            margin-bottom: 0  !important;
+        }
+        .sdd img{
+            width: 100%;
+        }
+        .wenlist li {
+            width: 100% !important;
+            text-align: left;
+        }
+        .wenlist_title{
+            text-align: left !important;
+        }
+        .t_title{
+            padding: 12px 0;
+    display: block;
+    text-align: center;
+    border-bottom: 1px solid #5AB4E8;
+    color: #5AB4E8;
+    font-size:16px;
+        }
+        .imgh_siox>a{
+            display:inline-block;
+            padding: 12px 0;
+            font-size:14px;
+        }
+/*        .pic_list ul li:nth-of-type(1n) {*/
+/*    margin-right: 0;*/
+/*}*/
+/*.pic_list ul li {*/
+/*    display: inline-block;*/
+/*    vertical-align: top;*/
+/*    width: 48.5%;*/
+/*    margin-right: 3%;*/
+/*    float: left;*/
+/*    margin-bottom: 10px !important;*/
+/*}*/
+    </style>
+</head>
+<body>
+<div class="page">
+    <#assign ck=cl.bi(713)>
+     <#assign cks=cl.bk("hu_li_yi_bu")>
+    <header class="bar bar-nav">
+        <a class="icon icon-left pull-left back"></a>
+        <a href="${cm.cp}" class="icon icon-home pull-right" external></a>
+        <h1 class="title">${ck.title}</h1>
+    </header>
+    <div class="content">
+        <div class="huli_header">
+            <ul>
+                <#list ck.parent.children as a>
+                <#if a_index==0||a_index==3>
+                <li <#if a.id==ck.id> class="active"</#if>><a href="${cm.cp}${a.url}" external>${a.title}</a></li>
+                </#if>
+                </#list>
+            </ul>
+        </div>
+        <div class="pic_list erjibox" style="margin-top: 0" ${ck.children?size}>
+                <div class="swiper-container chils">
+                    <div class="sdd swiper-wrapper">
+                          <#assign gh = at.bc(cks)>
+                             <#list gh[0].pic as a>
+                                <div class="swiper-slide">
+                                    <img src="${a.url}">
+                                </div>
+                            </#list>
+                    </div>
+                </div>
+        <#assign imgs = cl.bk("yi_yuan_gong_gao")>
+        <div class="imgh_siox">
+             <dd class="t_title active">医院公告</dd><a href="${cm.cp}go.htm?url=news_wenlist&c=yi_yuan_gong_gao">MORE+</a>
+             <div class="sdsd">
+                 <#assign sc = at.bc(imgs)>
+                 <ul class="wenlist">
+                 <#list sc as a>
+                 <#if a_index lte 4>
+                     
+                      <li>
+                        <a href="${cm.cp}go.htm?url=news_detail&id=${a.id}" external>
+                            <p class="wenlist_title">${a.title}</p>
+                            <span class="wenlist_span">${a.issueTime?string('MM-dd')}</span>
+                        </a>
+                    </li>
+                    </#if>
+                </#list>
+                 </ul>
+             </div>
+        </div>
+        </div>
+        <#include "/${rp}/footer.html">
+    </div>
+</div>
+<#include "/${rp}/jslink.html">
+	<script src="res/js/swiper-4.1.6.min.js"></script>
+<script>
+ var mySwiper = new Swiper('.swiper-container', {
+	autoplay: true,//可选选项，自动滑动
+})
+    // document.ready=function(){
+    //     window.location.href = "http://www.scjn120.com/go.htm?url=nursingScope-nursingStyle-detail&c=hu_li_yi_bu&i=732";
+    // }
+</script>
+</body>
+</html>

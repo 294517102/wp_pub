@@ -1,0 +1,21 @@
+﻿/*************************************************************
+ * Command:Start
+ * Control:SiteHeader
+ * Style:SiteHeader
+ * Desc:目前没有
+ * Quot:site.home
+*************************************************************/
+.SiteHeader { width:1100px; margin:0 auto; }
+.SiteHeader .logo{  background:url("/_skins/Temp02/images/logo.png") no-repeat left center; height:100px; width:600px; }
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:SiteHeader
+ * Style:SiteHeader
+ * Desc:目前没有
+ * Quot:site.home
+*************************************************************/

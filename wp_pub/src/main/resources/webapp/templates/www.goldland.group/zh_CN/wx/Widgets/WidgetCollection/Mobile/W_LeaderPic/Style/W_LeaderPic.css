@@ -1,0 +1,102 @@
+﻿/*************************************************************
+ * Command:Start
+ * Control:W_LeaderPic
+ * Style:W_LeaderPic
+ * Desc::
+ * Quot:
+*************************************************************/
+.W_LeaderPic { min-height:500px; overflow:hidden; background:#fff; padding:10px 10px; box-shadow:0 2px 6px rgba(100, 100, 100, 0.3); }
+
+.W_LeaderPic h1{  height:40px; line-height:40px; font:normal 16px/40px "microsoft yahei";}
+.W_LeaderPic h1 em { float:left; width:110px; text-align:center; color:#fff;  display: block; }
+
+.W_LeaderPic .W_LeaderPic_Box { margin:20px auto;}
+.W_LeaderPic img { float: left; width:100%; height: 100%; }
+.W_LeaderPic p { }
+
+/* 列表 */
+/* 
+.W_LeaderPic h2 { font:normal 12px/30px "微软雅黑","宋体"; height:30px; background:url("../images/icon01.gif") no-repeat left; border-bottom:1px solid #ddd; margin-bottom:10px; padding-left:10px; color:#000;}
+.W_LeaderPic h2 span { font:normal 12px/30px "微软雅黑","宋体"; color:#042586; margin-left: 10px;}
+
+.W_LeaderPic dl { width:95%; margin:10px auto; overflow:hidden; display:block; min-height:180px; box-shadow:0 4px 8px rgba(100, 100, 100, 0.8);}
+.W_LeaderPic dl dt { float:left; width:200px;}
+.W_LeaderPic dl dd { float:left; }
+.W_LeaderPic dl dd p { font:normal 12px/14px "microsoft yahei"; color:#666; min-height: 60px;}
+ */
+.W_LeaderPic .more { display: block; float: right; }
+.W_LeaderPic a.more  { color: #333; text-decoration:underline; }
+.W_LeaderPic a.more:hover { color: #ff3300; }
+.W_LeaderPic .clear{ clear: both;}
+
+.W_LeaderPic .clear{ clear: both;}
+.W_LeaderPic .clear:after{ content: "."; display: block; height:0; clear:both; visibility: hidden;}
+.W_LeaderPic .page_css, .class_page { text-align:center; padding:10px 0; display:none;}
+.W_LeaderPic .page_css a, .class_page a { display: inline-block; border:1px solid #999; padding:2px 6px; color:#999; line-height:100%; border-radius: 3px;}
+.W_LeaderPic .page_css a:hover, .class_page a:hover{ color: #333; border: 1px solid #999; background: #999;}
+.W_LeaderPic .page_css b a, .class_page b a { color: #333; border:1px solid #999; background: #999;}
+.W_LeaderPic .page_line { }
+
+
+
+
+
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:W_LeaderPic
+ * Style:W_LeaderPic
+ * Desc::
+ * Quot:
+*************************************************************/
+
+
+/*************************************************************
+ * Command:Start
+ * Control:W_LeaderPic
+ * Style:ZhuanjiaList
+ * Desc:目前没有
+ * Quot:mobile
+*************************************************************/
+.ZhuanjiaList { min-height:500px; overflow:hidden; }
+.ZhuanjiaList a { color: #000; }
+.ZhuanjiaList a:hover { color: #339900; }
+
+.ZhuanjiaList h1{ height:40px; line-height:40px; font-size:16px;}
+.ZhuanjiaList h1 em { float:left; width:300px; text-align:left; color:#000;}
+.ZhuanjiaList .ZhuanjiaList_Box { margin:20px auto;}
+
+.ZhuanjiaList img { width: 100%; height: 100%; }
+/* 
+.ZhuanjiaList h2 { font:normal 12px/30px "微软雅黑","宋体"; height:30px; background:url("../images/icon01.gif") no-repeat left; border-bottom:1px solid #ddd; margin-bottom:10px; padding-left:10px; color:#000;}
+.ZhuanjiaList h2 span { font:normal 12px/30px "微软雅黑","宋体"; color:#042586; margin-left: 10px;}
+
+.ZhuanjiaList dl { width:95%; margin:10px auto; overflow:hidden; display:block; min-height:180px; box-shadow:0 4px 8px rgba(100, 100, 100, 0.8);}
+.ZhuanjiaList dl dt { float:left; width:200px;}
+.ZhuanjiaList dl dd { float:left; }
+.ZhuanjiaList dl dd p { font:normal 12px/14px "microsoft yahei"; color:#666; min-height: 60px;}
+ */
+.ZhuanjiaList .more { display: block; float: right; }
+.ZhuanjiaList a.more  { color: #333; text-decoration:underline; }
+.ZhuanjiaList a.more:hover { color: #ff3300; }
+.ZhuanjiaList .clear{ clear: both;}
+
+.ZhuanjiaList .clear{ clear: both;}
+.ZhuanjiaList .clear:after{ content: "."; display: block; height:0; clear:both; visibility: hidden;}
+.ZhuanjiaList .page_css, .class_page { text-align:center; padding:10px 0; font-size:12px;}
+.ZhuanjiaList .page_css a, .class_page a { display: inline-block; border:1px solid #999999; padding:8px 10px; color:#666666; line-height:100%;}
+.ZhuanjiaList .page_css a:hover, .class_page a:hover{ color: #fff; border: 1px solid #666; background: #666;}
+.ZhuanjiaList .page_css b a, .class_page b a { color: #fff; border:1px solid #666; background:#666;}
+.ZhuanjiaList .page_line { }
+
+/*************************************************************
+ * Command:End
+ * Control:W_LeaderPic
+ * Style:ZhuanjiaList
+ * Desc:目前没有
+ * Quot:mobile
+*************************************************************/

@@ -1,0 +1,65 @@
+﻿/*************************************************************
+ * Command:Start
+ * Control:ArticleView.Default
+ * Style:ArticleViewAll
+ * Desc:目前没有
+ * Quot:xwx2016b
+*************************************************************/
+.ArticleViewAll { width:100%;  background: #fff; }
+.ArticleViewAll h3 { line-height:30px; border-bottom:3px solid #ddd; padding:15px 10px; background: linear-gradient(#fff, #f9f9f9) repeat scroll 0 0 #2b7ecc; }
+.ArticleViewAll .article_info { display:none;}
+.ArticleViewAll .article_info span { color: #5cb720; }
+
+.ArticleViewAll .article_content { margin:20px 10px; }
+.ArticleViewAll .article_content p { font-size:16px; line-height:26px; margin-bottom:22px; color:#333;/*  text-align: justify;text-indent:2em; word-wrap:break-word; word-break:normal; letter-spacing:0px; */}
+.ArticleViewAll .article_content ul { margin-left:45px;}
+.ArticleViewAll .article_content ul li { list-style:circle; margin:5px 0; }
+.ArticleViewAll .article_content a { color:#ff0000;text-decoration:underline;}
+.ArticleViewAll .article_content a:hover { color:#0066cc;text-decoration:underline;}
+.ArticleViewAll .article_content img { float: left; width:100%; height: 100%; }
+
+/***********附件****************/
+.ArticleViewAll .articleAttachments { color:#000; margin-bottom:30px; padding:0 30px;}
+.ArticleViewAll .articleAttachments h3 { font:normal 16px/30px "microsoft yahei"; border-bottom:1px dotted #ddd; display: none;  }
+.ArticleViewAll .articleAttachments li { display:block; font-family:"宋体"; margin:10px 0;}
+.ArticleViewAll .articleAttachments li a { margin-left:15px; color:#ff0000; text-decoration:underline; font:14px/30px "microsoft yahei"; }
+.ArticleViewAll .articleAttachments li a:hover { color:#003399; text-decoration:none;}
+.ArticleViewAll .articleAttachments li span { float:right; margin-left:20px; }
+.ArticleViewAll .articleAttachments li span a { padding:5px 10px; background:#009900; color:#fff; border-radius:5px; -webkit-border-radius:5px; text-decoration:none;}
+.ArticleViewAll .articleAttachments li span a:hover{ background:#cc0000; color:#fff; }
+
+/***********分享****************/
+.ArticleViewAll .artilcle_share{ padding-left:10px; margin:8px 0px; overflow:hidden;}
+
+/***********字号大小/打印/关闭****************/
+.ArticleViewAll .artilcle_tool { height:26px; line-height:26px; text-align:right; background:#f2f2f2; padding-right:8px;}
+.ArticleViewAll .artilcle_tool a { color: #333;}
+.ArticleViewAll .artilcle_tool a:hover { color: #cc0000;}
+
+/***********上一篇/下一篇****************/
+.ArticleViewAll .article_page { margin-top: 15px; overflow:hidden;}
+.ArticleViewAll .article_page li { width:100%; margin:0 10px; padding-left:10px; background: url(../images/icon5.gif) no-repeat left center; font-size:12px;}
+.ArticleViewAll .article_page li.next { background: url(../images/icon7.gif) no-repeat left center;}
+.ArticleViewAll .article_page li span { color: #003399;}
+.ArticleViewAll .article_page li a { color: #333;}
+.ArticleViewAll .article_page li a:hover { color: #003399;}
+
+/***********相关信息****************/
+.ArticleViewAll .article_about  {  margin-top:10px; overflow:hidden; border-top:3px solid #000;}
+.ArticleViewAll .article_about h3 { font:normal 16px/40px "microsoft yahei"; border-bottom:1px solid #ddd;}
+.ArticleViewAll .article_about ul { padding:10px 0; overflow:hidden;}
+.ArticleViewAll .article_about li { float:left; width:490px; margin:0 15px; padding-left:10px; height:30px; line-height:30px; background: url(../images/icon1.gif) no-repeat left center; font-size:14px;}
+.ArticleViewAll .article_about li a { color: #666;}
+.ArticleViewAll .article_about li a:hover { color: #003399;}
+.ArticleViewAll .article_about li span { font-size:12px; color:#666; margin-left:10px; float:right; text-align:right;}
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:ArticleView.Default
+ * Style:ArticleViewAll
+ * Desc:目前没有
+ * Quot:xwx2016b
+*************************************************************/

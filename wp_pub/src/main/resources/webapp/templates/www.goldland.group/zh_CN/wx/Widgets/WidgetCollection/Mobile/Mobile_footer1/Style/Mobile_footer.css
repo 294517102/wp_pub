@@ -1,0 +1,24 @@
+﻿/*************************************************************
+ * Command:Start
+ * Control:Mobile_footer
+ * Style:Mobile_footer
+ * Desc:目前没有
+ * Quot:
+*************************************************************/
+
+
+.Mobile_footer { padding:10px 0px; width:100%; border-top:1px solid #ddd; background: url("/_skins/mobile/images/footerbg.png") repeat-x center bottom; height:80px; }
+.Mobile_footer p { text-align: center; color:#fff; font-size:12px;}
+
+
+
+
+
+
+/*************************************************************
+ * Command:End
+ * Control:Mobile_footer
+ * Style:Mobile_footer
+ * Desc:目前没有
+ * Quot:
+*************************************************************/

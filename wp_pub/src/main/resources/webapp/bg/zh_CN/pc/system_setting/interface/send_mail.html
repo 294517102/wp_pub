@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>发送图文消息</title>
+	 <#include "/include/bg/in_head_res.html">
+</head>
+<body class="body clear">
+	<div class="layui-container" style="width:100%">
+ 
+       <form id="form1" action="" class="layui-form layui-form-pane">
+               <div class="layui-form-item two-colum-left">
+                    <label class="layui-form-label"><span class="red">*</span>地址</label>
+                <div class="layui-input-block">
+                    <input  class="layui-input" type="email"  name="url" id="title" value=""  placeholder="输入邮箱地址" />
+               	</div>
+               </div>
+    			<div class="layui-form-item two-colum-left">
+                   <label class="layui-form-label"><span class="red">*</span> 邮件主题</label>
+                <div class="layui-input-block">
+                    <input  class="layui-input" type="text"  name="title" id="title" value=""  placeholder="输入邮件标题" />
+               	</div>
+               </div>
+               <div class="layui-form-item two-colum-left">
+                   <label class="layui-form-label"><span class="red">*</span> 邮件内容</label>
+                <div class="layui-input-block">
+                    <textarea placeholder="请输入内容" name="content" class="layui-textarea"></textarea>
+               	</div>
+               </div>
+               
+               <div class="layui-form-item two-colum-left">
+                  <button onclick="sendMail()" class="layui-btn" lay-submit="" lay-filter="demo1">发送邮件</button>
+       			<div class="layui-input-block">
+        </form>
+</div>
+<#include "/include/bg/in_bottom_res.html">
+<script>
+
+	//保存
+	function sendMail(){
+		var params = $("#form1").serializeObject();
+		$.postJSON("${base}sendEmil$ajax.htm",params,function(data){
+			console.log(data.msg);
+			if(data.result==true){
+				layer.alert(data.msg,{icon:1});
+			}else if(data.result==false){
+				layer.alert(data.msg,{icon:2});
+			}
+		});
+	}
+	
+
+</script>
+</body>
+</html>

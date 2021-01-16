@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>网站详细信息</title> 
+	<#include "/include/bg/in_head_res.html">
+</head>
+<body class="inner-body clear">
+	<div class="layui-container bg_white center" style="width: 100%;padding:10px">
+	<form name="layui-form " id="form_1" method="post" class="layui-form layui-form-pane">
+		<div style="width: 80%;margin:5px auto">			
+				<input type="hidden" name="id" value="${webSet.id?c!}" />
+				<div class="layui-form-item" >
+					<label class="layui-form-label"><span style="color:red">*</span>网站标题</label>
+					 <div class="layui-input-block">
+				      <input class="layui-input" name="title" value="${webSet.title!}" type="text" lay-verify="required"/>
+				    </div>
+				</div>
+				<div class="layui-form-item" >
+					<label class="layui-form-label">附加标题</label>
+					 <div class="layui-input-block">
+				      <input class="layui-input" name="titleAdditional" value="${webSet.titleAdditional!}" type="text" />
+				    </div>
+				</div>
+				<div class="layui-form-item two-colum-left " >
+					<label class="layui-form-label"><span style="color:red">*</span>logo地址</label>
+					 <div class="layui-input-block">
+				      <input class="layui-input" name="logoUrl" value="${webSet.logoUrl!}"  type="text" lay-verify="required"/>
+				    </div>
+				</div>
+				<div class="layui-form-item two-colum-right" >
+					<label class="layui-form-label">导航图标</label>
+					 <div class="layui-input-block">
+				      <input class="layui-input" name="navIcon" placeholder="浏览器导航ico图标" value="${webSet.navIcon!}"  type="text" />
+				    </div>
+				</div>
+				<div class="layui-form-item two-colum-left " >
+					<label class="layui-form-label"><span style="color:red">*</span>语言版本</label>
+					 <div class="layui-input-block">
+				      <input class="layui-input" name="language" value="${webSet.language!}" type="text" lay-verify="required"/>
+				    </div>
+				</div>
+				<div class="layui-form-item two-colum-right" >
+					<label class="layui-form-label"><span style="color:red">*</span>站点网址</label>
+					 <div class="layui-input-block">
+				      <input class="layui-input" name="recordUrl" value="${webSet.recordUrl!}"  type="text" lay-verify="required"/>
+				    </div>
+				</div>
+				<div class="layui-form-item two-colum-left" >
+					<label class="layui-form-label"><span style="color:red">*</span>企业名称</label>
+					 <div class="layui-input-block">
+				      <input class="layui-input" name="comName" value="${webSet.comName!}"type="text" lay-verify="required"/>
+				    </div>
+				</div>
+				<div class="layui-form-item two-colum-right" >
+					<label class="layui-form-label"><span style="color:red">*</span>企业地址</label>
+					 <div class="layui-input-block">
+				      <input class="layui-input" name="comAddress" value="${webSet.comAddress!}"  type="text" lay-verify="required"/>
+				    </div>
+				</div>
+				<div class="layui-form-item two-colum-left " >
+					<label class="layui-form-label">联系人</label>
+					 <div class="layui-input-block">
+				      <input class="layui-input" name="linker" value="${webSet.linker!}" type="text" />
+				    </div>
+				</div>
+				<div class="layui-form-item two-colum-right" >
+					<label class="layui-form-label">电话号码</label>
+					 <div class="layui-input-block">
+				      <input class="layui-input" name="tel" value="${webSet.tel!}"  type="text" />
+				    </div>
+				</div>
+				<div class="layui-form-item two-colum-left" >
+					<label class="layui-form-label">邮箱</label>
+					 <div class="layui-input-block">
+				      <input class="layui-input" name="comEmail" value="${webSet.comEmail!}"  type="text" />
+				    </div>
+				</div>
+				<div class="layui-form-item two-colum-right" >
+					<label class="layui-form-label">站长统计ID</label>
+					 <div class="layui-input-block">
+				      <input class="layui-input" name="site_id" value="${webSet.siteId!}"  type="text" />
+				    </div>
+				</div>
+				<div class="layui-form-item two-colum-left" >
+					<label class="layui-form-label">邮编</label>
+					 <div class="layui-input-block">
+				      <input class="layui-input" name="zipCode" value="${webSet.zipCode!}"  type="text" />
+				    </div>
+				</div>
+				<div class="layui-form-item two-colum-left " >
+					<label class="layui-form-label"><span style="color:red">*</span>版权信息</label>
+					 <div class="layui-input-block">
+				      <input class="layui-input" name="copyright" value="${webSet.copyright!}" type="text" lay-verify="required"/>
+				    </div>
+				</div>
+				<div class="layui-form-item two-colum-right" >
+					<label class="layui-form-label"><span style="color:red">*</span>备案信息</label>
+					 <div class="layui-input-block">
+				      <input class="layui-input" name="record" value="${webSet.record!}" type="text" lay-verify="required"/>
+				    </div>
+				</div>
+				<div class="layui-form-item" >
+					<label class="layui-form-label"  style="height:100px;line-height: 87px"><span style="color:red">*</span>网站关键字</label>
+					 <div class="layui-input-block">
+				      <textarea class="layui-textarea" name="keyword" type="text" lay-verify="required">${webSet.keyword!}</textarea>
+				    </div>
+				</div>
+				<div class="layui-form-item" >
+					<label class="layui-form-label " style="height:100px;line-height: 87px"><span style="color:red">*</span>网站描述</label>
+					 <div class="layui-input-block">
+				      <textarea class="layui-textarea" name="describes" type="text" lay-verify="required">${webSet.describes!}</textarea>
+				    </div>
+				</div>
+
+		</div>
+		<div class="layui-form-item" style="margin-bottom:40px">
+			<div class="layui-input-block" >
+				<button class="layui-btn   layui-btn-big" lay-submit lay-filter="form_1">保存</button>
+			</div>
+		</div>
+	  </form>
+	</div>
+	<#include "/include/bg/in_bottom_res.html">
+	<script>
+	$(function(){
+		var	form = layui.form ;
+		
+		form.on('submit(form_1)', function(data){			
+			$.postJSON("${base}/general_service_egpm7LrXKgtjS27Ae09$ajax.htm",data.field,function(result){
+				layer.msg(result.msg);
+			});
+			return false;
+		});
+				
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>详情查看</title>
+    <#include "/include/bg/in_head_res.html">
+
+</head>
+<body class="body clear">
+<div class="layui-container" style="width:100%">
+    <form action="" class="layui-form layui-form-pane" onsubmit="return false;">
+    	<input type="hidden" name="id" value="${data.id}">
+    	<input type="hidden" name="state" value="-1">
+        <div class="layui-form-item two-colum-left">
+            <label class="layui-form-label">姓名</label>
+            <div class="layui-input-block">
+                <input type="text" name="name" lay-verify="required" value="${data.name}"  readonly="readonly" class="layui-input">
+            </div>
+        </div>  
+           <div class="layui-form-item two-colum-right">
+             <label class="layui-form-label">性别</label>
+            <div class="layui-input-block">
+                <input type="text" name="title" value="${data.sex}" disabled="true"  readonly="readonly" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item two-colum-left" >
+            <label class="layui-form-label">身份证号</label>
+            <div class="layui-input-block">
+                <input type="text" name="phone" value="${data.email}" disabled="true"  readonly="readonly" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item two-colum-right">
+            <label class="layui-form-label">欲就读年级</label>
+            <div class="layui-input-block ">
+                <input type="text" name="email" value="${data.company}"  readonly="readonly" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item two-colum-left" >
+            <label class="layui-form-label">现就读学校</label>
+           <div class="layui-input-block ">
+                <input type="text" name=""  value="${data.address}"  readonly="readonly" class="layui-input">
+            </div>
+
+        </div>
+        
+        <div class="layui-form-item two-colum-right" >
+            <label class="layui-form-label">担任职务</label>
+           <div class="layui-input-block ">
+                <input type="text" name="address"  value="${data.customerInfo}"  readonly="readonly" class="layui-input">
+            </div>
+        </div>      
+		<div class="layui-form-item two-colum-left" >
+            <label class="layui-form-label">推荐老师</label>
+           <div class="layui-input-block ">
+                <input type="text" name="company"  value="${data.content}"  readonly="readonly" class="layui-input">
+            </div>
+        </div>
+       
+            <div class="layui-form-item two-colum-left" >
+            <label class="layui-form-label">父亲姓名</label>
+           <div class="layui-input-block ">
+                <input type="text" name="address"  value="${data.commentExt.parentName}"  readonly="readonly" class="layui-input">
+            </div>
+        </div>      
+		<div class="layui-form-item two-colum-right" >
+            <label class="layui-form-label">工作单位</label>
+           <div class="layui-input-block ">
+                <input type="text" name="company"  value="${data.commentExt.workName}"  readonly="readonly" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item two-colum-left" >
+            <label class="layui-form-label">联系方式</label>
+           <div class="layui-input-block ">
+                <input type="text" name="commentTime"  value="${data.commentExt.phones}"  readonly="readonly" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item two-colum-right" >
+            <label class="layui-form-label">母亲姓名</label>
+           <div class="layui-input-block ">
+                <input type="text" name="address"  value="${data.commentExt.motherName}"  readonly="readonly" class="layui-input">
+            </div>
+        </div>      
+		<div class="layui-form-item two-colum-left" >
+            <label class="layui-form-label">工作单位</label>
+           <div class="layui-input-block ">
+                <input type="text" name="company"  value="${data.commentExt.workNa}"  readonly="readonly" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item two-colum-right" >
+            <label class="layui-form-label">联系方式</label>
+           <div class="layui-input-block ">
+                <input type="text" name="commentTime"  value="${data.commentExt.tel}"  readonly="readonly" class="layui-input">
+            </div>
+        </div>
+           <div class="layui-form-item">
+            	 <label class="layui-form-label" style="height:100px;line-height: 87px">获奖情况</span></label>
+                 <div class="layui-input-block">
+                     <textarea  name="customerInfo"  class="layui-textarea">${data.commentExt.describes}</textarea>
+                 </div>
+             </div>
+              <div class="layui-form-item">
+            	 <label class="layui-form-label" style="height:100px;line-height: 87px">学生特长</span></label>
+                 <div class="layui-input-block">
+                     <textarea  name="customerInfo"  class="layui-textarea">${data.commentExt.contents}</textarea>
+                 </div>
+             </div>
+              <div class="layui-form-item">
+            	 <label class="layui-form-label" style="height:100px;line-height: 87px">学生成绩</span></label>
+                 <div class="layui-input-block">
+                     <textarea  name="customerInfo"  class="layui-textarea">${data.commentExt.result}</textarea>
+                 </div>
+             </div>
+        	<div class="layui-form-item two-colum-right" >
+            <label class="layui-form-label">留言时间</label>
+           <div class="layui-input-block ">
+                <input type="text" name="commentTime"  value="${data.commentTime?string('yyyy-MM-dd HH:mm:ss')}"  readonly="readonly" class="layui-input">
+            </div>
+        </div>
+           <div class="layui-form-item center">
+                <button type="reset" class="layui-btn layui-btn-danger cancel">取消</button>
+        </div>
+    </form>
+</div>
+<#include "/include/bg/in_bottom_res.html">
+<script type="text/javascript">
+$(function(){
+	var form = layui.form,laydate = layui.laydate;
+	form.on('submit(form_1)', function(data){
+		console.log("--"+JSON.stringify(data.field));
+		$.postJSON("/general_service_0WiYwLrrp45iNO8Avou$ajax.htm",data.field,function(data){
+						layer.msg(data.msg);
+							if(data){
+								parent.location.reload();
+								closeWindow();
+							}
+					});
+	});
+})
+ $(".cancel").click(function(){
+ 	closeWindow();
+ });
+</script>
+</body>
+</html>

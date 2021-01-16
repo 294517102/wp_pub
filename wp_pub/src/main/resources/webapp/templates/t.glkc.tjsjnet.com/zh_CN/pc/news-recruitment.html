@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<#include "/${rp}/metalink.html">
+	<title>${webSet.title}</title>
+</head>
+<style>
+		.dq_active1{
+			display: inline-block;
+			height: 55px;
+			width: 56px;
+			color: #46c3f2;
+			font-size: 14px;
+			border-bottom: 2px solid #46c3f2;
+		}
+	.swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+      position: relative;
+    }
+</style>
+<body>
+	<header>
+		<#include "/${rp}/header.html">
+	</header>
+	<div class="dangquangongzuo">
+		<div class="dqgz_content_nav">
+		    <#assign ck = cl.bk(c)>
+			<ul class="dangqun_li">
+			    <#list ck.parent.children as cc>
+				<li><a href="${cm.cp}${cc.url}" <#if cc.id==ck.id>class="dq_active1"</#if>>${cc.title}</a></li>
+				</#list>
+			</ul>
+		</div>
+		<div class="news"> 
+			<div class="news_left">
+				<div class="news_left_title">
+					<h2>人才招聘</h2>
+				</div>
+				<ul class="news_left_rc">
+				    <#if !pageIndex?? >  <#assign  pageIndex="1" > </#if>
+                    <#assign pageList= at.bc(ck,pageIndex,9)> 
+                    <#if pageList.list?size gt 0>
+                    <#list pageList.list?sort_by('issueTime')?reverse as a>
+					<li>
+						<div class="rc_title">
+							<h3><a href="${cm.cp}go.htm?url=news_detail&id=${a.id}">${a.title}</a></h3>
+							<div class="fbtime">发布时间：${a.issueTime?string('YYYY-MM-dd')}   来自： ${a.source}</div>
+							<div class="fenx6">
+							</div>
+						</div>
+					</li>
+					</#list>
+				</ul>
+				<div class="fenpage">
+                ${cm.page(req,pageIndex,pageList)}
+                </div>
+                 <#else>
+                <div class="nodata">
+                    <img src="res/default/images/nodata.png" alt="暂无数据" />
+                    <p>暂无数据</p>
+                </div>
+                </#if>
+			</div>
+			<#include "/${rp}/rightbox.html">
+	</div>
+	<footer>
+		<#include "/${rp}/footer.html">
+	</footer>
+</body>
+<script src="res/js/jquery-1.12.3.js"></script>
+<script src="res/js/swiper-4.1.6.min.js"></script>
+<script>
+	 var swiper = new Swiper('.swiper-container', {
+      spaceBetween: 30,
+      pagination: {
+        el: '.swiper-pagination',
+      },
+      loop: true,
+        autoplay:{
+        	 delay: 5000,
+        }
+    });
+</script>
+</html>

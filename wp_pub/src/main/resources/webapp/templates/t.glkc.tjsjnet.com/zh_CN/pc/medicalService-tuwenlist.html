@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<#include "/${rp}/metalink.html">
+	<title>${webSet.title}</title>
+	<style>
+		#df_lb_tab ul li{
+			background: url(res/default/images/tubiao.png) no-repeat left center;;
+		}
+		.dq_active1{
+			display: inline-block;
+			height: 55px;
+			width: 56px;
+			color: #46c3f2;
+			font-size: 14px;
+			border-bottom: 2px solid #46c3f2;
+		}
+		#h4{
+			color: #46c3f2;
+			border-bottom: 2px solid #46c3f2;
+		}
+
+	</style>
+</head>
+<body>
+	<header>
+		<#include "/${rp}/header.html">	
+	</header>
+	<div class="dangquangongzuo">
+		<div class="dqgz_content_nav">
+			<ul class="dangqun_li">
+			    <#assign ck=cl.bk(c)>
+			    <#list ck.parent.children as cc>
+			    <#if cc.keyword != "zhu_yuan_zhi_nan">
+				<li><a href="${cm.cp}${cc.url}" <#if cc.id==ck.id>class="dq_active"</#if>>${cc.title}</a></li>
+				</#if>
+				</#list>
+			</ul>
+		</div>
+		<div class="df_lb">
+			<div class="df_lb_title">
+				<h4 style="height: 64px" id="h4">${ck.title}</h4>
+			</div>
+			<div class="ycyx">
+			    <#if !pageIndex?? >  <#assign  pageIndex="1" > </#if>
+                <#assign pageList= at.bc(ck,pageIndex,12)> 
+                <#if pageList.list?size gt 0>
+                <#list pageList.list?sort_by('issueTime')?reverse as a>
+				<dl>
+				    <a href="${cm.cp}go.htm?url=medicalService-detail&id=${a.id}">
+					<dt>
+						<img src="<#if a.th.url??>${a.th.url}<#else>res/default/images/default_pic.png</#if>" alt="">
+					</dt>
+					<dd>
+						<div class="sm_title">
+							<div class="title">${a.title}</div>
+						</div>
+						<div class="sm_content">
+							${a.ext.content}
+						</div>
+					</dd>
+					</a>
+				</dl>
+				</#list>
+			</div>
+			<div class="fenpage">
+            ${cm.page(req,pageIndex,pageList)}
+            </div>
+             <#else>
+            <div class="nodata">
+                <img src="res/default/images/nodata.png" alt="暂无数据" />
+                <p>暂无数据</p>
+            </div>
+            </#if>
+		</div>
+	</div>
+	<footer>
+		<#include "/${rp}/footer.html">
+	</footer>
+</body>
+<script src="res/js/jquery-1.12.3.js"></script>
+<script src="res/js/xdlines.jquery.js"></script>
+<script>
+	$('.sm_content').xdlines({
+			max:3
+		});
+
+</script>
+</html>

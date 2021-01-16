@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>新增栏目</title> 
+<#include "/include/bg/in_head_res.html">
+     <style type="text/css">
+ 	.uploadeyu{
+ 		display:inline-block;
+ 		width:90px;
+ 		height:90px;
+ 		overflow:hidden;
+ 		background-color:#eee;
+ 		text-align:center;
+ 		cursor: pointer;
+ 	}
+ 	.uploadeyu>p:nth-of-type(1){
+ 		line-height:90px;
+ 		font-size:40px
+ 	}
+ 	.uploadeyu>img{
+ 		min-width:100%;
+ 		height:100%;
+ 	}
+ 	.img-lable{
+ 		height:100px !important;
+ 		line-height:85px !important;
+ 	}
+ 	.img-hint{
+ 		font-size:12px;
+ 		color: red
+ 	}
+ 	.layui-form-item{
+ 		margin-bottom:8px;		
+ 	}
+ 
+ 	.layui-upload-list img{
+ 	vertical-align: initial!important;
+ 	}
+/*  	预览图片的box */
+ 	.pic_box{
+ 		float:left;
+ 		position:relative;
+ 		max-width:100px;
+ 		max-height:100px;
+ 		margin-right: 12px;
+ 		overflow: hidden;
+ 	}
+ 	.pic_box img{
+ 	display:block;
+ 	width:100%;
+ 	}
+/*  	图片删除的小图标 */
+ 	.del_pic{
+ 	    position: absolute;
+	    top: 0px;
+	    right: 0px;
+	    width: 20px;
+	    height: 20px;
+	    z-index: 999;
+   		cursor: pointer;
+    }
+ </style>
+</head>
+<body class="inner-body clear">
+	<div class="layui-container bg_white" style="width: 100%;padding:10px">
+	<form class="layui-form layui-form-pane " action="" id="column_form"
+		onsubmit="return false">
+			<input type="hidden" name="isDelete" value="-1"> 
+			<input type="hidden" name="state" value="1"> 
+
+			 <div class="layui-form-item ">
+			 <div class="layui-col-md4">
+				<label class="layui-form-label"><span style="color: red">*</span>栏目名称</label>
+				<div class="layui-input-inline">
+					<input type="text" name="title" lay-verify="required"
+						placeholder="请输入栏目名称" autocomplete="off" class="layui-input"
+						onchange="pingyin()">
+				</div>
+				</div>
+				
+			<div class="layui-col-md4 ">
+				<label class="layui-form-label">所属栏目</label>
+				<div class="layui-input-inline">
+					<select name="column_id" lay-verify="required">
+						<option value="0">请选择</option> <#list column_list! as column>
+						<option value="${column.id}">${column.title!}</option> </#list>
+					</select>
+				</div>
+			</div>
+				
+			<div class="layui-col-md4" >
+				<label class="layui-form-label">栏目类型</label>
+				<div class="layui-input-inline">
+					<select class="layui-form-select"  name="type" >
+						<option value="1" >新闻类栏目</option> 
+						<option value="2" >产品展示类栏目</option> 
+						<option value="3" >招聘类栏目</option> 
+						<option value="4" >资料下载类栏目</option> 
+						<option value="5" >科室导航类栏目</option> 
+
+					</select>
+				</div>
+				</div>
+			
+			</div>
+			
+			
+		
+		
+		
+<div class="layui-form-item ">
+			<div class="layui-col-md4 ">
+				<label class="layui-form-label">栏目url</label>
+				<div class="layui-input-inline">
+					<input type="tel" name="url" placeholder="请输入栏目url"
+						autocomplete="off" class="layui-input">
+				</div>
+			</div>
+				
+			<div class="layui-col-md4">
+				<label class="layui-form-label"><span style="color: red">*</span>排序</label>
+				<div class="layui-input-inline">
+					<input type="text" name="orderby" placeholder="栏目排序"
+						lay-verify="required|number" autocomplete="off"
+						class="layui-input" value="1">
+				</div>
+			</div>
+			
+			<div class="layui-col-md4">
+				<label class="layui-form-label"><span style="color: red">*</span>栏目关键字</label>
+				<div class="layui-input-inline">
+					<input type="text" name="keyword" lay-verify="required"
+						placeholder="请输入栏目关键字" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+</div>
+
+			
+
+		<div class="layui-form-item">
+			<label class="layui-form-label"  style="height:100px;line-height: 87px">栏目描述</label>
+			<div class="layui-input-block">
+				<textarea placeholder="请输入栏目描述" class="layui-textarea" name="describes"></textarea>
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">封面图上传</label>
+
+			  <input type="hidden" name="pic_id" id="pic_id">
+    		 <div class="layui-input-block" style="padding-left:12px">
+     			<label for="upload" class="uploadeyu"  id="test1">
+	   			 <p>+</p>
+				</label>
+			<p class=".img-hint">点击图片修改</p>
+			<button type="button" class="layui-btn layui-bg-blue" id="upload_1" style="position: absolute;left: 123px;top: 0px;"><i class="layui-icon">&#xe681;</i>上传文件</button>
+			</div>
+
+
+		</div>
+
+		<div style="text-align: center; vertical-align: bottom;">
+			<button class="layui-btn" lay-submit lay-filter="form_column">保存</button>
+			<button class="layui-btn layui-btn-danger cancel">取消</button>
+		</div>
+	</form>
+	</div>
+	<#include "/include/bg/in_bottom_res.html">
+	<script type="text/javascript">
+
+$(function(){
+    //注意进度条依赖 element 模块，否则无法进行正常渲染和功能性操作
+    var form = layui.form,laydate = layui.laydate;
+    
+layui.use('upload', function(){
+  var $ = layui.jquery
+  ,upload = layui.upload;
+  
+  //普通图片上传
+  var uploadInst = upload.render({
+	    elem: '#test1'
+	    ,url: '${base}/upload/uploadImgByAccessory.htm?type=client'
+	    ,auto: false
+	 	,size: 3000
+	 	,accept: "file"
+	 	,bindAction: '#upload_1'
+	 	,choose: function(obj){
+		    	 obj.preview(function(index, file, result){
+		    		   $("#test1").html("<img src='" + result + "'/>");
+		          });
+		    }
+	    ,before: function(obj){
+	      //预读本地文件示例，不支持ie8
+	      obj.preview(function(index, file, result){
+	    	  $("#test1").html("<img src='" + result + "'/>");
+	      });
+	    }
+	    ,done: function(res){
+	    	if(res.result){
+			    var files = res.data;
+			    for(var i=0;i<files.length;i++){
+			    	var name = files[i].name;
+			    	var url = files[i].url;
+			    	var id = files[i].acyId;
+			    	$("#pic_id").val(id);
+			    }
+	        return layer.msg(res.resultMsg);
+	    	}else{
+	        return layer.msg('上传失败');
+	    		
+	    	}
+	      //如果上传失败
+	      if(res.code > 0){
+	        return layer.msg('上传失败');
+	      }
+	    }
+	    ,error: function(){
+	      //演示失败状态，并实现重传
+	      var demoText = $('#demoText');
+	      demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
+	      demoText.find('.demo-reload').on('click', function(){
+	        uploadInst.upload();
+	      });
+	    }
+	  });
+  
+});
+    //监听提交
+    form.on('submit(form_column)', function(data){
+    	var params = $("#column_form").serializeObject();
+    	$.postJSON("admin/column/save_column$ajax.htm",params,function(data){
+    		layer.msg(data.msg);
+    		if(data.result==true){
+    			$(".layui-btn-danger").click();
+    		}
+    	}); 
+    	
+        return false;
+    });
+})
+
+// 把汉字转化成拼音
+function pingyin(){
+ $.postJSON("admin/StringToPingYin.htm",{"str":$("input[name='title']").val()},function(data){
+	if(data.result==true){
+		$("input[name='keyword']").val(data.resultData)
+	}else{
+		layer.msg(data.resultMsg,{icon:2});
+	} 
+}); 
+}	
+// 按钮提示
+function showTip(){
+layer.tips('模板预览', '#muban_tip', {
+	  tips: [1, '#3595CC'],
+	  time: 4000
+	});
+}
+
+function changeTemp(obj){
+	$(obj+' option:selected').text();//选中的文本
+// 	$('#testSelect option:selected') .val();//选中的值
+// 	$("#testSelect ").get(0).selectedIndex;//索引
+	console.log($(obj+' option:selected').text());
+}
+</script>
+
+
+</body>
+</html>
